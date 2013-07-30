@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>If you want to add Tabs to Nitro for Salesforce, add entries here.</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Page_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The full URL to the page that you want to load. ie: https://nitro.na12.visual.force.com/apex/TestPage</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The full URL to the page that you want to load. ie: https://nitro.na12.visual.force.com/apex/TestPage</inlineHelpText>
+        <label>Page URL</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tab_Label__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The text that appears on the tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The text that appears on the tab.</inlineHelpText>
+        <label>Tab Label</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tab_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>A unique name for this tab. Can only use alphanumeric characters and underscores.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A unique name for this tab. Can only use alphanumeric characters and underscores.</inlineHelpText>
+        <label>Tab Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Nitro Custom Tabs</label>
+</CustomObject>

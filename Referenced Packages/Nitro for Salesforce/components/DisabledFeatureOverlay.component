@@ -1,0 +1,23 @@
+<apex:component >
+   <apex:attribute name="isFree" description="Indicates if this is a free edition." type="Boolean" required="true"/>
+   <apex:attribute name="verifyAction" description="Action" type="PageReference" required="true"/>
+   
+  <apex:outputpanel id="disabledFeatureOverlay">
+      <apex:outputPanel rendered="{!isFree}">
+         <apex:stylesheet value="{!URLFOR($Resource.nitro__nitro_editions_resources, 'css/nitro_editions.css')}"/>
+         <div class="darkOverlay"></div>
+         <div class="lightOverlay">
+            <div class="sorry">WE'RE SORRY</div>
+            <div class="title">NITRO FOR SALESFORCE</div>
+            <div class="lock"></div>
+            <div class="featNotAvailMsg">THIS FEATURE IS NOT AVAILABLE IN THIS EDITION OF NITRO FOR SALESFORCE</div>
+            <div class="learnMoreMsg">To take advantage of our enterprise offering, please contact your Nitro For Salesforce representative today.</div>
+            <div class="learnMoreMsg">If you acquired the Enterprise edition, please click below to upgrade.</div>
+            <div class="buttonContainer">
+               <div class="awesome_button buttonBg" onclick="verifyEdition()"><a>Verify License</a></div>
+            </div>
+         </div>
+      </apex:outputPanel>
+   </apex:outputpanel>
+   <apex:actionFunction name="verifyEdition" action="{!verifyAction}" reRender="disabledFeatureOverlay, pageMessages, pageButtons" immediate="true"/ >
+</apex:component>

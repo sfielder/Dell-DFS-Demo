@@ -1,0 +1,773 @@
+<apex:page controller="nitro.NitroTeamSetup" action="{!init}">
+   
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro_reset.css" rel="stylesheet" type="text/css"></link>
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+   <script src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/jquery.1.6.1.bunchball.min.js"></script>
+   <script>
+   if(typeof nitro$ !== 'function'){
+      var nitro$ = bunchball_jQuery.noConflict();
+   }
+   //var libVersion = Math.round(Math.random() * 10000);
+   var libVersion = {!libVersion};
+   </script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.libs.bunchball.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+   <apex:pageMessages id="pageMessages" />
+   
+   <apex:form >
+
+      <div class="nitro" id="nitro_sf_league_team_settings">
+      
+         <h1>Edit Leagues and Teams</h1>
+         
+         <div class="column_300" id="nitro_leagues">
+            <div class="content_module" id="nitro_leagues_module">
+               <h2>Leagues <span>(0)</span></h2>
+               <p class="nitro_module_description">Leagues are a group of teams.  Think "Regions", "Industries", "Masters"...</p>
+               <div class="content_module_head_button"><button type="button" class="admin_button accept_button" onClick="addLeague()">Add +</button></div>
+
+               <div class="content_module_body" id="nitro_leagues_module_body">
+                  <div id="leagues_wrapper">
+                     <ul id="leagues" class="nitro_sf_list">
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="content_module_body" id="leagueData" style="display:none">
+                  <h2>League Details:</h2>
+                  <ol class="fieldset">
+                     <li>
+                        <label>League Name:</label>
+                        <input type="text" name="leagueName" id="leagueName" />
+                     </li>
+                     <li>
+                        <button id="createLeague" type="button" class='admin_button accept_button' onClick="leagueHandler('CREATE')">Add League</button>
+                        <img id='leagueSpinner' src='https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif' style="display:none" />
+                        <button id="deleteLeague" type="button" class='admin_button delete_button' onClick="leagueHandler('DELETE')">Delete League</button>
+                     </li>
+                  </ol>
+               </div>
+
+            </div><!-- end leagues module -->
+         </div><!--  end leagues column -->
+   
+   
+         <div class="column_300" id="nitro_teams">
+            <div class="content_module" id="nitro_teams_module">
+               <h2>Teams <span>(0)</span></h2>
+               <p class="nitro_module_description">Each league has teams, which are groups of people.  Think "Northwest", "Southeast"...</p>
+               <div class="content_module_head_button"><button type="button" class="admin_button accept_button" onClick="addTeam()">Add +</button></div>
+
+               <div class="content_module_body" id="nitro_teams_module_body">
+                  <div id="leagues_wrapper">
+                     <ul id="teams" class="nitro_sf_list">
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="content_module_body" id="teamData" style="display:none">
+                  <h2>Team Details:</h2>
+                  <ol class="fieldset">
+                     <li>
+                        <label>Team Name:</label>
+                        <input type="text" name="teamName" id="teamName" />
+                     </li>
+                     <li>
+                        <label>Team Description:</label>
+                        <textarea name="teamDescription" id="teamDescription"></textarea>
+                     </li>
+                     <li>
+                        <label>Team Picture (URL):</label>
+                        <input type="text" name="teamPicture" id="teamPicture" />
+                     </li>
+                     <li>
+                        <button id="createTeam" type="button" class="admin_button accept_button" onClick="teamHandler('CREATE')">Add Team</button>
+                        <img id='teamSpinner' src='https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif' style="display:none" />
+                        <button id="updateTeam" type="button" class="admin_button accept_button"  onClick="teamHandler('UPDATE')">Update Team</button>
+                        <button id="visitTeam" type="button" class="admin_button accept_button" onClick="teamHandler('VISIT')">Visit Team Page</button>
+                        <button id="deleteTeam" type="button" class="admin_button delete_button"  onClick="teamHandler('DELETE')">Delete Team</button>
+                     </li>
+                  </ol>
+               </div>
+            </div><!-- end teams module -->
+         </div><!--  end teams column -->
+   
+   
+         <div class="column_300" id="nitro_users">
+            <div class="content_module" id="nitro_users_module">
+               <h2>Members <span>(0)</span></h2>
+               <p class="nitro_module_description">These are the members of the currently selected group.</p>
+               <div class="content_module_head_button"><button type="button" class="admin_button accept_button" onClick="editMembers();">Edit</button></div>
+               <div class="content_module_body" id="nitro_users_module_body">
+                  <ul id="members"  class="nitro_sf_list"></ul>
+               </div>
+            </div><!-- end profile contests -->
+         </div><!--  end users column -->
+
+      
+      <script>
+         nitroLibsVersion = "current"; 
+      </script>
+
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroJSConnector-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroCookies-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+      <script type="text/javascript">
+         var connectionParams2={};
+            connectionParams2.apiKey = "{!JSENCODE(APIKey)}";
+            connectionParams2.server = "{!JSENCODE(Endpoint)}";
+            connectionParams2.sessionKey = "{!SessionKey}";
+         
+      var nitro2 = new Nitro(connectionParams2),
+         currentTeamsPageIndex = 0,
+         maxTeamsPageSize = 50,
+         currentLeague,
+         currentTeam,
+            currentTeamID,
+            groups = [],
+         leagueListPref;
+       
+         
+
+         function processResult(data) {
+            if (data == null) {
+               //alert ('Error');
+               return;
+            }
+            if (data.Nitro.res == "err") {
+               //alert (data.Nitro.Error.Message);
+               return;
+            }
+            
+            switch (data.Nitro.method) {
+               case "site.getPreference": 
+                  switch (data.Nitro.asyncToken) {
+                     case "leagueList":
+                        var leagueList;      
+                        if (typeof data.Nitro.sitePreferences == 'object') {
+                           leagueList = data.Nitro.sitePreferences.SitePreference.value;
+                        }
+                        else {
+                           leagueList = "";
+                        }
+                        
+                        // Save this for later. 
+                        leagueListPref = leagueList;
+                        
+                        leagueList = leagueList.split("__");
+                        var leagueHTML = "";
+                        for (var i=0; i < leagueList.length; i++) {
+                           if (leagueList[i] != "") {
+                              leagueHTML += "<li data-league='"+escape(leagueList[i])+"'>" + leagueList[i] + '</li>';
+                           } 
+                        }
+                        
+                        //update the league count
+                        nitro$("#nitro_leagues_module h2 span").html("("+(leagueList.length-1)+")")
+
+                        var elem = document.getElementById("leagues");
+                        elem.innerHTML = leagueHTML;
+
+                        //zebra stripe the list items
+                        nitro$('.nitro #leagues li:odd').addClass('odd');
+
+                        //add click actions to each
+                        nitro$('.nitro #leagues li').click(function(){
+                           showLeague(unescape(nitro$(this).data('league')));
+                           
+                           //hide the other active classes
+                           nitro$('.nitro #leagues li.active').removeClass('active');
+                           
+                           //add the active state to it
+                           nitro$(this).addClass('active');
+                        })
+                        
+                        //select the first one
+                        if(nitro$("#leagues li").length > 0){
+                     nitro$("#leagues li:first").trigger('click');
+                        }
+                                           
+                        break;
+                     case "teamDescription":
+                        // received the description for a team. 
+                        if (data.Nitro.sitePreferences != true) {
+                           document.getElementById("teamDescription").value = data.Nitro.sitePreferences.SitePreference.value;
+                        }else{
+                           //console.log('no prefs: 0')
+                        }
+                        break;
+                     case "teamPicture": 
+                        if (data.Nitro.sitePreferences != true) {
+                           document.getElementById("teamPicture").value = data.Nitro.sitePreferences.SitePreference.value;
+                        }else{
+                           //console.log('no prefs: 1')
+                        }
+                        break;
+                  }        
+                  break;
+               case "admin.getGroups": 
+                  groups = data.Nitro.groups.Group;
+                  if (typeof groups == "undefined") {
+                     groups = [];
+                  }
+                  else {
+                     if (typeof groups.length == "undefined") {
+                       groups = [groups];
+                     }
+                  }
+                  
+                  // if we called this because we updated the groups list, then reselect the current league
+                  // to display the updated list. 
+                  if (data.Nitro.asyncToken == "refreshGroups") {
+                     showLeague(currentLeague);
+
+                     //select the last team created...
+                     var lastCreatedTeam = nitro$('.nitro_sf_team:data("team='+encodeURI(nitro$("#nitro_teams").data('last-team-created'))+'")');
+                        
+                        if(lastCreatedTeam.length > 0){
+                           lastCreatedTeam.trigger('click');                  
+                           nitro$('#nitro_teams_module_body').animate({
+                                 scrollTop: lastCreatedTeam.offset().top
+                             }, 1000);
+                        }
+
+                  }
+                  break;
+               case "group.getUsers": 
+                  var members = data.Nitro.users.User;
+                  if (typeof members == "undefined") {
+                     members = [];
+                  }
+                  else {
+                     if (typeof members.length == "undefined") {
+                       members = [members];
+                     }
+                  }
+                  
+                  var membersArray = [];
+                  
+                  for (var i=0; i < members.length; i++) {
+                     membersArray.push(members[i].userId);
+                  }  
+                  
+                  // Call into Apex to get everyone's names. 
+                  /* */ nitro.NitroTeamSetup.getUserNames(membersArray.join(":"), showMembers);
+                  
+                  showLayer("createTeam", false);
+                  showLayer("deleteTeam", true);
+                  showLayer("updateTeam", true);
+                  showLayer("visitTeam", true);
+                  document.getElementById("teamName").disabled=true;
+                  document.getElementById("teamName").value = unescape(currentTeam);
+                  
+                  // need to request team description and picture as Nitro prefs.
+                  nitro2.callAPI("method=site.getPreference&name=" + replaceAmpersand(currentLeague) + "__" + replaceAmpersand(currentTeam) + "{!ProfilePhotoPref}&asyncToken=teamPicture", "processResult");
+                  nitro2.callAPI("method=site.getPreference&name=" + replaceAmpersand(currentLeague) + "__" + replaceAmpersand(currentTeam) + "{!TeamBioPref}&asyncToken=teamDescription", "processResult");   
+                  
+                  
+                  document.getElementById("teamDescription").value='';
+                  document.getElementById("teamPicture").value='';
+                  showLayer("leagueData", false);
+                  showLayer("teamData", true);
+                  break;
+         
+            }
+         }  
+         
+         function replaceAmpersand(str){
+            var newStr = str;
+            newStr.replace(/&/g,"%26");
+         return newStr; 
+         }
+         
+         // Should get back a list of user objects with names. 
+         function showMembers(result, event) {
+            var membersHTML = "";
+            if (event.status) {
+               // successful
+               if(result.length > 0){
+                  for (var i=0; i < result.length; i++) {
+                     // Alias will have the proper NitroId to use for our link. 
+                     membersHTML += "<li onClick=showMember('" + result[i].Alias  + "')>" +  ((typeof(result[i].LastName) != 'undefined') ? result[i].LastName : '') +   ((typeof(result[i].FirstName) != 'undefined') ? ", " + result[i].FirstName : '') + '</li>';
+                  }
+               }else{
+                  membersHTML = "(no members in this group)";
+               }
+               
+               //update the count
+               nitro$("#nitro_users_module h2 span").html("("+result.length+")")
+               
+            }
+            else {
+               // do nothing. 
+            }
+            var elem = document.getElementById("members");
+            elem.innerHTML = membersHTML; 
+         
+            //fade this guy in
+            nitro$('#nitro_users').css('opacity',1);
+            
+            //zebra stripe the list items
+            nitro$('.nitro #nitro_users li:odd').addClass('odd');
+
+         
+         }
+         
+         // Jump to a specific member's Nitro profile page? Or Participant page to change quota?  
+         function showMember(userId) {
+            window.open("/apex/NitroUserProfile?nitroid=" + userId);
+         }
+         
+         // shows all the teams in the league and the league details in the data area. 
+         function showLeague(league) {
+            league = unescape(league);
+            currentLeague = unescape(league); 
+            resetLists();
+            var teamHTML = "";
+
+            for (var i=0; i < groups.length; i++) {
+            //if the group is in this league
+               if (groups[i].name.indexOf(league) != -1) {
+                  var displayName = groups[i].name.split(league + "__")[1];
+                  teamHTML += "<li class='nitro_sf_team' data-team='" + encodeURI(displayName) + "' data-team-id='" + groups[i].id + "'>" + displayName + '</li>';
+               }
+            }
+            
+            var noTeams = false;
+            if(teamHTML == ""){
+               //update the team count
+               nitro$("#nitro_teams_module h2 span").html("(0)")
+               teamHTML = "(no teams for this league)";
+               noTeams = true;
+            }
+            
+            var elem = document.getElementById("teams");
+            elem.innerHTML = teamHTML;                      
+
+            if(!noTeams){
+               //count the number of teams
+               var teamCount = nitro$('.nitro_sf_team').length;
+                  nitro$("#nitro_teams_module h2 span").html("("+teamCount+")");
+            }
+                        
+            document.getElementById("leagueName").value = currentLeague || "";
+            document.getElementById("leagueName").disabled=true;
+            showLayer("createLeague", false);
+            showLayer("deleteLeague", true);
+            showLayer("leagueData", true);   
+            
+            //zebra stripe the list items
+            nitro$('.nitro #teams li:odd').addClass('odd'); 
+
+            //add click actions to each
+            nitro$('.nitro #teams li').click(function(){
+               showTeam(unescape(nitro$(this).data('team')), unescape(nitro$(this).data('team-id')));
+               //hide the other active classes
+               nitro$('.nitro #teams li.active').removeClass('active');
+               
+               //add the active state to it
+               nitro$(this).addClass('active');
+               
+            });
+            
+         //add click handler to show more teams link
+         nitro$("#n4sf_show_more_teams").click(function(){
+            showMoreTeams();
+         })       
+         
+            //fade this guy in
+            nitro$('#nitro_teams').css('opacity',1);                       
+         }
+         
+         
+         function showTeam(team, teamID) {
+            currentTeam = (team); 
+            currentTeamID = (teamID);
+            // need to request the members of the current team. 
+            nitro2.callAPI("method=group.getUsers&returnCount=100&groupName=" + escape(currentLeague) + "__" + currentTeam, "processResult");
+         }
+
+
+      /**
+       * Keeps polling the server to get all the groups we have (allows us to bypass the 50-group max returned value)
+       */      
+      function getAllGroups(){
+            nitro2.callAPI("method=admin.getGroups&pageSize="+maxTeamsPageSize+"&startIndex=" + currentTeamsPageIndex, "parseGetAllGroups");
+         currentTeamsPageIndex += maxTeamsPageSize;
+      }  
+                  
+
+       function parseGetAllGroups(res){
+         if(res.Nitro.res == "ok" && res.Nitro.groups != true){
+            if(typeof res.Nitro.groups.Group.length == "undefined"){
+               //single group returned
+               //add the group to the existing array
+               groups.push(res.Nitro.groups.Group);
+            }else{
+               //multiple groups returned
+               for(var j=0; j<res.Nitro.groups.Group.length; j++){
+                  //add the group to the existing array
+                  var group = res.Nitro.groups.Group[j];
+                     groups.push(group)                  
+               }
+
+               if(res.Nitro.groups.Group.length >= maxTeamsPageSize){
+                  getAllGroups(); //keep fetching more groups
+               }
+            }
+
+         }else{
+            //
+            //console.log('no more groups', groups.length)
+         }
+
+            showLeague(currentLeague);
+
+       }
+       
+         function resetLists() {
+            var elem = document.getElementById("teams");
+            elem.innerHTML = ""; 
+            elem = document.getElementById("members");
+            elem.innerHTML = ""; 
+            
+            // make all the data sections invisible
+            showLayer("leagueData", false);
+            //showLayer("teamData", false);
+         }
+         
+         // Want to add a new league. 
+         // So give the user an input field and a button. 
+         function addLeague() {
+            nitro$("#createLeague, #leagueData").slideDown();
+            nitro$("#deleteLeague").hide();
+            nitro$("#leagueName").val('').attr('disabled',false).focus();
+         }
+         
+         // Want to add a new team. 
+         function addTeam() {
+            showLayer("createTeam", true);
+            showLayer("deleteTeam", false);
+            showLayer("updateTeam", false);
+            showLayer("visitTeam", false);
+            document.getElementById("teamDescription").value='';
+            document.getElementById("teamPicture").value='';
+            showLayer("leagueData", false);
+            showLayer("teamData", true);
+            nitro$("#teamName").val('').attr('disabled',false).focus();
+         }     
+         
+         function leagueHandler(action) {
+            // validate the name
+            var leagueName = document.getElementById("leagueName").value;
+            
+            //// make sure there's something there. 
+            if(leagueName == ""){
+               alert("Please enter a league name.");
+               return false;
+            }
+            //// make sure only valid characters. 
+            var onlyValidCharacters = /^[^'&"]*$/.test(leagueName);
+            if(!onlyValidCharacters && action !== "DELETE"){
+               alert('Sorry, ampersands, apostrophes and double quotes are not allowed in league names');
+               return false;
+            }
+            
+            switch(action) {
+               case "CREATE":
+                  // make sure it's not a duplicate of an existing league.
+                  
+                  //var answer = confirm("League names can't be changed. Are you sure this is what you want to call it?");
+                  //if (answer) { 
+                     //hide the create button
+                     nitro$("#createLeague").hide();
+                     nitro$("#leagueSpinner").show();
+                     
+                     //Call into Apex to create a new League 
+                     /* */ nitro.NitroTeamSetup.leagueHandler(action, leagueName, leagueListPref, leagueHandlerCallback);
+                  //}
+                   
+                  break;
+               case "DELETE":
+                  var answer = confirm("Are you sure you want to do this? This will delete all the teams in this league and their corresponding Chatter groups and data!");
+                  if (answer) {
+                     nitro$("#deleteLeague").hide();
+                     nitro$("#leagueSpinner").show();
+                     /* */ nitro.NitroTeamSetup.leagueHandler(action, leagueName, leagueListPref, leagueHandlerCallback);
+                  } 
+                  break;
+            }
+         }
+      
+         function leagueHandlerCallback(result, event) {
+            if (event.status) {
+               // successful
+               switch (result) {
+                  case "CREATE": 
+                     //append a success message to the field
+                     nitro$("#nitro_leagues_module_body").after('<h4 class="happymessage">New league created!</h4>');
+                     setTimeout(function(){ nitro$("#nitro_leagues_module").find('.happymessage').slideUp('slow',function(){ nitro$("#nitro_leagues_module").find('.happymessage').remove();  }); },4000)
+
+                     //show the input and hide the spinner
+                     nitro$("#leagueName").show().val('').focus();
+                     nitro$("#leagueSpinner").hide();
+                     nitro$("#createLeague").show();
+                  break;
+                  case "DELETE":
+                     nitro$("#nitro_leagues_module_body").after('<h4 class="happymessage">League Deleted!</h4>');
+                     setTimeout(function(){ nitro$("#nitro_leagues_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },4000)
+                     nitro$("#leagueSpinner").hide();
+                     nitro$("#leagueData").hide();
+                  default:    
+                     nitro$("#nitro_leagues_module_body").after('<h4 class="happymessage">There was a problem: ' + result + '</h4>');
+                     setTimeout(function(){ nitro$("#nitro_leagues_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },4000)
+                     nitro$("#leagueSpinner").hide();
+                     nitro$("#createLeague").show();
+                     break;
+                     
+                     //nitro2.callAPI("method=admin.getGroups&pageSize="+maxTeamsPageSize+"&startIndex=" + currentTeamsPageIndex + "&asyncToken=refreshGroups", "processResult");
+
+                     //select the first league and show it's members
+                     if(nitro$("#leagues li").length > 0){
+                        //wait a second
+                        setTimeout(function(){
+                           nitro$("#leagues li:first").trigger('click');
+                        },2000)
+                     }else{
+                        //resetLists();
+                        nitro$("#teams ul").empty();
+                        nitro$(".nitro_teams_module h2:first span").html("(0)")
+                     }
+                  break;
+               }
+               // refresh the League List. 
+               nitro2.callAPI("method=site.getPreference&name=leagueList&asyncToken=leagueList", "processResult");
+            }
+            else {
+               // do nothing. 
+               alert ("There was a problem with your request."); // removed reference to "action" var because it's not defined 
+            }
+         }
+         
+         
+         function teamHandler(action) {
+            // validate the name
+            var teamName = document.getElementById("teamName").value;
+            var teamDescription = document.getElementById("teamDescription").value;
+            var teamPicture = document.getElementById("teamPicture").value;
+            
+            //// make sure there's something there. 
+            if(teamName == ""){
+               alert("Please enter a team name."); 
+               return false;
+            }
+            //// make sure only valid characters. 
+            var onlyValidCharacters = /^[^'&"]*$/.test(teamName);
+            if(!onlyValidCharacters && action !== "DELETE"){
+               alert('Sorry, ampersands, apostrophes and double quotes are not allowed in team names');
+               return false;
+            }
+            
+            teamName = currentLeague + "__" + teamName;
+            
+            switch(action) {
+               case "CREATE":
+                  //// make sure it's not a duplicate of an existing league.
+                  
+                  //var answer = confirm("Team names can't be changed. Are you sure this is what you want to call it?");
+                  //if (answer) { 
+                     // Call into Apex to create a new League 
+                     //show the spinner
+                     nitro$("#teamSpinner").show();
+                     nitro$("#createTeam").hide();
+                     
+                     //store the teamname as the "last team created" so that when the callback comes back, we can select it and make the world happy
+                     nitro$("#nitro_teams").attr('data-last-team-created',teamName.split('Countries__')[1]);
+                     
+                     /* */ nitro.NitroTeamSetup.createTeam(action, teamName, teamDescription, teamPicture, teamHandlerCallback);
+                  //}
+                   
+                  break;
+               case "UPDATE":
+                  // Call into Apex to update an existing Team
+                  nitro$("#teamSpinner").show();
+                  nitro$("#deleteTeam, #updateTeam, #visitTeam").hide();
+                  /* */ nitro.NitroTeamSetup.updateTeam(action, teamName, teamDescription, teamPicture, teamHandlerCallback);
+                   
+                  break;               
+               case "DELETE":
+                  var answer = confirm("Are you sure you want to do this? This will delete the team, its Chatter Group, and all its data!");
+                  if (answer) {
+                     nitro$("#teamSpinner").show();
+                     nitro$("#deleteTeam, #updateTeam, #visitTeam").hide();
+                     /* */ nitro.NitroTeamSetup.deleteTeam(action, teamName, currentTeamID, teamHandlerCallback);
+                  } 
+                  break;
+               case "VISIT":
+                  window.open("/apex/NitroUserTeams?nitroid=" + replaceAmpersand(currentLeague) + '__' + replaceAmpersand(currentTeam));
+                  break; 
+                                 
+            }
+         }     
+   
+         
+         function teamHandlerCallback(result, event) {
+            if (event.status) {
+               // successful
+               switch (result) {
+                  case "CREATE": 
+                     //append a success message to the field
+                     nitro$("#nitro_teams_module_body").after('<h4 class="happymessage">New team created!</h4>');
+                     setTimeout(function(){ nitro$("#nitro_teams_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },4000)
+                     // need to requery for groups. 
+                     //show the input and hide the spinner
+                     nitro$("#teamName").show().val('').focus();
+                     nitro$("#teamDescription").val('');
+                     nitro$("#teamPicture").val(''); 
+                     nitro$("#teamSpinner").hide();
+                     nitro$("#createTeam").show();
+                     //nitro2.callAPI("method=admin.getGroups&pageSize="+maxTeamsPageSize+"&startIndex=" + currentTeamsPageIndex + "&asyncToken=refreshGroups", "processResult");
+                 currentTeamsPageIndex = 0;
+                 groups = [];
+                     getAllGroups();
+                break;
+                  case "DELETE":
+                     nitro$("#nitro_teams_module_body").after('<h4 class="happymessage">Team Deleted!</h4>');
+                     setTimeout(function(){ nitro$("#nitro_teams_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },4000)
+                     nitro$("#teamSpinner").hide();
+                     nitro$("#deleteTeam, #updateTeam, #visitTeam").show();
+                     nitro$("#teamName").show().val('');
+                     nitro$("#teamDescription").val('');
+                     nitro$("#teamPicture").val(''); 
+
+                     // need to requery for groups. 
+                     //nitro2.callAPI("method=admin.getGroups&pageSize="+ maxTeamsPageSize + "&startIndex=" + currentTeamsPageIndex + "&asyncToken=refreshGroups", "processResult");
+                 currentTeamsPageIndex = 0;
+                 groups = [];
+                     getAllGroups();
+
+                     break;
+                  case "UPDATE":
+                     nitro$("#nitro_teams_module_body").after('<h4 class="happymessage">Team Updated!</h4>');
+                     setTimeout(function(){ nitro$("#nitro_teams_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },4000)
+                     nitro$("#teamSpinner").hide();
+                     nitro$("#deleteTeam, #updateTeam, #visitTeam").show();
+                     break;
+                  default:    
+                     nitro$("#nitro_teams_module_body").after('<h4 class="happymessage">There was a problem: ' + result + '</h4>');
+                     setTimeout(function(){ nitro$("#nitro_teams_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },4000)
+                     nitro$("#teamSpinner").hide();
+                     nitro$("#deleteTeam, #updateTeam, #visitTeam").show();
+                     break;                     
+               }
+            }
+            else {
+               // show an error. 
+               if (event.type == 'exception' && event.message.indexOf('com.ninja.common.exception.NinjaValidationException: workspaceId - This field is required') != -1) {
+                  // There was a problem creating the Chatter group for the team. 
+                  nitro$("#nitro_teams_module_body").after('<h4 class="happymessage">The team was created, but Nitro was unable to create a Chatter Group for this Team. Please see the documentation about how to create one manually.</h4>');
+                  setTimeout(function(){ nitro$("#nitro_teams_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },10000)                 
+               }
+               else {
+                  nitro$("#nitro_teams_module_body").after('<h4 class="happymessage">There was an issue with Salesforce. Type: ' + event.type + ', Message: ' + event.message + '</h4>');
+                  setTimeout(function(){ nitro$("#nitro_teams_module").find('.happymessage').slideUp('slow',function(){ nitro$(this).remove() }); },4000)
+               }
+               nitro$("#teamSpinner").hide();
+               nitro$("#deleteTeam, #updateTeam, #visitTeam").show();
+               nitro2.callAPI("method=admin.getGroups&pageSize="+maxTeamsPageSize+"&startIndex=" + currentTeamsPageIndex + "&asyncToken=refreshGroups", "processResult");
+            }
+         }
+         
+         function editMembers(){
+            var win;
+            
+            //// Do a better check to make sure there's a team selected. 
+            if (currentTeam != undefined) {
+               win = window.open("/apex/NitroTeamMembers?teamName=" + replaceAmpersand(currentTeam) + "&leagueName=" + replaceAmpersand(currentLeague), 
+                     "editMembers", "height=650,width=800,directories=no,location=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no");
+               //popup("/apex/NitroTeamMembers?teamName=" + currentTeam + "&leagueName=" + currentLeague, "editMembers");
+   
+            }
+            
+            //poll on this to see when the window is closed
+            var winterval = setInterval(function(){
+               if(win.closed){
+              //refresh userlist
+                  showTeam(nitro$('.nitro_sf_team.active').data('team'), nitro$('.nitro_sf_team.active').data('team-id'));
+
+                  //stop polling
+                  clearInterval(winterval);
+               }
+            },500)
+         }
+         
+         function showTeamRefreshWrapper(){
+            //refresh userlist
+            showTeam(unescape(nitro$('.nitro_sf_team.active').data('team')), unescape(nitro$('.nitro_sf_team.active').data('team-id')));
+         }
+         
+         // force a show or a hide. 
+         function toggleLayer( whichLayer) {
+           var elem, vis;
+            
+           if( document.getElementById ) // this is the way the standards work
+             elem = document.getElementById( whichLayer );
+           else if( document.all ) // this is the way old msie versions work
+               elem = document.all[whichLayer];
+           else if( document.layers ) // this is the way nn4 works
+             elem = document.layers[whichLayer];
+           vis = elem.style;
+           // if the style.display value is blank we try to figure it out here
+           if(vis.display==''&&elem.offsetWidth!=undefined&&elem.offsetHeight!=undefined)
+             vis.display = (elem.offsetWidth!=0&&elem.offsetHeight!=0)?'block':'none';
+           vis.display = (vis.display==''||vis.display=='block')?'none':'block'; 
+         
+         }
+         
+         // force a show or a hide. 
+         function showLayer( whichLayer, bShow) {
+           var elem, vis;
+           var msg = document.getElementById("agestatus");
+           var editbtn = document.getElementById("editage"); 
+            
+           if( document.getElementById ) // this is the way the standards work
+             elem = document.getElementById( whichLayer );
+           else if( document.all ) // this is the way old msie versions work
+               elem = document.all[whichLayer];
+           else if( document.layers ) // this is the way nn4 works
+             elem = document.layers[whichLayer];
+           vis = elem.style;
+           // if the style.display value is blank we try to figure it out here
+           if(vis.display==''&&elem.offsetWidth!=undefined&&elem.offsetHeight!=undefined)
+             vis.display = (elem.offsetWidth!=0&&elem.offsetHeight!=0)?'block':'none';
+         //  vis.display = (vis.display==''||vis.display=='block')?'none':'block';  
+           if (bShow) {
+            vis.display = 'block';
+           }
+           else {
+            vis.display = 'none';
+           }
+         }     
+         
+            
+         //
+         nitro$(function(){
+            //initially fade out the two right panels
+            nitro$('#nitro_teams,#nitro_users').css('opacity', .2);
+   
+         //get our leagues
+         nitro2.callAPI("method=site.getPreference&name=leagueList&asyncToken=leagueList", "processResult");
+         
+         //get our teams
+         getAllGroups();
+         });
+                        
+      </script>
+      
+      <c:DisabledFeatureOverlay isFree="{!isFree}" verifyAction="{!verifyEdition}" />
+      
+      </div>
+         
+   </apex:form>
+</apex:page>

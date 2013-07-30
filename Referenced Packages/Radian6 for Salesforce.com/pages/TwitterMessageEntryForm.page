@@ -1,0 +1,573 @@
+<apex:page id="MessageEntryForm" controller="R6Service.TwitterController" Cache="false" tabStyle="SocialPost" showHeader="true" sidebar="true" action="{!refreshAccounts}">
+
+    <apex:includeScript value="/support/console/24.0/integration.js"/>
+    
+    <script>
+        if(typeof String.prototype.trim !== 'function') {
+            String.prototype.trim = function() {
+                return this.replace(/^\s+|\s+$/g, '');
+            }
+        }
+            
+        if(typeof String.prototype.startsWith !== 'function') {
+            String.prototype.startsWith = function (str) {
+                return 0 == this.indexOf(str); 
+            }
+        }
+    </script>
+
+<style>
+    .bPageBlock .detailList TD{
+        vertical-align:middle;
+    }
+    .UserNameFont{
+       font-size: 91%;
+       font-weight: bold;
+       text-align: right;
+       color: #4A4A56;
+       padding-left: 50%;       
+    }
+    .usernameformat{
+        padding-left: 20px;
+    }
+</style>
+
+<apex:outputPanel id="messageRenderer">
+    <apex:pageMessages />
+</apex:outputPanel>
+ 
+<div id="outerWrapSection" class="outerWrapSectionCls" > 
+    <apex:form id="messageEntryFormId" >
+
+    <apex:actionFunction name="sendPostAction" status="sendStatus" action="{!sendMessage}" oncomplete="checkIfDeliveryFailed();" rerender="oAuthErrorChecker,userFollowingChecker,deliveryChecker,messageRenderer,accountSelectList,messageTypeSelectList"/>
+    <apex:actionFunction name="savePostAction" status="sendStatus" action="{!saveMessage}" onComplete="checkIfSaveFailed();" reRender="messageRenderer,deliveryChecker" />
+    <apex:actionFunction name="callShorteningActionFunction" status="sendStatus" action="{!generateShortenedURL}"  reRender="newUrlRefresher,messageRenderer,attachArticlePanel"  oncomplete="insertUrlIntoText();">
+        <apex:param name="OldUrl" value="" assignTo="{!urlToShorten}"/>
+    </apex:actionFunction>
+    <apex:actionFunction name="scheduleTaskAction" action="{!redirectToScheduleTask}" />
+    <apex:actionFunction name="refreshAction" action="{!refreshAccounts}" reRender="accountSelectList,messageTypeSelectList,oAuthErrorChecker,messageRenderer,SEND_2" oncomplete="refreshSenderAvatar();"/>
+    <apex:actionFunction name="refreshSenderAvatar" rerender="senderSelector" />
+    
+    <apex:actionPoller id="statusPoller" action="{!pollStatus}" enabled="{!isTimerActive}" interval="5" oncomplete="checkIfDeliveryFailed()" rerender="spinner,statusPoller,deliveryChecker,messageRenderer,isUserVisiblePanel,userFollowingChecker"/>
+    
+    <table width="100%">
+      <tr>
+          <td align="right" width="80px">
+              <apex:image value="{!$Resource.R6Service__Twitter_Logo}" height="75" width="75" alt="{!$Label.r6service__TwitterLogo}"/>   
+          </td>
+          <td>
+              <apex:outputLabel value="{!$Label.r6service__SendATweet}" styleClass="messageEntryFormSendaTweetLbl" />            
+          </td>
+          <td align="right">
+              <table>
+                  <tr>
+                      <td>
+                          <b>{!$Label.r6service__PoweredBy}</b>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <apex:image value="{!$Resource.R6Service__Radian6_Logo}" height="50" width="150" alt="{!$Label.r6service__Radian6Logo}"/>
+                      </td>
+                  </tr>
+              </table>   
+          </td>
+      </tr>
+  </table>  
+            <div id="innerWrapSection" class="innerWrapSectionCls">
+            
+               <apex:pageBlock id="caseDetailPageblock" rendered="{!displayCaseDetailSection}">
+                  <apex:pageBlockSection columns="1">
+                       <apex:outputLabel value="{!$Label.r6service__MessageDetails}" styleClass="messageEntryFormCaseDetailLbl" ></apex:outputLabel>
+                   </apex:pageBlockSection>
+    
+                   <apex:pageBlockSection columns="1" title="{!$Label.r6service__CaseDetail}" id="caseDetail">  
+                       <apex:pageBlockSectionItem labelStyle="width:50px;" >
+                           <apex:outputLabel value="{!$Label.r6service__CaseNumberLabel}" />                      
+                           <apex:outputLabel value="{!caseNumber}"/>                               
+                       </apex:pageBlockSectionItem>
+                       
+                       <apex:pageBlockSectionItem >
+                           <apex:outputLabel value="{!$Label.r6service__LastPost}" />
+                           <c:PostDecorator post="{!replyToPost}"/>
+                       </apex:pageBlockSectionItem>                                                                     
+                   </apex:pageBlockSection>
+               </apex:pageBlock>
+    
+               <apex:pageBlock id="CommentDetailId" >     
+                   <apex:pageBlockSection id="CommentDetailSecId" columns="1" title="{!$Label.r6service__CommentDetail}">                   
+                       <apex:pageBlockSectionItem >
+                         <apex:outputLabel value="{!$Label.r6service__SocialNetworkAccount}" />
+                         <apex:outputpanel id="senderSelector" >
+                             <apex:image id="defaultAvatar" value="{!$Resource.R6Service__MissingAvatar}" height="48px" width="48px" style="vertical-align:middle; margin-right:5px;" rendered="{!!isAvatarValid}"/>
+                             <apex:image id="senderAvatar" value="{!selectedSenderAvatarUrl}" height="48px" width="48px" style="vertical-align:middle; margin-right:5px;" rendered="{!isAvatarValid}"/>
+                             <apex:selectList id="accountSelectList"  size="1" multiselect="false" value="{!smmAccountID}" onchange="refreshSenderAvatar()" style="vertical-align:middle;">
+                                <apex:selectOptions value="{!smmAccounts}" />
+                             </apex:selectList>
+                             <apex:commandButton id="refreshAccountsButton" value="{!$Label.r6service__RefreshButtonLabel}" onClick="refreshAccounts();return false;" />
+                             <apex:commandButton id="manageAccounts" value="{!$Label.r6service__AddSocialMediaAccountLabel}" onClick="openAccountManagement();return false;" disabled="{!!enableSocialMediaAccountManagement}" />
+                         </apex:outputpanel>
+                       </apex:pageBlockSectionItem> 
+                       <apex:pageBlockSectionItem id="messageTypePageBlocSecId">
+                         <apex:outputLabel value="{!$Label.r6service__MessageType}" />
+                         <apex:pageBlockSectionItem id="messageTypesSectionItemId">
+                           <apex:selectList id="statesSelectList" size="1" multiselect="false"  value="{!selectedMessageType}" onchange="selectOption(this);" >
+                             <apex:selectOptions value="{!messageTypes}" />
+                           </apex:selectList>       
+                           <apex:outputLabel id="statusUpdateMessage"  value="{!$Label.r6service__statusUpdateToFollower}" style="color:Red;"/>
+                          </apex:pageBlockSectionItem>
+                       </apex:pageBlockSectionItem>
+       
+                      <apex:pageBlockSectionItem id="commentTextboxSection" dataTitle="" >
+                            <apex:outputText value="">
+                            <apex:outputLabel id="commentTextboxlenExceeded" styleClass="CharLimitExceeded"></apex:outputLabel><br/> 
+                            <apex:outputLabel id="commentTextboxlen">140</apex:outputLabel>&nbsp; 
+                            <apex:outputLabel id="commentTextboxlenLabelCharsRemaining" ></apex:outputLabel>
+                            </apex:outputText>
+                            <apex:inputTextarea id="commentTextboxId" value="{!content}" rows="4" cols="100" onkeyup="textCounter(this);" onkeydown="textCounter(this);" onblur="textCounter(this);"/>
+                       </apex:pageBlockSectionItem> 
+                       
+                      </apex:pageBlockSection>
+                      <apex:pageBlockSection title="URL Shortener" id="UrlShortenerPageBlockSection" columns="1" rendered="{!urlShortening}"> 
+
+                            <apex:pageBlockSectionItem id="urlShorteningPBSectionItem" dataTitle="">
+                             <apex:outputText value="{!$Label.r6service__EnterUrlLabel}" >
+                             </apex:outputText>
+                             <apex:pageBlockSectionItem id="urlShorteningButtonSection" dataTitle="">
+                             <apex:inputText id="urlTextboxId"/>
+                             <input type="Button" class="btn" value="{!$Label.ShortenUrlButtonLabel}" id="shortencommandButtonId" style="margin-left:10px;" onclick="callShortener(document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.UrlShortenerPageBlockSection.urlShorteningPBSectionItem.urlShorteningButtonSection.urlTextboxId}').value,true);"/>
+                             </apex:pageBlockSectionItem>
+                            </apex:pageBlockSectionItem>
+                  
+                       </apex:pageBlockSection>
+                       
+
+                    <apex:pageBlockSection id="activitySection" title="Activities">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Record Activity"/>
+                            <apex:inputCheckbox value="{!recordActivity}" id="recordActivityCheckbox" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Schedule Task"/>
+                            <apex:inputCheckbox value="{!scheduleTask}" id="scheduleTaskCheckbox" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>   
+               </apex:pageBlock>
+               
+               <apex:pageBlock id="articleBlockId">
+                  
+                   
+                       <apex:pageBlockSection id="articleSectionId"  title="{!$Label.r6service__IncludeArticlesTitle}" rendered="{!showIncludeArticleSection}">
+                        
+                        <apex:dataTable value="{!articleKeys}" var="key" id="articleTableId">
+                           <apex:column >
+                                <apex:inputCheckBox id="attachArticleCheckBox" onclick="attachArticles(this,'{!key['title']}','{!articles[key]}');"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:outPutLink value="{!articles[key]}" target="_blank"> {!key['title']}</apex:outPutLink>
+                            </apex:column>
+                        </apex:dataTable>
+                        
+                        
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="{!$Label.r6service__TweetButtonLabel}" id="SEND_2" onclick="checkMessageForWarnings();" reRender="deliveryChecker" disabled="{!!allowSend}" ></apex:commandButton>
+                        <apex:commandButton value="{!$Label.r6service__CancelButtonLabel}" id="CANCEL_2"  onClick="closeSendMessage(false);return false" /><br/>
+                    </apex:pageBlockButtons>                    
+                                
+                 
+                 <apex:outputPanel id="popup" rendered="true">
+                     <apex:outputPanel styleClass="customPopup" rendered="true">
+                        <apex:outputPanel id="spinner">
+                            <apex:image rendered="{!isTimerActive}" styleClass="customPopup" value="{!URLFOR($Resource.R6Service__sending_status,'sending_status.gif')}" height="50" width="50" alt="{!$Label.r6service__AltToSendingStatusImage}"/>
+                        </apex:outputpanel>
+                        <apex:actionStatus id="sendStatus" onstart="disableArticlePanel();" onstop="enableArticlePanel();">    
+                            <apex:facet name="start">
+                                <apex:image styleClass="customPopup" value="{!URLFOR($Resource.R6Service__sending_status,'sending_status.gif')}" height="50" width="50" alt="{!$Label.r6service__AltToSendingStatusImage}"/>
+                             </apex:facet>
+                        </apex:actionStatus><br/><br/>    
+                    </apex:outputPanel>
+                  </apex:outputpanel> 
+                   
+               </apex:pageBlock>  
+
+          </div>
+      </apex:form>
+</div> 
+
+<apex:outputPanel id="oAuthErrorChecker">
+  <script>
+       var accountManagementUrl = "{!JSENCODE(manageSocialNetworksUrl)}?authToken={!JSENCODE(token)}&sfUrl={!URLENCODE($Api.Partner_Server_URL_200)}&sfSession={!URLENCODE(GETSESSIONID())}&sfUserId={!URLENCODE($User.Id)}";
+  </script>   
+</apex:outputPanel>
+
+<apex:outputPanel id="deliveryChecker">
+  <script>
+       pageContainsError = '{!pageContainsError}';  
+       isSendPending = '{!isSendPending}';
+       scheduleTask = '{!scheduleTask}';
+       isTimerActive = {!isTimerActive};
+       saveFailed = {!saveFailed};
+  </script>   
+</apex:outputPanel>
+
+<apex:outputPanel id="userFollowingChecker">
+  <script>
+       userFollowingError = '{!userFollowingError}';  
+  </script>   
+</apex:outputPanel>
+
+<apex:outputPanel id="newUrlRefresher">
+  <script>
+       newUrl = '{!JSINHTMLENCODE(shortUrl)}';
+  </script>   
+</apex:outputPanel>
+
+
+    <script>
+    
+        var commentTextField = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxId}'); 
+        var commentTextFieldLen = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlen}');                                
+        var commentTextFieldLenExceeded = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlenExceeded}');
+        var commentTextboxlenLabelCharsRemaining = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlenLabelCharsRemaining}');
+        var tweetUserName = '{!JSINHTMLENCODE(recipientHandle)}';
+        var oldUrl=document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.UrlShortenerPageBlockSection.urlShorteningPBSectionItem.urlShorteningButtonSection.urlTextboxId}');
+        var articleContent;
+        var userFollowingUs;
+        var messageType = '{!JSENCODE(selectedMessageType)}';
+        var pageContainsError;
+        var isSendPending;
+        var scheduleTask;
+        var messageList=document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.messageTypePageBlocSecId.messageTypesSectionItemId.statesSelectList}');
+        var cancelFormSubmit = false;
+        var onloadCall;
+        var newUrl;
+        var noArticleFound;
+        var beforeShorteningUrl;
+        var oldNewURLMap = new Object();
+        var articleTitle;
+        var shortenButtonClicked = false;
+        var numberOfArticles = '{!articleKeys.size}'; 
+        var isTimerActive;
+        var saveFailed;
+        
+        var previousOnload = window.onload;
+             
+        window.onload = new function() 
+        { 
+            onloadCall=true;
+            initCommentBox('{!JSENCODE(selectedMessageType)}');
+            textCounter(commentTextField);
+               
+            if (previousOnload) { 
+                previousOnload();
+            }
+            setTimeout('setTabTitle(\'Send Message\')', '200');
+        }
+        
+        function initCommentBox(optionVal) 
+        {
+            var tag = '@' + tweetUserName;
+            if(optionVal == 'COMMENT')
+            {
+                 if(0 != commentTextField.value.indexOf(tag))
+                 {
+                    commentTextField.value = tag + " " + commentTextField.value.trim();
+                 }
+                 textCounter(commentTextField);
+                 messageType = 'COMMENT';
+                 document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.messageTypePageBlocSecId.messageTypesSectionItemId.statusUpdateMessage}').style.visibility = 'hidden';
+            }
+            else
+            {
+                if(0 == commentTextField.value.indexOf(tag))
+                {
+                    commentTextField.value = commentTextField.value.substring(tag.length).trim();
+                }
+                textCounter(commentTextField);
+                messageType = 'PRIVATE_MESSAGE';
+                document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.messageTypePageBlocSecId.messageTypesSectionItemId.statusUpdateMessage}').style.visibility = 'hidden';
+            }
+        } 
+        
+        function selectOption(option)
+        {
+            var optionVal = option.value;
+            onloadCall=false;
+            initCommentBox(optionVal);           
+        }
+            
+        function textCounter(field)
+        {
+            var totMaxlimit = 140;
+            maxlimit = totMaxlimit;
+           
+           if(field.value.length > maxlimit)
+           { 
+                commentTextFieldLenExceeded.innerHTML='{!$Label.MessageSizeExceededError}'+' '+Math.abs((140-field.value.length))+' '+'{!$Label.CharacterLabelInExceededErrorMessage}';
+                commentTextFieldLen.innerHTML='';
+                commentTextboxlenLabelCharsRemaining.innerHTML ='';
+           }            
+           else
+           { 
+               commentTextFieldLenExceeded.innerHTML='';
+               commentTextboxlenLabelCharsRemaining.innerHTML ='{!$Label.CharactersRemaining}';
+               commentTextFieldLen.innerHTML = maxlimit - (field.value.length);
+           }
+        }
+        
+
+        function checkMessageForWarnings() 
+        {
+            cancelFormSubmit = false;
+            commentTextField = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxId}'); 
+            var commentTextFieldLenWithoutSpace = commentTextField.value.trim().length;
+            
+            if(commentTextField.value==''||commentTextFieldLenWithoutSpace==0)
+            {
+                alert('{!$Label.TypeMessage}');
+                return;
+            }
+                            
+            if(messageType == 'COMMENT')
+            { 
+                   var re =/@[a-zA-Z0-9]+/;
+                   var test = commentTextField.value;
+                   var reResult=test.replace(re,' ');
+                   var reResultLen=reResult.trim().length;
+                   if(reResultLen==0)
+                   {
+                       alert('{!$Label.TypeMessageForReply}');
+                       initCommentBox(messageType);
+                       return;
+                   }
+            }
+            
+            if(commentTextField.value.length>140)
+            {
+              alert('{!$Label.MessageSizeExceededError1}'+' '+(commentTextField.value.length-140)+' '+'{!$Label.MessageSizeExceededError2}');
+              cancelFormSubmit = true;
+            }  
+
+            if(!cancelFormSubmit)
+            {
+               savePostAction();
+            }
+        }
+        
+        function checkIfSaveFailed()
+        {
+            if(!saveFailed)
+                sendPostAction();
+        }
+
+        function checkIfDeliveryFailed()
+        {
+            //if(isTimerActive) return;
+               
+            if(((userFollowingError == 'true') && (cancelFormSubmit == false) && (messageType == 'PRIVATE_MESSAGE') && (pageContainsError == 'false')))
+            {
+                var response1 = window.confirm('{!$Label.TwitterUserNotFollowing} {!$Label.AtMentionComfirmation}');            
+                if(response1 == true) {
+                    messageList.selectedIndex = 0;
+                    initCommentBox('COMMENT');
+                }
+                cancelFormSubmit == true;
+             }
+             else if(pageContainsError == "false" && cancelFormSubmit == false)
+             {
+                 redirect();
+             }
+        } 
+        
+       function redirect() {
+           if(scheduleTask == 'true') {
+               scheduleTaskAction();
+           }
+           else {
+               closeSendMessage(true);
+           }
+       }
+       
+       function callShortener(url , isShortenButtonClicked)
+       {
+            shortenButtonClicked = isShortenButtonClicked;
+            if((url.trim()=='')||(url.trim()==null))
+            {
+                alert('{!$Label.EnterUrl}');
+            }else
+            {
+               callShorteningActionFunction(url);
+            }
+       } 
+       
+       function insertUrlIntoText()
+       {
+           
+         if((newUrl != '') && (newUrl!=null))
+         {       
+           if(commentTextField.value.trim()==''||commentTextField.value.trim()==null)
+           {
+               if(shortenButtonClicked == true)
+                    articleTitle = '';
+               commentTextField.value = commentTextField.value.trim()+ articleTitle +newUrl;
+           }
+           else
+           {
+                if(shortenButtonClicked == true)
+                    articleTitle = ' ';
+               commentTextField.value = commentTextField.value.trim()+ articleTitle +newUrl;
+           }
+         }
+         else
+            window.scrollTo(0,0);
+            
+           textCounter(commentTextField);
+           oldUrl.value='';
+       }
+       
+       function attachArticles(checkBoxObject,title,orginalUrl)
+       {
+           var commentTextField = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxId}');
+            
+           if(checkBoxObject.checked)
+           {
+                beforeShorteningUrl = orginalUrl;
+                if(commentTextField.value.trim()==''||commentTextField.value.trim()==null)
+                {
+                    articleTitle = title +' : ';
+                }
+                else
+                {
+                    articleTitle = '\n'+title +' : ';
+                } 
+                if('{!urlShortening}'=='true')
+                {   
+                    callShortener(orginalUrl ,false);
+                }
+                else
+                {
+                    oldNewURLMap[orginalUrl] = orginalUrl;
+
+                    newUrl = oldNewURLMap[orginalUrl];
+                    insertUrlIntoText();
+                }
+                 
+                
+           }
+           else
+           {
+               if(commentTextField.value.match('\n'+title)!=null)
+                    commentTextField.value = commentTextField.value.replace('\n'+title+' : '+oldNewURLMap[orginalUrl],'');
+               else
+               {
+                    if(commentTextField.value.match(title+' : '+oldNewURLMap[orginalUrl]+'\n')!=null)
+                        commentTextField.value = commentTextField.value.replace(title+' : '+oldNewURLMap[orginalUrl]+'\n','');
+                    else if(commentTextField.value.match(title+' : '+oldNewURLMap[orginalUrl]+' ')!=null)
+                            commentTextField.value = commentTextField.value.replace(title+' : '+oldNewURLMap[orginalUrl]+' ','');
+                        else
+                            commentTextField.value = commentTextField.value.replace(title+' : '+oldNewURLMap[orginalUrl],'');
+               }    
+               textCounter(commentTextField);
+           }
+       }
+       
+       
+       function checkBlankReplyMessage(field)
+       {
+            var re =/@[a-zA-Z0-9]+/;
+            var test = commentTextField.value;
+            var reResult=test.replace(re,' ');
+            var reResultLen=reResult.trim().length;
+            if(reResultLen==0)
+            {
+                alert ('{!$Label.TypeMessageForReply}');
+                cancelFormSubmit = true;
+                return;
+            }else
+            {
+                cancelFormSubmit = false;
+                messageType = 'COMMENT';
+                savePostAction();
+            }
+       }
+       
+       
+        function refreshAccounts() {
+            refreshAction();
+        }
+        
+        function openAccountManagement() {
+            window.open(accountManagementUrl, "_blank");
+        }
+              
+        function disableArticlePanel() {
+            for(i=0;i<numberOfArticles;i++) {
+                document.getElementById('MessageEntryForm:messageEntryFormId:articleBlockId:articleSectionId:articleTableId:'+i+':attachArticleCheckBox').disabled = true;
+            }
+        }
+       
+        function enableArticlePanel() {
+            for(i=0;i<numberOfArticles;i++)
+                document.getElementById('MessageEntryForm:messageEntryFormId:articleBlockId:articleSectionId:articleTableId:'+i+':attachArticleCheckBox').disabled = false;
+        }
+       
+        function closeSendMessage(refreshTab) {
+            if(sforce.console.isInConsole()) {
+                closeTab();
+                if(refreshTab) {
+                    refreshPrimaryTab();
+                }
+            } else {
+                openUrl('/{!replyToPost.ParentId}');
+            }
+        }
+        
+        function openUrl(a) {
+            window.location.href = a;
+        }
+
+       
+        <!-- Service Cloud functions -->
+        
+        var callCloseTab = function callCloseTab(result) { 
+            sforce.console.closeTab(result.id);
+        };
+        
+        var refreshPrimaryTabById = function refreshPrimaryTabById(result) {
+            sforce.console.refreshPrimaryTabById(result.id, true);
+        };
+        
+        function setTabTitle(title) {
+            sforce.console.setTabTitle(title);
+        }
+        
+        function closeTab() { 
+            sforce.console.getEnclosingTabId(callCloseTab);
+        }
+        
+        function refreshPrimaryTab() {
+            sforce.console.getEnclosingPrimaryTabId(refreshPrimaryTabById);
+        } 
+       
+    </script>
+  <apex:outputPanel id="attachArticlePanel">
+  <script>
+        if(shortenButtonClicked == false) {
+            oldNewURLMap[beforeShorteningUrl] = newUrl; //Map between orginal and shortened url
+        }       
+    </script>   
+</apex:outputPanel>
+<!--Include the stylesheet file from static resource--> 
+<apex:stylesheet value="{!URLFOR($Resource.R6Service__TwitterPageStyle,'TwitterPageStyle.css')}"/>
+   <style>
+    .CharLimitExceeded{
+        color: Red;
+        font-weight: bold;
+    }
+    </style>
+<!--Include the javascript file from static resource--> 
+<!--<apex:includeScript value="{!$Resource.TwitterHelper}/TwitterHelper.js" />-->
+    
+</apex:page>

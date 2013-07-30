@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <frameHeight>2000</frameHeight>
+    <hasSidebar>true</hasSidebar>
+    <label>My EchoSign</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom64: Compass</motif>
+    <url>https://secure.echosignforsalesforce.com/salesforce-web/myEchoSign?namespace=echosign_dev1&amp;session={!API.Session_ID}&amp;server={!API.Partner_Server_URL_70}&amp;numWaitingAgreements=10&amp;numRecentEvents=10&amp;organizationId={!Organization.Id}</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

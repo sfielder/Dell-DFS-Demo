@@ -1,0 +1,30 @@
+<apex:component >
+    <apex:attribute name="post" type="SocialPost" description="The tweet to render." required="true"/>
+
+    <apex:variable var="postType" value="{!IF('TWITTER' == UPPER(post.MediaType), 'Twitter', IF('FACEBOOK' == UPPER(post.MediaType), 'Facebook', 'OtherPost'))}"/>
+    <apex:stylesheet value="{!$Resource.R6Service__TwitterStyle}"/>
+    <apex:stylesheet value="{!$Resource.R6Service__FacebookStyle}"/>
+    <apex:stylesheet value="{!$Resource.R6Service__OtherPostStyle}"/>
+    
+    <span class="{!postType}Wrapper">
+        <apex:outputLink value="{!post.postUrl}" onclick="window.open('{!post.PostUrl}'); return false;">
+            <apex:image styleClass="postAvatar" value="{!IF(ISNULL(post.persona), $Resource.R6Service__MissingAvatar, post.persona.R6Service__AvatarIconResource__c)}" />
+        </apex:outputLink>
+        <span class="postContent">
+            <div class="postContactInfo">
+                <apex:outputLink styleClass="postHandle" value="{!post.persona.ProfileUrl}" onclick="window.open('{!post.persona.ProfileUrl}'); return false;">{!post.R6Service__AuthorSocialHandle__c}</apex:outputLink>
+                <apex:outputText styleClass="postRealName" value="{!post.persona.RealName}" />
+            </div>
+            
+            <c:PostTextDecorator styleClass="postMessage" postText="{!post.content}" rendered="{!CONTAINS(UPPER(post.MediaType),'TWITTER')}" />
+            <apex:outputtext styleClass="postMessage" value="{!post.content}" rendered="{!!CONTAINS(UPPER(post.MediaType),'TWITTER')}"/>
+            
+            <apex:image styleClass="postLogo" value="{!post.R6Service__MediaIconResource__c}"/>
+            <apex:outputlink styleClass="postDate" value="{!post.PostUrl}" onclick="window.open('{!post.PostUrl}'); return false;">
+                <c:Date date="{!post.Posted}" />
+            </apex:outputlink>
+            <apex:componentBody />
+        </span>
+    </span>
+
+</apex:component>

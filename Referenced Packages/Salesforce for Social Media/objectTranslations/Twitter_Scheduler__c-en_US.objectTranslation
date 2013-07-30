@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Twitter Scheduler</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Twitter Schedulers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Facebook Page --></label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel><!-- Twitter Schedulers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Last Run Time --></label>
+        <name>Last_Run_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Period Time --></label>
+        <name>Period_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Running User --></label>
+        <name>Running_User__c</name>
+        <relationshipLabel><!-- Twitter Schedulers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Twitter Account --></label>
+        <name>Twitter_Account__c</name>
+        <relationshipLabel><!-- Twitter Schedulers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Twitter Search --></label>
+        <name>Twitter_Search__c</name>
+        <relationshipLabel><!-- Twitter Schedulers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Job Ids --></label>
+        <name>jobId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

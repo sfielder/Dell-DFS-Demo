@@ -1,0 +1,13 @@
+<apex:page controller="nitro.NitroNavbar" showHeader="false" sidebar="false" >
+   <div class="nitro_sf_nav {!IF(navDisabled, 'disabled', '')}">
+      <ul>
+         <apex:outputText escape="false" value="{!homeLink}"></apex:outputText>
+         <apex:outputText escape="false" value="{!profileLink}"></apex:outputText>
+         <apex:outputText escape="false" value="{!leadersLink}"></apex:outputText>                             
+         <apex:outputText escape="false" value="{!teamStandingsLink}"></apex:outputText>
+         <apex:outputText escape="false" value="{!teamLink}"></apex:outputText>
+         <apex:outputText escape="false" value="{!rewardLink}"></apex:outputText>
+         <apex:outputText escape="false" value="{!customLinks}"></apex:outputText>
+      </ul>    
+   </div><!-- end nav -->
+</apex:page>

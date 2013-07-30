@@ -1,0 +1,52 @@
+<apex:page standardController="echosign_dev1__Field_Template__c" extensions="echosign_dev1.FieldTemplateController" tabStyle="echosign_dev1__Agreement_Template__c">
+	<script>
+  		function confirmCancel() {
+      		var isCancel = confirm("Are you sure you wish to cancel?");
+      		if( isCancel ) {
+      			return true;
+  			}
+  			
+     		return false;
+  		}  
+  	</script>
+  
+  	<apex:sectionHeader title="Map Data into Agreement Fields" subtitle="{!sectionSubtitle}" />
+    
+    <apex:form >
+    	<apex:pagemessages id="theMessages"/>
+		<apex:pageBlock id="wizardPageBlock" title="{!blockTitle}">
+			<apex:pageBlockButtons >
+       			<apex:commandButton id="backButton" action="{!doBack}" value="Back" rerender="theMessages,fieldTemplateDescription,stepTypeSection,stepValueSection,wizardPageBlock,saveButton,backButton,nextButton" rendered="{!isStepValue}" />
+       			<apex:commandButton id="nextButton" action="{!doNext}" value="Next" rerender="theMessages,fieldTemplateDescription,stepTypeSection,stepValueSection,wizardPageBlock,saveButton,backButton,nextButton" rendered="{!isStepType}" />
+       			<apex:commandButton id="saveButton" action="{!doSave}" value="Save" rendered="{!isStepValue}" />
+        		<apex:commandButton action="{!cancel}" value="Cancel" onclick="return confirmCancel()" immediate="true"/>
+        	</apex:pageBlockButtons>
+        	<apex:outputPanel id="fieldTemplateTypeDescription" rendered="{!isStepType}">
+        		How would you like to map data into the target agreement field when the agreement is generated?<br/>
+        		<br/>You can either enter input a specific value (e.g. number, text string) or you can select a field from the <br/>master{!masterObjectName} object to map data into the target agreement field.
+      			<br/><br/>
+      		</apex:outputPanel>
+      		<apex:outputPanel id="fieldTemplateValueConstantDescription" rendered="{!isStepValueConstant}">
+        		Input a value that will be mapped into the selected target agreement field when the agreement is generated.
+      			<br/><br/>
+      		</apex:outputPanel>
+      		<apex:outputPanel id="fieldTemplateValueFieldDescription" rendered="{!isStepValueField}">
+        		Select the source field from the master{!masterObjectName} object that will be used to map data into the selected target agreement field when the agreement is generated.
+      			<br/><br/>
+      		</apex:outputPanel>
+      		<apex:pageBlockSection id="stepTypeSection" columns="1">
+      			<apex:inputField id="fieldTemplateType" value="{!fieldTemplate.echosign_dev1__Type__c}" required="true" rendered="{!isStepType}"/>
+      		</apex:pageBlockSection>
+      		<apex:pageBlockSection id="stepValueSection" columns="1">
+      			<apex:inputField id="fieldTemplateConstantValue" value="{!fieldTemplate.echosign_dev1__Constant_Value__c}" rendered="{!isStepValueConstant}"/>
+      			<apex:selectList id="fieldTemplateFieldValue" value="{!fieldTemplate.echosign_dev1__Field_Value__c}" size="1" rendered="{!isStepValueField}"> 
+                	<apex:selectOptions value="{!masterFieldOptions}"/>    
+               	</apex:selectList>
+               	<apex:selectList id="fieldTemplateAgreementField" value="{!fieldTemplate.echosign_dev1__Agreement_Field__c}" size="1" required="true" rendered="{!isStepValue}"> 
+                	<apex:selectOptions value="{!agreementFieldOptions}"/>    
+               	</apex:selectList>
+      		</apex:pageBlockSection>
+  		</apex:pageBlock>
+	</apex:form>
+
+</apex:page>

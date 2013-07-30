@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Spark Configuration data.</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>API_Key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Your Spark API Key</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Your Spark API Key</inlineHelpText>
+        <label>API Key</label>
+        <length>64</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>API_Secret__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Your Spark API Secret Key</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Your Spark API Secret Key</inlineHelpText>
+        <label>Secret Key</label>
+        <length>64</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Spark Account Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Spark Account Triggers</inlineHelpText>
+        <label>Account Trigger</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Admin_Name__c</fullName>
+        <defaultValue>&quot;admin&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Your Spark Administrator Name.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Your Spark Administrator Name.</inlineHelpText>
+        <label>Admin Name</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Admin_Password__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Your Spark Administrator Password</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Your Spark Administrator Password</inlineHelpText>
+        <label>Admin Password</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Administrator_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Enter the email address of the person to be notified whenever a user purchases a reward. This person can also be notified whenever any user completes a Challenge, by checking the &quot;Send Callback&quot; checkbox on the Challenge.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the email address of the person to be notified whenever a user purchases a reward. This person can also be notified whenever any user completes a Challenge, by checking the &quot;Send Callback&quot; checkbox on the Challenge.</inlineHelpText>
+        <label>Notification Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Administrator_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <description>DEPRECATED</description>
+        <externalId>false</externalId>
+        <inlineHelpText>DEPRECATED</inlineHelpText>
+        <label>Administrator Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Auto_post_to_Chatter__c</fullName>
+        <deprecated>false</deprecated>
+        <description>What gets added to a user&apos;s Chatter feed? (a) NON-REPEATABLE (default): Only trophies and other non-repeatable challenges (b) EVERYTHING: Any time the user earns points (c) NOTHING: Nothing gets added to Chatter.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What gets added to a user&apos;s Chatter feed? (a) NON-REPEATABLE (default): Only trophies and other non-repeatable challenges (b) EVERYTHING: Any time the user earns points (c) NOTHING: Nothing gets added to Chatter.</inlineHelpText>
+        <label>Auto-post to Chatter</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Non-Repeatable</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Everything</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nothing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Callback_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An email address to receive Challenge callback details from. This should be a Salesforce generated email address that will receive the email and parse the contained XML. See documentation for more information.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An email address to receive Challenge callback details from. This should be a Salesforce generated email address that will receive the email and parse the contained XML. See documentation for more information.</inlineHelpText>
+        <label>Salesforce Email Service</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chatter_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Spark Chatter Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Spark Chatter Triggers</inlineHelpText>
+        <label>Chatter Trigger</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enable_WYSIWYG_Editor__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Enable WYSIWYG Editor</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Featured_Reward__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show/Hide the Featured Challenge in the Spark Sidebar.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show/Hide the Featured Challenge in the Spark Sidebar.</inlineHelpText>
+        <label>Featured Reward</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fiscal_Year_Start_Month__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Month that your Fiscal Year starts.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Month that your Fiscal Year starts.</inlineHelpText>
+        <label>Fiscal Year Start Month</label>
+        <picklist>
+            <picklistValues>
+                <fullName>January</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>February</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>March</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>April</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>May</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>June</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>July</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>August</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>September</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>October</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>November</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>December</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Home_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spark Home tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spark Home tab.</inlineHelpText>
+        <label>Home Tab</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Spark Lead Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Spark Lead Triggers</inlineHelpText>
+        <label>Lead Trigger</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Leaderboards_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spark Leaderboards tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spark Leaderboards tab.</inlineHelpText>
+        <label>Leaderboards Tab</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Nitro_User_ID_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Salesforce field to use as the Spark User ID. Choices: &quot;User Id&quot; (the internal SFDC user id), &quot;User Name&quot; (the email address used to login with, ie. &quot;riley@me.com&quot;), and &quot;Short User Name&quot; (just the part of the username before the @ sign, ie &quot;riley&quot;).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Salesforce field to use as the Spark User ID. Choices: &quot;User Id&quot; (the internal SFDC user id), &quot;User Name&quot; (the email address used to login with, ie. &quot;riley@me.com&quot;), and &quot;Short User Name&quot; (just the part of the username before the @ sign, ie &quot;riley&quot;).</inlineHelpText>
+        <label>Spark User ID Field</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User Id</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>User Name</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Short User Name</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employee Number</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Quota_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Spark Opportunity Quota Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Spark Opportunity Quota Triggers</inlineHelpText>
+        <label>Opportunity Quota Trigger</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Spark Opportunity Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Spark Opportunity Triggers</inlineHelpText>
+        <label>Opportunity Trigger</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Points_Name_long__c</fullName>
+        <defaultValue>&quot;Points&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The long name of your Points. For example, Dollars, Credits, Points, Benioffs.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The long name of your Points. For example, Dollars, Credits, Points, Benioffs.</inlineHelpText>
+        <label>Points Name (long)</label>
+        <length>100</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Points_Name_short__c</fullName>
+        <defaultValue>&quot;Pts&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The abbreviated version of your Point Category name. For example: $, Pts, Crs, Bffs</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The abbreviated version of your Point Category name. For example: $, Pts, Crs, Bffs</inlineHelpText>
+        <label>Points Name (short)</label>
+        <length>5</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Profile_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spark Profile tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spark Profile tab.</inlineHelpText>
+        <label>Profile Tab</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Schedule_Action_API_Calls__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>If checked, will call the API via a scheduled job instead of the Future method</description>
+        <externalId>false</externalId>
+        <label>Schedule Action API Calls</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Biggest_Deals_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Biggest Deals Pane</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Dollars_Leaders_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Dollars Leaders Pane</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Featured_Challenge__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show/Hide the Featured Challenge in the Spark Sidebar.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show/Hide the Featured Challenge in the Spark Sidebar.</inlineHelpText>
+        <label>Featured Challenge</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Points_Leaders_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Points Leaders Pane</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Quota_Leaders_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Quota Leaders Pane</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Quota_Leaders__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show/Hide the User&apos;s Quota Stats in the Nitro for Salesforce Sidebar.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show/Hide the User&apos;s Quota Stats in the Nitro for Salesforce Sidebar.</inlineHelpText>
+        <label>Quota</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Redemption__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spark Rewards tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spark Rewards tab.</inlineHelpText>
+        <label>Rewards Tab</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Spread_the_Word__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spread the Word module on the Spark Home page.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spread the Word module on the Spark Home page.</inlineHelpText>
+        <label>Show Spread the Word</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Teams__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show/Hide the User&apos;s Teams in the Nitro for Salesforce Sidebar.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show/Hide the User&apos;s Teams in the Nitro for Salesforce Sidebar.</inlineHelpText>
+        <label>Teams</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Task_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Spark Task Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Spark Task Triggers</inlineHelpText>
+        <label>Task Trigger</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Team_Standings_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spark Team Standings tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spark Team Standings tab.</inlineHelpText>
+        <label>Team Standings Tab</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Teams_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spark Teams tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spark Teams tab.</inlineHelpText>
+        <label>Teams Tab</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Time__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Time Frame that is used throughout  Spark for leaderboards, rank, quotas, etc.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Time Frame that is used throughout  Spark for leaderboards, rank, quotas, etc.</inlineHelpText>
+        <label>Time Frame</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Quarter</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AllTime</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Vendor_Endpoint_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Vendor Endpoint URL</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Vendor__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Vendor</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Manual Fulfillment</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AIMIA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AMIA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ITA Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <label>Nitro Setting</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Nitro Settings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Points_Name_Long_Validation</fullName>
+        <active>true</active>
+        <description>Don&apos;t allow single or double quotes in Points Name (Long).</description>
+        <errorConditionFormula>OR (CONTAINS( Points_Name_long__c , &quot;&amp;quot;&quot;),   CONTAINS(Points_Name_long__c , &quot;&amp;#39;&quot;), CONTAINS(Points_Name_long__c , &quot;\&quot;&quot;), CONTAINS(Points_Name_long__c , &quot;&apos;&quot;), CONTAINS(Points_Name_long__c , &quot;&amp;apos;&quot;))</errorConditionFormula>
+        <errorDisplayField>Points_Name_long__c</errorDisplayField>
+        <errorMessage>Quotes and Apostrophes aren&apos;t allowed in the Long Point Name.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Points_Name_Short_Validation</fullName>
+        <active>true</active>
+        <description>Don&apos;t allow single or double quotes in Points Name (Short).</description>
+        <errorConditionFormula>OR (CONTAINS( Points_Name_short__c, &quot;&amp;quot;&quot;),   CONTAINS(Points_Name_short__c, &quot;&amp;#39;&quot;), CONTAINS(Points_Name_short__c, &quot;\&quot;&quot;), CONTAINS(Points_Name_short__c, &quot;&apos;&quot;), CONTAINS(Points_Name_short__c, &quot;&amp;apos;&quot;))</errorConditionFormula>
+        <errorDisplayField>Points_Name_short__c</errorDisplayField>
+        <errorMessage>Quotes and Apostrophes aren&apos;t allowed in the Short Point Name.</errorMessage>
+    </validationRules>
+</CustomObject>

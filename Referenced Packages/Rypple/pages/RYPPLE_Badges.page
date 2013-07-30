@@ -1,0 +1,41 @@
+<apex:page sideBar="false" action="{!loadBadges}" controller="rypple_Corp.RYPPLE_BadgesController" showHeader="false">
+    <head>
+        <apex:stylesheet value="{!$Resource.rypple_Corp__RYPPLE_help}" />
+    </head>
+    <apex:messages /> 
+    <div class="outerframe">
+	    <div class="heading">Posting a thanks from Chatter</div>
+	    <div class="innerframe">
+            <div class="subheading first">Here's how you can give a thanks to a recipient:</div>
+            <div class="example">#thanks @recipient</div>
+            <div class="subheading second">And this will give a thanks with a specific badge to two recipients:</div>
+            <div class="example">#thanks #badgename @recipient1 @recipient2</div>
+            <apex:outputpanel rendered="{!badges.size > 0}">
+                <div class="subheading second">Here are some of the badges you can give along with their #badgenames:</div>
+                <apex:variable var="count" value="{!0}" /> 
+                <apex:repeat value="{!badges}" var="badge" rows="12">
+                    <apex:variable var="count" value="{!count + 1}" />
+                    <div class="badge {!IF(MOD(count + 1,2) == 0, "first","")} {!IF(count > 2, "subsequent","")}">
+                        <img class="badgeimage" src="{!badge.Image_url__c}"></img>
+                        <div class="badgename">#{!badge.name}</div>
+                        <div class="badgedescr">{!badge.description__c}</div>
+                    </div>
+                </apex:repeat>
+				<apex:outputPanel id="hidden" style="display: none">
+                    <apex:repeat value="{!badges}" var="badge" first="12">
+                        <apex:variable var="count" value="{!count + 1}" />
+                        <div class="badge {!IF(MOD(count + 1,2) == 0, "first","")} {!IF(count > 2, "subsequent","")}">
+                            <img class="badgeimage" src="{!badge.Image_url__c}"></img>
+                            <div class="badgename">#{!badge.name}</div>
+                            <div class="badgedescr">{!badge.description__c}</div>
+                        </div>
+                    </apex:repeat>
+                </apex:outputpanel>                          
+                <div style="clear: both"></div>
+                <apex:outputPanel rendered="{!badges.size > 12}">
+                    <div class="morelink" onclick="style.display='none'; document.getElementById('{!$Component.hidden}').style.display='block';"><a>Show all badges ({!badges.size})</a></div>
+                </apex:outputPanel>                
+            </apex:outputpanel>                 
+	    </div>    
+    </div>    
+</apex:page>

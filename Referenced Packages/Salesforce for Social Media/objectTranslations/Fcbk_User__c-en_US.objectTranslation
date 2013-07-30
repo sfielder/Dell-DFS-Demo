@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Facebook User</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Facebook Users</value>
+    </caseValues>
+    <fields>
+        <label><!-- Picture --></label>
+        <name>Facebook_Image__c</name>
+    </fields>
+    <fields>
+        <label><!-- Facebook Id --></label>
+        <name>Fcbk_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Image --></label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validated --></label>
+        <name>Valid__c</name>
+    </fields>
+    <fields>
+        <label><!-- About Me --></label>
+        <name>about_me__c</name>
+    </fields>
+    <fields>
+        <label><!-- Birthday --></label>
+        <name>birthday__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>city__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>email__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>first_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>last_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Political --></label>
+        <name>political__c</name>
+    </fields>
+    <fields>
+        <label><!-- Religion --></label>
+        <name>religion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sex --></label>
+        <name>sex__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>state__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Revoke_Facebook_Access --></label>
+        <name>Revoke_Facebook_Access</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Validate --></label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

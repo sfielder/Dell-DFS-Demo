@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <label>Hent forfatteroplysninger</label>
+        <name>Get_Author_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent forfatteroplysninger</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Klout-resultat</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Klout-resultat</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Twitter-brugernavn</label>
+        <name>Get_Twitter_Username</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Facebook-siden</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Facebook-side</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Facebook-side</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Facebook-siderne</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Facebook-sider</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Facebook-sider</value>
+    </caseValues>
+    <fields>
+        <label>Kategori</label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label>Beskrivelse</label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label>Aktiver automatisk sagsoprettelse</label>
+        <name>Enable_Auto_Case_Creation__c</name>
+    </fields>
+    <fields>
+        <label>Billede</label>
+        <name>Facebook_Image__c</name>
+    </fields>
+    <fields>
+        <label>Facebook-id</label>
+        <name>Fcbk_Id__c</name>
+    </fields>
+    <fields>
+        <label>Billede</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>Starttidspunkt for seneste søgning</label>
+        <name>Last_Time_Run__c</name>
+    </fields>
+    <fields>
+        <label>Synes om</label>
+        <name>Likes__c</name>
+    </fields>
+    <fields>
+        <help><!-- When enabled, any Post by this Facebook page containing #ch will be automatically posted to the Chatter Feed of the Facebook Page creator. Comments on this post in Chatter will not be sent to Facebook. --></help>
+        <label>Send indlæg med #ch til Chatter</label>
+        <name>Post_Hashtag_Chatter__c</name>
+    </fields>
+    <fields>
+        <label>Produkter</label>
+        <name>Products__c</name>
+    </fields>
+    <fields>
+        <label>Kør sagstilknytningslogik</label>
+        <name>Run_Case_Association_Logic__c</name>
+    </fields>
+    <fields>
+        <label>Henter indlæg og kommentarer siden</label>
+        <name>Search_Lower_Limit_Time__c</name>
+    </fields>
+    <fields>
+        <label>Henter indlæg og kommentarer til</label>
+        <name>Search_Upper_Limit_Time__c</name>
+    </fields>
+    <fields>
+        <label>Ukendte brugere</label>
+        <name>Unknown_Users__c</name>
+        <picklistValues>
+            <masterLabel>Create Contact</masterLabel>
+            <translation><!-- Create Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Lead</masterLabel>
+            <translation><!-- Create Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Person Account</masterLabel>
+            <translation><!-- Create Person Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do Nothing</masterLabel>
+            <translation><!-- Do Nothing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Valideret</label>
+        <name>Valid__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>FCBK Page Layout</layout>
+        <sections>
+            <label><!-- Search Configuration --></label>
+            <section>Search Configuration</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Navn</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Hvis du vil aktivere sagsoprettelse, skal du også aktivere sagstilknytning</errorMessage>
+        <name>Auto_Case_Association_Logic</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Facebook Id --></errorMessage>
+        <name>Facebook_Id_not_empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Henter indlæg og kommentarer til skal ligge senere end Henter indlæg og kommentarer siden </errorMessage>
+        <name>until_date_greater_than_since</name>
+    </validationRules>
+    <webLinks>
+        <label>Hent sideoplysninger</label>
+        <name>Get_Page_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Tilbagekald Facebook-adgang</label>
+        <name>Revoke_Facebook_Access</name>
+    </webLinks>
+    <webLinks>
+        <label>Planlæg Facebook-sidesøgninger</label>
+        <name>Schedule_Facebook_Pages_Searches</name>
+    </webLinks>
+    <webLinks>
+        <label>Valider</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

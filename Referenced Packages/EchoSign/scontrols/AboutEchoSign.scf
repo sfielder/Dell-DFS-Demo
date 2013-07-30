@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!-- Replace all instances of MyApp with your app's name -->
+<title>MyApp Splash Page</title>
+
+<!-- Do not edit this section below -->
+<style type="text/css" media="all">
+body#splashBody {
+font-family: arial, helvetica, verdana, sans-serif;
+font-size: 80%;
+margin: 0;
+padding: 0;
+width: 97%;
+}
+img {
+border: 0;
+margin: 0;
+padding: 0;
+}
+p {
+margin: 0;
+padding: 0;
+}
+h1.appName {
+font-weight: bold;
+font-size: 100%;
+color: #FFF;
+background-color: #3399CC;
+padding: 10px 0 10px 8px;
+margin: 0 0 15px 0;
+}
+h2 {
+color: #FFF;
+padding: 2px 0 2px 8px;
+margin-top: 0;
+background-color: #3399CC;
+font-size: 90%;
+}
+h2.exchangeTitle {
+background-color: #999;
+}
+#splash {
+margin: 0;
+padding: 0;
+width: 100%;
+}
+#splash td {
+margin: 0;
+padding: 0;
+}
+#splash #splashLeft {
+vertical-align: top;
+background-color: #F3F3EC;
+border-bottom: 2px solid #3399CC;
+}
+#splash #splashCenter {
+display:block;
+width: 15px;
+background-color: #FFF;
+}
+#splash #splashRight {
+vertical-align: top;
+background-color: #E8E8E8;
+border-bottom: 2px solid #999;
+}
+#splash #splashLeft .about, #splash #splashLeft .exchange {
+width: 100%;
+}
+#splash #splashRight .exchange p {
+font-size: 90%;
+color: #333;
+margin: 0 10px 12px 10px;
+line-height: 1.4em;
+}
+#splash #splashLeft .about p {
+font-size: 90%;
+color: #333;
+margin: 0 10px 12px 15px;
+line-height: 1.4em;
+}
+#splash #splashLeft .about fieldset {
+color: #333;
+margin: 0 15px 10px 15px;
+padding: 2px;
+}
+#splash #splashLeft .about fieldset ul {
+padding: 0;
+margin: .3em 0 .3em 2em;
+}
+#splash #splashLeft .about fieldset li {
+padding: 0;
+margin: 0;
+}
+#splash #splashLeft .about legend {
+font-size: 90%;
+color: #333;
+font-weight: bold;
+}
+.imgDiv {
+text-align: center;
+padding: 0 0 10px 0; 
+}
+
+</style>
+<!-- Do not edit this section above -->
+</head>
+
+<body id="splashBody">
+<h1 class="appName">EchoSign for AppExchange</h1>
+<table id="splash" cellspacing="0"> 
+<tr>
+<td id="splashLeft" width="75%">
+<div class="about">
+<h2>About EchoSign</h2>
+<p><font size="2">How would you like to know when your customers viewed your proposal, signed your purchase order or simply ignored your contract altogether – all from within Salesforce?  With EchoSign, you’ll have complete visibility into all of your contracts from within Salesforce.  Plus, signed contracts are automatically uploaded to your account and copies emailed to you and your customer.</font></p>
+<p><font size="2">No more waiting by fax machines wondering if you should call.  No more questions as to if, when or what is signed.  You’ll be able to remind your customer or thank your customer, punctually and appropriately.</font></p>
+<p><font size="2">With EchoSign, you’ll know immediately when the deal goes from “proposed” to “closed.”</font></p>
+<table id="table4" style="TABLE-LAYOUT: fixed; WIDTH: 95%; FONT-FAMILY: Arial, Helvetica; max-height: 450; border-spacing: 20" width="80%">
+<tr style="FONT-FAMILY: Arial, Helvetica">
+<td style="FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Arial, Helvetica">
+<h2>Features and Benefits include: </h2>
+</td>
+</tr>
+</table>
+<table id="table5" width="93%" border="0">
+<tr>
+<td>
+<ul>
+<li><font size="2">Simplified document tracking and delivery system which automatically updates the Opportunity as to the status of outstanding Contracts</font></li>
+<li><font size="2">Sophisticated virtual fax system better than efax designed specifically for customer facing communication</font></li>
+<li><font size="2">Easiest e-signature platform which doesn’t require signers to register or download software</font></li>
+<li><font size="2">Email delivery and tracking mechanism which provides Salespeople ‘real-time’ information on their customers activities regarding contract</font></li>
+</ul>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;</p>
+<fieldset>
+<legend>Additional Help and Training</legend>
+<ul>
+
+<table id="table6" width="93%" border="0">
+<tr>
+<td>
+<ul>
+<!--<li><font size="2">View the EchoSign for AppExchange presentation</font></li>
+<li><font size="2">View an EchoSign for AppExchange datasheet</font></li>-->
+<li><font size="2">If you are experiencing technical problems that are preventing you from accessing EchoSign, review the Help & Training section in the upper-right corner of this page for further assistance. If problems still persist, contact EchoSign Support through our <a href="http://server.iad.liveperson.net/hc/s-41586732/cmd/kbresource/front_page!PAGETYPE" rel="nofollow" onclick="javascript:var pop = window.open('http://server.iad.liveperson.net/hc/s-41586732/cmd/kbresource/front_page!PAGETYPE','knowledgebase','width=775,height=675,scrollbars=yes,resizable=yes');pop.focus();return false;">Live Support</a>, by phone at 1-877-601-7765, or by email at support@echosign.net.</font></li>
+</ul>
+</td>
+</tr>
+</table>
+
+<!-- You must include specific Help and/or Support contact information below -->
+
+</ul>
+</fieldset>
+<p>
+Configure your <a href="https://secure.echosignforsalesforce.com/salesforce-web/echosignCredentials?namespace=echosign_dev1&session={!API.Session_ID}&server={!API.Partner_Server_URL_70}&organizationId={!Organization.Id}">EchoSign account settings</a>.
+</div>
+</td>
+
+<td><div id="splashCenter">&nbsp;</div></td>
+
+<td id="splashRight" width="25%">
+<div class="exchange">
+
+<!-- Replace the information below with your COMPANY logo and a brief description of your company. -->
+<!-- Do not alter the width & height of the image -->
+
+<h2 class="exchangeTitle">About EchoSign</h2>
+<div class="imgDiv"><img src="https://www.echosign.com/images/logo.echosign.sf.gif" alt="About EchoSign" width="222" height="48"></div>
+<table cellSpacing="1" width="100%" border="0" id="table7">
+<tr>
+<td>&nbsp;</td>
+<td vAlign="top" rowSpan="2">
+<table cellSpacing="0" cellPadding="5" width="100%" border="0" id="table8">
+<tr>
+<td colSpan="2">
+<p><span class="contentsubhead"><font size="2">With customers such as Cisco, Brooks-Eckerd, Network General and more, EchoSign is the leader in contract management specifically designed for sales organizations.  EchoSign unique blend of document management, virtual fax and e-signatures provide sales professionals an automated way of tracking, signing and storing of any sales contract. <br>
+<br>
+EchoSign is delivering a secure web-based tool for document management. EchoSign is based in Palo Alto, California, and is funded by Storm Ventures and Orrick Herrington.</font></span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;</p>
+
+<!-- Please host the following AppExchange gif at your site. The image is available from the same location where you received this template. -->
+
+<div class="imgDiv"><img src="https://www.echosign.com/images/logo.appexchange.sf.gif" alt="the Appexchange" width="222" height="48"></div>
+</div>
+</td>
+</tr>
+</table>
+<img src="https://secure.echosignforsalesforce.com/salesforce/importUser?namespace=echosign_dev1&session={!User.Session_ID}&Version=8&server={!API.Partner_Server_URL_70}">
+</body>
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Twitter-Konfiguration</value>
+    </caseValues>
+    <fields>
+        <label>Artikel URL Seite</label>
+        <name>Article_URL_Site__c</name>
+    </fields>
+    <fields>
+        <label>Bitly-Schlüssel</label>
+        <name>Bitly_Key__c</name>
+    </fields>
+    <fields>
+        <label>Bitly-Benutzername</label>
+        <name>Bitly_Username__c</name>
+    </fields>
+    <fields>
+        <label>Facebook-Symbol-URL</label>
+        <name>Facebook_Icon_Url__c</name>
+    </fields>
+    <fields>
+        <label>Kommentare pro Seite</label>
+        <name>Fcbk_Comments_Per_Page__c</name>
+    </fields>
+    <fields>
+        <label>Beiträge pro Kommentarseite</label>
+        <name>Fcbk_Posts_Per_Comment_Page__c</name>
+    </fields>
+    <fields>
+        <label>Beiträge pro Seite</label>
+        <name>Fcbk_Posts_Per_Page__c</name>
+    </fields>
+    <fields>
+        <label>„Wie ich“-Symbol-URL</label>
+        <name>Like_Me_Icon_Url__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-Symbol-URL</label>
+        <name>Twitter_Icon_Url__c</name>
+    </fields>
+    <gender>Neuter</gender>
+</CustomObjectTranslation>

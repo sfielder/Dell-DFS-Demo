@@ -1,0 +1,134 @@
+<apex:page controller="nitro.NitroUserHome" tabStyle="Nitro__tab" title="Nitro Team Standings" action="{!init}">
+<apex:pageMessages id="pageMessages"/>
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro_reset.css" rel="stylesheet" type="text/css"></link>
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+<script src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/jquery.1.6.1.bunchball.min.js"></script>
+<script>
+var nitro$ = bunchball_jQuery.noConflict();
+//var libVersion = Math.round(Math.random() * 10000);
+var libVersion = '{!libVersion}';
+</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.libs.bunchball.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.util.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.shared.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.standings.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroJSConnector-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroCookies-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<div id="nitro_user_standings_page">
+<apex:form >
+
+
+   <div class="nitro nitro_sf">
+         
+      <apex:include pageName="nitro__NitroNavbar"/> 
+   
+      <div class="nitro_sf_standings nitro_page_body">
+   
+         <apex:outputPanel id="adminEditButton">
+            <apex:commandLink value="{!IF(showEditMode = true, 'Save Page Options', 'Edit Page Options')}" 
+                              styleClass="{!IF(showAdminEditOption = true, 'editPgOptProf', 'none')}" 
+                              action="{!toggleEditMode}" 
+                              rerender="adminEditButton, whatHappeningPanel, focusFirstInput"
+                              rendered="{!showAdminEditOption}"/>
+         </apex:outputPanel>
+         
+         <div class="column_535" id="nitro_sf_home_left">
+            <div class="content_module" id="nitro_sf_standings_leaders">
+               <h2>Current Leaders</h2>
+               <div class="nitro_sf_standings_leaders_type_switcher_wrap">
+                  <select id="nitro_sf_standings_leaders_type_switcher">
+                  </select>
+               </div>
+               <div class="content_module_body">
+                  <div class="nitro_sf_standings_leaders_wrap">
+                     <!-- leaders to go here -->
+                  </div>
+               </div>
+            </div><!-- end current contests -->
+         </div><!-- end column 535 -->
+   
+         <apex:outputPanel id="pageScriptPanel">
+            
+            <script>
+            
+               var connectionParams={};
+               connectionParams.userId = '{!JSENCODE(NitroUserId)}';                
+               connectionParams.apiKey = '{!JSENCODE(APIKey)}';
+               connectionParams.debug = true;
+               connectionParams.sessionKey = '{!SessionKey}';
+               connectionParams.server = '{!JSENCODE(Endpoint)}'; 
+               var nitro2 = new Nitro(connectionParams);              
+            
+               nitro$(function(){
+                  nitro_for_salesforce.standings.init(nitro2, {
+                     pointsName: "{!JSENCODE(PointsName)}",
+                     teamPrefixes: [{!LeagueList}], 
+                     leaderBoardDuration: "{!JSENCODE(TimeFrame)}",
+                     startDate: "{!JSENCODE(startDate)}"       
+                  });   
+               });
+                
+               // highlight the appropriate tab
+               document.getElementById("{!TabName}").className += " active";
+             
+            </script>
+         
+         </apex:outputPanel>
+   
+         <div class="column_300" id="nitro_sf_home_right">
+   
+            <div class="content_module" id="nitro_sf_standings_newsfeed">
+               
+               <apex:outputPanel id="whatHappeningPanel">
+                     
+                  <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                     <h2>{!NitroConfigData.nitro__Whats_Happening_Now_TS_Title__c}</h2>
+                  </apex:outputPanel>
+                   
+                  <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                     <apex:inputText value="{!NitroConfigData.nitro__Whats_Happening_Now_TS_Title__c}" styleClass="titleEdit"/>
+                  </apex:outputPanel>
+                   
+               </apex:outputPanel>
+               
+               <div class="content_module_body">
+                  <div class="nitro_sf_newsfeed_items">
+                     <!-- newsfeed items to go here -->
+                  </div>
+               </div>
+            </div><!-- end current contests -->
+            
+         </div><!-- end column 300 -->
+         
+      </div>   
+      
+      <c:DisabledFeatureOverlay isFree="{!isFree}" verifyAction="{!verifyEdition}" />
+<!--       <apex:outputPanel id="disabledFeatureOverlay"> -->
+<!--          <c:DisabledFeatureOverlay isFree="{!isFree}" /> -->
+<!--       </apex:outputPanel> -->
+   
+   </div>
+   
+   <apex:outputPanel id="focusFirstInput">
+      
+      <script>
+      
+         // set focus to the first text box on the admin edit screen      
+         nitro$('.titleEdit').focus().select();
+      
+      </script>
+
+   </apex:outputPanel>
+   <apex:actionFunction name="verifyEdition" action="{!verifyEdition}" reRender="disabledFeatureOverlay, pageMessages" immediate="true"/>
+
+</apex:form>
+
+</div>
+
+<!-- script used to be here -->
+
+</apex:page>

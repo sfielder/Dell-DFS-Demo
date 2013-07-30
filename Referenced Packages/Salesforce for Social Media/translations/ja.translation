@@ -1,0 +1,2066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label>Salesforce for Social Media</label>
+        <name>Salesforce_for_Twitter</name>
+    </customApplications>
+    <customLabels>
+        <label>公開知識サイト URL が指定されていません。設定ページに進んで知識サイト URL を設定してください。</label>
+        <name>ARTICLE_URL_SITE_NEEDED</name>
+    </customLabels>
+    <customLabels>
+        <label>このアカウントはすでに検証されています</label>
+        <name>Account_Already_Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>検索するソースを 1 つ以上選択してください</label>
+        <name>Account_Keyword_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>選択したアカウントは現在 Twitter ユーザをフォローしています。</label>
+        <name>Accounts_following_Twitter_user</name>
+    </customLabels>
+    <customLabels>
+        <label>フォローするアカウントを選択</label>
+        <name>Accounts_wantto_follow</name>
+    </customLabels>
+    <customLabels>
+        <label>有効</label>
+        <name>Active</name>
+    </customLabels>
+    <customLabels>
+        <label>寄稿者を追加</label>
+        <name>Add_Contributor_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>メンバーをキャンペーンに追加</label>
+        <name>Add_Members_to_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>返信に追加</label>
+        <name>Add_Shortened_Url</name>
+    </customLabels>
+    <customLabels>
+        <label>リードおよび取引先責任者をキャンペーンに追加</label>
+        <name>Add_to_a_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>追加されました</label>
+        <name>Added</name>
+    </customLabels>
+    <customLabels>
+        <label>追加先</label>
+        <name>Added_to</name>
+    </customLabels>
+    <customLabels>
+        <label>管理</label>
+        <name>Administration</name>
+    </customLabels>
+    <customLabels>
+        <label>分析</label>
+        <name>Analytics</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Answer_Integration_Title --></label>
+        <name>Answer_Integration_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>表示</label>
+        <name>Appearance_Section_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>記事の詳細</label>
+        <name>Article_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>ケース記事</label>
+        <name>Article_Name</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話に関連付けられている Facebook ページはまだ検証されていません。</label>
+        <name>Associated_Facebook_Page_Not_Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitly に接続できません。Bitly ユーザ名と API キーが正しいことを確認してください。</label>
+        <name>BITLY_REQUIRED</name>
+    </customLabels>
+    <customLabels>
+        <label>最大 50 レコードを選択してください</label>
+        <name>BROWSER_NOT_SUPPORT_50</name>
+    </customLabels>
+    <customLabels>
+        <label>本文</label>
+        <name>Body</name>
+    </customLabels>
+    <customLabels>
+        <label>このページの Facebook 認証を取り消すことができません。アンサーコミュニティに関連付けられています。</label>
+        <name>CANNOT_REVOKE_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>お客様の組織では Chatter はご利用いただけません。Chatter のご利用については、システム管理者にお問い合わせください。</label>
+        <name>CHATTER_NOT_ENABLED</name>
+    </customLabels>
+    <customLabels>
+        <label>要求は完了しませんでした。会話情報を確認して、もう一度お試しください。</label>
+        <name>CHATTER_POST_EXCEPTION</name>
+    </customLabels>
+    <customLabels>
+        <label>関連するケースもクローズしますか?</label>
+        <name>CLOSE_ASSOCIATED_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} は無効な ID です</label>
+        <name>CMTY_errorMsg_invalidID</name>
+    </customLabels>
+    <customLabels>
+        <label>問題が発生しました。</label>
+        <name>CMTY_errorPage_title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CONSOLE_VALIDATION_ERROR --></label>
+        <name>CONSOLE_VALIDATION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザ ID &quot;{1}&quot; の&lt;a href=&quot;/{0}&quot; target=&quot;_blank&quot;&gt;取引先責任者&lt;/a&gt;が作成されました</label>
+        <name>CONTACT_CREATED_FOR_USER_HTML</name>
+    </customLabels>
+    <customLabels>
+        <label>会話は「削除済み」とマークされました。</label>
+        <name>CONVERSATION_IS_DELETED_GENERIC</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話のすべてのコメントが取得されました。</label>
+        <name>CONVERSATION_NOT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話のケースを新規作成します</label>
+        <name>CREATE_NEW_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンセル</label>
+        <name>Cancel</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースソリューション</label>
+        <name>Case_Solutions</name>
+    </customLabels>
+    <customLabels>
+        <label>作成されたケース</label>
+        <name>Cases_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>フォロー状況を変更</label>
+        <name>Change_follow_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>次のフォローワーに対して行われた変更はありません</label>
+        <name>Changes_made_Followers</name>
+    </customLabels>
+    <customLabels>
+        <label>検索条件を選択</label>
+        <name>Choose_search_criteria</name>
+    </customLabels>
+    <customLabels>
+        <label>返信の詳細</label>
+        <name>Comment_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>システム管理者にお問い合わせください</label>
+        <name>Contact_System_Administrator</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者</label>
+        <name>Contacts</name>
+    </customLabels>
+    <customLabels>
+        <label>作成された取引先責任者</label>
+        <name>Contacts_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者/リードは、すでにキャンペーンに存在しています</label>
+        <name>Contacts_Leads_already_existed</name>
+    </customLabels>
+    <customLabels>
+        <label>コンテンツ</label>
+        <name>Content</name>
+    </customLabels>
+    <customLabels>
+        <label>会話</label>
+        <name>Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>作成された会話</label>
+        <name>Conversations_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースの作成 - 結果</label>
+        <name>Create_Case_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースを作成</label>
+        <name>Create_Cases</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者の作成 - 結果</label>
+        <name>Create_Contact_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者を作成</label>
+        <name>Create_Contacts</name>
+    </customLabels>
+    <customLabels>
+        <label>リードの作成 - 結果</label>
+        <name>Create_Lead_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>リードを作成</label>
+        <name>Create_Leads</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューションを作成</label>
+        <name>Create_Solutions</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューションの作成 - 結果</label>
+        <name>Create_Solutions_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>無視された項目を削除</label>
+        <name>Delete_Ignored</name>
+    </customLabels>
+    <customLabels>
+        <label>詳細</label>
+        <name>Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>編集</label>
+        <name>Edit</name>
+    </customLabels>
+    <customLabels>
+        <label>アプリケーションを有効化</label>
+        <name>Enable_Application_Button</name>
+    </customLabels>
+    <customLabels>
+        <label>エラー: ユーザ権限</label>
+        <name>Error_User_Permissions</name>
+    </customLabels>
+    <customLabels>
+        <label>次の既存のメンバー</label>
+        <name>Existing_members_from</name>
+    </customLabels>
+    <customLabels>
+        <label>削除された会話のケースを作成できません。</label>
+        <name>FACEBOOK_CASE_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter での返信は Facebook には再投稿されません</label>
+        <name>FACEBOOK_CHATTER_POST_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>完了できません。会話は Facebook に存在しません。</label>
+        <name>FACEBOOK_CONVERATION_IS_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>返信を投稿できません。返信しようとしている会話は Facebook　から削除されています。.</label>
+        <name>FACEBOOK_CONVERSATION_ALREADY_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>会話は Facebook から削除され、Salesforce では「削除済み」としてマークされます</label>
+        <name>FACEBOOK_CONVERSATION_WILL_BE_REMOVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook トラブルシューティングログ</label>
+        <name>FACEBOOK_ERROR_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>ページは存在しません</label>
+        <name>FACEBOOK_ERROR_PAGE_EMPTY</name>
+    </customLabels>
+    <customLabels>
+        <label>このページは公開されていないため、検証できません。</label>
+        <name>FACEBOOK_ERROR_PAGE_NOT_PUBLISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ページの外部検索が終了しました。ページ ID:</label>
+        <name>FACEBOOK_EXTERNAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>追加</label>
+        <name>FACEBOOK_FAN_PAGE_BUTTON</name>
+    </customLabels>
+    <customLabels>
+        <label>次へ</label>
+        <name>FACEBOOK_FAN_PAGE_BUTTON_CONTINUE</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ファンページの管理</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ページはすでに存在します</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_EXIST</name>
+    </customLabels>
+    <customLabels>
+        <label>新しい Facebook ページ</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_NEW</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook ユーザは Facebook ファンページの管理者ではありません。このユーザとして Facebook ウォールポストを作成するには、Facebook で Facebook ファンページ管理者としてこのユーザを有効にしてから、このユーザを Salesforce で再度認証する必要があります。</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_NOT_ADMIN</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ID が重複しています</label>
+        <name>FACEBOOK_ID_REPEATED</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook ユーザの取引先責任者は作成されませんでした。この Facebook ユーザにはすでにリードが割り当てられています。</label>
+        <name>FACEBOOK_LEAD_EXISTED</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook ユーザのリードは作成されませんでした。この Facebook ユーザにはすでに取引先責任者が存在します。</label>
+        <name>FACEBOOK_LEAD_HAS_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ページごとの手動検索が完了しました。ページ ID:</label>
+        <name>FACEBOOK_MANUAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook で検証したアカウントは、Salesforce で選択したアカウントと一致しません</label>
+        <name>FACEBOOK_OAUTH_DIFF_USERNAMES</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook ページはすでに検証されています</label>
+        <name>FACEBOOK_PAGE_ALREADY_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>このページは正しく検証されていません</label>
+        <name>FACEBOOK_PAGE_NOTVALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>このページにはアクセスできないため、検証できません。</label>
+        <name>FACEBOOK_PAGE_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ページ検索</label>
+        <name>FACEBOOK_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>要求されたアクションは、Facebook の会話でのみご利用いただけます。</label>
+        <name>FACEBOOK_RECORDS_ONLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ページごとのスケジュール済み検索が完了しました。検索 ID:</label>
+        <name>FACEBOOK_SCHEDULED_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook ユーザの</label>
+        <name>FACEBOOK_SCREENNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook ユーザのリード</label>
+        <name>FACEBOOK_SCREENNAME_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook ユーザはすでに検証されています</label>
+        <name>FACEBOOK_USER_ALREADY_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>このユーザは適切に検証されていません</label>
+        <name>FACEBOOK_USER_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>現在の Facebook セッションのユーザが検証されました。Facebook からログアウトしてもう一度試してください。</label>
+        <name>FACEBOOK_USER_VALIDATED_AGAIAN</name>
+    </customLabels>
+    <customLabels>
+        <label>検証しようとしているユーザは、この Facebook アカウントに関連付けられていません</label>
+        <name>FACEBOOK_USER_VALIDATED_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ユーザ ID</label>
+        <name>FACEBOOK_WITH_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>この Facebook コメントの親は削除されました。</label>
+        <name>FCBK_POST_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>このアクションは、Twitter の会話でのみご利用いただけます</label>
+        <name>FUNCTION_ONLY_FOR_TWITTER_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ID</label>
+        <name>Facebook_Id</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ユーザ</label>
+        <name>Facebook_Users</name>
+    </customLabels>
+    <customLabels>
+        <label>フォロー</label>
+        <name>Follow</name>
+    </customLabels>
+    <customLabels>
+        <label>フォロー - 結果</label>
+        <name>Follow_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>次のエラーが発生しました</label>
+        <name>Following_errors_occurred</name>
+    </customLabels>
+    <customLabels>
+        <label>次のエラーが発生しました</label>
+        <name>Following_errors_ocurred</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Grant FB access not allowed --></label>
+        <name>GRANT_FB_ACCESS_NOT_ALLOWED_FROM_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter 情報を取得</label>
+        <name>Get_Author_Info</name>
+    </customLabels>
+    <customLabels>
+        <label>会話を取得</label>
+        <name>Get_Conversation</name>
+    </customLabels>
+    <customLabels>
+        <label>会話を取得</label>
+        <name>Get_more_tweets</name>
+    </customLabels>
+    <customLabels>
+        <label>戻る</label>
+        <name>Go_Back</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンに移動</label>
+        <name>Go_To_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>挿入</label>
+        <name>INSERT</name>
+    </customLabels>
+    <customLabels>
+        <label>会話を無視</label>
+        <name>Ignore_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>会話を無視 - 結果</label>
+        <name>Ignore_Conversations_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>エラーが発生しました。無効なリターン URL です。</label>
+        <name>Invalid_return_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout に接続できません。Klout ユーザ名と API キーが正しいことを確認してください。</label>
+        <name>KLOUT_REQUIRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter のキーワード検索は一意である必要があります。</label>
+        <name>Keyword_Search_unique</name>
+    </customLabels>
+    <customLabels>
+        <label>リード 状況</label>
+        <name>Lead_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>リード</label>
+        <name>Leads</name>
+    </customLabels>
+    <customLabels>
+        <label>作成されたリード</label>
+        <name>Leads_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>これらの会話にリードが作成されます</label>
+        <name>Leads_created_for_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>いいね!</label>
+        <name>Like</name>
+    </customLabels>
+    <customLabels>
+        <label>このアクションは、Facebook の会話でのみご利用いただけます</label>
+        <name>Like_Error_Message</name>
+    </customLabels>
+    <customLabels>
+        <label>制限数を超えました</label>
+        <name>Limit_exceeded</name>
+    </customLabels>
+    <customLabels>
+        <label>設定</label>
+        <name>Link_To_Setup_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>読み込み中...</label>
+        <name>Loading</name>
+    </customLabels>
+    <customLabels>
+        <label>メッセージ種別</label>
+        <name>Message_Type</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} 人がいいね! と言っています</label>
+        <name>Multiple_Likes</name>
+    </customLabels>
+    <customLabels>
+        <label>名前</label>
+        <name>Name</name>
+    </customLabels>
+    <customLabels>
+        <label>現在 Twitter の名前検索は使用できません。詳細は、&lt;a href=&quot;http://status.twitter.com/&quot; target=&quot;_blank&quot;&gt;http://status.twitter.com/&lt;/a&gt; を参照してください</label>
+        <name>Name_Search_Unavailable</name>
+    </customLabels>
+    <customLabels>
+        <label>ナビゲーション</label>
+        <name>Navigation</name>
+    </customLabels>
+    <customLabels>
+        <label>新規会話</label>
+        <name>New_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>次へ</label>
+        <name>Next</name>
+    </customLabels>
+    <customLabels>
+        <label>対応する Twitter ユーザ名が見つかりませんでした。</label>
+        <name>No_Result_Search_Username</name>
+    </customLabels>
+    <customLabels>
+        <label>アクティブなキャンペーンがありません。[キャンペーン] タブでキャンペーンを作成または有効化してください。</label>
+        <name>No_active_campaigns</name>
+    </customLabels>
+    <customLabels>
+        <label>トラブルシューティングログ</label>
+        <name>ORIGIN_TWITTER_TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>不明なトラブルシューティングログ</label>
+        <name>ORIGIN_UNKNOWN_TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>1 人がいいね! と言っています</label>
+        <name>One_Like</name>
+    </customLabels>
+    <customLabels>
+        <label>元の会話</label>
+        <name>Origin_Conversation</name>
+    </customLabels>
+    <customLabels>
+        <label>バージョン {0}</label>
+        <name>PACKAGE_VERSION</name>
+    </customLabels>
+    <customLabels>
+        <label>お客様の組織では個人取引先はご利用いただけません。詳細は、組織のシステム管理者にお問い合わせください。</label>
+        <name>PERSON_ACCOUNTS_NOT_ENABLED</name>
+    </customLabels>
+    <customLabels>
+        <label>レコードを 1 件以上選択してください。</label>
+        <name>PLEASE_SELECT_1</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter に投稿</label>
+        <name>POST_TO_CHATTER</name>
+    </customLabels>
+    <customLabels>
+        <label>この Twitter の会話は、すでに Chatter フィードに投稿済みです。再投稿しますか?</label>
+        <name>POST_TO_CHATTER_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>つぶやいた人: @{0} 日時: {1} {2}</label>
+        <name>POST_TO_CHATTER_FORMAT</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook に投稿した人: {0} 日時: {1} {2}</label>
+        <name>POST_TO_CHATTER_FORMAT_FCBK</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話についてメッセージを追加</label>
+        <name>POST_TO_CHATTER_TEXT1</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話は Chatter フィードに投稿されます。</label>
+        <name>POST_TO_CHATTER_TEXT2</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter での返信は Twitter には再投稿されません</label>
+        <name>POST_TO_CHATTER_TEXT3</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter での返信は Facebook には再投稿されません</label>
+        <name>POST_TO_CHATTER_TEXT3b</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter に投稿</label>
+        <name>POST_TO_CHATTER_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>[次へ]</label>
+        <name>Pagination_More</name>
+    </customLabels>
+    <customLabels>
+        <label>[前へ]</label>
+        <name>Pagination_Previous</name>
+    </customLabels>
+    <customLabels>
+        <label>省略可能 (OAuth 経由での Twitter の利用)</label>
+        <name>Password_Not_Required</name>
+    </customLabels>
+    <customLabels>
+        <label>作成された個人取引先</label>
+        <name>Person_Accounts_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>検索の準備</label>
+        <name>Preparing_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>前へ</label>
+        <name>Previous</name>
+    </customLabels>
+    <customLabels>
+        <label>結果の処理中...</label>
+        <name>Processing_Results</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reply only from Twitter or Facebook case --></label>
+        <name>REPLY_ONLY_FROM_FACEBOOK_TWITTER_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>要求は、Apex スケジュール済みジョブの最大数 (25) を超えました</label>
+        <name>REQUEST_EXCEEDED_MAX_APEX_JOBS</name>
+    </customLabels>
+    <customLabels>
+        <label>外部アカウントへのアクセス権がありません。[Twitter アカウント] タブまたは [Facebook ページ] タブでアカウントを作成してください。</label>
+        <name>REQUIRED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>チャネルを少なくとも 1 つ選択してください。</label>
+        <name>REQUIRED_CHANNEL_SELECT</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話への返信に必要な Facebook ページがアクセスできないか、または削除されました。</label>
+        <name>REQUIRED_FCBK_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>このページの Facebook 認証を取り消しますか?</label>
+        <name>REVOKE_FACEBOOK_PAGE_ACCESS_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>このユーザの Facebook 認証を取り消しますか?</label>
+        <name>REVOKE_FACEBOOK_USER_ACCESS_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>アクセス権は取り消しできません。この Facebook ページは検証されていません。</label>
+        <name>REVOKE_PAGE_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>アクセス権は取り消しできません。この Facebook ユーザは検証されていません。</label>
+        <name>REVOKE_USER_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- RSS not available --></label>
+        <name>RSS_NOT_AVAILABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>アクセストークンが必要です</label>
+        <name>Required_Access_Token</name>
+    </customLabels>
+    <customLabels>
+        <label>認証ログオン情報が必要です</label>
+        <name>Required_Credentials</name>
+    </customLabels>
+    <customLabels>
+        <label>結果</label>
+        <name>Results</name>
+    </customLabels>
+    <customLabels>
+        <label>このアカウントの Twitter 認証を取り消しますか?</label>
+        <name>Revoke_Access_Confirm</name>
+    </customLabels>
+    <customLabels>
+        <label>このアカウントは検証されていないため停止できません。</label>
+        <name>Revoke_not_validated</name>
+    </customLabels>
+    <customLabels>
+        <label>検証するページを選択してください</label>
+        <name>SELECT_A_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce for Twitter and Facebook: 返信</label>
+        <name>SEND_TWEET_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>外部サイトの記事の URL</label>
+        <name>SETUP_ARTICLE_SITE_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>ナレッジの統合設定</label>
+        <name>SETUP_ARTICLE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly API キー</label>
+        <name>SETUP_BITLY_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly 設定</label>
+        <name>SETUP_BITLY_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly ユーザ</label>
+        <name>SETUP_BITLY_USER</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout アプリケーション</label>
+        <name>SETUP_KLOUT_APP</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout アイコン</label>
+        <name>SETUP_KLOUT_ICON</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout キー</label>
+        <name>SETUP_KLOUT_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout 設定</label>
+        <name>SETUP_KLOUT_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>サーバ名</label>
+        <name>SETUP_SERVER_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce for Social Media: 設定</label>
+        <name>SETUP_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>&lt;h1&gt;初めてのご使用ですか?&lt;/h1&gt; &lt;br /&gt;
+開始するには、ソーシャル公開者を設定する必要があります。
+&lt;a href=&quot;{0}&quot;&gt;今すぐソーシャル設定に移動します。&lt;/a&gt;</label>
+        <name>SETUP_WARNING_MESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>バージョン情報</label>
+        <name>SOCIAL_SETUP_ABOUT</name>
+    </customLabels>
+    <customLabels>
+        <label>詳細設定</label>
+        <name>SOCIAL_SETUP_ADVANCED</name>
+    </customLabels>
+    <customLabels>
+        <label>説明:</label>
+        <name>SOCIAL_SETUP_DESCRIPTION</name>
+    </customLabels>
+    <customLabels>
+        <label>エラー: 値を入力してください</label>
+        <name>SOCIAL_SETUP_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ログ</label>
+        <name>SOCIAL_SETUP_FACEBOOK_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook の RSS フィード</label>
+        <name>SOCIAL_SETUP_FACEBOOK_RSS</name>
+    </customLabels>
+    <customLabels>
+        <label>アプリケーションのサイトへのリンク</label>
+        <name>SOCIAL_SETUP_LINK</name>
+    </customLabels>
+    <customLabels>
+        <label>ログ記録日</label>
+        <name>SOCIAL_SETUP_LOG_DAY</name>
+    </customLabels>
+    <customLabels>
+        <label>ログ記録時間</label>
+        <name>SOCIAL_SETUP_LOG_TIME</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS 日</label>
+        <name>SOCIAL_SETUP_RSS_DATE</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS 名</label>
+        <name>SOCIAL_SETUP_RSS_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>ご使用の Salesforce CRM をソーシャルチャネルの Twitter と Facebook に接続します。お客様のオンライン利用記録を確認する、顧客とつながる、ブランドを宣伝する、お客様の社会的影響を分析する。これらのすべてを直接 Salesforce.com から実行できます。</label>
+        <name>SOCIAL_SETUP_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SOCIAL_SETUP_TITLE --></label>
+        <name>SOCIAL_SETUP_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter キーワード</label>
+        <name>SOCIAL_SETUP_TWITTER_KEYWORDS</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter ログ</label>
+        <name>SOCIAL_SETUP_TWITTER_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter の RSS フィード</label>
+        <name>SOCIAL_SETUP_TWITTER_RSS</name>
+    </customLabels>
+    <customLabels>
+        <label>バージョン :</label>
+        <name>SOCIAL_SETUP_VERSION</name>
+    </customLabels>
+    <customLabels>
+        <label>状況の変更 - 結果</label>
+        <name>STATUS_CHANGED_RESULTS</name>
+    </customLabels>
+    <customLabels>
+        <label>保存</label>
+        <name>Save</name>
+    </customLabels>
+    <customLabels>
+        <label>変更を保存</label>
+        <name>Save_changes</name>
+    </customLabels>
+    <customLabels>
+        <label>再検索</label>
+        <name>Search_Again</name>
+    </customLabels>
+    <customLabels>
+        <label>検索キーワード</label>
+        <name>Search_Keywords</name>
+    </customLabels>
+    <customLabels>
+        <label>検索結果</label>
+        <name>Search_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>選択した検索を実行</label>
+        <name>Search_more_tweets</name>
+    </customLabels>
+    <customLabels>
+        <label>キーワード検索では、条件に一致するつぶやきが返されます (結果の最大数 ±1500)</label>
+        <name>Search_text_1</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウント検索では、選択したアカウントのダイレクトメッセージ、@返信、状況が返されます</label>
+        <name>Search_text_2</name>
+    </customLabels>
+    <customLabels>
+        <label>この処理には数分かかります。完了するまでしばらくお待ちください。</label>
+        <name>Search_text_3</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook ファンページ検索では、公認の Facebook ファンページの投稿とコメントが返されます</label>
+        <name>Search_text_4</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンを選択</label>
+        <name>Select_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>最初にキャンペーンを選択してください</label>
+        <name>Select_Campaign_first</name>
+    </customLabels>
+    <customLabels>
+        <label>実行する検索を選択します。</label>
+        <name>Select_searches</name>
+    </customLabels>
+    <customLabels>
+        <label>選択済み</label>
+        <name>Selected</name>
+    </customLabels>
+    <customLabels>
+        <label>共有</label>
+        <name>Send</name>
+    </customLabels>
+    <customLabels>
+        <label>次のユーザとして Facebook に投稿</label>
+        <name>Send_Facebook_As</name>
+    </customLabels>
+    <customLabels>
+        <label>次のユーザとして Twitter に投稿</label>
+        <name>Send_Tweet_As</name>
+    </customLabels>
+    <customLabels>
+        <label>返信</label>
+        <name>Send_a_Tweet</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザ名から送信</label>
+        <name>Send_using_username</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューション詳細</label>
+        <name>Solution_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューション名</label>
+        <name>Solution_Name</name>
+    </customLabels>
+    <customLabels>
+        <label>文字</label>
+        <name>SplashPage_Characters</name>
+    </customLabels>
+    <customLabels>
+        <label>ソーシャル公開者</label>
+        <name>SplashPage_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>検索を開始</label>
+        <name>Start_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>件名</label>
+        <name>Subject</name>
+    </customLabels>
+    <customLabels>
+        <label>選択された会話が見つかりませんでした</label>
+        <name>TARGET_CONVERSATION_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>トラブルシューティングログ</label>
+        <name>TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>セクションの切り替え - 検索条件を選択</label>
+        <name>TS_Choose_search_criteria</name>
+    </customLabels>
+    <customLabels>
+        <label>セクションの切り替え - 検索結果</label>
+        <name>TS_Search_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>アカウントの「作成」権限が必要です。</label>
+        <name>TWITTER_ACCOUNT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>アカウントの「削除」権限が必要です。</label>
+        <name>TWITTER_ACCOUNT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>この Twitter ユーザ名の Twitter アカウントはすでに登録されています。</label>
+        <name>TWITTER_ACCOUNT_DUPLICATE_VALUE</name>
+    </customLabels>
+    <customLabels>
+        <label>ソーシャル アカウント</label>
+        <name>TWITTER_ACCOUNT_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>このアカウントは適切に検証されていません</label>
+        <name>TWITTER_ACCOUNT_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>この Twitter アカウントは一時停止中です</label>
+        <name>TWITTER_ACCOUNT_SUSPENDED</name>
+    </customLabels>
+    <customLabels>
+        <label>アカウントの「更新」権限が必要です。</label>
+        <name>TWITTER_ACCOUNT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>この寄稿者はすでに{0}に追加しました。</label>
+        <name>TWITTER_ADDCONTRIBUTOR_ADDED</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザ名が無効です</label>
+        <name>TWITTER_ADDCONTRIBUTOR_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>追加されました</label>
+        <name>TWITTER_ADDED</name>
+    </customLabels>
+    <customLabels>
+        <label>この URL はすでに短縮されています。</label>
+        <name>TWITTER_ALREADY_BITLY</name>
+    </customLabels>
+    <customLabels>
+        <label>フォロー済み</label>
+        <name>TWITTER_ALREADY_FOLLOWED</name>
+    </customLabels>
+    <customLabels>
+        <label>はすでにリストにあります</label>
+        <name>TWITTER_ALREADY_IN_LIST</name>
+    </customLabels>
+    <customLabels>
+        <label>が割り当てられましたが、すでに存在しています。</label>
+        <name>TWITTER_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>がこの Twitter の会話に割り当てられました。</label>
+        <name>TWITTER_ASSIGNED_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>A</label>
+        <name>TWITTER_A_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話に関連付けられているつぶやきをさらに表示します。</label>
+        <name>TWITTER_BRING_MORE</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンメンバーの「作成」権限が必要です。</label>
+        <name>TWITTER_CAMPAIGNMEMBER_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンメンバーの「削除」権限が必要です。</label>
+        <name>TWITTER_CAMPAIGNMEMBER_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンメンバーの「更新」権限が必要です。</label>
+        <name>TWITTER_CAMPAIGNMEMBER_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンの「作成」権限が必要です。</label>
+        <name>TWITTER_CAMPAIGN_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンの「削除」権限が必要です。</label>
+        <name>TWITTER_CAMPAIGN_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンの「更新」権限が必要です。</label>
+        <name>TWITTER_CAMPAIGN_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューションはこの会話にすでに割り当てられています。</label>
+        <name>TWITTER_CANCREATED_SOLUTION</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} を作成できません。Salesforce システム管理者にお問い合わせください</label>
+        <name>TWITTER_CANT_CREATE_OBJECT</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースコメントはこの会話にすでに割り当てられています。</label>
+        <name>TWITTER_CASECOMMENT_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースコメントの「作成」権限が必要です。</label>
+        <name>TWITTER_CASECOMMENT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>作成されたケースコメント</label>
+        <name>TWITTER_CASECOMMENT_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースコメントの「削除」権限が必要です。</label>
+        <name>TWITTER_CASECOMMENT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースコメントの「更新」権限が必要です。</label>
+        <name>TWITTER_CASECOMMENT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースソリューションの「作成」権限が必要です。</label>
+        <name>TWITTER_CASESOLUTION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースソリューションの「削除」権限が必要です。</label>
+        <name>TWITTER_CASESOLUTION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースソリューションの「更新」権限が必要です。</label>
+        <name>TWITTER_CASESOLUTION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースはこの会話にすでに割り当てられています。</label>
+        <name>TWITTER_CASE_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>クローズ</label>
+        <name>TWITTER_CASE_CLOSED</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースの「作成」権限が必要です。</label>
+        <name>TWITTER_CASE_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースの「削除」権限が必要です。</label>
+        <name>TWITTER_CASE_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースの「更新」権限が必要です。</label>
+        <name>TWITTER_CASE_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話が作成されました</label>
+        <name>TWITTER_CHATTER_POST_HEADER</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter での返信は Twitter には投稿されません</label>
+        <name>TWITTER_CHATTER_POST_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザをフォローするには、こちらをクリックしてください</label>
+        <name>TWITTER_CLICK_FOLLOW</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter への接続時にエラーが発生しました。ログイン情報に誤りがあるかサービスがオフラインである可能性があります。または、送信した要求の数が多すぎる可能性があります。</label>
+        <name>TWITTER_CONN_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>この取引先責任者にアクセスする権限がありません。</label>
+        <name>TWITTER_CONTACT_ACCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者はこの会話にすでに割り当てられています。</label>
+        <name>TWITTER_CONTACT_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者の「作成」権限が必要です。</label>
+        <name>TWITTER_CONTACT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>作成</label>
+        <name>TWITTER_CONTACT_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者の「削除」権限が必要です。</label>
+        <name>TWITTER_CONTACT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者またはリードが見つかりません</label>
+        <name>TWITTER_CONTACT_LEAD_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者の「更新」権限が必要です。</label>
+        <name>TWITTER_CONTACT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>警告: 取引先責任者はすでに存在します。</label>
+        <name>TWITTER_CONTACT_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>会話</label>
+        <name>TWITTER_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter の会話の「作成」権限が必要です。</label>
+        <name>TWITTER_CONVERSATION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter の会話の「削除」権限が必要です。</label>
+        <name>TWITTER_CONVERSATION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>その会話はすでに存在します</label>
+        <name>TWITTER_CONVERSATION_EXISTS</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話はつぶやきへの返信ではありません。ユーザへの返信は検索できません。</label>
+        <name>TWITTER_CONVERSATION_NOT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter の会話の「更新」権限が必要です。</label>
+        <name>TWITTER_CONVERSATION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>会話が見つかりません。ID</label>
+        <name>TWITTER_CONV_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>会話が見つかりません</label>
+        <name>TWITTER_CONV_NOT_FOUND_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>作成</label>
+        <name>TWITTER_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>がこの Twitter の会話に作成されました。</label>
+        <name>TWITTER_CREATED_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>が次に対して作成されました</label>
+        <name>TWITTER_CREATED_FOR</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者を作成</label>
+        <name>TWITTER_CREATE_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>リードを作成</label>
+        <name>TWITTER_CREATE_LEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>検索を新規作成</label>
+        <name>TWITTER_CREATE_SEARCHES</name>
+    </customLabels>
+    <customLabels>
+        <label>ダッシュボードおよび分析</label>
+        <name>TWITTER_DASHBOARD</name>
+    </customLabels>
+    <customLabels>
+        <label>無視された会話を削除中</label>
+        <name>TWITTER_DELETED_RECORDS</name>
+    </customLabels>
+    <customLabels>
+        <label>無視された会話を削除</label>
+        <name>TWITTER_DELETE_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>無視された会話が正常に削除されました。</label>
+        <name>TWITTER_DELETE_IGNORED_SUCCESSFULLY</name>
+    </customLabels>
+    <customLabels>
+        <label>無視された会話を削除中</label>
+        <name>TWITTER_DELETING_IGNORED_CONVERSATIONS</name>
+    </customLabels>
+    <customLabels>
+        <label>ダイレクトメッセージ</label>
+        <name>TWITTER_DIRECTMESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>エラー</label>
+        <name>TWITTER_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter への接続時にエラーが発生しました。もう一度お試しください。</label>
+        <name>TWITTER_ERROR_CONNECT</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザをフォローできませんでした。自分自身をフォローすることはできません。</label>
+        <name>TWITTER_ERROR_FOLLOW_YOURSELF</name>
+    </customLabels>
+    <customLabels>
+        <label>無効な会話 ID</label>
+        <name>TWITTER_ERROR_INVALID_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter トラブルシューティングログ</label>
+        <name>TWITTER_ERROR_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>予期せぬエラーが発生しました。もう一度お試しください。</label>
+        <name>TWITTER_ERROR_OCCURRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter エラーコード: {1}。Twitter エラーメッセージ: {0}。</label>
+        <name>TWITTER_ERROR_OCCURRED_ON_ACTION</name>
+    </customLabels>
+    <customLabels>
+        <label>親のないケースコメント</label>
+        <name>TWITTER_EXCEPTION_CASECOMMENT_WO_PARENT</name>
+    </customLabels>
+    <customLabels>
+        <label>このユーザ名の取引先責任者のないケースが作成されました</label>
+        <name>TWITTER_EXCEPTION_CASE_WO_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースに会話がありません</label>
+        <name>TWITTER_EXCEPTION_CASE_WO_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>会話はヌルにはできません</label>
+        <name>TWITTER_EXCEPTION_CONVERSATION_CANNOT_BE_NULL</name>
+    </customLabels>
+    <customLabels>
+        <label>会話にはすでにケースがあります</label>
+        <name>TWITTER_EXCEPTION_CONVERSATION_HAS_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter ID が指定されていません</label>
+        <name>TWITTER_EXCEPTION_ID_NOT_SPECIFIED</name>
+    </customLabels>
+    <customLabels>
+        <label>アカウントによる外部検索が完了しました。アカウント ID:</label>
+        <name>TWITTER_EXTERNAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>キーワードによる外部検索が完了しました。検索 ID:</label>
+        <name>TWITTER_EXTERNAL_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>次の項目へのアクセス権がありません: {0}。Salesforce システム管理者にお問い合わせください。</label>
+        <name>TWITTER_FIELD_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>次の項目を作成できません: {0}。Salesforce システム管理者にお問い合わせください。</label>
+        <name>TWITTER_FIELD_NOT_CREATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>次の項目を更新できません: {0}。Salesforce システム管理者にお問い合わせください。</label>
+        <name>TWITTER_FIELD_NOT_UPDATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter の clientContact ({0}) をすでにフォローしています。</label>
+        <name>TWITTER_FOLLOWS</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter(フォローが復元されました)。</label>
+        <name>TWITTER_FOLLOW_RESTORED</name>
+    </customLabels>
+    <customLabels>
+        <label>次の Twitter ユーザ名の情報の取得中にエラーが発生しました:</label>
+        <name>TWITTER_GET_AUTHOR_INFO_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>会話を取得</label>
+        <name>TWITTER_GET_TWEETS</name>
+    </customLabels>
+    <customLabels>
+        <label>リンク</label>
+        <name>TWITTER_GET_USERNAME_LINK</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter ユーザ名を取得</label>
+        <name>TWITTER_GET_USERNAME_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>削除する無視された会話はありませんでした。</label>
+        <name>TWITTER_IGNORED_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>受信 DM:</label>
+        <name>TWITTER_INBOUND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>受信つぶやき</label>
+        <name>TWITTER_INBOUND_TWEET</name>
+    </customLabels>
+    <customLabels>
+        <label>エラー: 入力した ID が正しくありません。</label>
+        <name>TWITTER_INCORRECT_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>メッセージを挿入</label>
+        <name>TWITTER_INSERT_MSG</name>
+    </customLabels>
+    <customLabels>
+        <label>アクセス権がありません</label>
+        <name>TWITTER_INSUFFICIENT_PRIVILEGES</name>
+    </customLabels>
+    <customLabels>
+        <label>内部エラー。もう一度お試しください。</label>
+        <name>TWITTER_INTERNAL_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>リード</label>
+        <name>TWITTER_LEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>このリードにアクセスする権限がありません。</label>
+        <name>TWITTER_LEAD_ACCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>既存のリードが割り当てられました</label>
+        <name>TWITTER_LEAD_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>リードの「作成」権限が必要です。</label>
+        <name>TWITTER_LEAD_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>作成されたリード</label>
+        <name>TWITTER_LEAD_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>リードの「削除」権限が必要です。</label>
+        <name>TWITTER_LEAD_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>リードはこの会話にすでに割り当てられています。</label>
+        <name>TWITTER_LEAD_EXIST</name>
+    </customLabels>
+    <customLabels>
+        <label>この Twitter ユーザ名の取引先責任者は作成されませんでした。この取引先責任者にはすでにリードが割り当てられています。</label>
+        <name>TWITTER_LEAD_EXISTED</name>
+    </customLabels>
+    <customLabels>
+        <label>この Twitter ユーザ名のリードは作成されませんでした。このリードにはすでに取引先責任者があります。</label>
+        <name>TWITTER_LEAD_HAS_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>リードの「更新」権限が必要です。</label>
+        <name>TWITTER_LEAD_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>警告: リードはすでに存在します。</label>
+        <name>TWITTER_LEAD_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>ロガーを使用するには、お客様の組織に次のフォルダがある必要があります: {0}</label>
+        <name>TWITTER_LOGGER_MISSING_FOLDER_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>アカウントごとの手動検索が完了しました。アカウント ID:</label>
+        <name>TWITTER_MANUAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>キーワードごとの手動検索が完了しました。検索 ID:</label>
+        <name>TWITTER_MANUAL_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>少なくとも 1 つのチェックボックスをオンにして、 [変更を保存] ボタンをクリックします。</label>
+        <name>TWITTER_MARK_AT_LEAST_ONE</name>
+    </customLabels>
+    <customLabels>
+        <label>140 文字以下の文字を入力してください。</label>
+        <name>TWITTER_MAXIMUM_SIZE</name>
+    </customLabels>
+    <customLabels>
+        <label>メッセージは送信されました。</label>
+        <name>TWITTER_MESSAGE_SENT</name>
+    </customLabels>
+    <customLabels>
+        <label>1 文字以上の文字を入力してください。</label>
+        <name>TWITTER_MINIMUM_SIZE</name>
+    </customLabels>
+    <customLabels>
+        <label>新規 Twitter アカウント</label>
+        <name>TWITTER_NEW_TWITTER_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>新規 Twitter 検索</label>
+        <name>TWITTER_NEW_TWITTER_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>自分をフォローしていないユーザにはダイレクトメッセージを送信できません。</label>
+        <name>TWITTER_NOT_FOLLOWING</name>
+    </customLabels>
+    <customLabels>
+        <label>見つかりませんでした</label>
+        <name>TWITTER_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>この ID の取引先責任者またはリードが見つかりませんでした: {0}</label>
+        <name>TWITTER_NO_CONTACT_LEAD_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>この状況 ID の会話が見つかりませんでした: {0}</label>
+        <name>TWITTER_NO_CONVERSATION_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>この実行環境ではコールアウトは保持されません。</label>
+        <name>TWITTER_NO_MORE_CALLOUTS_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>警告: 検索は成功しましたが、すべてのページを取得するコールアウトはありません。</label>
+        <name>TWITTER_NO_MORE_CALLOUTS_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter で検証したアカウントは Selesforce で選択した取引先に対応していません</label>
+        <name>TWITTER_OAUTH_DIFF_USERNAMES</name>
+    </customLabels>
+    <customLabels>
+        <label>次のオブジェクトへのアクセス権がありません: {0}。Salesforce システム管理者にお問い合わせください。</label>
+        <name>TWITTER_OBJECT_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>次のオブジェクトを作成できません: {0}。Salesforce システム管理者にお問い合わせください。</label>
+        <name>TWITTER_OBJECT_NOT_CREATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>次のオブジェクトを削除できません: {0}。Salesforce システム管理者にお問い合わせください。</label>
+        <name>TWITTER_OBJECT_NOT_DELETABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>次のオブジェクトを更新できません: {0}。Salesforce システム管理者にお問い合わせください。</label>
+        <name>TWITTER_OBJECT_NOT_UPDATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>エラー: アカウントが多すぎます。取引先責任者/リードをフォローできるのは 10 アカウントのみです。</label>
+        <name>TWITTER_ONLY10_ACCOUNTS</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter</label>
+        <name>TWITTER_ON_TWITTER</name>
+    </customLabels>
+    <customLabels>
+        <label>送信ダイレクトメッセージ</label>
+        <name>TWITTER_OUTBOUND_DIRECTMESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>送信 DM:</label>
+        <name>TWITTER_OUTBOUND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>送信 (返信)</label>
+        <name>TWITTER_OUTBOUND_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話の個人取引先を作成できません。取引先責任者はこの会話にすでに割り当てられています。</label>
+        <name>TWITTER_PACCOUNT_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>非推奨。ヘルプテキストを参照</label>
+        <name>TWITTER_PASSWORDS_DEPRECATED</name>
+    </customLabels>
+    <customLabels>
+        <label>私のフィード</label>
+        <name>TWITTER_POST_TO_MY_FEED</name>
+    </customLabels>
+    <customLabels>
+        <label>つぶやきを投稿</label>
+        <name>TWITTER_POST_TWEET</name>
+    </customLabels>
+    <customLabels>
+        <label>リソース</label>
+        <name>TWITTER_QUICK_LINKS</name>
+    </customLabels>
+    <customLabels>
+        <label>フォローされている人のリストから削除されます。</label>
+        <name>TWITTER_REMOVED_FOLLOWERS</name>
+    </customLabels>
+    <customLabels>
+        <label>@返信</label>
+        <name>TWITTER_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter に対する要求が失敗しました。</label>
+        <name>TWITTER_REQUEST_CONNECTION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>メッセージを送信する前に Twitter アカウントまたは Facebook ファンページのいずれかを承認してください。</label>
+        <name>TWITTER_REQUIRED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>メッセージを送信するには、Twitter ユーザ名が必要です。</label>
+        <name>TWITTER_REQUIRED_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>結果</label>
+        <name>TWITTER_RESULT</name>
+    </customLabels>
+    <customLabels>
+        <label>前のページに戻る</label>
+        <name>TWITTER_RETURN</name>
+    </customLabels>
+    <customLabels>
+        <label>アカウントごとのスケジュール済み検索が完了しました。アカウント ID:</label>
+        <name>TWITTER_SCHEDULED_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>キーワードごとのスケジュール済み検索が完了しました。検索 ID:</label>
+        <name>TWITTER_SCHEDULED_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>有効化</label>
+        <name>TWITTER_SCHEDULER_PAGE_ACTIVATE</name>
+    </customLabels>
+    <customLabels>
+        <label>最終実行</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_LAST_TIME_RUN</name>
+    </customLabels>
+    <customLabels>
+        <label>名前</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>使用された要求</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_REQUESTS_USED</name>
+    </customLabels>
+    <customLabels>
+        <label>実行ユーザ</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_SEARCH_TERM</name>
+    </customLabels>
+    <customLabels>
+        <label>期間</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_TIME_INTERVAL</name>
+    </customLabels>
+    <customLabels>
+        <label>無効化</label>
+        <name>TWITTER_SCHEDULER_PAGE_DEACTIVATE</name>
+    </customLabels>
+    <customLabels>
+        <label>スケジュール済み検索</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウント検索</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>無視された会話を削除</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_IGNORE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter のキーワード検索</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>使用可能なスケジュール済み要求の数には制限があります。Salesforce ソーシャルは、現在 {0} 個の要求を使用しています</label>
+        <name>TWITTER_SCHEDULER_USED_TASKS</name>
+    </customLabels>
+    <customLabels>
+        <label>検索をスケジュール</label>
+        <name>TWITTER_SCHEDULE_SEARCHES</name>
+    </customLabels>
+    <customLabels>
+        <label>この Twitter ユーザ名の</label>
+        <name>TWITTER_SCREENNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>この Twitter ユーザ名のリード</label>
+        <name>TWITTER_SCREENNAME_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>この検索でエラーが発生しました: {0}</label>
+        <name>TWITTER_SEARCH_CONNECTION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>検索がスケジュールされませんでした。エラーが発生しました:</label>
+        <name>TWITTER_SEARCH_NOT_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>検索のスケジュールが解除されませんでした。エラーが発生しました:</label>
+        <name>TWITTER_SEARCH_NOT_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter 検索の演算子</label>
+        <name>TWITTER_SEARCH_OPERATORS</name>
+    </customLabels>
+    <customLabels>
+        <label>検索がスケジュールされました:</label>
+        <name>TWITTER_SEARCH_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>検索のスケジュールが解除されました:</label>
+        <name>TWITTER_SEARCH_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>--選択--</label>
+        <name>TWITTER_SELECT</name>
+    </customLabels>
+    <customLabels>
+        <label>レコードを 1 件以上選択してください。</label>
+        <name>TWITTER_SELECT_A_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>選択は、{0} レコード以内にしてください。</label>
+        <name>TWITTER_SELECT_LESS_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>レコードを 1 件のみ選択してください。</label>
+        <name>TWITTER_SELECT_ONLY_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>ダイレクトメッセージの送信先</label>
+        <name>TWITTER_SEND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウントを管理</label>
+        <name>TWITTER_SETUP_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>設定ガイドを確認</label>
+        <name>TWITTER_SETUP_GUIDE</name>
+    </customLabels>
+    <customLabels>
+        <label>短縮する URL が無効でした。もう一度お試しください。</label>
+        <name>TWITTER_SHORTEN_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューションの「作成」権限が必要です。</label>
+        <name>TWITTER_SOLUTION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>作成されたソリューション</label>
+        <name>TWITTER_SOLUTION_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューションの「削除」権限が必要です。</label>
+        <name>TWITTER_SOLUTION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューションの「更新」権限が必要です。</label>
+        <name>TWITTER_SOLUTION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>はじめに</label>
+        <name>TWITTER_START_NOW</name>
+    </customLabels>
+    <customLabels>
+        <label>&lt;p&gt;
+					&lt;strong&gt;何百万人ものユーザが Twitter を使って、意見を共有したり、質問したり、情報を求めたりしています。
+					人々が、今どんなことを発言しているか確認してみましょう...&lt;/strong&gt;
+					&lt;/p&gt;
+					&lt;ul&gt;
+						&lt;li&gt;&lt;strong&gt;貴社ビジネスについて、お客様は何と言っているでしょうか?&lt;/strong&gt;プラス評価でしょうか、マイナス評価でしょうか?&lt;/li&gt;
+						&lt;li&gt;&lt;strong&gt;貴社で提供しているサービスをユーザが探していますか?&lt;/strong&gt;Salesforce for Twitter を使って、リードを作成できます。&lt;/li&gt;
+						&lt;li&gt;&lt;strong&gt;情報を必要としているユーザですか?&lt;/strong&gt;つぶやきからケースを作成すれば、サポート担当者はより良いサービスを提供できます。&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;p&gt;
+					&lt;strong&gt;Twitter の詳細を確認する必要がありますか?&lt;/strong&gt;&lt;br/&gt;
+					&lt;a href=&quot;http://business.twitter.com&quot; target=&quot;_blank&quot;&gt;Twitter for business&lt;/a&gt; をお読みください。
+					&lt;/p&gt;</label>
+        <name>TWITTER_START_PAGE_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce for Social Media</label>
+        <name>TWITTER_START_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter パフォーマンスの状況</label>
+        <name>TWITTER_STATUS</name>
+    </customLabels>
+    <customLabels>
+        <label>この以前の状況を表示する権限がありません。</label>
+        <name>TWITTER_STATUSES_NOT_AUTHORIZED</name>
+    </customLabels>
+    <customLabels>
+        <label>アクション済み</label>
+        <name>TWITTER_STATUS_ACTIONED</name>
+    </customLabels>
+    <customLabels>
+        <label>状況は正常に変更されました</label>
+        <name>TWITTER_STATUS_CHANGED</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話の状況が [無視] に変更されました</label>
+        <name>TWITTER_STATUS_CHANGED_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話の状況が [コミュニティで解決] に変更されました</label>
+        <name>TWITTER_STATUS_CHANGED_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>無視</label>
+        <name>TWITTER_STATUS_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>新規</label>
+        <name>TWITTER_STATUS_NEW</name>
+    </customLabels>
+    <customLabels>
+        <label>この会話はすでに「コミュニティで解決」としてマークされています。</label>
+        <name>TWITTER_STATUS_NOT_CHANGED_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>レビュー済みとしてマーク</label>
+        <name>TWITTER_STATUS_REVIEWED</name>
+    </customLabels>
+    <customLabels>
+        <label>コミュニティで解決</label>
+        <name>TWITTER_STATUS_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>状況は正常に更新されました</label>
+        <name>TWITTER_STATUS_UPDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>削除を停止</label>
+        <name>TWITTER_STOP_DELETING</name>
+    </customLabels>
+    <customLabels>
+        <label>検索を停止</label>
+        <name>TWITTER_STOP_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>成功</label>
+        <name>TWITTER_SUCCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>対象アカウントは現在一時停止中です</label>
+        <name>TWITTER_TARGETACCOUNT_SUSPENDED</name>
+    </customLabels>
+    <customLabels>
+        <label>キャンペーンメンバー</label>
+        <name>TWITTER_TARGET_CAMPAIGNMEMBER</name>
+    </customLabels>
+    <customLabels>
+        <label>ケース</label>
+        <name>TWITTER_TARGET_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>ケースコメント</label>
+        <name>TWITTER_TARGET_CASECOMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>取引先責任者</label>
+        <name>TWITTER_TARGET_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>会話</label>
+        <name>TWITTER_TARGET_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>ソリューション</label>
+        <name>TWITTER_TARGET_SOLUTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウント</label>
+        <name>TWITTER_TARGET_TWITTERACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>完了</label>
+        <name>TWITTER_TASK_COMPLETED</name>
+    </customLabels>
+    <customLabels>
+        <label>ToDo の「作成」権限が必要です。</label>
+        <name>TWITTER_TASK_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>ToDo の「削除」権限が必要です。</label>
+        <name>TWITTER_TASK_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>次の宛先にコメントを送信しました</label>
+        <name>TWITTER_TASK_FCBK_COMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>ToDo がスケジュールされませんでした。エラーが発生しました:</label>
+        <name>TWITTER_TASK_NOT_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>ToDo のスケジュールが解除されませんでした。エラーが発生しました:</label>
+        <name>TWITTER_TASK_NOT_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>ToDo がスケジュールされました:</label>
+        <name>TWITTER_TASK_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>ダイレクトメッセージの送信先</label>
+        <name>TWITTER_TASK_SUBJECT_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>つぶやきへの @返信の送信先</label>
+        <name>TWITTER_TASK_SUBJECT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>ToDo のスケジュールが解除されました:</label>
+        <name>TWITTER_TASK_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>ToDo の「更新」権限が必要です。</label>
+        <name>TWITTER_TASK_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter</label>
+        <name>TWITTER_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>このテキストは、公開 @返信または非公開ダイレクトメッセージとして送信されます。メッセージを送信前に編集できます。</label>
+        <name>TWITTER_TEXT_SENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウントの「作成」権限が必要です。</label>
+        <name>TWITTER_TWITACCOUNT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウントの「削除」権限が必要です。</label>
+        <name>TWITTER_TWITACCOUNT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウントの「更新」権限が必要です。</label>
+        <name>TWITTER_TWITACCOUNT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter 検索の「作成」権限が必要です。</label>
+        <name>TWITTER_TWITSEARCH_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter 検索の「削除」権限が必要です。</label>
+        <name>TWITTER_TWITSEARCH_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter 検索の「更新」権限が必要です。</label>
+        <name>TWITTER_TWITSEARCH_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>ダイレクトメッセージ</label>
+        <name>TWITTER_TYPE_DIRECT_MESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>登録済みアカウント</label>
+        <name>TWITTER_TYPE_REGISTERED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>@返信</label>
+        <name>TWITTER_TYPE_REPLIES</name>
+    </customLabels>
+    <customLabels>
+        <label>データ検索</label>
+        <name>TWITTER_TYPE_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>不明</label>
+        <name>TWITTER_UNKNOWN</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter ユーザ名</label>
+        <name>TWITTER_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>このユーザは、取引先責任者またはリードが割り当てられていないためフォローできません。</label>
+        <name>TWITTER_USERNAME_NOT_CONTACTLEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウントには有効な Bit.ly ユーザ名および API キーが必要です。</label>
+        <name>TWITTER_VALID_BITLY</name>
+    </customLabels>
+    <customLabels>
+        <label>有効な URL を入力してください。</label>
+        <name>TWITTER_VALID_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>警告</label>
+        <name>TWITTER_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>最新状況</label>
+        <name>TWITTER_WHAT_IS_HAPPENING</name>
+    </customLabels>
+    <customLabels>
+        <label>次を使用</label>
+        <name>TWITTER_WITH_A</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter ユーザ名を使用</label>
+        <name>TWITTER_WITH_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>タイトル</label>
+        <name>Title</name>
+    </customLabels>
+    <customLabels>
+        <label>次の名前の結果:</label>
+        <name>Title_Search_Username</name>
+    </customLabels>
+    <customLabels>
+        <label>結果の合計数</label>
+        <name>Total_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>20</label>
+        <name>Twitter_Account_PageSize</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter アカウント</label>
+        <name>Twitter_Accounts</name>
+    </customLabels>
+    <customLabels>
+        <label>フォローしている Twitter アカウント</label>
+        <name>Twitter_Accounts_following</name>
+    </customLabels>
+    <customLabels>
+        <label>メッセージは、ケースコメントとしてこのケースに添付されます。</label>
+        <name>Twitter_Case_Solution</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Twitter_Error_Returned --></label>
+        <name>Twitter_Error_Returned</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter ID</label>
+        <name>Twitter_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>種別</label>
+        <name>Type</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook に接続できません。認証ログイン情報が必要です。Facebook ユーザまたはファンページを変更した場合、Salesforce で再度承認してください。</label>
+        <name>UNABLE_CONNECT_FACEBOOK</name>
+    </customLabels>
+    <customLabels>
+        <label>要求されたログファイルを読み込めません。</label>
+        <name>UNABLE_TO_LOAD_LOG_FILE</name>
+    </customLabels>
+    <customLabels>
+        <label>このポストのコメントの一部を取得できません</label>
+        <name>UNABLE_TO_RETRIEVE_ALL_COMMENTS</name>
+    </customLabels>
+    <customLabels>
+        <label>このオブジェクトにコメントを送信できません</label>
+        <name>UNABLE_TO_SEND_COMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>お客様の組織では個人取引先はご利用いただけません</label>
+        <name>UNKNOWN_TWITTER_USERNAMES_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザのフォローを解除するには、目的のアカウントの選択を解除して [変更を保存] をクリックします</label>
+        <name>Unfollow_user_deselect</name>
+    </customLabels>
+    <customLabels>
+        <label>いいね! を取り消す</label>
+        <name>Unlike</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザ名</label>
+        <name>Username</name>
+    </customLabels>
+    <customLabels>
+        <label>ユーザ名は一意である必要があります。</label>
+        <name>Username_unique</name>
+    </customLabels>
+    <customLabels>
+        <label>検証済み</label>
+        <name>Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>この機能を使用するには、Salesforce.com 組織に検証済みの Twitter アカウントが少なくとも 1 つある必要があります。</label>
+        <name>Validated_Twitter_Account</name>
+    </customLabels>
+    <customLabels>
+        <label>返信を送信できるのは、Twitter 取引先責任者、リードまたは個人取引先のみです。</label>
+        <name>YOU_CAN_ONLY_REPLY_TO_CNCT_LEAD_PA</name>
+    </customLabels>
+    <customLabels>
+        <label>あなたと他 1 人がいいね! と言っています</label>
+        <name>You_And_1_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>あなたと他 {0} 人がいいね! と言っています</label>
+        <name>You_And_Others_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>あなたがいいね! と言っています</label>
+        <name>You_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>時間</label>
+        <name>hours</name>
+    </customLabels>
+    <customLabels>
+        <label>分</label>
+        <name>minutes</name>
+    </customLabels>
+    <customLabels>
+        <label>新規メンバー。</label>
+        <name>new_Members</name>
+    </customLabels>
+    <customLabels>
+        <label>/</label>
+        <name>of_10</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter</label>
+        <name>on_Twitter</name>
+    </customLabels>
+    <customLabels>
+        <label>文字入力可</label>
+        <name>remaining</name>
+    </customLabels>
+    <customPageWebLinks>
+        <label>その他のつぶやきを取得</label>
+        <name>Get_More_Tweets</name>
+    </customPageWebLinks>
+    <customTabs>
+        <label>ソーシャル公開者</label>
+        <name>Salesforce_for_Twitter</name>
+    </customTabs>
+    <customTabs>
+        <label>ソーシャルエージェント</label>
+        <name>Social_Agent</name>
+    </customTabs>
+    <customTabs>
+        <label>ソーシャル設定</label>
+        <name>Social_Setup</name>
+    </customTabs>
+    <reportTypes>
+        <description>Twitter ユーザ名と Twitter の会話がある取引先責任者</description>
+        <label>Twitter ユーザ名がある取引先責任者</label>
+        <name>Contacts_with_Twitter_username</name>
+        <sections>
+            <label>取引先責任者</label>
+            <name>Contacts</name>
+        </sections>
+        <sections>
+            <label>Twitter の会話</label>
+            <name>Twitter Conversations</name>
+        </sections>
+    </reportTypes>
+</Translations>

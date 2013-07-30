@@ -1,0 +1,2066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label>Salesforce for Social Media</label>
+        <name>Salesforce_for_Twitter</name>
+    </customApplications>
+    <customLabels>
+        <label>URL der öffentlichen Knowledge-Seite nicht angegeben. Bitte wechseln Sie zur Setup-Seite und legen Sie eine URL zur Knowledge-Seite fest.</label>
+        <name>ARTICLE_URL_SITE_NEEDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Account wurde bereits validiert</label>
+        <name>Account_Already_Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie mindestens eine Quelle zum Durchsuchen aus</label>
+        <name>Account_Keyword_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausgewählte Accounts verfolgen derzeit den Twitter-Benutzer.</label>
+        <name>Accounts_following_Twitter_user</name>
+    </customLabels>
+    <customLabels>
+        <label>Zu verfolgende Accounts auswählen</label>
+        <name>Accounts_wantto_follow</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktiv</label>
+        <name>Active</name>
+    </customLabels>
+    <customLabels>
+        <label>Beitragenden hinzufügen</label>
+        <name>Add_Contributor_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitglieder zu Kampagne hinzufügen</label>
+        <name>Add_Members_to_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Zu Antwort hinzufügen</label>
+        <name>Add_Shortened_Url</name>
+    </customLabels>
+    <customLabels>
+        <label>Leads und Kontakte zu einer Kampagne hinzufügen</label>
+        <name>Add_to_a_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Hinzugefügt</label>
+        <name>Added</name>
+    </customLabels>
+    <customLabels>
+        <label>Hinzugefügt zu</label>
+        <name>Added_to</name>
+    </customLabels>
+    <customLabels>
+        <label>Verwaltung</label>
+        <name>Administration</name>
+    </customLabels>
+    <customLabels>
+        <label>Analysefunktionen</label>
+        <name>Analytics</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Answer_Integration_Title --></label>
+        <name>Answer_Integration_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Erscheinungsbild</label>
+        <name>Appearance_Section_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Details zum Artikel</label>
+        <name>Article_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorgangserfassungs-Artikel</label>
+        <name>Article_Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Die mit dieser Diskussion verbundene Facebook-Seite wurde nicht validiert.</label>
+        <name>Associated_Facebook_Page_Not_Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontaktieren von Bitly nicht möglich.  Bitte überprüfen Sie Ihren Bitly-Benutzernamen und -API-Schlüssel.</label>
+        <name>BITLY_REQUIRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie bis zu 50 Datensätze aus</label>
+        <name>BROWSER_NOT_SUPPORT_50</name>
+    </customLabels>
+    <customLabels>
+        <label>Text</label>
+        <name>Body</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können die Facebook-Autorisierung dieser Seite nicht widerrufen; sie ist mit einer Antwort-Community verknüpft.</label>
+        <name>CANNOT_REVOKE_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter ist in Ihrem Unternehmen nicht aktiviert.  Bitte wenden Sie sich an den Systemadministrator, um Chatter zu aktivieren.</label>
+        <name>CHATTER_NOT_ENABLED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ihr Anfrageversuch wurde nicht abgeschlossen. Überprüfen Sie die Diskussionsinformationen und versuchen Sie es erneut.</label>
+        <name>CHATTER_POST_EXCEPTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Den verbundenen Vorgang ebenfalls schließen?</label>
+        <name>CLOSE_ASSOCIATED_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} ist keine gültige ID.</label>
+        <name>CMTY_errorMsg_invalidID</name>
+    </customLabels>
+    <customLabels>
+        <label>Wir haben ein Problem festgestellt.</label>
+        <name>CMTY_errorPage_title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CONSOLE_VALIDATION_ERROR --></label>
+        <name>CONSOLE_VALIDATION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Ein &lt;a href=&quot;/{0}&quot; target=&quot;_blank&quot;&gt;Kontakt&lt;/a&gt; wurde für die Benutzer-ID „{1}“ erstellt.</label>
+        <name>CONTACT_CREATED_FOR_USER_HTML</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Diskussion wurde als „Gelöscht“ markiert.</label>
+        <name>CONVERSATION_IS_DELETED_GENERIC</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diese Diskussion wurden alle Kommentare abgerufen.</label>
+        <name>CONVERSATION_NOT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Neuen Kundenvorgang für diese Diskussion erstellen</label>
+        <name>CREATE_NEW_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Abbrechen</label>
+        <name>Cancel</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorgangslösungen</label>
+        <name>Case_Solutions</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellte Kundenvorgänge</label>
+        <name>Cases_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Verfolgungsstatus ändern</label>
+        <name>Change_follow_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Es wurden keine Änderungen vorgenommen an den Anhängern von</label>
+        <name>Changes_made_Followers</name>
+    </customLabels>
+    <customLabels>
+        <label>Suchkriterien auswählen</label>
+        <name>Choose_search_criteria</name>
+    </customLabels>
+    <customLabels>
+        <label>Antwortdetail</label>
+        <name>Comment_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Wenden Sie sich an den zuständigen Systemadministrator</label>
+        <name>Contact_System_Administrator</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakte</label>
+        <name>Contacts</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellte Kontakte</label>
+        <name>Contacts_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakte/Leads waren in der Kampagne bereits vorhanden</label>
+        <name>Contacts_Leads_already_existed</name>
+    </customLabels>
+    <customLabels>
+        <label>Inhalt</label>
+        <name>Content</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussionen</label>
+        <name>Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellte Diskussionen</label>
+        <name>Conversations_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenvorgang erstellen – Ergebnisse</label>
+        <name>Create_Case_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenvorgänge erstellen</label>
+        <name>Create_Cases</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt erstellen – Ergebnisse</label>
+        <name>Create_Contact_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakte erstellen</label>
+        <name>Create_Contacts</name>
+    </customLabels>
+    <customLabels>
+        <label>Lead erstellen – Ergebnisse</label>
+        <name>Create_Lead_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Leads erstellen</label>
+        <name>Create_Leads</name>
+    </customLabels>
+    <customLabels>
+        <label>Lösungen erstellen</label>
+        <name>Create_Solutions</name>
+    </customLabels>
+    <customLabels>
+        <label>Lösungen erstellen – Ergebnisse</label>
+        <name>Create_Solutions_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorierte löschen</label>
+        <name>Delete_Ignored</name>
+    </customLabels>
+    <customLabels>
+        <label>Detail</label>
+        <name>Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Bearbeiten</label>
+        <name>Edit</name>
+    </customLabels>
+    <customLabels>
+        <label>Anwendung aktivieren</label>
+        <name>Enable_Application_Button</name>
+    </customLabels>
+    <customLabels>
+        <label>Fehler: Benutzerberechtigungen</label>
+        <name>Error_User_Permissions</name>
+    </customLabels>
+    <customLabels>
+        <label>Bestehende Mitglieder aus</label>
+        <name>Existing_members_from</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellen eines Kundenvorgangs für eine gelöschte Diskussion nicht möglich.</label>
+        <name>FACEBOOK_CASE_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Antworten in Chatter werden nicht erneut auf Facebook veröffentlicht</label>
+        <name>FACEBOOK_CHATTER_POST_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Abschließen nicht möglich. Die Diskussion ist auf Facebook nicht vorhanden</label>
+        <name>FACEBOOK_CONVERATION_IS_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>Antwort kann nicht gesendet werden. Die Diskussion, auf die Sie antworten, wurde aus Facebook entfernt.</label>
+        <name>FACEBOOK_CONVERSATION_ALREADY_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Diskussion wird von Facebook entfernt und in Salesforce als „Gelöscht“ markiert.</label>
+        <name>FACEBOOK_CONVERSATION_WILL_BE_REMOVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-Problembehebungsprotokoll</label>
+        <name>FACEBOOK_ERROR_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Seite existiert nicht.</label>
+        <name>FACEBOOK_ERROR_PAGE_EMPTY</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Seite kann nicht validiert werden, da sie nicht veröffentlicht ist.</label>
+        <name>FACEBOOK_ERROR_PAGE_NOT_PUBLISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Die externe Suche in Facebook-Seiten ist abgeschlossen. Seiten-ID:</label>
+        <name>FACEBOOK_EXTERNAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Hinzufügen</label>
+        <name>FACEBOOK_FAN_PAGE_BUTTON</name>
+    </customLabels>
+    <customLabels>
+        <label>Fortfahren</label>
+        <name>FACEBOOK_FAN_PAGE_BUTTON_CONTINUE</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-Fanseiten verwalten</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Facebook-Seiten sind bereits vorhanden</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_EXIST</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Facebook-Seite</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_NEW</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Facebook-Benutzer ist für keine einzige Facebook-Fanseite der Administrator. Bevor Sie als dieser Benutzer Pinnwandeinträge auf Facebook erstellen können, müssen Sie den Benutzer als Administrator einer Facebook-Fanseite aktivieren und ihn in Salesforce erneut autorisieren.</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_NOT_ADMIN</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-ID wiederholt</label>
+        <name>FACEBOOK_ID_REPEATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diesen Twitter-Benutzer wurde kein Kontakt erstellt, ihm wurde bereits ein Lead zugewiesen.</label>
+        <name>FACEBOOK_LEAD_EXISTED</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diesen Twitter-Benutzer wurde kein Lead erstellt; er weist bereits einen Kontakt auf.</label>
+        <name>FACEBOOK_LEAD_HAS_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Manuelle Suche nach Facebook-Seite abgeschlossen. Seiten-ID:</label>
+        <name>FACEBOOK_MANUAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der in Facebook validierte Account entspricht nicht dem auf Salesforce ausgewählten Account.</label>
+        <name>FACEBOOK_OAUTH_DIFF_USERNAMES</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Facebook-Seite wurde bereits validiert.</label>
+        <name>FACEBOOK_PAGE_ALREADY_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Seite wurde nicht korrekt validiert.</label>
+        <name>FACEBOOK_PAGE_NOTVALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Seite kann nicht validiert werden, da auf sie nicht zugegriffen werden kann.</label>
+        <name>FACEBOOK_PAGE_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Suchvorgänge nach Facebook-Seiten</label>
+        <name>FACEBOOK_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Die angeforderte Aktion ist nur für Facebook-Diskussionen verfügbar.</label>
+        <name>FACEBOOK_RECORDS_ONLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Geplante Suche nach Facebook-Seite abgeschlossen. Such-ID:</label>
+        <name>FACEBOOK_SCHEDULED_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>für diesen Facebook-Benutzer</label>
+        <name>FACEBOOK_SCREENNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Lead für diesen Facebook-Benutzer</label>
+        <name>FACEBOOK_SCREENNAME_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Facebook-Benutzer wurde bereits validiert.</label>
+        <name>FACEBOOK_USER_ALREADY_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Benutzer wurde nicht korrekt validiert.</label>
+        <name>FACEBOOK_USER_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Benutzer der aktuellen Facebook-Sitzung ist validiert; melden Sie sich von Facebook ab und versuchen Sie es erneut.</label>
+        <name>FACEBOOK_USER_VALIDATED_AGAIAN</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Benutzer, den Sie versuchen zu validieren, ist nicht mit diesem Facebook-Account verknüpft.</label>
+        <name>FACEBOOK_USER_VALIDATED_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>mit Facebook-Benutzer-ID</label>
+        <name>FACEBOOK_WITH_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Der übergeordnete Kommentar dieses Facebook-Kommentars wurde gelöscht.</label>
+        <name>FCBK_POST_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Aktion ist nur für Twitter-Diskussionen verfügbar.</label>
+        <name>FUNCTION_ONLY_FOR_TWITTER_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-ID</label>
+        <name>Facebook_Id</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-Benutzer</label>
+        <name>Facebook_Users</name>
+    </customLabels>
+    <customLabels>
+        <label>Folgen</label>
+        <name>Follow</name>
+    </customLabels>
+    <customLabels>
+        <label>Verfolgen – Ergebnisse</label>
+        <name>Follow_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Folgende Fehler sind aufgetreten:</label>
+        <name>Following_errors_occurred</name>
+    </customLabels>
+    <customLabels>
+        <label>Folgende Fehler sind aufgetreten:</label>
+        <name>Following_errors_ocurred</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Grant FB access not allowed --></label>
+        <name>GRANT_FB_ACCESS_NOT_ALLOWED_FROM_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Info abrufen</label>
+        <name>Get_Author_Info</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussionen abrufen</label>
+        <name>Get_Conversation</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussionen abrufen</label>
+        <name>Get_more_tweets</name>
+    </customLabels>
+    <customLabels>
+        <label>Zurück</label>
+        <name>Go_Back</name>
+    </customLabels>
+    <customLabels>
+        <label>Zur Kampagne</label>
+        <name>Go_To_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Einfügen</label>
+        <name>INSERT</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussionen ignorieren</label>
+        <name>Ignore_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussionen ignorieren – Ergebnisse</label>
+        <name>Ignore_Conversations_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Es ist ein Fehler aufgetreten. Ungültige Rückgabe-URL:</label>
+        <name>Invalid_return_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontaktieren von Klout nicht möglich.  Bitte überprüfen Sie Ihren Klout-Benutzernamen und -API-Schlüssel.</label>
+        <name>KLOUT_REQUIRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Stichwortsuche muss eindeutig sein.</label>
+        <name>Keyword_Search_unique</name>
+    </customLabels>
+    <customLabels>
+        <label>Leadstatus</label>
+        <name>Lead_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Leads</label>
+        <name>Leads</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellte Leads</label>
+        <name>Leads_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diese Diskussionen werden Leads erstellt.</label>
+        <name>Leads_created_for_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>Gefällt mir</label>
+        <name>Like</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Aktion ist nur für Facebook-Konversationen verfügbar</label>
+        <name>Like_Error_Message</name>
+    </customLabels>
+    <customLabels>
+        <label>Grenzwert überschritten</label>
+        <name>Limit_exceeded</name>
+    </customLabels>
+    <customLabels>
+        <label>Setup</label>
+        <name>Link_To_Setup_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>Laden...</label>
+        <name>Loading</name>
+    </customLabels>
+    <customLabels>
+        <label>Message Type</label>
+        <name>Message_Type</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} Bewertungen als „Gefällt mir“ markiert</label>
+        <name>Multiple_Likes</name>
+    </customLabels>
+    <customLabels>
+        <label>Name</label>
+        <name>Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Namenssuche steht derzeit nicht zur Verfügung. Weitere Informationen unter &lt;a href=&quot;http://status.twitter.com/&quot; target=&quot;_blank&quot;&gt;http://status.twitter.com/&lt;/a&gt;</label>
+        <name>Name_Search_Unavailable</name>
+    </customLabels>
+    <customLabels>
+        <label>Navigation</label>
+        <name>Navigation</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Diskussionen</label>
+        <name>New_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>Weiter</label>
+        <name>Next</name>
+    </customLabels>
+    <customLabels>
+        <label>Keine passenden Twitter-Benutzernamen gefunden.</label>
+        <name>No_Result_Search_Username</name>
+    </customLabels>
+    <customLabels>
+        <label>Es gibt keine aktiven Kampagnen.  Bitte erstellen oder aktivieren Sie eine auf der Registerkarte „Kampagne“.</label>
+        <name>No_active_campaigns</name>
+    </customLabels>
+    <customLabels>
+        <label>Problembehebungsprotokoll</label>
+        <name>ORIGIN_TWITTER_TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Unbekanntes Problembehebungsprotokoll</label>
+        <name>ORIGIN_UNKNOWN_TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>1 Element als „Gefällt mir“ markiert</label>
+        <name>One_Like</name>
+    </customLabels>
+    <customLabels>
+        <label>Ursprung Diskussion</label>
+        <name>Origin_Conversation</name>
+    </customLabels>
+    <customLabels>
+        <label>Version {0}</label>
+        <name>PACKAGE_VERSION</name>
+    </customLabels>
+    <customLabels>
+        <label>Person Accounts wurden in Ihrem Unternehmen nicht aktiviert. Wenden Sie sich wegen weiterer Informationen an Ihren Systemadministrator.</label>
+        <name>PERSON_ACCOUNTS_NOT_ENABLED</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie mindestens einen Datensatz aus.</label>
+        <name>PLEASE_SELECT_1</name>
+    </customLabels>
+    <customLabels>
+        <label>Auf Chatter veröffentlichen</label>
+        <name>POST_TO_CHATTER</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Twitter-Diskussion wurde bereits in einem Chatter-Feed veröffentlicht. Erneut veröffentlichen?</label>
+        <name>POST_TO_CHATTER_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>Als Tweed gesendet von @{0} am {1} um {2}</label>
+        <name>POST_TO_CHATTER_FORMAT</name>
+    </customLabels>
+    <customLabels>
+        <label>Auf Facebook veröffentlicht von @{0} am {1} um {2}</label>
+        <name>POST_TO_CHATTER_FORMAT_FCBK</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Diskussion eine Nachricht hinzufügen</label>
+        <name>POST_TO_CHATTER_TEXT1</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Diskussion wird in Ihrem Chatter-Feed veröffentlicht.</label>
+        <name>POST_TO_CHATTER_TEXT2</name>
+    </customLabels>
+    <customLabels>
+        <label>Antworten in Chatter werden nicht zusätzlich auf Twitter veröffentlicht</label>
+        <name>POST_TO_CHATTER_TEXT3</name>
+    </customLabels>
+    <customLabels>
+        <label>Antworten in Chatter werden nicht erneut auf Facebook veröffentlicht</label>
+        <name>POST_TO_CHATTER_TEXT3b</name>
+    </customLabels>
+    <customLabels>
+        <label>Auf Chatter veröffentlichen</label>
+        <name>POST_TO_CHATTER_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>[Weiter]</label>
+        <name>Pagination_More</name>
+    </customLabels>
+    <customLabels>
+        <label>[Zurück]</label>
+        <name>Pagination_Previous</name>
+    </customLabels>
+    <customLabels>
+        <label>Nicht erforderlich (Zugriff auf Twitter über OAuth)</label>
+        <name>Password_Not_Required</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellte Personenaccounts</label>
+        <name>Person_Accounts_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche wird vorbereitet</label>
+        <name>Preparing_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>Zurück</label>
+        <name>Previous</name>
+    </customLabels>
+    <customLabels>
+        <label>Ergebnisse werden verarbeitet...</label>
+        <name>Processing_Results</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reply only from Twitter or Facebook case --></label>
+        <name>REPLY_ONLY_FROM_FACEBOOK_TWITTER_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Bei Ihrer Anfrage wurde die maximale Anzahl (25) an geplanten Apex-Aufträgen überschritten.</label>
+        <name>REQUEST_EXCEEDED_MAX_APEX_JOBS</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können keinen externen Account anzeigen.  Bitte erstellen Sie einen auf der Registerkarte „Twitter-Accounts“ bzw. „Facebook-Seiten“</label>
+        <name>REQUIRED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie mindestens einen Vertriebskanal aus.</label>
+        <name>REQUIRED_CHANNEL_SELECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Auf die Facebook-Seite, die zum Antworten auf diese Diskussion benötigt wird, kann nicht zugegriffen werden oder sie wurde gelöscht.</label>
+        <name>REQUIRED_FCBK_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-Autorisierung für diese Seite widerrufen?</label>
+        <name>REVOKE_FACEBOOK_PAGE_ACCESS_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-Autorisierung für diesen Benutzer widerrufen?</label>
+        <name>REVOKE_FACEBOOK_USER_ACCESS_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>Zugriff kann nicht widerrufen werden. Diese Facebook-Seite wurde nicht validiert.</label>
+        <name>REVOKE_PAGE_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Zugriff kann nicht widerrufen werden. Dieser Facebook-Benutzer wurde nicht validiert.</label>
+        <name>REVOKE_USER_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- RSS not available --></label>
+        <name>RSS_NOT_AVAILABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Zugriffstoken erforderlich</label>
+        <name>Required_Access_Token</name>
+    </customLabels>
+    <customLabels>
+        <label>Informationen zur Authentifizierung erforderlich</label>
+        <name>Required_Credentials</name>
+    </customLabels>
+    <customLabels>
+        <label>Ergebnisse</label>
+        <name>Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Autorisierung für diesen Account widerrufen?</label>
+        <name>Revoke_Access_Confirm</name>
+    </customLabels>
+    <customLabels>
+        <label>Zugriff kann nicht widerrufen werden, da dieser Account nicht validiert wurde</label>
+        <name>Revoke_not_validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie, welche Seite Sie validieren möchten</label>
+        <name>SELECT_A_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce für Twitter und Facebook: Antworten</label>
+        <name>SEND_TWEET_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Artikel Externe Seite URL</label>
+        <name>SETUP_ARTICLE_SITE_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Knowledge Integration-Einstellungen</label>
+        <name>SETUP_ARTICLE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly-API-Schlüssel</label>
+        <name>SETUP_BITLY_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly-Einstellungen</label>
+        <name>SETUP_BITLY_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly-Benutzer</label>
+        <name>SETUP_BITLY_USER</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-Anwendung</label>
+        <name>SETUP_KLOUT_APP</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-Symbol</label>
+        <name>SETUP_KLOUT_ICON</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-Schlüssel</label>
+        <name>SETUP_KLOUT_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-Einstellungen</label>
+        <name>SETUP_KLOUT_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Servername</label>
+        <name>SETUP_SERVER_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce for Social Media: Setup</label>
+        <name>SETUP_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>&lt;h1&gt;Zum ersten Mal hier?&lt;/h1&gt; &lt;br /&gt;
+Sie müssen zunächst Ihren Social Publisher einrichten. 
+&lt;a href=&quot;{0}&quot;&gt;Gehen Sie jetzt zu „Social Setup“.&lt;/a&gt;</label>
+        <name>SETUP_WARNING_MESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Info</label>
+        <name>SOCIAL_SETUP_ABOUT</name>
+    </customLabels>
+    <customLabels>
+        <label>Erweitert</label>
+        <name>SOCIAL_SETUP_ADVANCED</name>
+    </customLabels>
+    <customLabels>
+        <label>Beschreibung:</label>
+        <name>SOCIAL_SETUP_DESCRIPTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Fehler: Sie müssen einen Wert eingeben.</label>
+        <name>SOCIAL_SETUP_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-Anmeldungen</label>
+        <name>SOCIAL_SETUP_FACEBOOK_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-Feeds von Facebook</label>
+        <name>SOCIAL_SETUP_FACEBOOK_RSS</name>
+    </customLabels>
+    <customLabels>
+        <label>Link zur Website der Anwendung</label>
+        <name>SOCIAL_SETUP_LINK</name>
+    </customLabels>
+    <customLabels>
+        <label>Tag der Anmeldung</label>
+        <name>SOCIAL_SETUP_LOG_DAY</name>
+    </customLabels>
+    <customLabels>
+        <label>Uhrzeit der Anmeldung</label>
+        <name>SOCIAL_SETUP_LOG_TIME</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-Datum</label>
+        <name>SOCIAL_SETUP_RSS_DATE</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-Name</label>
+        <name>SOCIAL_SETUP_RSS_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Verbinden Sie Ihr Salesforce-CRM mit den sozialen Netzen Twitter und Facebook. Überwachen Sie Ihren Status im Internet, stellen Sie Verbindungen mit Kunden her, bewerben Sie Ihre Marke und analysieren Sie Ihren Einfluss in sozialen Netzen - alles direkt über Salesforce.com!</label>
+        <name>SOCIAL_SETUP_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce für Twitter und Facebook</label>
+        <name>SOCIAL_SETUP_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Stichwörter</label>
+        <name>SOCIAL_SETUP_TWITTER_KEYWORDS</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Anmeldungen</label>
+        <name>SOCIAL_SETUP_TWITTER_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-Feeds von Twitter</label>
+        <name>SOCIAL_SETUP_TWITTER_RSS</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SOCIAL_SETUP_VERSION --></label>
+        <name>SOCIAL_SETUP_VERSION</name>
+    </customLabels>
+    <customLabels>
+        <label>Status ändern – Ergebnisse</label>
+        <name>STATUS_CHANGED_RESULTS</name>
+    </customLabels>
+    <customLabels>
+        <label>Speichern</label>
+        <name>Save</name>
+    </customLabels>
+    <customLabels>
+        <label>Änderungen speichern</label>
+        <name>Save_changes</name>
+    </customLabels>
+    <customLabels>
+        <label>Nochmals suchen</label>
+        <name>Search_Again</name>
+    </customLabels>
+    <customLabels>
+        <label>Stichwörter durchsuchen</label>
+        <name>Search_Keywords</name>
+    </customLabels>
+    <customLabels>
+        <label>Suchergebnisse</label>
+        <name>Search_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausgewählte Suchvorgänge ausführen</label>
+        <name>Search_more_tweets</name>
+    </customLabels>
+    <customLabels>
+        <label>Bei Stichwortsuchen werden Tweets zurückgegeben, die mit den Kriterien übereinstimmen (Höchstzahl der Ergebnisse: ±1.500)</label>
+        <name>Search_text_1</name>
+    </customLabels>
+    <customLabels>
+        <label>Bei Twitter-Account-Suchvorgängen werden Direktnachrichten, @-Antworten sowie Statusangaben für den ausgewählten Account zurückgegeben</label>
+        <name>Search_text_2</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Vorgang kann einige Minuten in Anspruch nehmen. Warten Sie, bis der Vorgang abgeschlossen ist.</label>
+        <name>Search_text_3</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-Fanseiten-Suchen ergeben Beiträge und Kommentare auf der autorisierten Facebook-Fanseite.</label>
+        <name>Search_text_4</name>
+    </customLabels>
+    <customLabels>
+        <label>Kampagne auswählen</label>
+        <name>Select_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie zunächst eine Kampagne aus</label>
+        <name>Select_Campaign_first</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie die Suchen aus, die Sie durchführen möchten.</label>
+        <name>Select_searches</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausgewählt</label>
+        <name>Selected</name>
+    </customLabels>
+    <customLabels>
+        <label>Freigabe</label>
+        <name>Send</name>
+    </customLabels>
+    <customLabels>
+        <label>Auf Facebook veröffentlichen als</label>
+        <name>Send_Facebook_As</name>
+    </customLabels>
+    <customLabels>
+        <label>Auf Twitter veröffentlichen als</label>
+        <name>Send_Tweet_As</name>
+    </customLabels>
+    <customLabels>
+        <label>Antworten</label>
+        <name>Send_a_Tweet</name>
+    </customLabels>
+    <customLabels>
+        <label>Von Benutzernamen senden</label>
+        <name>Send_using_username</name>
+    </customLabels>
+    <customLabels>
+        <label>Lösungsdetail</label>
+        <name>Solution_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Lösungsname</label>
+        <name>Solution_Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeichen</label>
+        <name>SplashPage_Characters</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SplashPage_Title --></label>
+        <name>SplashPage_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche starten</label>
+        <name>Start_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>Thema</label>
+        <name>Subject</name>
+    </customLabels>
+    <customLabels>
+        <label>Die ausgewählte Konversation wurde nicht gefunden</label>
+        <name>TARGET_CONVERSATION_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Problembehebungsprotokoll</label>
+        <name>TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Umschaltbereich – Suchkriterien auswählen</label>
+        <name>TS_Choose_search_criteria</name>
+    </customLabels>
+    <customLabels>
+        <label>Umschaltbereich – Suchergebnisse</label>
+        <name>TS_Search_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Accounts erforderlich.</label>
+        <name>TWITTER_ACCOUNT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Accounts erforderlich.</label>
+        <name>TWITTER_ACCOUNT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Ein Twitter-Account mit diesem Twitter-Benutzernamen ist bereits registriert.</label>
+        <name>TWITTER_ACCOUNT_DUPLICATE_VALUE</name>
+    </customLabels>
+    <customLabels>
+        <label>Social Account</label>
+        <name>TWITTER_ACCOUNT_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieses Konto wurde nicht korrekt validiert</label>
+        <name>TWITTER_ACCOUNT_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Twitter-Account wurde ausgesetzt</label>
+        <name>TWITTER_ACCOUNT_SUSPENDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Accounts erforderlich.</label>
+        <name>TWITTER_ACCOUNT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie haben diesen Beitragenden bereits zu {0} hinzugefügt.</label>
+        <name>TWITTER_ADDCONTRIBUTOR_ADDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ungültiger Benutzername</label>
+        <name>TWITTER_ADDCONTRIBUTOR_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Hinzugefügt</label>
+        <name>TWITTER_ADDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese URL wurde bereits gekürzt.</label>
+        <name>TWITTER_ALREADY_BITLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Bereits verfolgt</label>
+        <name>TWITTER_ALREADY_FOLLOWED</name>
+    </customLabels>
+    <customLabels>
+        <label>befindet sich bereits auf der Liste</label>
+        <name>TWITTER_ALREADY_IN_LIST</name>
+    </customLabels>
+    <customLabels>
+        <label>wurde zugewiesen, war jedoch bereits vorhanden.</label>
+        <name>TWITTER_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>wurde dieser Twitter-Diskussion zugewiesen.</label>
+        <name>TWITTER_ASSIGNED_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>A</label>
+        <name>TWITTER_A_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>Mehr Tweets zu dieser Diskussion einbringen.</label>
+        <name>TWITTER_BRING_MORE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Kampagnenmitglieder erforderlich.</label>
+        <name>TWITTER_CAMPAIGNMEMBER_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Kampagnenmitglieder erforderlich.</label>
+        <name>TWITTER_CAMPAIGNMEMBER_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Kampagnenmitglieder erforderlich.</label>
+        <name>TWITTER_CAMPAIGNMEMBER_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Kampagnen erforderlich.</label>
+        <name>TWITTER_CAMPAIGN_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Kampagnen erforderlich.</label>
+        <name>TWITTER_CAMPAIGN_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Kampagnen erforderlich.</label>
+        <name>TWITTER_CAMPAIGN_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Diskussion wurde bereits eine Lösung zugewiesen.</label>
+        <name>TWITTER_CANCREATED_SOLUTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können {0} nicht erstellen. Bitte wenden Sie sich an Ihren Salesforce-Administrator</label>
+        <name>TWITTER_CANT_CREATE_OBJECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Diskussion wurde bereits ein Kundenvorgangskommentar zugewiesen.</label>
+        <name>TWITTER_CASECOMMENT_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Kundenvorgangskommentar erforderlich.</label>
+        <name>TWITTER_CASECOMMENT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellter Kundenvorgangskommentar</label>
+        <name>TWITTER_CASECOMMENT_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Kundenvorgangskommentar erforderlich.</label>
+        <name>TWITTER_CASECOMMENT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Kundenvorgangskommentar erforderlich.</label>
+        <name>TWITTER_CASECOMMENT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Kundenvorgangslösung erforderlich.</label>
+        <name>TWITTER_CASESOLUTION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Kundenvorgangslösung erforderlich.</label>
+        <name>TWITTER_CASESOLUTION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Kundenvorgangslösung erforderlich.</label>
+        <name>TWITTER_CASESOLUTION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Diskussion wurde bereits ein Kundenvorgang zugewiesen.</label>
+        <name>TWITTER_CASE_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Geschlossen</label>
+        <name>TWITTER_CASE_CLOSED</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Kundenvorgänge erforderlich.</label>
+        <name>TWITTER_CASE_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Kundenvorgänge erforderlich.</label>
+        <name>TWITTER_CASE_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Kundenvorgänge erforderlich.</label>
+        <name>TWITTER_CASE_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>hat diese Diskussion erstellt</label>
+        <name>TWITTER_CHATTER_POST_HEADER</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter-Antworten werden nicht auf Twitter veröffentlicht</label>
+        <name>TWITTER_CHATTER_POST_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Zum Verfolgen des Benutzers hier klicken</label>
+        <name>TWITTER_CLICK_FOLLOW</name>
+    </customLabels>
+    <customLabels>
+        <label>Fehler beim Verbindungsaufbau mit Twitter. Mögliche Ursachen: Ihre Anmeldeinformationen sind falsch, der Service ist offline oder es wurden zu viele Anfragen übermittelt.</label>
+        <name>TWITTER_CONN_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie sind nicht berechtigt, auf diesen Kontakt zuzugreifen.</label>
+        <name>TWITTER_CONTACT_ACCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Diskussion wurde bereits ein Kontakt zugewiesen.</label>
+        <name>TWITTER_CONTACT_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Kontakte erforderlich.</label>
+        <name>TWITTER_CONTACT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellt am</label>
+        <name>TWITTER_CONTACT_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Kontakte erforderlich.</label>
+        <name>TWITTER_CONTACT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt oder Lead nicht gefunden</label>
+        <name>TWITTER_CONTACT_LEAD_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Kontakte erforderlich.</label>
+        <name>TWITTER_CONTACT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Warnung: Kontakt bereits vorhanden.</label>
+        <name>TWITTER_CONTACT_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussion</label>
+        <name>TWITTER_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Twitter-Diskussionen erforderlich.</label>
+        <name>TWITTER_CONVERSATION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Twitter-Diskussionen erforderlich.</label>
+        <name>TWITTER_CONVERSATION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Diskussion ist bereits vorhanden</label>
+        <name>TWITTER_CONVERSATION_EXISTS</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Diskussion ist keine Antwort auf einen Tweet. An Benutzer gerichtete Antworten können nicht durchsucht werden.</label>
+        <name>TWITTER_CONVERSATION_NOT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Twitter-Diskussionen erforderlich.</label>
+        <name>TWITTER_CONVERSATION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussion nicht gefunden. ID</label>
+        <name>TWITTER_CONV_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussion nicht gefunden</label>
+        <name>TWITTER_CONV_NOT_FOUND_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellt am</label>
+        <name>TWITTER_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>wurde für diese Twitter-Diskussion erstellt.</label>
+        <name>TWITTER_CREATED_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>wurde erstellt für</label>
+        <name>TWITTER_CREATED_FOR</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt erstellen</label>
+        <name>TWITTER_CREATE_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Lead erstellen</label>
+        <name>TWITTER_CREATE_LEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Suchvorgänge erstellen</label>
+        <name>TWITTER_CREATE_SEARCHES</name>
+    </customLabels>
+    <customLabels>
+        <label>Dashboard und Analysefunktionen</label>
+        <name>TWITTER_DASHBOARD</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorierte Diskussionen werden gelöscht</label>
+        <name>TWITTER_DELETED_RECORDS</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorierte Diskussionen löschen</label>
+        <name>TWITTER_DELETE_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorierte Diskussionen wurden erfolgreich gelöscht.</label>
+        <name>TWITTER_DELETE_IGNORED_SUCCESSFULLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorierte Diskussionen werden gelöscht</label>
+        <name>TWITTER_DELETING_IGNORED_CONVERSATIONS</name>
+    </customLabels>
+    <customLabels>
+        <label>Direktnachricht</label>
+        <name>TWITTER_DIRECTMESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Fehler</label>
+        <name>TWITTER_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Beim Verbindungsaufbau mit Twitter ist ein Fehler aufgetreten. Versuchen Sie es erneut.</label>
+        <name>TWITTER_ERROR_CONNECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Benutzer kann nicht gefolgt werden: Sie können sich nicht selbst folgen!</label>
+        <name>TWITTER_ERROR_FOLLOW_YOURSELF</name>
+    </customLabels>
+    <customLabels>
+        <label>Ungültige Konversations-ID</label>
+        <name>TWITTER_ERROR_INVALID_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Problembehebungsprotokoll</label>
+        <name>TWITTER_ERROR_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es erneut.</label>
+        <name>TWITTER_ERROR_OCCURRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Fehlercode: {1}.  Twitter-Fehlermeldung: {0}.</label>
+        <name>TWITTER_ERROR_OCCURRED_ON_ACTION</name>
+    </customLabels>
+    <customLabels>
+        <label>CaseComment ohne übergeordnetes Element</label>
+        <name>TWITTER_EXCEPTION_CASECOMMENT_WO_PARENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Es wurde ein Kundenvorgang ohne Kontakt für diesen Benutzernamen erstellt</label>
+        <name>TWITTER_EXCEPTION_CASE_WO_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenvorgang weist keine Diskussionen auf</label>
+        <name>TWITTER_EXCEPTION_CASE_WO_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussion darf nicht null sein</label>
+        <name>TWITTER_EXCEPTION_CONVERSATION_CANNOT_BE_NULL</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussion weist bereits einen Kundenvorgang auf</label>
+        <name>TWITTER_EXCEPTION_CONVERSATION_HAS_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-ID nicht angegeben</label>
+        <name>TWITTER_EXCEPTION_ID_NOT_SPECIFIED</name>
+    </customLabels>
+    <customLabels>
+        <label>Externe Suche nach Accounts abgeschlossen. Account-ID:</label>
+        <name>TWITTER_EXTERNAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Externe Suche nach Schlüsselwörtern abgeschlossen. Such-ID:</label>
+        <name>TWITTER_EXTERNAL_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können auf die folgenden Felder nicht zugreifen: {0} Bitte wenden Sie sich an Ihren Salesforce-Administrator.</label>
+        <name>TWITTER_FIELD_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können die folgenden Felder nicht festlegen: {0} Bitte wenden Sie sich an Ihren Salesforce-Administrator.</label>
+        <name>TWITTER_FIELD_NOT_CREATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können die folgenden Felder nicht aktualisieren: {0} Bitte wenden Sie sich an Ihren Salesforce-Administrator.</label>
+        <name>TWITTER_FIELD_NOT_UPDATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie folgen clientContact ({0}) bereits auf Twitter.</label>
+        <name>TWITTER_FOLLOWS</name>
+    </customLabels>
+    <customLabels>
+        <label>auf Twitter. (Verfolgen wiederhergestellt.)</label>
+        <name>TWITTER_FOLLOW_RESTORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Beim Abrufen der Informationen für folgenden Twitter-Benutzernamen ist ein Fehler aufgetreten:</label>
+        <name>TWITTER_GET_AUTHOR_INFO_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussionen abrufen</label>
+        <name>TWITTER_GET_TWEETS</name>
+    </customLabels>
+    <customLabels>
+        <label>Link</label>
+        <name>TWITTER_GET_USERNAME_LINK</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter: Benutzernamen abrufen</label>
+        <name>TWITTER_GET_USERNAME_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Es gab keine zu löschenden ignorierten Diskussionen.</label>
+        <name>TWITTER_IGNORED_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>InboundDM:</label>
+        <name>TWITTER_INBOUND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingehender Tweet</label>
+        <name>TWITTER_INBOUND_TWEET</name>
+    </customLabels>
+    <customLabels>
+        <label>Fehler: Die angegebene ID ist falsch.</label>
+        <name>TWITTER_INCORRECT_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Nachricht einfügen</label>
+        <name>TWITTER_INSERT_MSG</name>
+    </customLabels>
+    <customLabels>
+        <label>Nicht ausreichende Berechtigungen</label>
+        <name>TWITTER_INSUFFICIENT_PRIVILEGES</name>
+    </customLabels>
+    <customLabels>
+        <label>Interner Fehler: Bitte versuchen Sie es erneut.</label>
+        <name>TWITTER_INTERNAL_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Lead</label>
+        <name>TWITTER_LEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie sind nicht berechtigt, auf diesen Lead zuzugreifen.</label>
+        <name>TWITTER_LEAD_ACCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>Ein vorhandener Lead wurde zugewiesen</label>
+        <name>TWITTER_LEAD_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Leads erforderlich.</label>
+        <name>TWITTER_LEAD_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellter Lead</label>
+        <name>TWITTER_LEAD_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Leads erforderlich.</label>
+        <name>TWITTER_LEAD_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Diskussion wurde bereits ein Lead zugewiesen.</label>
+        <name>TWITTER_LEAD_EXIST</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diesen Twitter-Benutzernamen wurde kein Kontakt erstellt, ihm wurde bereits einen Lead zugewiesen.</label>
+        <name>TWITTER_LEAD_EXISTED</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diesen Twitter-Benutzernamen wurde kein Lead erstellt; er weist bereits einen Kontakt auf.</label>
+        <name>TWITTER_LEAD_HAS_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Leads erforderlich.</label>
+        <name>TWITTER_LEAD_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Warnung: Lead bereits vorhanden.</label>
+        <name>TWITTER_LEAD_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Zur Verwendung der Protokollfunktion muss folgender Ordner in Ihrer Organisation vorhanden sein: {0}</label>
+        <name>TWITTER_LOGGER_MISSING_FOLDER_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Manuelle Suche nach Account abgeschlossen. Account-ID:</label>
+        <name>TWITTER_MANUAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Manuelle Suche nach Suchbegriff abgeschlossen. Such-ID:</label>
+        <name>TWITTER_MANUAL_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktivieren Sie mindestens ein Kontrollkästchen und klicken Sie auf „Änderungen speichern“.</label>
+        <name>TWITTER_MARK_AT_LEAST_ONE</name>
+    </customLabels>
+    <customLabels>
+        <label>Geben Sie maximal 140 Zeichen ein.</label>
+        <name>TWITTER_MAXIMUM_SIZE</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Nachricht wurde gesendet.</label>
+        <name>TWITTER_MESSAGE_SENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Geben Sie mindestens 1 Zeichen ein.</label>
+        <name>TWITTER_MINIMUM_SIZE</name>
+    </customLabels>
+    <customLabels>
+        <label>Neuer Twitter-Account</label>
+        <name>TWITTER_NEW_TWITTER_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Twitter-Suche</label>
+        <name>TWITTER_NEW_TWITTER_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können keine Direktnachrichten an Benutzer senden, die keine Anhänger von Ihnen sind.</label>
+        <name>TWITTER_NOT_FOLLOWING</name>
+    </customLabels>
+    <customLabels>
+        <label>Nicht gefunden</label>
+        <name>TWITTER_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Für folgende ID wurde kein Kontakt oder Lead gefunden: {0}</label>
+        <name>TWITTER_NO_CONTACT_LEAD_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Für folgende Status-ID wurde keine Diskussion gefunden: {0}</label>
+        <name>TWITTER_NO_CONVERSATION_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diese Ausführungsumgebung verbleiben keine Callouts.</label>
+        <name>TWITTER_NO_MORE_CALLOUTS_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Warnung: Die Suche war zwar erfolgreich, es sind aber keine Callouts mehr verfügbar, um alle Seiten abzurufen.</label>
+        <name>TWITTER_NO_MORE_CALLOUTS_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Account, den Sie bei Twitter validiert haben, stimmt nicht mit dem Account überein, den Sie bei Salesforce ausgewählt haben.</label>
+        <name>TWITTER_OAUTH_DIFF_USERNAMES</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können auf die folgenden Objekte nicht zugreifen: {0}. Bitte wenden Sie sich an Ihren Salesforce-Administrator.</label>
+        <name>TWITTER_OBJECT_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können die folgenden Objekte nicht festlegen: {0}. Bitte wenden Sie sich an Ihren Salesforce-Administrator.</label>
+        <name>TWITTER_OBJECT_NOT_CREATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können die folgenden Objekte nicht löschen: {0}. Bitte wenden Sie sich an Ihren Salesforce-Administrator.</label>
+        <name>TWITTER_OBJECT_NOT_DELETABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können die folgenden Objekte nicht aktualisieren: {0}. Bitte wenden Sie sich an Ihren Salesforce-Administrator.</label>
+        <name>TWITTER_OBJECT_NOT_UPDATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Fehler: Zu viele Accounts.  Es können nur 10 Accounts einem Kontakt/Lead folgen.</label>
+        <name>TWITTER_ONLY10_ACCOUNTS</name>
+    </customLabels>
+    <customLabels>
+        <label>auf Twitter.</label>
+        <name>TWITTER_ON_TWITTER</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausgehende Direktnachricht</label>
+        <name>TWITTER_OUTBOUND_DIRECTMESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>OutboundDM:</label>
+        <name>TWITTER_OUTBOUND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausgehende Antwort</label>
+        <name>TWITTER_OUTBOUND_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Personenaccount für diese Diskussion kann nicht erstellt werden. Ihr wurde bereits ein Kontakt zugewiesen.</label>
+        <name>TWITTER_PACCOUNT_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ersetzt. Siehe Hilfetext</label>
+        <name>TWITTER_PASSWORDS_DEPRECATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Mein Feed</label>
+        <name>TWITTER_POST_TO_MY_FEED</name>
+    </customLabels>
+    <customLabels>
+        <label>Tweet veröffentlichen</label>
+        <name>TWITTER_POST_TWEET</name>
+    </customLabels>
+    <customLabels>
+        <label>Ressourcen</label>
+        <name>TWITTER_QUICK_LINKS</name>
+    </customLabels>
+    <customLabels>
+        <label>Aus Liste der Anhänger entfernt.</label>
+        <name>TWITTER_REMOVED_FOLLOWERS</name>
+    </customLabels>
+    <customLabels>
+        <label>@-Antwort</label>
+        <name>TWITTER_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Anfrage an Twitter fehlgeschlagen.</label>
+        <name>TWITTER_REQUEST_CONNECTION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie müssen entweder einen Twitter-Account oder eine Facebook-Fanseite autorisieren, bevor Sie Nachrichten senden können.</label>
+        <name>TWITTER_REQUIRED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Zum Senden von Nachrichten ist ein Twitter-Benutzername erforderlich.</label>
+        <name>TWITTER_REQUIRED_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Ergebnis</label>
+        <name>TWITTER_RESULT</name>
+    </customLabels>
+    <customLabels>
+        <label>Zurück zur vorherigen Seite</label>
+        <name>TWITTER_RETURN</name>
+    </customLabels>
+    <customLabels>
+        <label>Geplante Suche nach Account abgeschlossen. Account-ID:</label>
+        <name>TWITTER_SCHEDULED_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Geplante Suche nach Suchbegriff abgeschlossen. Such-ID:</label>
+        <name>TWITTER_SCHEDULED_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktivieren</label>
+        <name>TWITTER_SCHEDULER_PAGE_ACTIVATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Letzte Ausführung</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_LAST_TIME_RUN</name>
+    </customLabels>
+    <customLabels>
+        <label>Name</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Verbrauchte Anforderungen</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_REQUESTS_USED</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktueller Benutzer</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_SEARCH_TERM</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeitintervall</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_TIME_INTERVAL</name>
+    </customLabels>
+    <customLabels>
+        <label>Deaktivieren</label>
+        <name>TWITTER_SCHEDULER_PAGE_DEACTIVATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Geplante Suchvorgänge</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche nach Twitter-Accounts</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorierte Diskussionen löschen</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_IGNORE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Stichwortsuchen</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Ihnen steht eine beschränkte Anzahl geplanter Anfragen zur Verfügung. Salesforce Social verwendet derzeit {0} Anfragen</label>
+        <name>TWITTER_SCHEDULER_USED_TASKS</name>
+    </customLabels>
+    <customLabels>
+        <label>Suchvorgänge planen</label>
+        <name>TWITTER_SCHEDULE_SEARCHES</name>
+    </customLabels>
+    <customLabels>
+        <label>für diesen Twitter-Benutzernamen</label>
+        <name>TWITTER_SCREENNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Lead für diesen Twitter-Benutzernamen</label>
+        <name>TWITTER_SCREENNAME_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>Bei dieser Suche ist ein Fehler aufgetreten: {0}</label>
+        <name>TWITTER_SEARCH_CONNECTION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung des Suchvorgangs wurde NICHT durchgeführt. Es ist ein Fehler aufgetreten:</label>
+        <name>TWITTER_SEARCH_NOT_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung des Suchvorgangs wurde NICHT rückgängig gemacht.  Es ist ein Fehler aufgetreten:</label>
+        <name>TWITTER_SEARCH_NOT_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Suchoperatoren</label>
+        <name>TWITTER_SEARCH_OPERATORS</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung des Suchvorgangs wurde durchgeführt:</label>
+        <name>TWITTER_SEARCH_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung des Suchvorgangs wurde rückgängig gemacht:</label>
+        <name>TWITTER_SEARCH_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>--Auswählen--</label>
+        <name>TWITTER_SELECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie mindestens einen Datensatz aus.</label>
+        <name>TWITTER_SELECT_A_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie maximal {0} Datensätze aus.</label>
+        <name>TWITTER_SELECT_LESS_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie nur einen Datensatz aus.</label>
+        <name>TWITTER_SELECT_ONLY_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>Direktnachricht gesendet an</label>
+        <name>TWITTER_SEND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Accounts verwalten</label>
+        <name>TWITTER_SETUP_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Leitfaden zum Einrichten durchgehen</label>
+        <name>TWITTER_SETUP_GUIDE</name>
+    </customLabels>
+    <customLabels>
+        <label>Die URL, die Sie kürzen wollten, war unzulässig. Bitte versuchen Sie es erneut.</label>
+        <name>TWITTER_SHORTEN_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Lösungen erforderlich.</label>
+        <name>TWITTER_SOLUTION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellte Lösung</label>
+        <name>TWITTER_SOLUTION_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Lösungen erforderlich.</label>
+        <name>TWITTER_SOLUTION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Lösungen erforderlich.</label>
+        <name>TWITTER_SOLUTION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erste Schritte</label>
+        <name>TWITTER_START_NOW</name>
+    </customLabels>
+    <customLabels>
+        <label>&lt;p&gt;
+					&lt;strong&gt;Twitter wird von Millionen von Menschen benutzt, um Meinungen auszutauschen, Fragen zu stellen und Informationen einzuholen. 
+					Finden Sie heraus, worüber die Menschen in diesem Moment sprechen...&lt;/strong&gt;
+					&lt;/p&gt;
+					&lt;ul&gt;
+						&lt;li&gt;&lt;strong&gt;Wie denken die Kunden über Ihr Geschäft?&lt;/strong&gt; Eher positiv oder negativ? &lt;/li&gt;
+						&lt;li&gt;&lt;strong&gt;Suchen die Benutzer die Dienstleistungen, die Ihre Firma anbietet?&lt;/strong&gt; Verwenden Sie Salesforce for Twitter, um Leads zu erstellen. &lt;/li&gt;
+						&lt;li&gt;&lt;strong&gt;Benötigen sie Hilfe?&lt;/strong&gt; Erstellen Sie einen Kundenvorgang mithilfe Ihres Tweet, damit Ihr Support Ihnen schneller weiterhelfen kann.&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;p&gt;
+					&lt;strong&gt;Möchten Sie mehr über Twitter erfahren?&lt;/strong&gt;&lt;br/&gt;
+					Gehen Sie einfach auf &lt;a href=&quot;http://business.twitter.com&quot; target=&quot;_blank&quot;&gt;Twitter for business&lt;/a&gt;
+					&lt;/p&gt;</label>
+        <name>TWITTER_START_PAGE_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce for Social Media</label>
+        <name>TWITTER_START_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Leistungsstatus</label>
+        <name>TWITTER_STATUS</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie sind zum Anzeigen des vorherigen Status nicht berechtigt.</label>
+        <name>TWITTER_STATUSES_NOT_AUTHORIZED</name>
+    </customLabels>
+    <customLabels>
+        <label>Umgesetzt</label>
+        <name>TWITTER_STATUS_ACTIONED</name>
+    </customLabels>
+    <customLabels>
+        <label>Status erfolgreich geändert</label>
+        <name>TWITTER_STATUS_CHANGED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Status dieser Diskussion wurde in „Ignoriert“ geändert</label>
+        <name>TWITTER_STATUS_CHANGED_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Status dieser Diskussion wurde in „Von Community gelöst“ geändert</label>
+        <name>TWITTER_STATUS_CHANGED_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignoriert</label>
+        <name>TWITTER_STATUS_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Neu</label>
+        <name>TWITTER_STATUS_NEW</name>
+    </customLabels>
+    <customLabels>
+        <label>Diese Diskussion ist bereits als „Von Community gelöst“ markiert.</label>
+        <name>TWITTER_STATUS_NOT_CHANGED_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Als überprüft markiert</label>
+        <name>TWITTER_STATUS_REVIEWED</name>
+    </customLabels>
+    <customLabels>
+        <label>Von Community gelöst</label>
+        <name>TWITTER_STATUS_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Status erfolgreich aktualisiert</label>
+        <name>TWITTER_STATUS_UPDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschvorgang anhalten</label>
+        <name>TWITTER_STOP_DELETING</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche anhalten</label>
+        <name>TWITTER_STOP_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>Erfolg</label>
+        <name>TWITTER_SUCCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>Ziel-Account ist derzeit ausgesetzt</label>
+        <name>TWITTER_TARGETACCOUNT_SUSPENDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Kampagnenmitglied</label>
+        <name>TWITTER_TARGET_CAMPAIGNMEMBER</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenvorgang</label>
+        <name>TWITTER_TARGET_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenvorgangskommentar</label>
+        <name>TWITTER_TARGET_CASECOMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt</label>
+        <name>TWITTER_TARGET_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Diskussion</label>
+        <name>TWITTER_TARGET_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Lösung</label>
+        <name>TWITTER_TARGET_SOLUTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Account</label>
+        <name>TWITTER_TARGET_TWITTERACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Abgeschlossen</label>
+        <name>TWITTER_TASK_COMPLETED</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Aufgaben erforderlich.</label>
+        <name>TWITTER_TASK_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Aufgaben erforderlich.</label>
+        <name>TWITTER_TASK_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Kommentar senden an</label>
+        <name>TWITTER_TASK_FCBK_COMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung der Aufgabe wurde NICHT durchgeführt. Es ist ein Fehler aufgetreten:</label>
+        <name>TWITTER_TASK_NOT_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung der Aufgabe wurde NICHT rückgängig gemacht. Es ist ein Fehler aufgetreten:</label>
+        <name>TWITTER_TASK_NOT_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung der Aufgabe wurde durchgeführt:</label>
+        <name>TWITTER_TASK_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Direktnachricht gesendet an</label>
+        <name>TWITTER_TASK_SUBJECT_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>@-Antwort-Tweet gesendet an</label>
+        <name>TWITTER_TASK_SUBJECT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Planung der Aufgabe wurde rückgängig gemacht:</label>
+        <name>TWITTER_TASK_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Aufgaben erforderlich.</label>
+        <name>TWITTER_TASK_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter</label>
+        <name>TWITTER_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Text wird entweder als öffentlich zugängliche @-Antwort oder als private Direktnachricht gesendet. Die Nachricht kann vor dem Senden ggf. bearbeitet werden.</label>
+        <name>TWITTER_TEXT_SENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Twitter-Accounts erforderlich.</label>
+        <name>TWITTER_TWITACCOUNT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Twitter-Accounts erforderlich.</label>
+        <name>TWITTER_TWITACCOUNT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Twitter-Accounts erforderlich.</label>
+        <name>TWITTER_TWITACCOUNT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellberechtigung für Twitter-Suchvorgänge erforderlich.</label>
+        <name>TWITTER_TWITSEARCH_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Löschberechtigung für Twitter-Suchvorgänge erforderlich.</label>
+        <name>TWITTER_TWITSEARCH_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierungsberechtigung für Twitter-Suchvorgänge erforderlich.</label>
+        <name>TWITTER_TWITSEARCH_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Direktnachricht</label>
+        <name>TWITTER_TYPE_DIRECT_MESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Registrierter Account</label>
+        <name>TWITTER_TYPE_REGISTERED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>@-Antworten</label>
+        <name>TWITTER_TYPE_REPLIES</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche</label>
+        <name>TWITTER_TYPE_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>Unbekannt</label>
+        <name>TWITTER_UNKNOWN</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Benutzername</label>
+        <name>TWITTER_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können diesem Benutzer nicht folgen, da ihm kein Kontakt oder Lead zugeordnet ist.</label>
+        <name>TWITTER_USERNAME_NOT_CONTACTLEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Twitter-Account muss einen zulässigen bit.ly-Benutzernamen und API-Schlüssel aufweisen.</label>
+        <name>TWITTER_VALID_BITLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte geben Sie eine gültige URL ein.</label>
+        <name>TWITTER_VALID_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Warnung</label>
+        <name>TWITTER_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Was ist los?</label>
+        <name>TWITTER_WHAT_IS_HAPPENING</name>
+    </customLabels>
+    <customLabels>
+        <label>mit</label>
+        <name>TWITTER_WITH_A</name>
+    </customLabels>
+    <customLabels>
+        <label>mit Twitter-Benutzernamen</label>
+        <name>TWITTER_WITH_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Titel</label>
+        <name>Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Namensergebnisse für:</label>
+        <name>Title_Search_Username</name>
+    </customLabels>
+    <customLabels>
+        <label>Ergebnisse insgesamt</label>
+        <name>Total_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>20</label>
+        <name>Twitter_Account_PageSize</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Accounts</label>
+        <name>Twitter_Accounts</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-Accounts, die verfolgen</label>
+        <name>Twitter_Accounts_following</name>
+    </customLabels>
+    <customLabels>
+        <label>Ihre Nachricht wird als Kundenvorgangskommentar an diesen Kundenvorgang angehängt.</label>
+        <name>Twitter_Case_Solution</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Twitter_Error_Returned --></label>
+        <name>Twitter_Error_Returned</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-ID</label>
+        <name>Twitter_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Typ</label>
+        <name>Type</name>
+    </customLabels>
+    <customLabels>
+        <label>Verbindung mit Facebook nicht möglich; Informationen zur Authentifizierung erforderlich Wenn Sie Änderungen an Ihrer Facebook-Benutzer- oder Fanseite vorgenommen haben, müssen Sie diese in Salesforce erneut autorisieren.</label>
+        <name>UNABLE_CONNECT_FACEBOOK</name>
+    </customLabels>
+    <customLabels>
+        <label>Angeforderte Protokolldatei konnte nicht geladen werden.</label>
+        <name>UNABLE_TO_LOAD_LOG_FILE</name>
+    </customLabels>
+    <customLabels>
+        <label>Es können nicht alle Kommentare zu diesem Beitrag wiederhergestellt werden</label>
+        <name>UNABLE_TO_RETRIEVE_ALL_COMMENTS</name>
+    </customLabels>
+    <customLabels>
+        <label>Kommentar konnte nicht an dieses Objekt gesendet werden</label>
+        <name>UNABLE_TO_SEND_COMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Person Accounts sind in Ihrem Unternehmen nicht aktiviert</label>
+        <name>UNKNOWN_TWITTER_USERNAMES_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Wenn Sie die Verfolgung eines Benutzers einstellen möchten, heben Sie die Auswahl der jeweiligen Accounts auf und klicken dann auf „Änderungen speichern“.</label>
+        <name>Unfollow_user_deselect</name>
+    </customLabels>
+    <customLabels>
+        <label>Gefällt mir nicht mehr</label>
+        <name>Unlike</name>
+    </customLabels>
+    <customLabels>
+        <label>Benutzername</label>
+        <name>Username</name>
+    </customLabels>
+    <customLabels>
+        <label>Benutzername muss eindeutig sein.</label>
+        <name>Username_unique</name>
+    </customLabels>
+    <customLabels>
+        <label>Validiert</label>
+        <name>Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie müssen mindestens einen validierten Twitter-Account in Ihrer Salesforce.com-Organisation besitzen, um diese Funktion verwenden zu können.</label>
+        <name>Validated_Twitter_Account</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können Antworten nur an Twitter-Kontakte, Leads oder Personenaccounts senden</label>
+        <name>YOU_CAN_ONLY_REPLY_TO_CNCT_LEAD_PA</name>
+    </customLabels>
+    <customLabels>
+        <label>Das gefällt Ihnen und 1 weiteren Person</label>
+        <name>You_And_1_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>Das gefällt Ihnen und {0} weiteren Personen</label>
+        <name>You_And_Others_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>Das gefällt Ihnen</label>
+        <name>You_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>Stunden</label>
+        <name>hours</name>
+    </customLabels>
+    <customLabels>
+        <label>Minuten</label>
+        <name>minutes</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Mitglieder.</label>
+        <name>new_Members</name>
+    </customLabels>
+    <customLabels>
+        <label>von</label>
+        <name>of_10</name>
+    </customLabels>
+    <customLabels>
+        <label>auf Twitter.</label>
+        <name>on_Twitter</name>
+    </customLabels>
+    <customLabels>
+        <label>übrig</label>
+        <name>remaining</name>
+    </customLabels>
+    <customPageWebLinks>
+        <label>Weitere Tweets abrufen</label>
+        <name>Get_More_Tweets</name>
+    </customPageWebLinks>
+    <customTabs>
+        <label>Social Publisher</label>
+        <name>Salesforce_for_Twitter</name>
+    </customTabs>
+    <customTabs>
+        <label>Social Agent</label>
+        <name>Social_Agent</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Social Setup --></label>
+        <name>Social_Setup</name>
+    </customTabs>
+    <reportTypes>
+        <description>Kontakte mit Twitter-Benutzernamen und Twitter-Diskussionen</description>
+        <label>Kontakte mit Twitter-Benutzernamen</label>
+        <name>Contacts_with_Twitter_username</name>
+        <sections>
+            <label>Kontakte</label>
+            <name>Contacts</name>
+        </sections>
+        <sections>
+            <label>Twitter-Diskussionen</label>
+            <name>Twitter Conversations</name>
+        </sections>
+    </reportTypes>
+</Translations>

@@ -1,0 +1,118 @@
+<apex:page controller="echosign_dev1.EchoSignAdminController" title="EchoSign Admin Settings" sidebar="false" showHeader="false">
+	<script>
+       	function buildSecurityPopup() {
+       		var secbox = sfdcPage.getDialogById("EchoSignSecurityPopup");
+        	                
+        	if( secbox == null ) {
+               secbox = new parent.SimpleDialog("EchoSignSecurityPopup", true); 
+               secbox.cancel=function() { secbox.hide(); };
+               parent.secbox = secbox; 
+               sfdcPage.dialogs[parent.secbox.id] = parent.secbox;
+               secbox.displayX=false;                   
+               secbox.createDialog();        
+               secbox.setWidth("435px");                       
+         	}
+         	
+         	var frameUrl = '{!$Page.ApiKeyInput}';
+         	var srcFrame = '<iframe height="480px" width="400px" frameborder="no" id="popup" style="border:0;" src="'+frameUrl+'"></iframe>';
+           	secbox.setContentInnerHTML(srcFrame);
+            secbox.show();
+       } 
+	</script>
+	
+	<apex:form id="admin-form">
+		<apex:pagemessages id="theMessages"/>
+
+        <table id="splash" cellspacing="0">
+        	<tr>
+        		<td>
+        			<p>
+        			<apex:image id="theImage" value="{!$Resource.echosign_dev1__EchoSignAdminTabIcon}" />
+        			<font size="5">EchoSign Admin</font>
+        			<br/>
+        			</p>
+        		</td>
+        	</tr>
+      		<tr>
+        		<td id="splashLeft">
+        			<apex:pageBlock title="Configuring EchoSign for Salesforce" id="configure-sfdc">
+        				<apex:outputpanel >
+        				    <h4>Step 1: <a style="color: blue;" href="/05G/e?IpEndAddress=72.3.215.121&IpStartAddress=72.3.215.114" target="_parent">Set Up EchoSign Network Access</a></h4>	
+        					<p>
+        						To allow automatic status updates for your EchoSign agreements, you are also required to add the EchoSign server IP range (72.3.215.114 - 72.3.215.121) to your Security Controls / Network Access.
+        					</p>
+        					<br/>
+        					<h4>Step 2: <a style="color: blue;" href="{!baseServerUrl}/salesforce-web/salesforceCredentials?session={!$Api.Session_ID}&server={!$Api.Partner_Server_URL_70}" target="_self">Enable Automatic Status Refresh</a></h4>
+        					<p>
+        						Make sure you set up automatic status refresh which enables EchoSign to update the status of your agreements immediately after they are viewed or signed.  
+        						You will need to provide the username and password for an account in your Salesforce organization.
+        					</p>
+        					<br/>
+        					<h4>Step 3:&nbsp;<apex:commandlink style="color: blue;" value="Configure EchoSign API Key" onclick="buildSecurityPopup();" rerender="apiKeyInputPanel"/></h4>	
+        					<p>
+        						This step is required if you want to take full advantage of the EchoSign for Salesforce features for hosted signing, data mappings, or merge mappings.  
+        						You can find your EchoSign API key in your <a style="color: blue;" href="{!baseServerUrl}/salesforce-web/page/account/echosignApi?session={!$Api.Session_ID}&server={!$Api.Partner_Server_URL_70}" target="_self">EchoSign account management console</a> in the section called ‘EchoSign API’.
+        					</p>
+        					<br/>
+        					<h4>Step 4: You're Done!</h4>
+        					<p>
+        						That's it! You are ready to start sending agreements out for signature. <a style="color: blue;" href="{!URLFOR($Action.SIGN_Agreement__c.New)}}" target="_parent">Try sending an agreement now</a>.
+        						Sign up for a <a style="color: blue;" href="http://www.echosign.com/public/webinar.jsp" target="_blank">webinar</a> to get an overview of EchoSign. If you need help or would like to find out more about EchoSign for Salesforce, please reference the <a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaD6GOC16xiwzBTpN0yY4Bbwbei1Qk=" target="pdf">installation and configuration guide</a>. 
+        						Visit the <a href="http://www.echosign.com/public/static/support.jsp" target="_blank">EchoSign Support</a> portal if you have additional questions.
+        					</p>
+        				</apex:outputpanel>
+					</apex:pageBlock>
+        		</td>
+        	</tr>
+        	<tr>
+        	   	<td id="splashRight">
+        			<apex:pageBlock title="Enable Advanced EchoSign Features" id="advanced-settings">
+        				<b>The following configurations are optional:</b>
+        				<ol>
+          					<li><a style="color: blue;" href="/setup/ui/listCustomSettings.apexp" target="_parent">Custom Settings</a>: Select the fields and options you want to enable or disable for your agreements at the Organization, Profile, or User level. 
+          					Additionally, there are other advanced settings to customize your setup of EchoSign for Salesforce.</li>
+          					<li><a style="color: blue;" href="/0DM/e" target="_parent">Hosted Signing</a>: Get agreements signed in person. First, you will need to set up an <a style="color: blue;" href="/0DM/e" target="_parent">EchoSign Callback Site</a> and copy the value of the Secure Web Address.  
+          					Then in the <a style="color: blue;" href="/setup/ui/listCustomSettings.apexp" target="_parent">EchoSign custom settings</a>, make sure to paste that value into the field ‘Callback URL EchoSign to Salesforce Site’ and also check the option ‘Enable Hosted Signing Field’. 
+          					Follow setup instructions in the <a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaD6GOC16xiwzBTpN0yY4Bbwbei1Qk=" target="pdf">configuration guide</a>.</li>
+          					<li><a style="color: blue;" href="{!URLFOR($Action.SIGN_Merge_Mapping__c.New)}}" target="_parent">Merge Mappings</a>: Merge data from Salesforce.com into your EchoSign agreements before sending for signature.</li>
+          					<li><a style="color: blue;" href="{!URLFOR($Action.SIGN_Data_Mapping__c.New)}}" target="_parent">Data Mappings</a>: Push data from your signed EchoSign agreements back to Salesforce.com.</li>
+          					<li><a style="color: blue;" href="{!URLFOR($Action.Agreement_Template__c.New)}}" target="_parent">Agreement Templates</a>: Create templates to pre-define default values and selections for your agreements. 
+          					Link an agreement template to a ‘Send to EchoSign’ button from a Salesforce object (e.g. Opportunity).  
+          					Follow setup instructions in the <a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaD6GOC16xiwzBTpN0yY4Bbwbei1Qk=" target="pdf">configuration guide</a>.</li>
+          				</ol>
+        			</apex:pageBlock>
+        		</td>
+        	</tr>        	
+        	<tr>
+        	   	<td id="splashRight">
+        			<apex:pageBlock title="Additional EchoSign Account Settings" id="account-settings">
+        				<h4><a style="color: blue;" href="{!baseServerUrl}/salesforce-web/page/account/profile?session={!$Api.Session_ID}&server={!$Api.Partner_Server_URL_70}" target="_self">EchoSign Account Management Console</a></h4>	
+        				<p>
+        					Use the EchoSign account management console to view and edit your EchoSign signature preferences and other account settings, manage users and groups, control branding settings, and more.
+        				</p>
+        				<br/>
+        				<h4><a style="color: blue;" href="{!baseServerUrl}/salesforce-web/echosignCredentials?session={!$Api.Session_ID}&server={!$Api.Partner_Server_URL_70}" target="_self">Link your Salesforce Account with a Different EchoSign Account</a></h4>	
+        				<p>
+        					EchoSign automatically creates an EchoSign account for you if you don’t already have one.  
+        					You can change the EchoSign account your Salesforce user is linked to by providing the username and password of the EchoSign account you would like to link to.  
+        					Note that your EchoSign account login may be different than the username and password for your Salesforce account.
+        				</p>
+        			</apex:pageBlock>
+        		</td>
+        	</tr>
+        	<tr>
+        	   	<td id="splashRight">
+        			<apex:pageBlock title="Resources" id="resources-settings">
+        				<h4><a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaD6GOC16xiwzBTpN0yY4Bbwbei1Qk=" target="pdf">Echosign for Salesforce V12 Customization and Installation Guide</a></h4>	
+        				<br/>
+        				<br/>
+        				<h4><a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaDLMemO9O2IaXea35FM3U8mfaXff8=" target="pdf">Creating EchoSign Forms with Text Tags</a></h4>	
+        				<br/>
+        				<br/>
+        				<h4><a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaDZdA7NDbZvdNbe_ff4yvqeHlNwk4=" target="pdf">Creating EchoSign Smart Forms with Adobe Acrobat</a></h4>							
+        			</apex:pageBlock>
+        		</td>
+        	</tr>
+        </table>
+	</apex:form>
+</apex:page>

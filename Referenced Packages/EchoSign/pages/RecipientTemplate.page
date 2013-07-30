@@ -1,0 +1,57 @@
+<apex:page standardController="echosign_dev1__Recipient_Template__c" extensions="echosign_dev1.RecipientTemplateController" tabStyle="echosign_dev1__Agreement_Template__c">
+	<script>
+  		function confirmCancel() {
+      		var isCancel = confirm("Are you sure you wish to cancel?");
+      		if( isCancel ) {
+      			return true;
+  			}
+  			
+     		return false;
+  		}  
+  	</script>
+  
+  	<apex:sectionHeader title="Add Recipients" subtitle="{!sectionSubtitle}" />
+    
+    <apex:form >
+    	<apex:pagemessages id="theMessages"/>
+		<apex:pageBlock id="wizardPageBlock" title="{!blockTitle}">
+			<apex:pageBlockButtons >
+       			<apex:commandButton id="backButton" action="{!doBack}" value="Back" rerender="theMessages,stepTypeSection,stepValueSection,wizardPageBlock,saveButton,backButton,nextButton" rendered="{!isStepValue}" />
+       			<apex:commandButton id="nextButton" action="{!doNext}" value="Next" rerender="theMessages,stepTypeSection,stepValueSection,wizardPageBlock,saveButton,backButton,nextButton" rendered="{!isStepType}" />
+       			<apex:commandButton id="saveButton" action="{!doSave}" value="Save" rendered="{!isStepValue}" />
+        		<apex:commandButton action="{!cancel}" value="Cancel" onclick="return confirmCancel()" immediate="true"/>
+        	</apex:pageBlockButtons>
+        	<apex:outputPanel id="recipientTemplateTypeDescription" rendered="{!isStepType}">
+        		How would you like to set up the recipient in this agreement template?<br/>
+        		<br/>You can either select predefine the recipient now and save that into the agreement template or you can select a field from the master{!masterObjectName} object that will be used to look up the recipient when the agreement is generated.
+      			<br/><br/>
+      		</apex:outputPanel>
+      		<apex:outputPanel id="recipientTemplateConstantValueDescription" rendered="{! isStepValue && isTypeConstant && NOT(isRecipientTypeEmail) }">
+        		Specify the recipient by typing the name or searching by name.
+      			<br/><br/>
+      		</apex:outputPanel>
+      		<apex:outputPanel id="recipientTemplateConstantValueEmailDescription" rendered="{! isStepValue && isTypeConstant && isRecipientTypeEmail }">
+        		Specify the recipient by typing in the email address.
+      			<br/><br/>
+      		</apex:outputPanel>
+      		<apex:outputPanel id="recipientTemplateLookupValueDescription" rendered="{! isStepValue && isTypeLookup }">
+        		Select the source field from the master{!masterObjectName} object that will be used to look up the recipient when the agreement is generated.
+      			<br/><br/>
+      		</apex:outputPanel>
+        	<apex:pageBlockSection id="stepTypeSection" columns="1">
+      			<apex:inputField id="recipientTemplateType" value="{!recipientTemplate.echosign_dev1__Type__c}" required="true" rendered="{!isStepType}"/>
+      			<apex:inputField id="recipientTemplateRecipientType" value="{!recipientTemplate.echosign_dev1__Recipient_Type__c}" required="true" rendered="{!isStepType}"/>
+      		</apex:pageBlockSection>
+      		<apex:pageBlockSection id="stepValueSection" columns="1">
+      			<apex:inputField id="recipientTemplateConstantContactValue" value="{!recipientTemplate.echosign_dev1__Contact_Recipient__c}" rendered="{! isStepValue && isTypeConstant && isRecipientTypeContact }"/>
+      			<apex:inputField id="recipientTemplateConstantUserValue" value="{!recipientTemplate.echosign_dev1__User_Recipient__c}" rendered="{! isStepValue && isTypeConstant && isRecipientTypeUser }"/>
+      			<apex:inputField id="recipientTemplateConstantLeadValue" value="{!recipientTemplate.echosign_dev1__Lead_Recipient__c}" rendered="{! isStepValue && isTypeConstant && isRecipientTypeLead }"/>
+      			<apex:inputField id="recipientTemplateConstantEmailValue" value="{!recipientTemplate.echosign_dev1__Email_Recipient__c}" rendered="{! isStepValue && isTypeConstant && isRecipientTypeEmail }"/>
+      		    <apex:selectList id="recipientTemplateLookupValue" value="{!recipientTemplate.echosign_dev1__Recipient_Field__c}" size="1" rendered="{! isStepValue && isTypeLookup }"> 
+                	<apex:selectOptions value="{!masterFieldOptions}"/>    
+               	</apex:selectList>
+      		</apex:pageBlockSection>
+  		</apex:pageBlock>
+	</apex:form>
+
+</apex:page>

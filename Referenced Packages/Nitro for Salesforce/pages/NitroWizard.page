@@ -1,0 +1,282 @@
+<apex:page controller="nitro.NitroWizardController" tabStyle="Nitro__tab" title="Welcome to Nitro">
+   <apex:pageMessages id="pageMessages"/>
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro_reset.css" rel="stylesheet" type="text/css"></link>
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+   <script src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/jquery.1.6.1.bunchball.min.js"></script>
+   <script type="text/javascript" src="{!URLFOR($Resource.nitro_editions_resources, 'js/jquery.numeric.js')}"></script>
+   <script>
+   var nitro$ = bunchball_jQuery.noConflict();
+   var libVersion = '{!libVersion}';
+   </script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.libs.bunchball.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.util.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.shared.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.profile.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroJSConnector-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroCookies-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+   <apex:stylesheet value="{!URLFOR($Resource.nitro__nitro_editions_resources, 'css/nitro_editions.css')}"/>
+   <apex:form >
+      <div class="nitro nitro_sf nitro_sf_wizard">
+         <apex:include pageName="nitro__NitroNavbar"/>  
+         <div class="nitro_wizard">
+              <div class="wizard_welcome_header">
+                 <div class="wizard_intro_text">To begin, select your track</div>
+                 <div class="wizard_step_back">
+                    <input type="button" class="nitro_wizard_back" value="Back"/>
+                 </div>
+              </div>
+              <div class="wizard_step select_track">
+                 <div class="track_headers">
+                    <apex:repeat value="{!trackInfo}" var="track">
+                       <div class="fl track_header {!track.cssId}"></div>
+                    </apex:repeat>
+                    <br clear="all"/>
+                 </div>
+                 
+                 <div class="track_bodies">
+                    <apex:repeat value="{!trackInfo}" var="track">
+                       <div class="fl track_body {!track.cssId}">
+                          <div class="track_pad">
+                             <div class="track_color_block"></div>
+                             <div class="track_desc">
+                                 <div class="track_title">{!track.name}</div>
+                                 <div class="track_copy">
+                                    <div class="nitro_line"></div>
+                                    {!track.trackDesc} 
+                                 </div>
+                                 <div class="nitro_line btm"></div>
+                                 <div class="track_btn awesome_button">
+                                   <apex:outputText escape="false" rendered="{!ISBLANK(track.customAction)}">
+                                      <a class="select_{!track.cssId}">Select</a>
+                                   </apex:outputText>
+                                   <apex:outputText escape="false" rendered="{!NOT(ISBLANK(track.customAction))}">
+                                      <a class="custom_action" href="{!track.customAction}">Contact</a>
+                                   </apex:outputText>
+                                 </div>
+                             </div>
+                          </div>
+                       </div>
+                   </apex:repeat>
+                    <br clear="all"/>
+                 </div>
+              </div>
+              <div class="wizard_step select_roles none">
+                  <div class="track_header"></div>
+                  <div class="track_body">
+                     <div class="track_pad">
+                       <div class="track_color_block"></div>
+                       <div class="track_desc">
+                          <div class="track_title">What roles is this track available for?</div>
+                          <div class="track_copy">
+                            <div class="nitro_line"></div>
+                            
+                            <div class="nitro_roles">
+                              <div class="nitro_role_list">
+                                  <apex:selectList value="{!wizardInfo.nitro__role1__c}" size="1" >
+                                    <apex:selectOptions value="{!rolesList}" />
+                                  </apex:selectList>
+                               </div>
+                               
+                               <div class="nitro_role_list {!IF(ISBLANK(wizardInfo.nitro__role2__c), 'none', '')}">
+                                  <apex:selectList value="{!wizardInfo.nitro__role2__c}" size="1">
+                                    <apex:selectOptions value="{!rolesList}" />
+                                  </apex:selectList>
+                               </div>
+                               
+                               <div class="nitro_role_list {!IF(ISBLANK(wizardInfo.nitro__role3__c), 'none', '')}">
+                                  <apex:selectList value="{!wizardInfo.nitro__role3__c}" size="1" >
+                                    <apex:selectOptions value="{!rolesList}" />
+                                  </apex:selectList>
+                                </div>
+                                
+                                <input type="button" value="Add Another Role" id="add_role_btn" />
+                            </div>
+                          </div>
+                          <div class="track_btn awesome_button wizard_step_next">
+                              <a>Next &gt;</a>
+                          </div>
+                       </div>
+                     </div>
+                  </div>
+              </div>
+              <div class="wizard_step questions none">
+                 <apex:outputPanel id="overlay">
+                    <apex:outputPanel rendered="{!displayPopUp}">
+                       <div class="darkOverlay"></div>
+                    </apex:outputPanel>
+                 </apex:outputPanel>
+                 <apex:outputPanel id="popup">
+                    <apex:outputPanel styleClass="customPopup" layout="block" rendered="{!displayPopUp}">
+                         <div class="popupText">Congratulations! Your challenges have been created!</div> 
+                         <div class="popupText">To view the challenges, you must be logged in as a user with one of the roles selected in the wizard.*</div>
+                         <apex:commandButton value="OK" action="{!closePopup}" rerender="popup" styleClass="track_btn awesome_button"/>
+                         <div class="popupAdminText">*In order to view the challenges with your administrative login, you can change your role temporarily to the role the challenges were created for.</div>
+                    </apex:outputPanel>
+                 </apex:outputPanel>
+                  
+                 <apex:outputPanel id="wizardQuestions">
+                 
+                  <script type="text/javascript">
+                     // reset question count
+                     try {
+                         NE.questionCount = 0;
+                     } catch (e) {
+                         // ignore
+                     }
+                  </script>
+                    
+                    <apex:outputPanel rendered="{!adminSetup.nitroConfigIsValid && isValidTrack}">
+                       <apex:variable var="questionCount" value="{!trackQuestions.size}"/> 
+                       <script type="text/javascript">
+                           // set question count
+                           NE.questionCount = {!FLOOR(questionCount)};
+                       </script>
+                     
+                       <div class="track_header"></div>
+                        <div class="track_body">
+                           <div class="track_pad">
+                             <div class="track_color_block"></div>
+                             <div class="track_desc">
+                                <div class="track_title">Answer these {!FLOOR(questionCount)} questions and we'll get you up and running:</div>
+                                <div class="track_copy">
+                                  <div class="nitro_line"></div>
+                                  <div class="question_nav questions{!FLOOR(questionCount)}">
+                                     <apex:variable var="counter" value="{!0}"/>
+                                     <apex:repeat value="{!trackQuestions}" var="question">
+                                        <apex:variable var="counter" value="{!counter + 1}"/>
+                                        <apex:variable var="cssClass" value="{!IF(counter == 1, 'step_first', (IF(counter == questionCount, 'step_last', 'step_middle')))}" />
+                                        <div id="step{!FLOOR(counter)}" class="{!cssClass} {!IF(cssClass == 'step_first', 'step_active step_visited', '')}">{!FLOOR(counter)}</div>
+                                     </apex:repeat>
+                                  </div>
+                                  <br clear="all"/>
+                                  <div class="question_body">
+                                     <apex:variable var="qCounter" value="{!0}"/> <!-- question counter -->
+                                     <apex:variable var="aCounter" value="{!0}"/> <!-- answer counter -->
+                                     
+                                     <apex:inputHidden id="timePeriod" value="{!wizardInfo.nitro__timePeriod__c}" />
+                                     <apex:inputHidden id="answer1" value="{!wizardInfo.nitro__answer1__c}" />
+                                     <apex:inputHidden id="answer2" value="{!wizardInfo.nitro__answer2__c}" />
+                                     <apex:inputHidden id="answer3" value="{!wizardInfo.nitro__answer3__c}" />
+                                     <apex:inputHidden id="answer4" value="{!wizardInfo.nitro__answer4__c}" />
+                                     <apex:inputHidden id="answer5" value="{!wizardInfo.nitro__answer5__c}" />
+                                     <apex:inputHidden id="answer6" value="{!wizardInfo.nitro__answer6__c}" />
+                                     <apex:inputHidden id="answer7" value="{!wizardInfo.nitro__answer7__c}" />
+                                     <apex:inputHidden id="answer8" value="{!wizardInfo.nitro__answer8__c}" />
+                                     <apex:inputHidden id="answer9" value="{!wizardInfo.nitro__answer9__c}" />
+                                     <apex:inputHidden id="answer10" value="{!wizardInfo.nitro__answer10__c}" />
+                                     
+                                     <script type="text/javascript">
+                                        NE.fields['timePeriod'] = document.getElementById("{!$Component.timePeriod}");
+                                        NE.fields['answer1'] = document.getElementById("{!$Component.answer1}");
+                                        NE.fields['answer2'] = document.getElementById("{!$Component.answer2}");
+                                        NE.fields['answer3'] = document.getElementById("{!$Component.answer3}");
+                                        NE.fields['answer4'] = document.getElementById("{!$Component.answer4}");
+                                        NE.fields['answer5'] = document.getElementById("{!$Component.answer5}");
+                                        NE.fields['answer6'] = document.getElementById("{!$Component.answer6}");
+                                        NE.fields['answer7'] = document.getElementById("{!$Component.answer7}");
+                                        NE.fields['answer8'] = document.getElementById("{!$Component.answer8}");
+                                        NE.fields['answer9'] = document.getElementById("{!$Component.answer9}");
+                                        NE.fields['answer10'] = document.getElementById("{!$Component.answer10}");
+                                     </script>
+                                    
+                                     <apex:repeat value="{!trackQuestions}" var="question">
+                                        <apex:variable var="qCounter" value="{!qCounter + 1}"/>
+                                        <apex:variable var="aCounter" value="{!aCounter + 1}"/>
+                                        <apex:variable var="answerFieldName" value="answer{!FLOOR(aCounter)}__c" />
+                                        
+                                        <apex:variable var="firstQuestionIsTimePeriod" value="{!(qCounter == 1)}"/>
+                                        
+                                        <div id="question{!FLOOR(qCounter)}" class="question_text {!IF(qCounter == 1, '', 'none')} {!IF(qCounter == questionCount, 'question_last', '')}">
+                                           <apex:outputText rendered="{!firstQuestionIsTimePeriod}">
+                                             {!SUBSTITUTE(question, '[a1]', '')}&nbsp;
+                                             
+                                             <apex:selectList value="{!wizardInfo[answerFieldName]}" size="1" styleClass="answer{!FLOOR(aCounter)}">
+                                                <apex:selectOptions value="{!timePeriods}" />
+                                              </apex:selectList>
+                                           </apex:outputText>
+                                           
+                                           <apex:outputText rendered="{!NOT(firstQuestionIsTimePeriod)}">
+                                             <apex:variable var="answer1Pos" value="{!FIND('[a1]', question)}" />
+                                             <apex:variable var="textPart1" value="{!LEFT(question, answer1Pos - 1)}" />
+                                             <apex:variable var="part1Length" value="{!LEN(textPart1)}"/>
+                                             <apex:variable var="fullQuestionLength" value="{!LEN(question)}"/>
+                                             <apex:variable var="remainderLength" value="{!fullQuestionLength - part1Length - 4}"/>
+                                             <apex:variable var="textPart2" value="{!RIGHT(question, remainderLength)}" />
+                                             
+                                             <apex:variable var="answer2Pos" value="{!FIND('[a2]', textPart2)}" />
+                                             <apex:variable var="textPart2WithoutAnswer" value="{!LEFT(textPart2, answer2Pos - 1)}" />
+                                             <apex:variable var="hasSecondAnswer" value="{!(answer2Pos > 0)}" />                                          
+   
+                                             <apex:outputText value="{!textPart1}" escape="false" /> <apex:inputText value="{!wizardInfo[answerFieldName]}" styleClass="nitro_num answer{!FLOOR(aCounter)}" maxlength="100"/>  <apex:outputText value="{!textPart2}" rendered="{!hasSecondAnswer==false}" />
+                                             <apex:outputText rendered="{!hasSecondAnswer}">
+                                                <apex:variable var="aCounter" value="{!aCounter + 1}"/>
+                                                <apex:variable var="answerFieldName" value="answer{!FLOOR(aCounter)}__c" />
+                                                {!textPart2WithoutAnswer} <apex:inputText value="{!wizardInfo[answerFieldName]}" styleClass="nitro_num answer{!FLOOR(aCounter)}" maxlength="100"/> 
+                                             </apex:outputText>
+                                           </apex:outputText>
+                                        </div>
+                                     </apex:repeat>
+                                  </div>
+                                </div>
+                                <div class="track_btn awesome_button wizard_question_next">
+                                    <a>Next &gt;</a>
+                                </div>
+                                <div class="track_btn awesome_button wizard_question_finish none">
+                                    <a>Finish</a>
+                                </div>
+                             </div>
+                           </div>
+                        </div>
+                        <script type="text/javascript">
+                            // since the dom with the inputs was refreshed, need to reattach numeric validation to inputs
+                            NE.setupNumericAnswers();
+                            NE.setupPicklistAnswerValidation();
+                        </script>
+                     </apex:outputPanel>
+                  </apex:outputPanel>
+              </div>
+         </div>
+     </div>
+     
+      <apex:actionFunction name="selectTrack" action="{!setupNitro}" reRender="selectTrackResult,pageMessages" immediate="false">
+         <apex:param name="trackName" assignTo="{!wizardInfo.Track__c}" value="" />
+      </apex:actionFunction>
+      
+      <apex:actionFunction name="refreshQuestions" action="{!emptyAction}" reRender="wizardQuestions" immediate="true"/>
+      <apex:actionFunction name="finishWizard" action="{!finishWizard}" reRender="overlay,finishWizardResult,pageMessages,popup"/>
+      
+      <apex:outputPanel id="selectTrackResult">
+         <apex:outputPanel rendered="{!clickedSelectButton}">
+              <script type="text/javascript">
+                  NE.processSelectedTrack({!adminSetup.nitroConfigIsValid}, '{!wizardInfo.nitro__Track__c}');
+              </script>
+         </apex:outputPanel>
+      </apex:outputPanel>
+      
+      <apex:outputPanel id="finishWizardResult">
+        <apex:outputPanel rendered="{!clickedFinishButton}">
+           <script type="text/javascript">
+              NE.processWizardResultOnFinish();
+           </script>
+        </apex:outputPanel>
+      </apex:outputPanel>
+   </apex:form>
+
+   <div class="nitro_loader box_shadow">
+      <div class="loader_message"></div>
+   </div>
+   
+   <script type="text/javascript" src="{!URLFOR($Resource.nitro_editions_resources, 'js/nitro_editions.js')}"></script>
+   <script type="text/javascript">
+        NE.trackInfoByName = {!trackInfoByNameJSON};
+   </script>
+   <style type="text/css">
+       .nitro .customPopup{background-color: white; border-style: solid; border-width: 2px; border-color: grey; left: 50%; position: absolute; z-index: 9999; width: 500px; margin-left: -250px; top:0; text-align: center;}
+       .nitro .awesome_button {width:15%; float:none; color:white; font-weight:bold;}
+       .nitro .popupText {font-size:15px; margin:10px;}
+       .nitro .popupAdminText {font-size:10px; margin:10px;}
+    </style>
+</apex:page>

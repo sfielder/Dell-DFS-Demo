@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Copy_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Should EchoSign copy the first Contact recipient’s Account lookup to the Agreement’s Account lookup?</inlineHelpText>
+        <label>Copy Contact Account</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Copy_Opportunity__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Should EchoSign copy the first Contact recipient’s Opportunity lookup to the Agreement’s Opportunity lookup?</inlineHelpText>
+        <label>Copy Contact Opportunity</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Create_If_Not_Found__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Specifies which Recipient type to create (Contact / Lead) in case no existing recipients (as specified in the Recipient Lookup Order) were found.</inlineHelpText>
+        <label>Auto Create Recipient Object</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recipient_Email_Domain_Ignore_List__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>If a recipient email address belongs to one of these email domains, no Recipient Object matching (as specified in the Recipient Lookup Order) will be performed and the recipient will be stored as email address.</inlineHelpText>
+        <label>Recipient Lookup Domain Ignore List</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recipient_Types__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Determines the order for searching for a matching Recipient Object. E.g. If the value of this setting is ‘Contact, Lead, User’, we will first try finding a Contact with the recipient’s email address, then Leads and Users.</inlineHelpText>
+        <label>Recipient Lookup Order</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>EchoSign Push Mapping Settings</label>
+</CustomObject>

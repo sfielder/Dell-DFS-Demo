@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>25.0</apiVersion>
+    <description>Display a date in user timezone but formatted how you want.
+outputText allows you to format but is in GMT
+outputField is in user timezone but you cannot format</description>
+    <label>Date</label>
+</ApexComponent>

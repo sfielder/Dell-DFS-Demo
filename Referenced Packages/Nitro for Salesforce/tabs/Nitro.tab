@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The Main Nitro Tab. All Nitro User pages will use this as the tab style.</description>
+    <label>Nitro</label>
+    <mobileReady>true</mobileReady>
+    <motif>Custom99: CRT TV</motif>
+    <page>NitroUserHome</page>
+</CustomTab>

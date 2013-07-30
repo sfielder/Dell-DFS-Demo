@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Utilisateur Facebook</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Utilisateurs Facebook</value>
+    </caseValues>
+    <fields>
+        <label>Image</label>
+        <name>Facebook_Image__c</name>
+    </fields>
+    <fields>
+        <label>ID Facebook</label>
+        <name>Fcbk_Id__c</name>
+    </fields>
+    <fields>
+        <label>Image</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>Validé</label>
+        <name>Valid__c</name>
+    </fields>
+    <fields>
+        <label>À propos de moi</label>
+        <name>about_me__c</name>
+    </fields>
+    <fields>
+        <label>Date de naissance</label>
+        <name>birthday__c</name>
+    </fields>
+    <fields>
+        <label>Ville</label>
+        <name>city__c</name>
+    </fields>
+    <fields>
+        <label>Pays</label>
+        <name>country__c</name>
+    </fields>
+    <fields>
+        <label>E-mail</label>
+        <name>email__c</name>
+    </fields>
+    <fields>
+        <label>Prénom</label>
+        <name>first_name__c</name>
+    </fields>
+    <fields>
+        <label>Nom</label>
+        <name>last_name__c</name>
+    </fields>
+    <fields>
+        <label>Sensibilité politique</label>
+        <name>political__c</name>
+    </fields>
+    <fields>
+        <label>Religion</label>
+        <name>religion__c</name>
+    </fields>
+    <fields>
+        <label>Sexe</label>
+        <name>sex__c</name>
+    </fields>
+    <fields>
+        <label>Département / Région</label>
+        <name>state__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Nom</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label>Révoquer l&apos;accès à Facebook</label>
+        <name>Revoke_Facebook_Access</name>
+    </webLinks>
+    <webLinks>
+        <label>Accorder l&apos;accès à Facebook</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

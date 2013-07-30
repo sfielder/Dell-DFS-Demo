@@ -1,0 +1,233 @@
+<apex:page sidebar="false" controller="rypple_Corp.RYPPLE_RypplePageController" action="{!updateRyppleId}"  >
+   <apex:stylesheet value="{!$Resource.rypple_Corp__RYPPLE_screen}" />   
+    <apex:includeScript value="{!$Resource.rypple_Corp__RYPPLE_jquery_main}" />
+    <apex:includeScript value="{!URLFOR($Resource.rypple_Corp__RYPPLE_jquery_fancybox,'jquery.fancybox-1.3.4-modified/fancybox/jquery.fancybox-1.3.4.pack.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.rypple_Corp__RYPPLE_jquery_fancybox,'jquery.fancybox-1.3.4-modified/fancybox/jquery.fancybox-1.3.4.css')}"/>
+    
+      
+       
+<style>
+    #fancybox-overlay {
+        position:fixed !important;
+    }   
+    
+    body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .overlayDialog .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
+        border-top: 1px solid #EAEAEA;
+        background-color: #f3f3eb;
+        border-bottom: 1px solid #EAEAEA;
+        border-left: 1px solid #EAEAEA;
+        border-right: 1px solid #EAEAEA;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        margin-bottom: 0px;
+    }
+    
+
+   
+     
+    #maskDiv{
+     position:absolute;
+     top:-200px;
+     left:-20px;
+     z-index:100;
+     background-color:black;   
+    }
+    #givenThanksSuccessPopup{
+     position:absolute;
+     z-index:101; 
+     background-color:transparent;   
+    }
+    
+    #givethankspblock {
+        background-color:#f3f3eb;
+        border-radius:4px;
+        border: 1px solid #f3f3eb;
+        float: left;
+        margin-right: 5px;
+        margin-left:5px;
+        overflow: hidden;
+        padding: 0 2px 1em 0;
+        position: relative;
+        padding-bottom:0px;
+    }
+    
+    .col1 {
+        border:1px solid #f3f3eb;
+        border-radius:4px;
+        padding-bottom:0px;
+        max-width:870px;
+    }
+    
+    .col2 {
+        padding-bottom:0px;
+    }
+    
+    #helpLabel {
+        font-size: 15px;
+        background: url("{!$Resource.rypple_Corp__RYPPLE_help_icon}") no-repeat left top;
+        height: 24px;
+        margin: 25px 0 0 5px;
+        padding: 3px 0 0 30px;
+    }    
+    
+    #helpLabel a, 
+    #helpLabel a:hover,
+    #helpLabel a:active,
+    #helpLabel a:visited { 
+        color: #2D6A91;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: normal;
+        cursor: pointer;
+    }
+</style>
+<script>
+
+    // Update the src of right panel iframe and pass the selected value from middle panel to right panel
+ /*   function openBadgeInfo(badgeId){
+        var url = 'apex/RYPPLE_BadgeInfo';
+        var params = badgeId != null? ('?badgeID=' + badgeId.substring(1,badgeId.length)) : '';
+        var iframeComp = document.getElementById("rightPanel");
+        if(iframeComp != null){
+            iframeComp.src = url +  params;
+        }
+        
+    }*/
+    function refreshRecentThanks(){
+        var url = 'apex/RYPPLE_RecentThanks';
+        var iframeComp = document.getElementById("leftPanel");
+        if(iframeComp != null){
+            iframeComp.src = url;
+        }
+        
+    }
+    
+    // show thanks popup
+ /*   function showSuccessGivenThanks(){
+          var maskHeight = 200+$(document).height();
+          var maskWidth = 20+$(window).width();
+          $('#maskDiv').css({'width':maskWidth,'height':maskHeight});
+          // show the masking behind
+          $('#maskDiv').show();
+          $('#maskDiv').fadeTo('slow',0.6);
+          var winH = $(window).height()-200;
+          var winW = $(window).width()-20;
+          
+          // show the Thanks dialog
+          $('#givenThanksSuccessPopup').css('top',  winH/2-$('#givenThanksSuccessPopup').height()/2);
+          $('#givenThanksSuccessPopup').css('left', winW/2-$('#givenThanksSuccessPopup').width()/2);
+            
+          $('#givenThanksSuccessPopup').show();
+          setTimeout("hideGivenThanks()",4000);
+     }*/
+     function openGivenThanksSuccess(){
+        //showSuccessGivenThanks();
+            
+        
+        $(document).ready(function(){
+            createFancyBox();
+        });
+        setTimeout("hideGivenThanks()",8000);
+     }
+     
+     function hideGivenThanks(){
+        $("#fancybox-overlay").hide();
+        $("#fancybox-wrap").hide();
+     }
+     /*
+          function hideGivenThanks(){
+        $("#givenThanksSuccessPopup").hide();
+        $("#maskDiv").hide();
+     }
+     */
+     
+     $(document).ready(function() {
+        $("a#helpLink").fancybox({ 
+            'href' : window.location.protocol + "//" + window.location.host + "/apex/RYPPLE_Badges", // full URL required in IE          
+            'width' : 1040,
+            'height' : 810,
+            'autoDimensions' : true,
+            'autoScale' : false,
+            'transitionIn' : 'none',
+            'transitionOut' : 'none',
+            'scrolling': 'no',
+            'enableEscapeButton':true,
+            'type':'inline',
+            'centerOnScroll': false
+            })     
+    });   
+</script>
+
+<apex:sectionHeader title="Rypple - Thanks"/>
+<apex:messages />
+<div id="maskDiv" ></div>
+<div  class="colmask threecol" >
+     <div class="col2" style="width: 305px;" id="givethankspblock" >
+    <!-- <apex:pageBlock id="givethankspblock"> -->
+    <!-- <div > -->
+     <!-- Column 2 start --> 
+        <apex:iframe id="centerPanel" src="apex/RYPPLE_GiveThanks" scrolling="false" width="100%" height="370" frameborder="0"/>
+    <!-- </div> -->
+    <!-- </apex:pageBlock> -->
+     </div>
+
+     <div class="col1"><!-- Column 1 start -->   
+        <apex:iframe id="leftPanel" src="apex/RYPPLE_RecentThanks" scrolling="false" width="100%"  height="370" frameborder="0" />
+     </div>
+
+<!--      <div class="col3"><!-- Column 3 start  
+        <apex:iframe id="rightPanel"  src="apex/RYPPLE_BadgeInfo" scrolling="false" width="100%" height="600"/>
+     </div>
+-->     
+ </div>
+ <!--  Begining Modal Dialog for Given Thanks success -->  
+        <apex:form id="frm">
+        <div id="givenThanksSuccessPopup" class="window" style="display:none;height:250px;width:320px;">
+             <div id="givenThanksSuccessContainer">
+                <!--<apex:form id="frm"> -->
+                   <apex:pageblock >
+                      <div style="color: #999;font-size: 18px;height:30px;width:300px;padding-top:30px;text-align:left;padding-left:10px;" >
+                        <apex:outputLabel id="saveUnsavedDataSlotLabel1" style="color: #999;font-size: 18px;height:30px;" >Success</apex:outputLabel>
+                      </div>
+                      <div style="height:30px;width:250px;text-align:left;padding-left:10px;" >
+                        <apex:outputLabel id="saveUnsavedDataSlotLabel" >Your thanks has been posted!</apex:outputLabel>
+                      </div>
+                      <div style="text-align:left; height:30px;width:300px;padding-left:10px;" >
+                            <apex:commandbutton value=" Close  " onclick="hideGivenThanks();" />
+                      </div>
+                   </apex:pageblock>
+                   <!--</apex:form>-->
+             </div>
+        </div>    
+        <!--  End Modal Dialog for Given Thanks success -->
+        <div style="clear:both;"></div>
+        <!--<div id="helpLabel">Learn how to <a id="helpLink">post a thanks from Chatter</a>.</div> -->
+        <div style="margin: 5px 0 0 5px">
+            <apex:commandLink action="{!logout}" value="Change Account"/>
+        </div>
+        </apex:form>
+<script>
+ 
+
+function createFancyBox(){
+var anchor = $('<a />', {
+id: 'temporaryFancyBoxLink',
+href: '/apex/PostThanksSuccessMessage',
+text: "temporaryFancyBoxLink"
+});
+anchor.css({'position' : 'absolute', 'left' : '-1000', 'top' : '-1000'});
+$('body').append(anchor);
+$("#temporaryFancyBoxLink")
+.fancybox({
+'width' : 315,
+'height' : 307,
+'autoScale' : false,
+'transitionIn' : 'none',
+'transitionOut' : 'none',
+'type' : 'iframe'})
+.click()
+.remove();
+} // end function createFancyBox
+
+</script>        
+</apex:page>

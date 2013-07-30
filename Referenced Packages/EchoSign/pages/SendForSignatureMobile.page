@@ -1,0 +1,89 @@
+<apex:page showheader="false">
+
+<!-- script type="text/javascript" src="https://secure.echocdn.com/resource/2076866645/bundles/jquery.js" ></script> -->
+<link rel="stylesheet" type="text/css" media="screen" href="https://secure.echocdn.com/resource/1926977545/bundles/jquery-ui.css" />
+
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/js/jquery-1.4.4.min.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/development-bundle/ui/jquery.ui.core.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/development-bundle/ui/jquery.ui.widget.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/development-bundle/ui/jquery.ui.progressbar.js')}" />
+	
+    <style type="text/css"> 
+      h1 {
+color: #515151;
+font-family: 'Lucida Grande', Tahoma, Verdana, Arial, Helvetica, sans-serif;
+font-size: 20px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+height: auto;
+line-height: normal;
+margin-bottom: 7px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 7px;        
+      }
+      #progress-bar {
+        overflow: hidden;
+      }
+
+    </style> 
+    
+	<script>
+	var ProgressBar = {
+		progressTimeout:null,
+		selector:null,
+		showProgress:function(){
+			var e = jQuery(ProgressBar.selector);
+			var a = e.width();
+			var d = e.find(".ui-widget-header");
+			var c = d.width();
+			var b;
+			if(c===0){
+				b="20%"
+			}else{
+				b=c+((a-c)*0.1)
+			}
+			try{d.animate({width:b},1000);}catch(err){}			
+			ProgressBar.progressTimeout=window.setTimeout("ProgressBar.showProgress()",2500)
+		},
+		finish:function(a){
+			window.clearTimeout(ProgressBar.progressTimeout);
+			jQuery(ProgressBar.selector+" .ui-widget-header").animate({width:"100%"},1000,a)
+		},
+		start:function(a){
+			ProgressBar.selector=a;
+			jQuery(a).progressbar({value:0});
+			ProgressBar.showProgress()
+		}
+	};
+	
+      jQuery(document).ready(function() {
+        ProgressBar.start('#progressbar');
+        window.setTimeout('ProgressBar.showProgress()', 2500);
+      });
+	</script>
+<apex:outputpanel rendered="true">
+    <div id="container">
+      <div id="main">
+        <div id="global-message-box" class="message-bl" style="width: 881px;display:none;"><div class="message-br"><div class="message-tl"><div class="message-tr">
+          <div class="icon"></div>
+          <span id="global-message-text"></span>
+          <br class="clear"/>
+        </div></div></div></div>
+        <div id="global-error-box" class="error-bl" style="width: 881px;display:none;"><div class="error-br"><div class="error-tl"><div class="error-tr">
+          <div class="icon"></div>
+          <span id="global-error-text"></span>
+          <br class="clear"/>
+        </div></div></div></div>
+        <h1>Preparing your agreement for signature.</h1> 
+        <br class="clear"/>
+    <div id="progressbar"></div>
+        <br class="clear"/>
+        <br class="clear"/>
+        <h1>Please do not navigate away from this page.</h1> 
+      </div>
+    </div>
+</apex:outputpanel>   
+    
+</apex:page>

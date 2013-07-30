@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Planificateur Twitter</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Planificateurs Twitter</value>
+    </caseValues>
+    <fields>
+        <label>Page Facebook</label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel>Planificateurs Twitter</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Heure de dernière exécution</label>
+        <name>Last_Run_Time__c</name>
+    </fields>
+    <fields>
+        <label>Période</label>
+        <name>Period_Time__c</name>
+    </fields>
+    <fields>
+        <label>Utilisateur actif</label>
+        <name>Running_User__c</name>
+        <relationshipLabel>Planificateurs Twitter</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Compte Twitter</label>
+        <name>Twitter_Account__c</name>
+        <relationshipLabel>Planificateurs Twitter</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Recherche Twitter</label>
+        <name>Twitter_Search__c</name>
+        <relationshipLabel>Planificateurs Twitter</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ID des tâches</label>
+        <name>jobId__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Nom de planificateur Twitter</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

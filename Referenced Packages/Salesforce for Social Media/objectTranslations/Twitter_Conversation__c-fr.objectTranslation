@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Conversation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Conversations</value>
+    </caseValues>
+    <fields>
+        <label>Compte</label>
+        <name>Account__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ID externe de l&apos;auteur</label>
+        <name>Author_External_Id__c</name>
+    </fields>
+    <fields>
+        <label>Nom d&apos;utilisateur de l&apos;auteur</label>
+        <name>Author_Name__c</name>
+    </fields>
+    <fields>
+        <label>Nom complet de l&apos;auteur</label>
+        <name>Author_Real_Name__c</name>
+    </fields>
+    <fields>
+        <label>URL de l&apos;auteur</label>
+        <name>Author_URL__c</name>
+    </fields>
+    <fields>
+        <label>Icône du lien de la requête</label>
+        <name>Case_Created__c</name>
+    </fields>
+    <fields>
+        <label>Requête</label>
+        <name>Case__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Publication Chatter</label>
+        <name>Chatter_Post_Link__c</name>
+    </fields>
+    <fields>
+        <label>ID de publication Chatter</label>
+        <name>Chatter_Post__c</name>
+    </fields>
+    <fields>
+        <label>Icône du lien du contact</label>
+        <name>Contact_Created__c</name>
+    </fields>
+    <fields>
+        <label>Contact</label>
+        <name>Contact__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Contenu</label>
+        <name>Content__c</name>
+    </fields>
+    <fields>
+        <label>Message direct</label>
+        <name>Direct_Message__c</name>
+    </fields>
+    <fields>
+        <label>Nom de téléchargement</label>
+        <name>Download_Name__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Page Facebook</label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Nombre de suiveurs</label>
+        <name>Follower_Count__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de suivis</label>
+        <name>Following_Count__c</name>
+    </fields>
+    <fields>
+        <label>Géomarquage</label>
+        <name>Geo_Coordinates__c</name>
+    </fields>
+    <fields>
+        <label>Icône d&apos;avatar</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>ID ext. conversation associée à réponse</label>
+        <name>In_Reply_To_Status_Id__c</name>
+    </fields>
+    <fields>
+        <label>ID ext. utilisateur associé à réponse</label>
+        <name>In_Reply_To_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Message direct activé</label>
+        <name>IsDirectMessage__c</name>
+    </fields>
+    <fields>
+        <label>Géomarquage activé</label>
+        <name>Is_Geo_Enabled__c</name>
+    </fields>
+    <fields>
+        <label>Numéro Klout</label>
+        <name>Klout_Number__c</name>
+    </fields>
+    <fields>
+        <label>Score Klout</label>
+        <name>Klout_Score__c</name>
+    </fields>
+    <fields>
+        <label>Icône du lien de la piste</label>
+        <name>Lead_Created__c</name>
+    </fields>
+    <fields>
+        <label>Piste</label>
+        <name>Lead__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Nombre de J&apos;aime</label>
+        <name>Likes_Link__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de J&apos;aime</label>
+        <name>Likes__c</name>
+    </fields>
+    <fields>
+        <label>Lien</label>
+        <name>Link__c</name>
+    </fields>
+    <fields>
+        <label>Message</label>
+        <name>Message__c</name>
+    </fields>
+    <fields>
+        <label>Tweets négatifs</label>
+        <name>Negative_Tweets__c</name>
+    </fields>
+    <fields>
+        <label>Tweets neutres</label>
+        <name>Neutral_Tweets__c</name>
+    </fields>
+    <fields>
+        <help><!-- Creates a new Case for this Conversation regardles of its relationship to other Conversations and Cases --></help>
+        <label>Nouvelle requête</label>
+        <name>New_Case__c</name>
+    </fields>
+    <fields>
+        <label>Date d&apos;origine</label>
+        <name>Origin_Date__c</name>
+    </fields>
+    <fields>
+        <label>Origine</label>
+        <name>Origin_Icon__c</name>
+    </fields>
+    <fields>
+        <label>Valeur d&apos;origine</label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Conversation principale (obsolète)</label>
+        <name>ParentConversation__c</name>
+        <relationshipLabel>Conversations (obsolètes)</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Principale</label>
+        <name>Parent__c</name>
+        <relationshipLabel>Conversations enfant</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Coordonnées du lieu</label>
+        <name>Place_Coordinates__c</name>
+    </fields>
+    <fields>
+        <label>Lieu</label>
+        <name>Place__c</name>
+    </fields>
+    <fields>
+        <label>Tweets positifs</label>
+        <name>Positive_Tweets__c</name>
+    </fields>
+    <fields>
+        <label>Date de publication</label>
+        <name>Published_Date__c</name>
+    </fields>
+    <fields>
+        <label>Statut de réponse</label>
+        <name>Replied_Status__c</name>
+    </fields>
+    <fields>
+        <label>Utilisateur associé à la réponse</label>
+        <name>Replied_User__c</name>
+    </fields>
+    <fields>
+        <label>Icône du lien de la solution</label>
+        <name>Solution_Created__c</name>
+    </fields>
+    <fields>
+        <label>Solution</label>
+        <name>Solution__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Statut</label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Actioned</masterLabel>
+            <translation><!-- Actioned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deleted</masterLabel>
+            <translation><!-- Deleted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ignored</masterLabel>
+            <translation><!-- Ignored --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mark as reviewed</masterLabel>
+            <translation><!-- Mark as reviewed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound @reply</masterLabel>
+            <translation><!-- Outbound @reply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Direct Message</masterLabel>
+            <translation><!-- Outbound Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solved by Community</masterLabel>
+            <translation><!-- Solved by Community --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Sentiment sur la conversation</label>
+        <name>Tweet_Sentiment__c</name>
+    </fields>
+    <fields>
+        <label>ID externe</label>
+        <name>TwitterID__c</name>
+    </fields>
+    <fields>
+        <label>Compte Twitter</label>
+        <name>Twitter_Account__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Numéro d’identifiant Twitter</label>
+        <name>Twitter_Id_Number__c</name>
+    </fields>
+    <fields>
+        <label>Image du profil</label>
+        <name>Twitter_Image__c</name>
+    </fields>
+    <fields>
+        <label>Localisation</label>
+        <name>Twitter_Location__c</name>
+    </fields>
+    <fields>
+        <label>Recherche Twitter</label>
+        <name>Twitter_Search__c</name>
+        <relationshipLabel>Conversations</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Source Twitter</label>
+        <name>Twitter_Source__c</name>
+    </fields>
+    <fields>
+        <help><!-- The API source of the record.  This can be @Replies, Messages, or Search --></help>
+        <label>Type</label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>@Replies</masterLabel>
+            <translation><!-- @Replies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comment</masterLabel>
+            <translation><!-- Comment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conversation</masterLabel>
+            <translation><!-- Conversation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Message</masterLabel>
+            <translation><!-- Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Direct Message</masterLabel>
+            <translation><!-- Outbound Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound comment</masterLabel>
+            <translation><!-- Outbound comment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound post</masterLabel>
+            <translation><!-- Outbound post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound reply</masterLabel>
+            <translation><!-- Outbound reply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registered Account</masterLabel>
+            <translation><!-- Registered Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search</masterLabel>
+            <translation><!-- Search --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wall Post</masterLabel>
+            <translation><!-- Wall Post --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Date de mise à jour</label>
+        <name>Updated_Date__c</name>
+    </fields>
+    <fields>
+        <label>Bio de l&apos;utilisateur</label>
+        <name>User_Bio__c</name>
+    </fields>
+    <fields>
+        <label>Date de création de l&apos;utilisateur</label>
+        <name>User_Creation_Date__c</name>
+    </fields>
+    <fields>
+        <label>Dernier tweet de l&apos;utilisateur</label>
+        <name>User_Last_tweet__c</name>
+    </fields>
+    <fields>
+        <label>Les &quot;J&apos;aime&quot; de l&apos;utilisateur</label>
+        <name>User_Likes__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de statuts utilisateur</label>
+        <name>User_Status_count__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Conversation Layout</layout>
+        <sections>
+            <label><!-- Author Info --></label>
+            <section>Author Info</section>
+        </sections>
+        <sections>
+            <label><!-- Content --></label>
+            <section>Content</section>
+        </sections>
+        <sections>
+            <label><!-- Conversation Origin --></label>
+            <section>Conversation Origin</section>
+        </sections>
+        <sections>
+            <label><!-- Disposition --></label>
+            <section>Disposition</section>
+        </sections>
+        <sections>
+            <label><!-- Reply Details --></label>
+            <section>Reply Details</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nom de conversation</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label>Ajouter à la campagne</label>
+        <name>Add_To_Campaign</name>
+    </webLinks>
+    <webLinks>
+        <label>Ajouter à la campagne</label>
+        <name>Add_to_Campaign_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer une requête</label>
+        <name>Create_Case</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer un contact</label>
+        <name>Create_Contact</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer un contact</label>
+        <name>Create_Contact_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer une solution</label>
+        <name>Create_Knowledge</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer une piste</label>
+        <name>Create_Lead</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer une piste</label>
+        <name>Create_Lead_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer un compte personnel</label>
+        <name>Create_Person_Account</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer des comptes personnels</label>
+        <name>Create_Person_Account_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Supprimer ignorées</label>
+        <name>Delete_Ignored</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer une requête</label>
+        <name>Escalate_to_Case</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir les informations Twitter</label>
+        <name>Get_Author_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir les informations Twitter</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir les commentaires</label>
+        <name>Get_Comments</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir les commentaires</label>
+        <name>Get_Comments_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir la conversation</label>
+        <name>Get_Conversation</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir la conversation</label>
+        <name>Get_Conversation_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir le score Klout</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir le score Klout</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir les conversations</label>
+        <name>Get_More_Tweets</name>
+    </webLinks>
+    <webLinks>
+        <label>Ignorer</label>
+        <name>Ignore</name>
+    </webLinks>
+    <webLinks>
+        <label>Ignorer</label>
+        <name>Ignore_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Marquer comme révisé</label>
+        <name>Mark_as_reviewed</name>
+    </webLinks>
+    <webLinks>
+        <label>Marquer comme révisé</label>
+        <name>Mark_as_reviewed_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Désapprouver</label>
+        <name>Negative_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Neutre</label>
+        <name>Neutral_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Approuver</label>
+        <name>Positive_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Publier dans Chatter</label>
+        <name>Post_to_Chatter</name>
+    </webLinks>
+    <webLinks>
+        <label>Créer une solution</label>
+        <name>Promote_to_Knowledge</name>
+    </webLinks>
+    <webLinks>
+        <label>Supprimer de Facebook</label>
+        <name>Remove_from_Facebook</name>
+    </webLinks>
+    <webLinks>
+        <label>Répondre</label>
+        <name>Reply</name>
+    </webLinks>
+    <webLinks>
+        <label>Répondre</label>
+        <name>Send_A_Tweet</name>
+    </webLinks>
+    <webLinks>
+        <label>Répondre</label>
+        <name>Send_Twitter_Message</name>
+    </webLinks>
+    <webLinks>
+        <label>Résolu par la communauté</label>
+        <name>Solved_By_Community</name>
+    </webLinks>
+    <webLinks>
+        <label>Résolu par la communauté</label>
+        <name>Solved_By_Community_Massive</name>
+    </webLinks>
+</CustomObjectTranslation>

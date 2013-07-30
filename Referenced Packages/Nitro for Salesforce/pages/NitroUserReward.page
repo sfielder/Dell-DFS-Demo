@@ -1,0 +1,190 @@
+<apex:page controller="nitro.NitroUserHome" tabStyle="Nitro__tab" title="Nitro Rewards" action="{!init}">
+<apex:pageMessages id="pageMessages" />
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro_reset.css" rel="stylesheet" type="text/css"></link>
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+<script src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/jquery.1.6.1.bunchball.min.js"></script>
+<script>
+if(typeof nitro$ !== 'function'){
+   var nitro$ = bunchball_jQuery.noConflict();
+}
+//var libVersion = Math.round(Math.random() * 10000);
+var libVersion = '{!libVersion}';
+</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.libs.bunchball.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.util.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.shared.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.rewards.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroJSConnector-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroCookies-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<div id="nitro_user_reward_page">
+<div class="nitro nitro_sf">
+   <apex:include pageName="nitro__NitroNavbar"/>  
+   
+   <apex:outputPanel rendered="{!showVendorStore}">
+      <div class="nitro_sf_home nitro_sf_rewards nitro_page_body" style="width:100%">
+         <apex:iframe width="100%" height="600px" scrolling="true" src="{!vendorStoreUrl}"/>
+      </div>
+   <script>
+      nitro$(function(){
+         nitro$("#REWARD_TAB").addClass("active");
+      });
+   </script>
+   </apex:outputPanel>
+   
+   <apex:outputPanel rendered="{!!showVendorStore}">
+      
+      <apex:form >
+      
+         <apex:outputPanel id="adminEditButton">
+            <apex:commandLink value="{!IF(showEditMode = true, 'Save Page Options', 'Edit Page Options')}" 
+                              styleClass="{!IF(showAdminEditOption = true, 'editPgOpt', 'none')}" 
+                              action="{!toggleEditMode}" 
+                              rerender="adminEditButton, rewardStorePanel, whatHappeningPanel, focusFirstInput"
+                              rendered="{!showAdminEditOption}"/>
+         </apex:outputPanel>   
+         
+         <div class="nitro_sf_home nitro_sf_rewards nitro_page_body">
+   
+            <div class="column_535" id="nitro_sf_home_left">
+               <div class="content_module" id="nitro_sf_rewards_rewards">
+
+                  <apex:outputPanel id="rewardStorePanel">
+                       
+                     <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                        <h2>{!NitroConfigData.nitro__Reward_Store_Title__c}</h2>
+                     </apex:outputPanel>
+                      
+                     <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                        <apex:inputText value="{!NitroConfigData.nitro__Reward_Store_Title__c}" styleClass="titleEdit"/>
+                     </apex:outputPanel>
+                      
+                  </apex:outputPanel>
+
+                  <div class="content_module_body">
+                     <div class="nitro_sf_rewards_content" id="nitro_sf_rewards_items">
+                        <!-- reward items to be written here -->
+                     </div> 
+                  </div>
+               </div><!-- end current contests -->
+            </div><!-- end column 535 -->
+      
+      
+            <div class="column_300" id="nitro_sf_home_right">
+               <div class="content_module" id="nitro_sf_rewards_newsfeed">
+                  
+                  <apex:outputPanel id="whatHappeningPanel">
+                       
+                     <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                        <h2>{!NitroConfigData.nitro__Whats_Happening_Now_Reward_Title__c}</h2>
+                     </apex:outputPanel>
+                      
+                     <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                        <apex:inputText value="{!NitroConfigData.nitro__Whats_Happening_Now_Reward_Title__c}" styleClass="titleEdit"/>
+                     </apex:outputPanel>
+                      
+                  </apex:outputPanel>
+                  
+                  <div class="content_module_body">
+                     <div class="nitro_sf_newsfeed_items">
+                        <!-- newsfeed items to be written here -->
+                     </div>
+                  </div>
+                  
+               </div><!-- end current contests -->
+               
+            </div><!-- end column 300 -->
+      
+         </div>   
+
+         <apex:outputPanel id="focusFirstInput">
+            
+            <script>
+               var connectionParams={};
+               connectionParams.userId = '{!JSENCODE(NitroUserId)}';                
+               connectionParams.apiKey = '{!JSENCODE(APIKey)}';
+               connectionParams.debug = true;
+               connectionParams.sessionKey = '{!SessionKey}';
+               connectionParams.server = '{!JSENCODE(Endpoint)}'; 
+               var nitro2 = new Nitro(connectionParams); 
+                
+               nitro$(function(){
+                  var rewardList = document.getElementById("nitro_sf_rewards_items");
+                  rewardList.innerHTML = unescape("{!JSENCODE(Rewards)}");           
+                  //initialize the rewards page
+                  nitro_for_salesforce.rewards.init(nitro2, {
+                     pointsName: "{!JSENCODE(PointsName)}"
+                  });   
+               });
+                
+               // highlight the appropriate tab
+               document.getElementById("{!TabName}").className += " active";
+            
+               // make a purchase
+               function doPurchase(id,element) {
+                  var answer = confirm("Are you sure you want to buy this item?");
+                  if (answer) { 
+                     showPurchaseLoader(element, true);
+                     /* */ nitro.NitroUserHome.doPurchase(id, purchaseCallback);
+                  }else{
+                  }
+               }
+               
+               function showPurchaseLoader(element, show){
+                  var $ = nitro$;
+                   
+                  if(show){
+                     $(element).parent().after("<img src='https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif' class='purchaseLoading' style='width:auto' />")
+                  }else{
+                     $(".purchaseLoading").remove();
+                  }
+               }
+               
+               
+               function purchaseCallback(result, event) {
+                  //hide the loader
+                  showPurchaseLoader(null, false);
+               
+                  if (event.status) {
+                     // successful
+                     switch (result) {
+                        case "true": 
+                           alert ("Purchase complete! Your manager will contact you shortly.");
+                           break;
+                        case "false":
+                           alert ("You do not have enough points to purchase this item.");  
+                           break;
+                     }
+                     // refresh the page 
+                     window.location.reload();
+                  }
+                  else {
+                     // do nothing. 
+                     alert ("There was a problem completing your purchase. Please contact your sales manager.");     
+                  }
+               }
+               
+               // set focus to the first text box on the admin edit screen      
+               nitro$('.rewardStoreTitle').focus().select();
+            
+            </script>
+      
+         </apex:outputPanel>
+
+
+      </apex:form>
+
+   </apex:outputPanel>
+   
+   <apex:form id="overlayForm" >
+      <c:DisabledFeatureOverlay isFree="{!isFree}" verifyAction="{!verifyEdition}" />
+   </apex:form>
+
+</div>
+</div>
+
+
+</apex:page>

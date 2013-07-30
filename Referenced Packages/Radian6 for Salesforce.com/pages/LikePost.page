@@ -1,0 +1,22 @@
+<apex:page standardController="SocialPost" extensions="R6Service.LikePostController">
+  <apex:outputPanel id="messageRenderer">
+    <apex:pageMessages />
+  </apex:outputPanel>
+
+  <apex:form >
+    <apex:actionFunction name="sendLike" action="{!sendLike}" rerender="closeScript, messageRenderer" oncomplete="closePage();"/>
+    
+    <c:PostActionDecorator sender="{!sender}" post="{!post}" onOk="sendLike();" onCancel="self.close();" okButtonText="Favorite Post" actionVerb="favorite" />
+    
+    <apex:outputpanel id="closeScript">
+        <script>
+            function closePage()
+            {
+                if({!!hasMessages})
+                    self.close();
+            }
+        </script>
+    </apex:outputpanel>
+    
+  </apex:form>
+</apex:page>

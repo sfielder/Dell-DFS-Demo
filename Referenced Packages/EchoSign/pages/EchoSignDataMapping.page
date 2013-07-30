@@ -1,0 +1,461 @@
+<apex:page standardController="echosign_dev1__SIGN_Data_Mapping__c" extensions="echosign_dev1.EchoSignDataMapping_Controller" title="EchoSign Data Mapping: {!proTemplate.Name}" sidebar="{!IF(NOT ISNULL($CurrentPage.parameters.showheadersidebar),$CurrentPage.parameters.showheadersidebar,'true')}" showHeader="{!IF(NOT ISNULL($CurrentPage.parameters.showheadersidebar),$CurrentPage.parameters.showheadersidebar,'true')}">
+	<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/js/jquery-1.4.4.min.js')}" />
+<!--  <head>
+<title>Case: {!aCase.CaseNumber}</title>
+</head> -->
+<style>
+     .container1{
+         overflow:auto;
+     }        
+</style>
+
+     <apex:form id="ProcessTemplateId">
+        
+        <apex:sectionHeader title="EchoSign Data Mapping" subtitle="{!mappingName}"/>
+        
+        <apex:pagemessages id="themessages"/>  
+        
+        <apex:pageBlock title="EchoSign Data Mapping Edit"  helpTitle="EchoSign Help and Support" helpUrl="{!$Page.echosign_dev1__EchosignHelp}" id="actionPageBlock">
+
+            <apex:pageBlockButtons location="top">
+                <apex:commandbutton action="{!save}" value="Save"/>
+                <apex:commandbutton action="{!cancel}" value="Cancel" onclick="if(!confirm('Are you sure?')){return false;}" />
+                <apex:commandbutton action="{!delete}" value="Delete" onclick="if(!confirm('Are you sure?')){return false;}" />                          
+            </apex:pageBlockButtons> 
+                       
+                <apex:pageBlockSection title="Mapping Information" collapsible="false" columns="1">
+                    <apex:outputpanel >Set up EchoSign Data Mappings to specify how to update Salesforce.com object fields with data entered by signers into EchoSign document form fields. 
+                    The data is pushed back into Salesforce automatically after the EchoSign agreement is signed. Please refer to the <a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaD6GOC16xiwzBTpN0yY4Bbwbei1Qk=" target="pdf">installation and customization guide</a> for additional instructions.</apex:outputPanel>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection collapsible="false" columns="2">
+                    <apex:inputfield value="{!proTemplate.Name}" required="true"/>
+                    <apex:inputfield value="{!proTemplate.echosign_dev1__Default_Data_Mapping__c}"/>
+                </apex:pageBlockSection>                
+                <apex:pageBlockSection title="Import EchoSign Document Form Fields" collapsible="false" columns="1">
+                    <apex:pageBlockSectionItem >
+                        To map data from EchoSign document fields into Salesforce, you need to first import the available form fields from existing EchoSign agreements that have been sent and signed.  You can import fields from multiple agreements.
+                    </apex:pageBlockSectionItem>  
+                </apex:pageBlockSection>    
+                <apex:pageBlockSection id="s0" collapsible="false" columns="1">                                
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel >
+                            <table width="100%">                            
+                                <tr>
+                                    <td align="left" style="width: 400px;">
+                                        <apex:outputpanel id="totalImportFormFieldNamesPanel"><font color="red">{!totalImportedFormFieldNames}</font> form fields were imported to this mapping.</apex:outputPanel>
+                                    </td>
+                                    <td align="left" style="width: 300px;">
+                                        <b><apex:outputlabel value="Import fields from"/></b>&nbsp;
+                                        <apex:inputfield value="{!newAgreementEvent.echosign_dev1__Agreement__c}">
+                                            <apex:actionSupport event="onchange"
+                                                action="{!onAgreementLookupChange}"
+                                                rerender="formButton,themessages"/>
+                                        </apex:inputfield>
+                                    </td>
+                                    <td align="left" style="margin-left: 0px; padding-left: 0px; border-left: 0px;">
+                                        <apex:commandbutton action="{!retrieveFormData}" value="Import Form Fields" oncomplete="buildSecurityPopup('{!cusSettingsPrivate.echosign_dev1__API_Key__c}', '{!cusSettings.echosign_dev1__Reset_API_Security_Key__c}')" status="FormLoadingStatus" id="formButton" disabled="{!isRetrieveFormDataButtonDisabled}" rerender="themessages,totalImportFormFieldNamesPanel,pb2"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                	<td>
+                                		<apex:actionStatus id="FormLoadingStatus">
+                    						<apex:facet name="start">
+                        						<div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;" />
+                        						<img src="{!$Resource.loading}" style="width:20px;height:20px" />
+                        					</apex:facet>
+                    					</apex:actionStatus>
+                                	</td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                     </apex:pageBlockSectionItem>                                                                                           
+                </apex:pageBlockSection>                     
+        </apex:pageBlock>
+<script>
+            // Calculate the size of the page so we can set the popup size
+             var viewportwidth;
+             var viewportheight;
+             
+             // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+             
+             if (typeof window.innerWidth != 'undefined')
+             {
+                  viewportwidth = window.innerWidth,
+                  viewportheight = window.innerHeight
+             }
+             
+            // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+            
+             else if (typeof document.documentElement != 'undefined'
+                 && typeof document.documentElement.clientWidth !=
+                 'undefined' && document.documentElement.clientWidth != 0)
+             {
+                   viewportwidth = document.documentElement.clientWidth,
+                   viewportheight = document.documentElement.clientHeight
+             }
+             
+             // older versions of IE
+             
+             else
+             {
+                   viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+                   viewportheight = document.getElementsByTagName('body')[0].clientHeight
+             }
+            var frameHeight = viewportheight*.90; 
+            var frameWidth = viewportwidth*.80;
+            // document.getElementById('{!$Component.ProcessTemplateId.actionPageBlock.pbs1.theFrame}').style.width = frameWidth + 'px';
+            
+            function buildSecurityPopup(apiKey, isResetKey) {
+       			if( ( isResetKey == 'false' ) && apiKey ) {
+       				return;
+       			}
+            	
+	       		var secbox = sfdcPage.getDialogById("EchoSignSecurityPopup");
+	        	                
+	        	if( secbox == null ) {
+	               secbox = new parent.SimpleDialog("EchoSignSecurityPopup", true); 
+	               secbox.cancel=function() { secbox.hide(); };
+	               parent.secbox = secbox; 
+	               sfdcPage.dialogs[parent.secbox.id] = parent.secbox;
+	               secbox.displayX=false;                   
+	               secbox.createDialog();        
+	               secbox.setWidth("435px");                       
+	         	}
+	         	
+	         	var frameUrl = '{!$Page.ApiKeyInput}';
+	         	var srcFrame = '<iframe height="480px" width="400px" frameborder="no" id="popup" style="border:0;" src="'+frameUrl+'"></iframe>';
+	           	secbox.setContentInnerHTML(srcFrame);
+	            secbox.show();
+            } 
+</script>       
+        <apex:pageBlock id="pb2">                   
+                <apex:pageBlockSection collapsible="false" columns="1">     
+                    <apex:pageBlockSectionItem >
+                        <b>Data Mapping Items</b>   
+                    </apex:pageBlockSectionItem>                                                                      
+                </apex:pageBlockSection>    
+                    <apex:repeat value="{!lstAgreeProcessOps}" var="rec" id="lstAgreeProcessOpsTable">        
+                        <apex:pageBlockSection id="strAgreeObjectNameSection" title="Map Data to the EchoSign {!rec.displayLabel} Object" columns="1">
+                            <apex:outputPanel id="strAgreeObjectNameSectionList" >
+                                    <apex:pageBlockTable id="strAgreeObjectNametable" value="{!rec.lstProcessMap}" var="p" columns="8">              
+                                      <apex:column width="30%">
+                                      <apex:facet name="header"><apex:outputpanel title="Select the type of data which will be pushed into the Salesforce field after the agreement is signed.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Type__c.label}</apex:outputpanel></apex:facet>
+                                            <apex:inputfield id="agreementFieldMappingType" value="{!p.proMap.echosign_dev1__Type__c}" required="true">
+                                                <apex:actionSupport event="onchange" action="{!onMappingTypeChange}" rerender="agreementFieldMappingSource,agreementFieldMappingName,agreementFieldMappingOverwrite,themessages">
+                                                    <apex:param value="{!p.row}" name="row" assignTo="{!row}" />  
+                                                </apex:actionSupport>
+                                            </apex:inputfield>             
+                                      </apex:column>  
+                                      <apex:column width="30%">
+                                       <apex:facet name="header"><apex:outputpanel title="Specify an EchoSign document field, Salesforce Agreement object field, or a constant value that will be the source of the data which will be pushed into Salesforce after the agreement is signed.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Source__c.label}</apex:outputpanel></apex:facet>
+                                          <apex:outputpanel id="agreementFieldMappingSource">
+                                              <apex:outputpanel rendered="{!p.proMap.echosign_dev1__Type__c='Agreement Field'}">
+                                                  <apex:selectList id="agreementRelationshipFields" value="{!p.proMap.echosign_dev1__Source__c}" size="1"> 
+                                                      <apex:selectOptions value="{!lstAgreementFields}"/>   
+                                                  </apex:selectList>
+                                              </apex:outputpanel>   
+                                              <apex:outputpanel rendered="{!p.proMap.echosign_dev1__Type__c='Constant'}">                                                               
+                                                <apex:inputfield value="{!p.proMap.echosign_dev1__Source__c}" style="width: 300px;">
+                                                	<apex:actionSupport event="onchange" rerender="agreementFieldMappingType,agreementFieldMappingOverwrite,themessages"/>
+                                                </apex:inputfield>
+                                              </apex:outputpanel>                
+                                              <apex:outputpanel rendered="{!AND(p.proMap.echosign_dev1__Type__c='EchoSign Form Field',isFormFieldsLoaded)}">
+                                                  <apex:selectList id="mergeFields" value="{!p.proMap.echosign_dev1__Source__c}" size="1"> 
+                                                      <apex:selectOptions value="{!lstFormDataFields}"/>
+                                                      <apex:actionSupport event="onchange" rerender="agreementFieldMappingType,agreementFieldMappingOverwrite,agreementFieldMappingOverwrite,themessages"/> 
+                                                  </apex:selectList>
+                                              </apex:outputpanel>   
+                                          </apex:outputpanel>
+                                      </apex:column>  
+                                      <apex:column style="padding: 5px;"/>                          
+                                      <apex:column width="30%"> 
+                                       <apex:facet name="header"><apex:outputpanel title="Select a target Salesforce field from the EchoSign Agreement object where the data entered by signers will be populated after the agreement is signed.">Target Salesforce Field - Agreement Object</apex:outputpanel></apex:facet>
+                                          <apex:outputpanel id="agreementFieldMappingName">
+                                              <apex:selectList id="lstFields" value="{!p.proMap.Name}" size="1"> 
+                                                  <apex:selectOptions value="{!rec.lstFields}"/>
+                                                  <apex:actionSupport event="onchange" rerender="agreementFieldMappingType,agreementFieldMappingOverwrite,agreementFieldMappingOverwrite,themessages"/> 
+                                              </apex:selectList>
+                                          </apex:outputpanel>                                      
+                                      </apex:column>  
+                                      <apex:column >
+                                       <apex:facet name="header"><apex:outputpanel title="If a value already exists in the target Salesforce field, do not overwrite the value using this mapping rule.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Do_No_Overwrite_Existing__c.label}</apex:outputpanel></apex:facet>
+                                        <apex:inputfield id="agreementFieldMappingOverwrite" value="{!p.proMap.echosign_dev1__Do_No_Overwrite_Existing__c}">
+                                        	<apex:actionSupport event="onchange" rerender="agreementFieldMappingType,agreementFieldMappingSource,agreementFieldMappingName,themessages"/>
+                                        </apex:inputfield>                
+                                      </apex:column>
+                                      <apex:column >
+                                       <apex:facet name="header"><apex:outputpanel title="If the source value from the EchoSign agreement is empty, do not write the empty value into the target Salesforce field using this mapping rule.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Do_Not_Write_Empty__c.label}</apex:outputpanel></apex:facet>
+                                        <apex:inputfield id="agreementFieldMappingWriteEmpty" value="{!p.proMap.echosign_dev1__Do_Not_Write_Empty__c}">
+                                        	<apex:actionSupport event="onchange" rerender="agreementFieldMappingType,agreementFieldMappingSource,agreementFieldMappingName,themessages"/>
+                                        </apex:inputfield>                
+                                      </apex:column> 
+                                      <apex:column >
+                                       <apex:facet name="header"><apex:outputpanel title="Disable a mapping row if you do not want it to run at the time this mapping is executed.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Disable__c.label}</apex:outputpanel></apex:facet>
+                                        <apex:inputfield id="agreementFieldMappingDisable" value="{!p.proMap.echosign_dev1__Disable__c}">
+                                        	<apex:actionSupport event="onchange" rerender="agreementFieldMappingType,agreementFieldMappingSource,agreementFieldMappingName,themessages"/>
+                                        </apex:inputfield>                
+                                      </apex:column>    
+                                      <apex:column > 
+                                        <apex:actionRegion >
+                                            <apex:commandButton action="{!delMapping}" title="Delete Field Mapping" alt="Delete Field Mapping" image="{!$Resource.echosign_dev1__ActionDelete}" rerender="strAgreeObjectNameSectionList,themessages" status="DeletingStatus" style="background:transparent;border-width:0px;">        
+                                                <apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>
+                                                <apex:param value="{!p.row}" name="row" assignTo="{!row}"></apex:param>                                            
+                                            </apex:commandButton>
+                                            <apex:actionStatus id="DeletingStatus">
+                                                <apex:facet name="start">
+                                                <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                                <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                            </apex:actionStatus>
+                                        </apex:actionRegion>                
+                                      </apex:column>                              
+        
+                                    </apex:pageBlockTable>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="ButtonSection">
+                                <apex:commandLink action="{!addMapping}" value="Add Mapping" rerender="strAgreeObjectNameSectionList,themessages" status="LoadingStatus">
+                                    <apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>
+                                </apex:commandLink> &nbsp; &nbsp; &nbsp;
+                                <apex:actionStatus id="LoadingStatus">
+                                    <apex:facet name="start">
+                                    <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                    <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                </apex:actionStatus>
+                            </apex:outputPanel>
+                        </apex:pageBlockSection>
+                    </apex:repeat>   
+                    <apex:repeat value="{!lstProcessOps}" var="rec" id="lstProcessOpsTable">        
+                        <apex:pageBlockSection id="strObjectNameSection" title="Map Data to the {!rec.displayLabel} Object" columns="1">
+                            <apex:outputPanel id="strObjectNameListSection">
+                            		<apex:outputPanel >
+                                    <br/>
+                                    <h1>Map EchoSign Form Field Data to Target Salesforce Field</h1>
+                            		<br/>
+                            		<br/>
+                            		</apex:outputPanel>
+                                    <apex:pageBlockTable id="strObjectNametable" value="{!rec.lstProcessMap}" var="p" columns="8">              
+                                      <apex:column width="30%">
+                                       <apex:facet name="header"><apex:outputpanel title="Select the type of data which will be pushed into the Salesforce field after the agreement is signed.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Type__c.label}</apex:outputpanel></apex:facet>
+                                            <apex:inputfield id="objectFieldMappingType" value="{!p.proMap.echosign_dev1__Type__c}" required="true">
+                                                <apex:actionSupport event="onchange" action="{!onMappingTypeChange}" rerender="objectFieldMappingSource,objectFieldMappingName,objectFieldMappingOverwrite,themessages">
+                                                    <apex:param value="{!p.row}" name="row" assignTo="{!row}" />  
+                                                </apex:actionSupport> 
+                                            </apex:inputfield>             
+                                      </apex:column>  
+                                      <apex:column width="30%">
+                                       <apex:facet name="header"><apex:outputpanel title="Specify an EchoSign document field, Salesforce Agreement object field, or a constant value that will be the source of the data which will be pushed into Salesforce after the agreement is signed.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Source__c.label}</apex:outputpanel></apex:facet>
+                                          <apex:outputpanel id="objectFieldMappingSource">
+                                              <apex:outputpanel rendered="{!p.proMap.echosign_dev1__Type__c='Agreement Field'}">
+                                                  <apex:selectList id="agreementRelationshipFields" value="{!p.proMap.echosign_dev1__Source__c}" size="1"> 
+                                                      <apex:selectOptions value="{!lstAgreementFields}"/>   
+                                                  </apex:selectList>
+                                              </apex:outputpanel>   
+                                              <apex:outputpanel rendered="{!p.proMap.echosign_dev1__Type__c='Constant'}">                                                               
+                                                <apex:inputfield value="{!p.proMap.echosign_dev1__Source__c}" style="width: 300px;">
+                                                	<apex:actionSupport event="onchange" rerender="objectFieldMappingType,objectFieldMappingOverwrite,themessages"/>
+                                                </apex:inputfield>
+                                              </apex:outputpanel>                
+                                              <apex:outputpanel rendered="{!AND(p.proMap.echosign_dev1__Type__c='EchoSign Form Field',isFormFieldsLoaded)}">
+                                                  <apex:selectList id="mergeFields" value="{!p.proMap.echosign_dev1__Source__c}" size="1"> 
+                                                      <apex:selectOptions value="{!lstFormDataFields}"/>    
+                                                  </apex:selectList>
+                                              </apex:outputpanel>   
+                                          </apex:outputpanel>
+                                      </apex:column>  
+                                      <apex:column style="padding: 5px;"/>                          
+                                      <apex:column width="30%"> 
+                                       <apex:facet name="header"><apex:outputpanel title="Select a target Salesforce field from the EchoSign Agreement object where the data entered by signers will be populated after the agreement is signed.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.Name.label}</apex:outputpanel></apex:facet>
+                                          <apex:outputpanel id="objectFieldMappingName">
+                                              <apex:selectList id="lstFields" value="{!p.proMap.Name}" size="1"> 
+                                                  <apex:selectOptions value="{!rec.lstFields}"/>    
+                                                  <apex:actionSupport event="onchange" rerender="objectFieldMappingType,objectFieldMappingOverwrite,themessages"/> 
+                                              </apex:selectList>
+                                          </apex:outputpanel>               
+                                      </apex:column>  
+                                      <apex:column >
+                                       <apex:facet name="header"><apex:outputpanel title="If a value already exists in the target Salesforce field, do not overwrite the value using this mapping rule.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Do_No_Overwrite_Existing__c.label}</apex:outputpanel></apex:facet>
+                                        <apex:inputfield id="objectFieldMappingOverwrite" value="{!p.proMap.echosign_dev1__Do_No_Overwrite_Existing__c}">
+                                        	<apex:actionSupport event="onchange" rerender="objectFieldMappingType,objectFieldMappingSource,objectFieldMappingName,themessages"/>
+                                        </apex:inputfield>                
+                                      </apex:column> 
+                                      <apex:column >
+                                      	<apex:facet name="header"><apex:outputpanel title="If the source value from the EchoSign agreement is empty, do not write the empty value into the target Salesforce field using this mapping rule.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Do_Not_Write_Empty__c.label}</apex:outputpanel></apex:facet>
+                                        <apex:inputfield id="objectFieldMappingWriteEmpty" value="{!p.proMap.echosign_dev1__Do_Not_Write_Empty__c}">
+                                        	<apex:actionSupport event="onchange" rerender="objectFieldMappingType,objectFieldMappingSource,objectFieldMappingName,themessages"/>
+                                        </apex:inputfield>                
+                                      </apex:column>   
+                                      <apex:column >
+                                      	<apex:facet name="header"><apex:outputpanel title="Disable a mapping row if you do not want it to run at the time this mapping is executed.">{!$ObjectType.echosign_dev1__SIGN_Field_Mapping__c.fields.echosign_dev1__Disable__c.label}</apex:outputpanel></apex:facet>
+                                        <apex:inputfield id="objectFieldMappingDisable" value="{!p.proMap.echosign_dev1__Disable__c}">
+                                        	<apex:actionSupport event="onchange" rerender="objectFieldMappingType,objectFieldMappingSource,objectFieldMappingName,themessages"/>
+                                        </apex:inputfield>                
+                                      </apex:column>   
+                                      <apex:column > 
+                                        <apex:actionRegion >
+                                            <apex:commandButton action="{!delMapping}" title="Delete Field Mapping" alt="Delete Field Mapping" image="{!$Resource.echosign_dev1__ActionDelete}" rerender="strObjectNameListSection,themessages" status="DeletingStatus" style="background:transparent;border-width:0px;">
+                                            	<apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>
+                                                <apex:param value="{!p.row}" name="row" assignTo="{!row}"></apex:param>                                            
+                                            </apex:commandButton>
+                                            <apex:actionStatus id="DeletingStatus">
+                                                <apex:facet name="start">
+                                                <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                                <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                            </apex:actionStatus>
+                                        </apex:actionRegion>                
+                                      </apex:column>                              
+        
+                                    </apex:pageBlockTable>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="ButtonSection">
+                                <apex:commandLink action="{!addMapping}" value="Add Field Mapping" rerender="strObjectNameListSection,themessages" status="LoadingStatus">
+                                    <apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>
+                                </apex:commandLink> &nbsp; &nbsp; &nbsp;
+                                <apex:actionStatus id="LoadingStatus">
+                                    <apex:facet name="start">
+                                    <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                    <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                </apex:actionStatus>                             
+                            </apex:outputPanel>
+                            
+                            
+                            <apex:outputPanel id="strFileObjectNameListSection">
+                            	<apex:outputPanel >
+                            	<br/>
+                            	<h1>Map EchoSign Signed Agreement, Audit Trail, or Supporting Documents to Target Salesforce Object</h1>
+                            	<br/>
+                            	<br/>
+                            	</apex:outputPanel>
+                            	<apex:pageBlockTable id="strFileObjectNametable" value="{!rec.fileMappingWrappers}" var="fileMappingWrapper" columns="5">              
+                                	<apex:column width="30%">
+                                    	<apex:facet name="header"><apex:outputpanel title="Select the type of data which will be pushed into the Salesforce field after the agreement is signed.">{!$ObjectType.echosign_dev1__SIGN_File_Mapping__c.fields.echosign_dev1__Source_Type__c.label}</apex:outputpanel></apex:facet>
+                                     	<apex:inputfield id="objectFileMappingSourceType" value="{!fileMappingWrapper.fileMapping.echosign_dev1__Source_Type__c}" required="true">
+                                     		<apex:actionSupport event="onchange" action="{!onFileMappingSourceTypeChange}" rerender="objectFileMappingTargetType,strFileObjectNameListSection,objectFileMappingTargetFieldName,themessages">
+                                           		<apex:param value="{!fileMappingWrapper.row}" name="row" assignTo="{!row}" />
+                                           		<apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>  
+                                        	</apex:actionSupport>
+                                     	</apex:inputfield>             
+                                  	</apex:column>  
+                                    <apex:column width="30%">
+                                    	<apex:facet name="header"><apex:outputpanel title="Specify whether to attach the EchoSign file to the object or include a link to the file.">{!$ObjectType.echosign_dev1__SIGN_File_Mapping__c.fields.echosign_dev1__Target_Type__c.label}</apex:outputpanel></apex:facet>
+                                      	<apex:selectList id="objectFileMappingTargetType" value="{!fileMappingWrapper.fileMapping.echosign_dev1__Target_Type__c}" size="1" required="true"> 
+                                        	<apex:selectOptions value="{!fileMappingWrapper.targetTypeFields}"/>    
+                                            <apex:actionSupport event="onchange" action="{!onFileMappingTypeChange}" rerender="strFileObjectNameListSection,objectFileMappingTargetFieldName,themessages">
+                                           		<apex:param value="{!fileMappingWrapper.row}" name="row" assignTo="{!row}" />  
+                                        	</apex:actionSupport>  
+                                        </apex:selectList>
+                                  	</apex:column>                     
+                                  	<apex:column width="30%"> 
+                                    	<apex:facet name="header"><apex:outputpanel title="Select a target Salesforce field where the data entered by signers will be pushed into after the agreement is signed.">{!$ObjectType.echosign_dev1__SIGN_File_Mapping__c.fields.echosign_dev1__Target_Field_Name__c.label}</apex:outputpanel></apex:facet>
+                                      	<apex:outputpanel id="objectFileMappingTargetFieldName" rendered="{! fileMappingWrapper.fileMapping.Target_Type__c = 'Add a reference link to the file' }">
+                                        	<apex:selectList id="objectFileFieldNames" value="{!fileMappingWrapper.fileMapping.echosign_dev1__Target_Field_Name__c}" size="1"> 
+                                            	<apex:selectOptions value="{!rec.textFields}"/>
+                                            </apex:selectList>
+                                      	</apex:outputpanel>               
+                                  	</apex:column>
+                                  	<apex:column >
+                                    	<apex:facet name="header">{!$ObjectType.echosign_dev1__SIGN_File_Mapping__c.fields.echosign_dev1__Disable__c.label}</apex:facet>
+                                        <apex:inputfield id="objectFileMappingDisable" value="{!fileMappingWrapper.fileMapping.echosign_dev1__Disable__c}" />                
+                                  	</apex:column>   
+                                   	<apex:column > 
+                                    	<apex:actionRegion >
+                                        	<apex:commandButton action="{!delFileMapping}" title="Delete File Mapping" alt="Delete File Mapping" image="{!$Resource.echosign_dev1__ActionDelete}" rerender="strFileObjectNameListSection,themessages" status="FileDeletingStatus" style="background:transparent;border-width:0px;">
+                                            	<apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>
+                                                <apex:param value="{!fileMappingWrapper.row}" name="row" assignTo="{!row}"></apex:param>                                            
+                                            </apex:commandButton>
+                                            <apex:actionStatus id="FileDeletingStatus">
+                                                <apex:facet name="start">
+                                                <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                                <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                            </apex:actionStatus>
+                                        </apex:actionRegion>                
+                                 	</apex:column>                              
+								</apex:pageBlockTable>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="FileButtonSection">
+                            	<apex:commandLink action="{!addFileMapping}" value="Add File Mapping" rerender="strFileObjectNameListSection,themessages" status="FileLoadingStatus">
+                                    <apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>
+                                </apex:commandLink> &nbsp; &nbsp; &nbsp;
+                                <apex:actionStatus id="FileLoadingStatus">
+                                    <apex:facet name="start">
+                                    <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                    <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                </apex:actionStatus>                                   
+                                <apex:outputPanel >
+                               		<br/>
+                               		<br/>
+                               		<br/>             
+                                    <apex:commandLink action="{!delProcessOperation}" value="Delete Object" rerender="pb2,themessages" status="LoadingStatus">
+                                                <apex:param value="{!rec.strObjectName}" name="strObjectName" assignTo="{!strObjectName}"></apex:param>
+                                    </apex:commandLink>
+                                </apex:outputPanel>                         
+                            </apex:outputPanel>
+                            
+                            
+                        </apex:pageBlockSection>
+                    </apex:repeat>                           
+        </apex:pageBlock> 
+
+        <apex:pageBlock id="theObjectNavigation">    
+                                     
+                <apex:pageBlockSection id="relatedObjectsSection" title="Map Data to Additional Related Objects" collapsible="false" columns="1">
+                	<apex:outputpanel >To map EchoSign document field data into a related Salesforce object, first select the related object and then specify the source and target values.</apex:outputpanel>
+                    <apex:commandlink id="addRelatedObjectsButton" status="AddLoadingStatus" action="{!showRelatedObjectsSection}" rendered="{!isAddRelatedObjectsButtonRendered}" rerender="relatedObjectsSection">Select a related object</apex:commandlink> 
+                    <apex:actionStatus id="AddLoadingStatus">
+                    	<apex:facet name="start">
+                        	<div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;" />
+                        	<img src="{!$Resource.loading}" style="width:20px;height:20px" />
+                    	</apex:facet>
+                    </apex:actionStatus>
+                    <apex:outputPanel id="relatedObjectsSectionLabel" rendered="{!isShowRelatedObjectsSectionRendered}"><b>Select the Salesforce object you want to map data to:</b></apex:outputPanel>
+                    <apex:outputPanel id="relatedObjectsSectionContent" rendered="{!isShowRelatedObjectsSectionRendered}">
+                        <table width="100">                         
+                            <tr>
+                                <td align="left" width="100px">                                                                
+                                    <b>Agreement: &nbsp;</b>
+                                </td>    
+                                <apex:actionregion >                            
+                                <apex:repeat value="{!lstObjectNavigation}" var="rec" id="lstObjectNavigation">        
+                                    <td align="left" width="100px">                                       
+                                      <apex:selectList id="agreementRelationshipFields" value="{!rec.fieldName}" size="1" disabled="{!rec.disabled}"> 
+                                            <apex:selectOptions value="{!rec.lstFields}"/>
+                                            <apex:actionSupport event="onchange" action="{!addObjectNavigation}" rerender="theObjectNavigation,themessages,addObjectButton,backObjectButton" status="AddingStatus"/> 
+                                      </apex:selectList>
+                                    </td>
+                                    <td align="left" width="5px">                                                                
+                                        <b>&nbsp;: &nbsp;</b>
+                                    </td>  
+                                </apex:repeat>  
+                                    
+                                    <td align="left" width="5px">                                                                
+                                        <apex:commandlink id="backObjectButton" action="{!delObjectNavigation}" rendered="{!isBackObjectButtonRendered}" rerender="theObjectNavigation,themessages,addObjectButton,agreementRelationshipFields"><b>Back</b></apex:commandlink>
+                                    </td>
+                                    <td>
+                                        <apex:actionStatus id="AddingStatus">
+                                            <apex:facet name="start">
+                                            <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                            <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                        </apex:actionStatus>
+                                    </td>                                   
+                                </apex:actionregion>                                                                                                                                        
+                            </tr>
+                            <tr>
+                                <td align="left" width="5px">                                                                
+                                    <apex:commandbutton id="addObjectButton" action="{!addProcessOperation}" value="Add Object" disabled="{!isAddObjectButtonDisabled}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>                      
+                </apex:pageBlockSection>                
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="bottomButtons">    
+            <apex:pageBlockButtons location="top">
+                <apex:commandbutton action="{!save}" value="Save"/>
+                <apex:commandbutton action="{!cancel}" value="Cancel" onclick="if(!confirm('Are you sure?')){return false;}" />
+                <apex:commandbutton action="{!delete}" value="Delete" onclick="if(!confirm('Are you sure?')){return false;}" />                          
+            </apex:pageBlockButtons>  
+        </apex:pageBlock>
+            
+        <apex:outputtext rendered="false" value="{!proTemplate.echosign_dev1__Merge_Field_CSV__c}"/>
+	</apex:form>
+                           
+</apex:page>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Data_com_Managed__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( Jigsaw&lt;&gt;&quot;&quot;, 1, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Data.com Managed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_com_does_not_auto_update__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Prevents automated Clean jobs from auto-filling fields with the matched Data.com record&apos;s values.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Exclude this record from automated field updates from Data.com Clean jobs</inlineHelpText>
+        <label>Data.com Does Not Auto-Update</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Imported_from_Jigsaw__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Backend calculation field used for reporting</description>
+        <externalId>false</externalId>
+        <formula>IF(OR(CONTAINS(TEXT(LeadSource),&quot;Jigsaw&quot;),CONTAINS(TEXT(LeadSource),&quot;Data.com&quot;)),1,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Added from Data.com</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <validationRules>
+        <fullName>Block_autoupdate_from_Data_com</fullName>
+        <active>true</active>
+        <description>Record-level prevention of automated Clean jobs from automatically updating field values.</description>
+        <errorConditionFormula>(  Data_com_does_not_auto_update__c  ) &amp;&amp; ($User.Alias = &quot;autocln&quot;) &amp;&amp; (ISCHANGED(  Title  ) || ISCHANGED(  Email  ) || ISCHANGED(  Phone  ) || ISCHANGED(  MailingStreet  ) || ISCHANGED(  MailingCity  ) || ISCHANGED(  MailingState  ) || ISCHANGED(  MailingCountry  ) || ISCHANGED(  MailingPostalCode  ) )</errorConditionFormula>
+        <errorMessage>This record has been excluded from automated field updates from Data.com Clean jobs.</errorMessage>
+    </validationRules>
+</CustomObject>

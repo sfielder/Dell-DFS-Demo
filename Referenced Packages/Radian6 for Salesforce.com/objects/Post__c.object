@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Contains information of the message sent/received</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AuthorType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of account that made this post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of user that made this post. For example, the author could be a person or a Facebook fanpage.</inlineHelpText>
+        <label>Author Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Content__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The body of the social media post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field contains the message typed by the user</inlineHelpText>
+        <label>Content</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ExternalPostID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The post ID of this post as determined by the media provider. Should not be made visible.</description>
+        <externalId>false</externalId>
+        <label>External Post ID</label>
+        <length>128</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Followers__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of followers that the persona had at the time this post was saved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of followers this user had at the time this post was saved.</inlineHelpText>
+        <label>Followers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Following__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of accounts this persona was following at the time this post was saved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of people this user was following at the time this post was saved.</inlineHelpText>
+        <label>Following</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Friends__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Number of Facebook friends that this persona had at the time that this post was saved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of Facebook friends that this user had at the time that this post was saved.</inlineHelpText>
+        <label>Number Of Friends</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HarvestDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date which this post was crawled by Radian6.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date which the system found this post.</inlineHelpText>
+        <label>Harvest Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Headline__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The title of the post, if one exists.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The title of the post, if one exists.</inlineHelpText>
+        <label>Headline</label>
+        <length>1024</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IsFollowingUs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Were they following the company at the time this post was saved?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked if the user was following the company&apos;s Twitter account at the time this post was saved.</inlineHelpText>
+        <label>Are They Following Us?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsOutbound__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Was this post made from Radian6 for the Service Cloud?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked if this post was sent from Salesforce.</inlineHelpText>
+        <label>Is Outbound</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Klout__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Klout score of the persona at the time that this post was saved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Klout score of the user at the time that this post was saved.</inlineHelpText>
+        <label>Klout</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Link_To_Source__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A link to the profile that made the post. This shows up as the persona&apos;s avatar image, and will take you to an external site. This is the same as the profile link, only shows as the profile picture rather than text.</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(SM_Persona__c), &quot;&quot;,SM_Persona__r.Picture__c)</formula>
+        <inlineHelpText>Click here to visit the user&apos;s profile page.</inlineHelpText>
+        <label>Avatar</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Listed__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of lists that followed the owner of this Twitter account at the time this post was saved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of Twitter lists that followed the user who posted this at the time the post was saved.</inlineHelpText>
+        <label>Listed Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIconResource__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A formula used by the media icon. Should not be made visible.</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(UPPER(MediaProvider__c),&apos;TWITTER&apos;), &apos;/resource/R6Service__Twitter_Logo&apos;, 
+IF(CONTAINS(UPPER(MediaProvider__c), &apos;FACEBOOK&apos;), &apos;/resource/R6Service__Facebook_Logo&apos;, 
+IF(CONTAINS(UPPER(MediaProvider__c), &apos;YOUTUBE&apos;), &apos;/resource/R6Service__MediaTypeYouTubeIcon&apos;, 
+CASE(UPPER(MediaType__c), 
+&apos;BLOGS&apos;, &apos;/resource/R6Service__MediaTypeBlogIcon&apos;, 
+&apos;VIDEOS&apos;, &apos;/resource/R6Service__MediaTypeVideoIcon&apos;, 
+&apos;IMAGES&apos;, &apos;/resource/R6Service__MediaTypeImageIcon&apos;, 
+&apos;MAINSTREAM NEWS&apos;, &apos;/resource/R6Service__MediaTypeNewsIcon&apos;, 
+&apos;MICROMEDIA&apos;, &apos;/resource/R6Service__MediaTypeMicromediaIcon&apos;, 
+&apos;FORUM&apos;, &apos;/resource/R6Service__MediaTypeForumIcon&apos;, 
+&apos;COMMENTS&apos;, &apos;/resource/R6Service__MediaTypeCommentIcon&apos;, 
+&apos;/resource/R6Service__DefaultChannelLogo&apos; 
+))))</formula>
+        <label>Media Icon Resource</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIcon__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The icon that represents the post&apos;s medium. This will be the provider&apos;s logo for common providers, or generic media type logos for less popular providers.</description>
+        <externalId>false</externalId>
+        <formula>IMAGE(MediaIconResource__c, MediaType__c +&quot;/&quot; + MediaProvider__c, 48, 48)</formula>
+        <inlineHelpText>The media provider or media type.</inlineHelpText>
+        <label>Media Icon</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaProvider__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The media provider for this post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The social network that this post was made on. For example: Facebook, Twitter, Youtube or Myspace.</inlineHelpText>
+        <label>Media Provider</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The media type for this post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The media type of the media provider. For example: Youtube is a &quot;video&quot; media type while Twitter is &quot;micromedia&quot;.</inlineHelpText>
+        <label>Media Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Message_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of message.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of message. For example: post, comment or private message.</inlineHelpText>
+        <label>Message Type</label>
+        <length>128</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrgPosts__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Number of posts this user had that have matched the Radian6 topic profile and have been saved to the org, at the time that this post was saved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of posts this user had in the system at the time that this post was saved.</inlineHelpText>
+        <label>Number Of Recorded Posts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PostDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date that this was posted.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that this was posted.</inlineHelpText>
+        <label>Post Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PostLink__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A link to the post.  This displays as the media type icon and when clicked will take you to the external media type site.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(PostUrl__c), &quot;&quot;,  HYPERLINK(PostUrl__c,  IMAGE(MediaIconResource__c, PostUrl__c, 16, 16)))</formula>
+        <inlineHelpText>Click here to visit the post.</inlineHelpText>
+        <label>Post Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PostPriority__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The priority of the post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The priority with which this post must be addressed.</inlineHelpText>
+        <label>Priority</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PostTags__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Post Tags added by the Radian6 platform.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Post Tags added by the Radian6 platform.</inlineHelpText>
+        <label>Post Tags</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PostUrl__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A link to the post.  This displays as the URL and when clicked will take you to the external media type site.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Click here to visit the post.</inlineHelpText>
+        <label>Post URL</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>ProfileIconUrl__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is the URL for the display picture of the profile. This is used by other formula fields, and should not be made visible.</description>
+        <externalId>false</externalId>
+        <label>Profile Icon URL</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>ProfileLink__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A link to the profile of the post.  When clicked the user will be directed to the social media site.  This value displays as a URL.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Click here to visit the user&apos;s profile page.</inlineHelpText>
+        <label>Profile Link</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>R6PostID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>The ID used by Radian6 to identify this post. Should not be made visible.</description>
+        <externalId>true</externalId>
+        <label>Radian6 Post ID</label>
+        <length>64</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>R6SourceID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A unique identifier assigned by Radian6 to content sources. A content source may be a particular blog in a blog provider. This is for internal use and should not be made visible.</description>
+        <externalId>false</externalId>
+        <label>Radian6 Source ID</label>
+        <length>64</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>R6TopicID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A unique identifier assigned by Radian6 to posts. For internal use only, should not be made visible.</description>
+        <externalId>false</externalId>
+        <label>Radian6 Topic ID</label>
+        <length>64</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RealName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The real name of the user who made the post, if available.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The real name of the user, if available.</inlineHelpText>
+        <label>Name</label>
+        <length>160</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RecipientType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of profile this post was sent to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of profile this post was sent to, if any. For example, person or Facebook fanpage.</inlineHelpText>
+        <label>Recipient Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recipient__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The username of the person the message was directed at, if anyone.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The username of the person the message was directed at, if anyone.</inlineHelpText>
+        <label>Recipient</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SM_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The parent case object for this post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The case that this post belongs to.</inlineHelpText>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Social Media Posts</relationshipLabel>
+        <relationshipName>SM_Case_Posts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SM_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The contact of the persona who made this post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The contact of the user who made this post.</inlineHelpText>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Social Media Posts</relationshipLabel>
+        <relationshipName>Social_Media_Posts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SM_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The lead for this post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The lead for this post.</inlineHelpText>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>Social Media Posts</relationshipLabel>
+        <relationshipName>SM_Lead_Posts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SM_Persona__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The persona of the post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The persona of the post.</inlineHelpText>
+        <label>Persona</label>
+        <referenceTo>Persona__c</referenceTo>
+        <relationshipLabel>Social Media Posts</relationshipLabel>
+        <relationshipName>SM_Persona_Posts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sentiment__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The sentiment of the post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The sentiment of the post. Was the user happy, upset or neutral about your product or brand?</inlineHelpText>
+        <label>Sentiment</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Negative</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Somewhat Negative</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Somewhat Positive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Positive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SourceTags__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Source Tags added by the Radian6 platform.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Source Tags added by the Radian6 platform.</inlineHelpText>
+        <label>Source Tags</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SpamRating__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Is this spam or not?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this spam or not?</inlineHelpText>
+        <label>Spam Rating</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Spam</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>StatusMessage__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Friendly post status. This will contain an easy-to-read description of the status of the post.</description>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISNULL(Status__c), LEN(Status__c) &lt;= 0) ,
+  null, 
+  CASE( UPPER(TRIM(Status__c)), 
+      &apos;R6_AUTHENTICATION&apos;, $Label.r6service__AuthorizationError,
+      &apos;R6_APP&apos;, $Label.r6service__SendMessageError,
+      &apos;SOCIAL_ACCOUNT_AUTHENTICATION&apos;, $Label.r6service__OauthError,
+      &apos;INVALID_USER_ACCOUNT&apos;, $Label.r6service__InvalidUserAccountError,
+      &apos;USER_NOT_VISIBLE&apos;, $Label.r6service__UserNotVisibleStatus,
+      &apos;DUPLICATE_MESSAGE_POSTED&apos;, $Label.r6service__DuplicateMessageError,
+      &apos;TWITTER_USER_NOT_FOLLOWING_YOU&apos;, $Label.r6service__TwitterUserNotFollowing,
+      &apos;SEND_MESSAGE_FAILED&apos;, $Label.r6service__SendMessageError,
+      &apos;SENT&apos;, $Label.r6service__SentStatus,
+      &apos;PENDING&apos;, MediaProvider__c + &apos; &apos; + $Label.r6service__messageScheduled,
+      &apos;REPLIED&apos;, $Label.r6service__RepliedStatus,
+      &apos;DELETED&apos;, $Label.r6service__DeletedStatus,
+      $Label.r6service__UnknownStatus)
+)</formula>
+        <inlineHelpText>The post status. For example, posts may be sent, pending, deleted, replied, have an error message or be blank (for incoming posts that have not been addressed).</inlineHelpText>
+        <label>Status Message</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The status code of the post. This is the status code sent by Radian6 and is not meant to be human readable.
+Use the StatusMessage field for the friendly status message.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The post status. For example, posts sent from Salesforce may be sent, pending (scheduled for later) or failed.</inlineHelpText>
+        <label>StatusCode</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SyncToken__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>An identifier used by Radian6 to link outbound posts with incoming posts, for reingestion. This is for internal use only and should not be made visible.</description>
+        <externalId>true</externalId>
+        <label>Sync Token</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>TopicType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The reason for this post to be entered into Salesforce.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The reason that this post was entered into the system. For example, the post may be entered because it matched a keyword in a topic profile, or because it was sent to one of your managed accounts.</inlineHelpText>
+        <label>Topic Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tweets__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of tweets made by the persona who posted this at the time this post was saved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total number of tweets by this user at the time of posting.</inlineHelpText>
+        <label>Number Of Tweets</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UserName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The handle of the user who posted this.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The handle of the user who posted this.</inlineHelpText>
+        <label>User Handle</label>
+        <length>64</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Social Media Post</label>
+    <listViews>
+        <fullName>Aggregator_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Aggregator</value>
+        </filters>
+        <label>Aggregator</label>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Blogs_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Blogs</value>
+        </filters>
+        <label>Blogs</label>
+    </listViews>
+    <listViews>
+        <fullName>BuySell_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Buy/Sell</value>
+        </filters>
+        <label>Buy/Sell</label>
+    </listViews>
+    <listViews>
+        <fullName>Comments_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Comments</value>
+        </filters>
+        <label>Comments</label>
+    </listViews>
+    <listViews>
+        <fullName>Facebook_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Facebook</value>
+        </filters>
+        <label>Facebook</label>
+    </listViews>
+    <listViews>
+        <fullName>Forums_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Forums,Forum Replies</value>
+        </filters>
+        <label>Forums</label>
+    </listViews>
+    <listViews>
+        <fullName>GooglePlus_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaProvider__c</field>
+            <operation>contains</operation>
+            <value>Google+</value>
+        </filters>
+        <label>Google+</label>
+    </listViews>
+    <listViews>
+        <fullName>Images_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Images</value>
+        </filters>
+        <label>Images</label>
+    </listViews>
+    <listViews>
+        <fullName>MicroMedia_Posts</fullName>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>MicroMedia</value>
+        </filters>
+        <label>MicroMedia</label>
+    </listViews>
+    <listViews>
+        <fullName>MySpace_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaProvider__c</field>
+            <operation>contains</operation>
+            <value>MySpace</value>
+        </filters>
+        <label>MySpace</label>
+    </listViews>
+    <listViews>
+        <fullName>News_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Mainstream News</value>
+        </filters>
+        <label>Mainstream News</label>
+    </listViews>
+    <listViews>
+        <fullName>Outgoing_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>Content__c</columns>
+        <columns>SM_Persona__c</columns>
+        <columns>SM_Case__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>startsWith</operation>
+            <value>Pending,Failed</value>
+        </filters>
+        <filters>
+            <field>IsOutbound__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Outgoing Posts</label>
+    </listViews>
+    <listViews>
+        <fullName>Twitter_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaProvider__c</field>
+            <operation>contains</operation>
+            <value>twitter</value>
+        </filters>
+        <label>Twitter</label>
+    </listViews>
+    <listViews>
+        <fullName>Videos_Posts</fullName>
+        <columns>NAME</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>PostDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Videos</value>
+        </filters>
+        <label>Videos</label>
+    </listViews>
+    <nameField>
+        <label>Post Number</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Social Media Posts</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>POST_FACEBOOK</fullName>
+        <active>true</active>
+        <description>Posts of this type represent Facebook posts.</description>
+        <label>Facebook</label>
+        <picklistValues>
+            <picklist>Sentiment__c</picklist>
+            <values>
+                <fullName>Negative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Positive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Somewhat Negative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Somewhat Positive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SpamRating__c</picklist>
+            <values>
+                <fullName>Not Spam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>POST_OTHER_SOCIAL_MEDIA</fullName>
+        <active>true</active>
+        <description>Posts of this type represent posts on other social networks.</description>
+        <label>Other</label>
+        <picklistValues>
+            <picklist>Sentiment__c</picklist>
+            <values>
+                <fullName>Negative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Positive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Somewhat Negative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Somewhat Positive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SpamRating__c</picklist>
+            <values>
+                <fullName>Not Spam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>POST_TWITTER</fullName>
+        <active>true</active>
+        <description>Posts of this type represent Twitter posts.</description>
+        <label>Twitter</label>
+        <picklistValues>
+            <picklist>Sentiment__c</picklist>
+            <values>
+                <fullName>Negative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Positive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Somewhat Negative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Somewhat Positive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SpamRating__c</picklist>
+            <values>
+                <fullName>Not Spam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>SM_Contact__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SM_Persona__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Content__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Message_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PostDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>DeletePostfromSocialMediaProvider</fullName>
+        <availability>online</availability>
+        <description>Delete the post from the social media provider, but leave the post in Salesforce</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Delete from Source</masterLabel>
+        <openType>noSidebar</openType>
+        <page>PostDelete</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,148 @@
+<apex:page controller="nitro.NitroTeamMembers" showHeader="false" sidebar="false">
+  <apex:detail relatedList="false"/>
+    <link rel="stylesheet" href="{!URLFOR($Resource.Multiselect, 'jquery.css')}" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/js/nfsf-ui-theme/jquery-ui-1.8.16.custom.css" />
+    <link type="text/css" href="{!URLFOR($Resource.Multiselect, 'multiselect.css')}" rel="stylesheet" />
+    <script type="text/javascript" src="{!URLFOR($Resource.Multiselect, 'jquery.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.Multiselect, 'jquery_UI.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.Multiselect, 'scrollTo.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.Multiselect, 'multiselect.js')}"></script>
+    <script type="text/javascript">
+      var n4sf = {};
+         n4sf.selectedArr = new Array();        //array of people selected
+         n4sf.availableArr = new Array();    //array of people available
+         n4sf.dirty = false;        //have they made any changes?
+         n4sf.getAvailableAndSelectedItems = function(){
+            //keep watch over the number of available and selected...if they change, mark the form as dirty, and warn when leaving the page
+            n4sf.selectedArr = $("ul.selected li.ui-element"); //list on the left
+            n4sf.availableArr = $("ul.available li.ui-element"); //list on the right
+         }
+         
+
+        $(function(){
+            $(".multiselect").multiselect();
+            $(".multiselect").multiselect({sortable: false});
+
+         n4sf.getAvailableAndSelectedItems();         
+
+         //set a timer to monitor the dirtiness of our form.
+         setInterval(function(){
+            var nowSelected = $("ul.selected li.ui-element");
+            var nowAvailable = $("ul.available li.ui-element");
+
+            if(!$(nowSelected).compare(n4sf.selectedArr) || !$(nowAvailable).compare(n4sf.availableArr)){
+               //console.log('dirty')
+               n4sf.dirty = true;
+            }else{
+               n4sf.dirty = false;
+            }
+         },1000)
+
+            /*hijack and hack the save button to refresh the parent window when teams are changed*/
+            $("input[value='Save']").click(function(){
+               //un-dirty the form
+            n4sf.getAvailableAndSelectedItems();         
+            
+            //show the loader
+            $(this).after("<img src='https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif' id='saveLoader' />")
+            
+            var poll = setInterval(function(){
+               //wait for a success message              
+                  if($(".message h4:contains('Success')").length > 0){
+                     $('#saveLoader').remove();
+                     window.opener.showTeamRefreshWrapper();
+                     //console.log('success');
+                     clearInterval(poll);
+                  }
+            },500)                        
+            });
+            
+            $("ul.connected-list li:even").addClass('even');
+        });
+        
+        function gotoPage(pageNumber) {
+         if(n4sf.dirty){
+            if(confirm("You have made changes, if you do not wish to lose them, please click cancel and then click 'Save' below.")){
+               doGoToPage(pageNumber);
+            }else{
+               return false;
+            }
+         }else{
+            doGoToPage(pageNumber);
+         }
+        }
+        
+        function doGoToPage(pageNumber){
+         var parts = location.href.split("&pageIndex="); 
+         var currentPage = 0;
+         if (parts.length > 1) {
+            currentPage = parts[1];
+         }
+         if (currentPage == pageNumber) {
+            // do nothing. 
+            //alert ("do nothing");
+         }
+         else {
+            var newURL = parts[0] + "&pageIndex=" + pageNumber;
+            //alert (newURL);
+            location.href = newURL;
+           }       
+        }
+
+
+      //extend jquery to add array comparison functions        
+      jQuery.fn.compare = function(t) {
+          if (this.length != t.length) { return false; }
+          var a = this.sort(),
+              b = t.sort();
+          for (var i = 0; t[i]; i++) {
+              if (a[i] !== b[i]) { 
+                      return false;
+              }
+          }
+          return true;
+      };
+        
+    </script>
+    <style type="text/css">
+        h2.mainTitle                   { white-space: nowrap; }
+        .ui-multiselect                { background:#F8F8F8;border:1px solid #e7e7e7;border-top:5px solid #1797C0;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px }
+        .multiselect                { width:700px;height:400px;}
+        ul.connected-list li           { padding:10px 0;font-size:14px;font-family:Arial,Helvetica,sans-serif;font-weight:bold }
+        ul.connected-list li.even         { background:#FFF }
+        ul.connected-list li:hover,
+        ul.connected-list li.even:hover      { background:#E5E5E5;cursor:pointer; } 
+        ul.connected-list li:active       { background:#CFEEF8;color:#1797C0; } 
+        
+        .message.confirmM3             { width:680px;padding:5px;margin:10px 5px;border:1px solid #FFF;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;color:#FFF;background:#1BB652;font-weight:bold;position:relative;float:left;}
+      .message.confirmM3 .messageText     { color:#FFF }
+      .message.confirmM3 .messageText span         { font-size:14px }
+      ul.paging_links                  { width:100%;list-style:none;position:relative;float:left;margin:5px 0;padding:5px 0  20px 0}
+      ul.paging_links li               { display:block;cursor:pointer;float:left;margin:0 5px 0 0;background:#CCC;color:#FFF;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px } 
+      ul.paging_links li:hover            { background:#E5E5E5 } 
+      ul.paging_links li.active        { cursor:default; }
+      ul.paging_links li.active:hover        { background:#CCC; }
+      ul.paging_links li a          { color:#666;font-weight:bold;text-shadow:0 1px #FFF } 
+      ul.paging_links li span          { float:left;display:block;padding:7px } 
+      #save_button_wrap             { margin:0px 0 0 0;width:100%;position:relative;float:left; }
+      #paging_links                 { margin:20px 0 0 0;width:100%;position:relative;float:left; }
+    </style>
+    
+    <apex:form > 
+    
+      <apex:pageBlock title="Editing Members for {!LeagueName}: {!TeamName}" id="participantBlock">
+            <apex:pageMessages id="messages" ></apex:pageMessages>
+            <apex:selectList value="{!usersSelected}" multiselect="true" styleClass="multiselect">
+                    <apex:selectOptions value="{!userOptions}"/>
+            </apex:selectList>
+         <div id="paging_links"> 
+            <apex:outputText escape="false" value="{!PagingLinks}"></apex:outputText>
+         </div>
+            <div id="save_button_wrap">
+               <apex:commandButton value="Save" action="{!action}" rerender="messages"/>
+            </div>
+        </apex:pageBlock>
+ 
+    </apex:form>
+
+</apex:page>

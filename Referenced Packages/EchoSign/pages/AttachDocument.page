@@ -1,0 +1,135 @@
+<apex:page controller="echosign_dev1.attachDocument_Controller">
+
+<div class="lookupTab FilePickerResultsFrame"> 
+    <apex:form >
+        <apex:sectionHeader title="Documents" />
+        
+        <apex:pageBlock title="Select Documents to Attach"  id="pb">
+            <apex:pageBlockSection id="buttonsSection" columns="1">
+                <apex:pageBlockSectionItem >
+                	<apex:outputPanel id="folderPanel" layout="block">
+                	   <b><apex:outputLabel value="Folder" for="Folder"/></b>
+                       <apex:selectList id="Folder" value="{!selectedFolder}" size="1" >
+                           <apex:selectOptions value="{!documentFolders}"/>
+                           <apex:actionSupport event="onchange" action="{!setFolder}" status="status" rerender="theList"/>
+                         <apex:actionStatus id="status">
+                               <apex:facet name="start"><img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                               <apex:facet name="stop"><img src="/s.gif" style="width:20px;height:20px" /></apex:facet>
+                           </apex:actionStatus>
+                       </apex:selectList>
+                	</apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >   
+				<apex:panelGrid columns="2" id="theGrid">
+                    <apex:commandButton action="{!saveToAttachment}" value="Attach Selected Documents"/>
+
+                    <apex:commandButton action="{!cancel}" value="Cancel"/>
+                 </apex:panelGrid>        
+                </apex:pageBlockSectionItem>                
+            </apex:pageBlockSection>                 
+
+        <!-- This Section for #2 HEADER Layout -->
+            <apex:outputpanel id="theList" rendered="{!NOT ISNULL(Products)}" layout="block" >        
+                <apex:pageBlockTable id="BFTable2a" value="{!Products}" rowClasses="firstHeaderRow" var="p" columns="6" width="200%">
+                    <apex:column width="20px">
+                        <apex:facet name="header"></apex:facet>
+                        <apex:inputCheckbox value="{!p.selected}" id="checkedone"/>
+                    </apex:column>              
+                   <apex:column >
+                   		<apex:facet name="header">
+	                   		<apex:outputPanel >
+	                   			<apex:commandLink value="{!$ObjectType.Document.fields.Name.label}" action="{!doSort}" rerender="BFTable2a">
+									<apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+								</apex:commandLink>
+								<apex:image value="{!$Resource.echosign_dev1__SortDescArrow}" title="Sort Descending" rendered="{! previousSortField = sortField && isSortedByName }">
+									<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+										<apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+									</apex:actionSupport>
+								</apex:image>
+								<apex:image value="{!$Resource.echosign_dev1__SortAscArrow}" title="Sort Ascending" rendered="{! previousSortField <> sortField && isSortedByName }">
+									<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+										<apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+									</apex:actionSupport>
+								</apex:image>
+							</apex:outputPanel>
+						</apex:facet>
+                   		<apex:image value="{!$Resource.echosign_dev1__PdfIcon}" rendered="{!p.isPdf}"/>
+	               		<apex:image value="{!$Resource.echosign_dev1__WordIcon}" rendered="{!p.isWord}"/>
+	               		<apex:image value="{!$Resource.echosign_dev1__PowerPointIcon}" rendered="{!p.isPowerPoint}"/>
+	               		<apex:image value="{!$Resource.echosign_dev1__ExcelIcon}" rendered="{!p.isExcel}"/>
+	               		<apex:image value="{!$Resource.echosign_dev1__JpegIcon}" rendered="{!p.isJpeg}"/>
+                        &nbsp;<apex:outputfield value="{!p.prod.Name}"/>             
+                  </apex:column>  
+                  <apex:column >
+                    <apex:facet name="header">
+                   		<apex:outputPanel >
+                   			<apex:commandLink value="{!$ObjectType.Document.fields.Type.label}" action="{!doSort}" rerender="BFTable2a">
+								<apex:param name="sortField" value="Type" assignTo="{!sortField}"/>
+							</apex:commandLink>
+							<apex:image value="{!$Resource.echosign_dev1__SortDescArrow}" title="Sort Descending" rendered="{! previousSortField = sortField && isSortedByType }">
+								<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+									<apex:param name="sortField" value="Type" assignTo="{!sortField}"/>
+								</apex:actionSupport>
+							</apex:image>
+							<apex:image value="{!$Resource.echosign_dev1__SortAscArrow}" title="Sort Ascending" rendered="{! previousSortField <> sortField && isSortedByType }">
+								<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+									<apex:param name="sortField" value="Type" assignTo="{!sortField}"/>
+								</apex:actionSupport>
+							</apex:image>
+						</apex:outputPanel>
+					</apex:facet>
+                    <apex:outputtext value="{!p.fileType}"/>
+                  </apex:column>  
+                   <apex:column >
+                   <apex:facet name="header">
+                   		<apex:outputPanel >
+                   			<apex:commandLink value="{!$ObjectType.Document.fields.AuthorId.label}" action="{!doSort}" rerender="BFTable2a">
+								<apex:param name="sortField" value="Author" assignTo="{!sortField}"/>
+							</apex:commandLink>
+							<apex:image value="{!$Resource.echosign_dev1__SortDescArrow}" title="Sort Descending" rendered="{! previousSortField = sortField && isSortedByAuthor }">
+								<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+									<apex:param name="sortField" value="Author" assignTo="{!sortField}"/>
+								</apex:actionSupport>
+							</apex:image>
+							<apex:image value="{!$Resource.echosign_dev1__SortAscArrow}" title="Sort Ascending" rendered="{! previousSortField <> sortField && isSortedByAuthor }">
+								<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+									<apex:param name="sortField" value="Author" assignTo="{!sortField}"/>
+								</apex:actionSupport>
+							</apex:image>
+						</apex:outputPanel>
+					</apex:facet>
+                    <apex:outputfield value="{!p.prod.Author.Name}"/>
+                  </apex:column>      
+                   <apex:column >
+                   <apex:facet name="header">
+                   		<apex:outputPanel >
+                   			<apex:commandLink value="{!$ObjectType.Document.fields.BodyLength.label}" action="{!doSort}" rerender="BFTable2a">
+								<apex:param name="sortField" value="Length" assignTo="{!sortField}"/>
+							</apex:commandLink>
+							<apex:image value="{!$Resource.echosign_dev1__SortDescArrow}" title="Sort Descending" rendered="{! previousSortField = sortField && isSortedByLength }">
+								<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+									<apex:param name="sortField" value="Length" assignTo="{!sortField}"/>
+								</apex:actionSupport>
+							</apex:image>
+							<apex:image value="{!$Resource.echosign_dev1__SortAscArrow}" title="Sort Ascending" rendered="{! previousSortField <> sortField && isSortedByLength }">
+								<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+									<apex:param name="sortField" value="Length" assignTo="{!sortField}"/>
+								</apex:actionSupport>
+							</apex:image>
+						</apex:outputPanel>
+					</apex:facet>
+                    <apex:outputfield value="{!p.prod.BodyLength}"/>
+                  </apex:column> 
+                   <apex:column >
+                   <apex:facet name="header">{!$ObjectType.Document.fields.IsInternalUseOnly.label}</apex:facet>
+                    <apex:inputcheckbox disabled="true" value="{!p.prod.IsInternalUseOnly}"/>
+                  </apex:column>      
+                </apex:pageBlockTable>
+            </apex:outputpanel>         
+        <!-- END This section for #2 HEADER Layout -->
+        </apex:pageBlock>
+    </apex:form>
+</div> 
+ 
+
+</apex:page>

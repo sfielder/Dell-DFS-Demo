@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AddSocialMediaAccountLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button label for managing social accounts on send message pages.</shortDescription>
+        <value>Add Social Media Account</value>
+    </labels>
+    <labels>
+        <fullName>AdvancedParameters</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Advanced Configuration Settings</shortDescription>
+        <value>Advanced Settings</value>
+    </labels>
+    <labels>
+        <fullName>AltToSendingStatusImage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AltToSendingStatusImage</shortDescription>
+        <value>sending..</value>
+    </labels>
+    <labels>
+        <fullName>AtMentionComfirmation</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AtMentionConfirmation</shortDescription>
+        <value>Would you like to change your message to an @Reply?</value>
+    </labels>
+    <labels>
+        <fullName>AuthorizationError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Authorization Error</shortDescription>
+        <value>Error during authentication with Radian6. Please check your Radian6 credentials and try again.</value>
+    </labels>
+    <labels>
+        <fullName>CancelButtonLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CancelButtonLabel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>CaseDetail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case Detail</shortDescription>
+        <value>Case Detail</value>
+    </labels>
+    <labels>
+        <fullName>CaseHasNoPersonaPosts</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Persona has no posts in this case</shortDescription>
+        <value>Cannot find any posts in this case by the case originator. The posts may have been deleted from your org.</value>
+    </labels>
+    <labels>
+        <fullName>CaseNotFoundErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CaseNotFoundError</shortDescription>
+        <value>Case not found.</value>
+    </labels>
+    <labels>
+        <fullName>CaseNumberLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case Number label</shortDescription>
+        <value>Case</value>
+    </labels>
+    <labels>
+        <fullName>CharacterLabelInExceededErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CharacterLabelInExceededErrorMessage</shortDescription>
+        <value>characters.</value>
+    </labels>
+    <labels>
+        <fullName>CharactersRemaining</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CharactersRemaining</shortDescription>
+        <value>Characters Remaining</value>
+    </labels>
+    <labels>
+        <fullName>CommentDetail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Comment Detail section title</shortDescription>
+        <value>Comment Detail</value>
+    </labels>
+    <labels>
+        <fullName>CommentOnlyOnFacebookPosts</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Can comment on Facebook posts only.</shortDescription>
+        <value>You can only comment on Facebook posts.</value>
+    </labels>
+    <labels>
+        <fullName>Configuration</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Configuration</shortDescription>
+        <value>Configuration</value>
+    </labels>
+    <labels>
+        <fullName>ConfigurationPageWarning</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Pause/Stop Social Hub Rules</shortDescription>
+        <value>Please pause or stop any Social Hub push rules before making configuration changes.</value>
+    </labels>
+    <labels>
+        <fullName>ConfigurationParameters</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ConfigurationParameters</shortDescription>
+        <value>Package Configuration</value>
+    </labels>
+    <labels>
+        <fullName>ConfirmPostDeletion</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Confirm the post should be deleted from the web</shortDescription>
+        <value>Are you sure you want to delete this {0} from {1}? Please note that this {0} will not be removed from Salesforce.</value>
+    </labels>
+    <labels>
+        <fullName>DefaultRecordTypeSection</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Default Record Type Section</shortDescription>
+        <value>Default Record Types</value>
+    </labels>
+    <labels>
+        <fullName>DeleteFailed</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Post deletion failed</shortDescription>
+        <value>The original post could not be deleted.</value>
+    </labels>
+    <labels>
+        <fullName>DeletedStatus</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deleted Status</shortDescription>
+        <value>Deleted</value>
+    </labels>
+    <labels>
+        <fullName>DirectMessageError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Direct Message Error</shortDescription>
+        <value>Message cannot be delivered. To send a Direct Message (DM) the user must be following you.</value>
+    </labels>
+    <labels>
+        <fullName>DuplicateMessageError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DuplicateMessageError</shortDescription>
+        <value>Whoops! You already said that... please change your message and try again.</value>
+    </labels>
+    <labels>
+        <fullName>EditButtonLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EditButtonLabel</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>EnterKnowledgeURL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EnterKnowledge website URL instruction</shortDescription>
+        <value>Please enter the knowledge website URL.</value>
+    </labels>
+    <labels>
+        <fullName>EnterUrl</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EnterUrl instruction</shortDescription>
+        <value>Please enter a URL</value>
+    </labels>
+    <labels>
+        <fullName>EnterUrlLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EnterUrl Label</shortDescription>
+        <value>Shorten URL</value>
+    </labels>
+    <labels>
+        <fullName>ErrorInURLShortening</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ErrorInURLShortening</shortDescription>
+        <value>Error while Shortening URL.</value>
+    </labels>
+    <labels>
+        <fullName>ErrorTalkingToRadian6</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ErrorTalkingToRadian6</shortDescription>
+        <value>Error talking to Radian6.</value>
+    </labels>
+    <labels>
+        <fullName>FacebookComment</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Facebook Comment</shortDescription>
+        <value>Comment</value>
+    </labels>
+    <labels>
+        <fullName>FacebookLogo</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>FacebookLogo</shortDescription>
+        <value>Facebook Logo</value>
+    </labels>
+    <labels>
+        <fullName>FacebookPost</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Facebook Post</shortDescription>
+        <value>Post</value>
+    </labels>
+    <labels>
+        <fullName>FacebookPrivateMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Facebook Private Message</shortDescription>
+        <value>Private Message</value>
+    </labels>
+    <labels>
+        <fullName>FacebookUserName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Facebook Username</shortDescription>
+        <value>Reply To</value>
+    </labels>
+    <labels>
+        <fullName>GenericSocialMediaAccountError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Social Media Account error</shortDescription>
+        <value>There was a problem retrieving your social media accounts.</value>
+    </labels>
+    <labels>
+        <fullName>IncludeArticlesTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Include Articles section title</shortDescription>
+        <value>Include Articles</value>
+    </labels>
+    <labels>
+        <fullName>IntegrationUserAuthError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Integration user auth error</shortDescription>
+        <value>Authentication of the integration user has failed: {0}</value>
+    </labels>
+    <labels>
+        <fullName>IntegrationUserAuthSection</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Integration user auth section</shortDescription>
+        <value>Sandbox Integration User</value>
+    </labels>
+    <labels>
+        <fullName>InvalidCaseOrPersonaReference</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>InvalidCaseOrPersonaReference Error</shortDescription>
+        <value>Invalid case and/or persona reference.</value>
+    </labels>
+    <labels>
+        <fullName>InvalidExternalPostId</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid external post ID</shortDescription>
+        <value>External Post ID is not valid. This may happen if the post has not yet been reingested.</value>
+    </labels>
+    <labels>
+        <fullName>InvalidExternalUserId</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid external user ID</shortDescription>
+        <value>External User ID is not valid. This may happen if the post has not yet been reingested.</value>
+    </labels>
+    <labels>
+        <fullName>InvalidMessageType</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid message type</shortDescription>
+        <value>Message type is invalid.</value>
+    </labels>
+    <labels>
+        <fullName>InvalidR6PostId</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid R6 post ID</shortDescription>
+        <value>Radian6 Post ID is not valid. This may happen if the post has not yet been reingested.</value>
+    </labels>
+    <labels>
+        <fullName>InvalidSalesforceUserError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid integration user.</shortDescription>
+        <value>Integration user not valid. Please verify Integration Username, Password and Security Token.</value>
+    </labels>
+    <labels>
+        <fullName>InvalidTwitterComment</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid twitter comment</shortDescription>
+        <value>@Replies must begin with @ followed by the recipient&apos;s twitter handle and a space</value>
+    </labels>
+    <labels>
+        <fullName>InvalidUrlParameter</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid URL parameter error message.</shortDescription>
+        <value>An invalid parameter was passed:</value>
+    </labels>
+    <labels>
+        <fullName>InvalidUserAccountError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>InvalidUserAccountError</shortDescription>
+        <value>Invalid user account encountered while trying to send message. The accounts have been refreshed from the Radian6 servers. Please try sending again.</value>
+    </labels>
+    <labels>
+        <fullName>LastPost</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Label for content snippet of the most recent post.</shortDescription>
+        <value>Replying to:</value>
+    </labels>
+    <labels>
+        <fullName>LooseContactMatchingMode</fullName>
+        <categories>Contact Matching</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Loose contact matching mode.</shortDescription>
+        <value>Loose Matching</value>
+    </labels>
+    <labels>
+        <fullName>ManageSocialNetworksButtonValue</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ManageSocialNetworksButtonValue</shortDescription>
+        <value>Manage Social Networks</value>
+    </labels>
+    <labels>
+        <fullName>MessageDetails</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Message Details</shortDescription>
+        <value>Message Details</value>
+    </labels>
+    <labels>
+        <fullName>MessageSizeExceededError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MessageSizeExceededError</shortDescription>
+        <value>Message size limit exceeded by</value>
+    </labels>
+    <labels>
+        <fullName>MessageSizeExceededError1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MessageSizeExceededError1</shortDescription>
+        <value>Message size cannot be greater than 140 characters. Please remove at least</value>
+    </labels>
+    <labels>
+        <fullName>MessageSizeExceededError2</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MessageSizeExceededError2</shortDescription>
+        <value>characters and retry.</value>
+    </labels>
+    <labels>
+        <fullName>MessageSizeExceededErrorFacebook1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MessageSizeExceededErrorFacebook1</shortDescription>
+        <value>Message size cannot be greater than 420 characters. Please remove at least</value>
+    </labels>
+    <labels>
+        <fullName>MessageType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Message Type dropdown label</shortDescription>
+        <value>Message Type</value>
+    </labels>
+    <labels>
+        <fullName>NoAccountExist</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoAccountExist Error</shortDescription>
+        <value>You don&apos;t have any social media accounts. Please use the Add Social Media Account button below to add an account.</value>
+    </labels>
+    <labels>
+        <fullName>NoPermissionToDeletePost</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No permission to delete post</shortDescription>
+        <value>Your {0} user does not have permission to delete this {1}.</value>
+    </labels>
+    <labels>
+        <fullName>NoPersona</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoPersona Error when there is no persona related to contact</shortDescription>
+        <value>No persona to display</value>
+    </labels>
+    <labels>
+        <fullName>NoPersonaAttachToCase</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoPersonaAttachToCase</shortDescription>
+        <value>Case does not have a persona attached.</value>
+    </labels>
+    <labels>
+        <fullName>NoPersonaCasePostFound</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoPersonaCasePostFound</shortDescription>
+        <value>No persona, case, or post found.</value>
+    </labels>
+    <labels>
+        <fullName>NoPostUrlFoundErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoPostUrlFound error message</shortDescription>
+        <value>The post you want to reply to does not have a valid Post URL. You cannot reply to it.</value>
+    </labels>
+    <labels>
+        <fullName>NoSuchPostExists</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>cannot find post in social network</shortDescription>
+        <value>Cannot find this {0} in {1}.</value>
+    </labels>
+    <labels>
+        <fullName>NoSupportToIframe</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoSupportToIframe error message</shortDescription>
+        <value>Your browser does not support iframes.</value>
+    </labels>
+    <labels>
+        <fullName>OauthError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Oauth Error message</shortDescription>
+        <value>The OAuth token associated with the social media account has expired. Please contact your administrator or use the Add Social Media Account button below to update the account.</value>
+    </labels>
+    <labels>
+        <fullName>OfflineModeEnabledMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Offline mode enable warning message.</shortDescription>
+        <value>Offline mode is enabled.</value>
+    </labels>
+    <labels>
+        <fullName>OrgTypeSelectionSection</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Org type selection section</shortDescription>
+        <value>Organization Type</value>
+    </labels>
+    <labels>
+        <fullName>PendingStatus</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Friendly text for PENDING Post Status.</shortDescription>
+        <value>Sending</value>
+    </labels>
+    <labels>
+        <fullName>PersonaNotFound</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PersonaNotFound</shortDescription>
+        <value>Persona not found.</value>
+    </labels>
+    <labels>
+        <fullName>Post</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>generic message type</shortDescription>
+        <value>Post</value>
+    </labels>
+    <labels>
+        <fullName>PostIsAlreadyDeleted</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Post is already deleted</shortDescription>
+        <value>This {0} has already been deleted from {1}.</value>
+    </labels>
+    <labels>
+        <fullName>PostNotFoundErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostNotFound error message</shortDescription>
+        <value>Post not found</value>
+    </labels>
+    <labels>
+        <fullName>PostOnMyPageWallMessageTypeOption</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostOnMyPageWallMessageTypeOption</shortDescription>
+        <value>Post on My Page Wall</value>
+    </labels>
+    <labels>
+        <fullName>PostOnMyPersonalWallMessageTypeOption</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostOnMyPersonalWallMessageTypeOption</shortDescription>
+        <value>Post on My Personal Wall</value>
+    </labels>
+    <labels>
+        <fullName>PostOnPageOfChoiceMessageType</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostOnPageOfChoice message type option</shortDescription>
+        <value>Post to the page of my choice</value>
+    </labels>
+    <labels>
+        <fullName>PostOnThisUserWallMessageType</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostOnThisUserWall message type option</shortDescription>
+        <value>Post on This User&apos;s Wall</value>
+    </labels>
+    <labels>
+        <fullName>PoweredBy</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PoweredBy</shortDescription>
+        <value>Powered By</value>
+    </labels>
+    <labels>
+        <fullName>R6SettingsNullFieldException</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>R6SettingsNullFieldException</shortDescription>
+        <value>Please ensure the following fields have been specified: Radian6 API URL, Radian6 Account Username, Radian6 Account Password and Application Key.</value>
+    </labels>
+    <labels>
+        <fullName>Radian6IntegrationConfiguration</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Radian6IntegrationConfiguration</shortDescription>
+        <value>Radian6 Integration Configuration</value>
+    </labels>
+    <labels>
+        <fullName>Radian6Logo</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Radian6Logo</shortDescription>
+        <value>Radian6 Logo</value>
+    </labels>
+    <labels>
+        <fullName>Radian6Parameters</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Radian6Parameters</shortDescription>
+        <value>Radian6 Account</value>
+    </labels>
+    <labels>
+        <fullName>RecordTypeNotFound</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RecordTypeNotFound error message</shortDescription>
+        <value>Record Type not found:</value>
+    </labels>
+    <labels>
+        <fullName>RefreshButtonLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RefreshButtonLabel</shortDescription>
+        <value>Refresh</value>
+    </labels>
+    <labels>
+        <fullName>RepliedStatus</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Replied Status</shortDescription>
+        <value>Replied</value>
+    </labels>
+    <labels>
+        <fullName>ReplyToPost</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reply to Post message type option</shortDescription>
+        <value>Comment on Post</value>
+    </labels>
+    <labels>
+        <fullName>RulesEngine</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RulesEngine pageblock title</shortDescription>
+        <value>Social Hub</value>
+    </labels>
+    <labels>
+        <fullName>SaveButtonValue</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SaveButtonValue</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>SecurityTokenEmpty</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SecurityTokenEmpty alert</shortDescription>
+        <value>The security token field is empty. Do you want to proceed anyways?</value>
+    </labels>
+    <labels>
+        <fullName>SendAMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send a Message</shortDescription>
+        <value>Send a Message</value>
+    </labels>
+    <labels>
+        <fullName>SendATweet</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send a Tweet</shortDescription>
+        <value>Send a Tweet</value>
+    </labels>
+    <labels>
+        <fullName>SendMessageError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SendMessageError</shortDescription>
+        <value>There was a problem sending your message. Please try again. If the problem persists contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>SentStatus</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Sent Status</shortDescription>
+        <value>Sent</value>
+    </labels>
+    <labels>
+        <fullName>ShareButtonLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ShareButtonLabel</shortDescription>
+        <value>Send</value>
+    </labels>
+    <labels>
+        <fullName>ShortenUrlButtonLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ShortenButtonLabel</shortDescription>
+        <value>Shorten</value>
+    </labels>
+    <labels>
+        <fullName>SocialNetworkAccount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Network Account</shortDescription>
+        <value>Send As</value>
+    </labels>
+    <labels>
+        <fullName>Source</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Generic name for a media provider</shortDescription>
+        <value>the Source</value>
+    </labels>
+    <labels>
+        <fullName>StatusDuplicateError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status Duplicate Error</shortDescription>
+        <value>Whoops! You already said that, please modify your message and try again.</value>
+    </labels>
+    <labels>
+        <fullName>SyncError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sync Error</shortDescription>
+        <value>Could not synchronize changes with Radian6. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>TightContactMatchingMode</fullName>
+        <categories>Contact Matching</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tight contact matching mode.</shortDescription>
+        <value>Tight Matching</value>
+    </labels>
+    <labels>
+        <fullName>TweetButtonLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TweetButtonLabel</shortDescription>
+        <value>Send</value>
+    </labels>
+    <labels>
+        <fullName>TwitterComment</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Twitter Comment</shortDescription>
+        <value>@Reply</value>
+    </labels>
+    <labels>
+        <fullName>TwitterLogo</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TwitterLogo</shortDescription>
+        <value>Twitter Logo</value>
+    </labels>
+    <labels>
+        <fullName>TwitterPost</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Twitter Post</shortDescription>
+        <value>Status Update</value>
+    </labels>
+    <labels>
+        <fullName>TwitterPrivateMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Twitter Private Message</shortDescription>
+        <value>Direct Message</value>
+    </labels>
+    <labels>
+        <fullName>TwitterUserName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Twitter UserName Label</shortDescription>
+        <value>Reply To</value>
+    </labels>
+    <labels>
+        <fullName>TwitterUserNotFollowing</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Twitter User Not Following</shortDescription>
+        <value>You cannot send a Direct Message to this Twitter user because he/she is not following you.</value>
+    </labels>
+    <labels>
+        <fullName>TwitterUserNotVisibleErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TwitterUserNotVisibleErrorMessage</shortDescription>
+        <value>Unable to send message due to user&apos;s Twitter Security Settings.</value>
+    </labels>
+    <labels>
+        <fullName>TypeMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TypeMessage instruction</shortDescription>
+        <value>You must type a message.</value>
+    </labels>
+    <labels>
+        <fullName>TypeMessageForReply</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TypeMessageForReply</shortDescription>
+        <value>You must type a message.</value>
+    </labels>
+    <labels>
+        <fullName>UnknownStatus</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Unknown Status</shortDescription>
+        <value>Unknown status message, please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>UnsupportedPostMessageType</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Unsupported Post Message Type</shortDescription>
+        <value>Unsupported Post Message Type:</value>
+    </labels>
+    <labels>
+        <fullName>UserNotVisible</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FacebookUserNotVisibleErrorMessage</shortDescription>
+        <value>Unable to send message due to User&apos;s Facebook Security Settings.</value>
+    </labels>
+    <labels>
+        <fullName>UserNotVisibleStatus</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>User Not Visible Status</shortDescription>
+        <value>This user does not exist or your account does not have permissions to message them. Try again with another account.</value>
+    </labels>
+    <labels>
+        <fullName>UserPageAccounts</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>pages of users choice drop down label</shortDescription>
+        <value>User Page Accounts</value>
+    </labels>
+    <labels>
+        <fullName>UsernameHasChangedError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Recipient&apos;s username has changed</shortDescription>
+        <value>Recipient&apos;s username has changed. Please update the Author Social Handle on the post you are replying to and try again.</value>
+    </labels>
+    <labels>
+        <fullName>integrationUserAuthButton</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Integration user auth button</shortDescription>
+        <value>Authenticate</value>
+    </labels>
+    <labels>
+        <fullName>integrationUserWarning</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Integration user warning</shortDescription>
+        <value>Sandbox Orgs require that an Integration User is configured prior to authentication. Before authenticating, please ensure that you have configured an Integration User according to the Package Installation Document. Any unsaved changes you have made prior to authenticating will be lost.</value>
+    </labels>
+    <labels>
+        <fullName>messageScheduled</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Alert shown when send message was not confirmed</shortDescription>
+        <value>We did not receive confirmation that your message was sent successfully. We will update the post once that information becomes available.</value>
+    </labels>
+    <labels>
+        <fullName>statusUpdateToFollower</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>visual notification when message of type status selected on twitter</shortDescription>
+        <value>This will send a status update that will be broadcasted to all your followers.</value>
+    </labels>
+</CustomLabels>

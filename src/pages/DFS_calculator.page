@@ -1,0 +1,45 @@
+<apex:page showheader="false" standardstylesheets="false">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<apex:stylesheet value="{!URLFOR($Resource.bootstrap, 'bootstrap/css/bootstrap.css')}"/>
+	<!-- <apex:stylesheet value="{!URLFOR($Resource.bootstrap, 'bootstrap/css/bootstrap-responsive.css')}"/>  -->
+	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <apex:includescript value="{!URLFOR($Resource.bootstrap, 'bootstrap/js/bootstrap.js')}" />
+
+
+	<script>
+    $(function() {
+        $( "#termslider" ).slider({
+        
+        	value:36,
+            min: 24,
+            max: 48,
+            step: 6,
+        });
+        
+        
+        var freqSlider = $("#frequencyslider").slider({
+            min: 1,
+            max: 3,
+            range: "min",
+            
+            
+        });
+        
+        
+        
+    });
+    </script>
+
+
+</head>	
+
+
+<c:DFS_Calculator_CustomerPayements />
+
+ 
+</apex:page>

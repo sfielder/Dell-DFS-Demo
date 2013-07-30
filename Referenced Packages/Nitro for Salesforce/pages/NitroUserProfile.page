@@ -1,0 +1,197 @@
+<apex:page controller="nitro.NitroUserHome" tabStyle="Nitro__tab" title="Nitro Profile" action="{!init}">
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro_reset.css" rel="stylesheet" type="text/css"></link>
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+<script src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/jquery.1.6.1.bunchball.min.js"></script>
+<script>
+var nitro$ = bunchball_jQuery.noConflict();
+//var libVersion = Math.round(Math.random() * 10000);
+var libVersion = '{!libVersion}';
+</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.libs.bunchball.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.util.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.shared.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.profile.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroJSConnector-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroCookies-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<div id="nitro_user_profile_page">
+
+<div class="nitro nitro_sf"> 
+      
+   <apex:include pageName="nitro__NitroNavbar"/>
+   
+   <div class="nitro_sf_profile nitro_page_body">
+
+   <apex:form >
+      
+      <apex:outputPanel id="adminEditButton">
+         <apex:commandLink value="{!IF(showEditMode = true, 'Save Page Options', 'Edit Page Options')}" 
+                           styleClass="{!IF(showAdminEditOption = true, 'editPgOptProf', 'none')}" 
+                           action="{!toggleEditMode}" 
+                           rerender="adminEditButton, recentTrophiesPanel, featuredChalPanel, focusFirstInput"
+                           rendered="{!showAdminEditOption}"/>
+      </apex:outputPanel>
+      
+      <div class="top_detail_row">
+         <div class="top_detail_row_left">
+            <div class="top_detail_row_left_photo"><!-- user's fullPhotoUrl --></div>
+            <div class="top_detail_row_left_text">
+               <h1><!-- user's name--></h1>     
+               <h3 class='profile_current_points'><!-- user's current points --></h3>
+                  
+               <div class="top_detail_row_left_text_level_bar">
+               <div class="level_points_bar_wrap">
+                  <div class="hbar_outer">
+                     <div class="hbar_inner">
+                        <h5><!-- user's lifetime points --></h5>  
+                     </div>
+                     <h5><!-- user's lifetime points --></h5>
+                  </div>
+                  <div class="level_badge">
+                     <h4><!-- user's level --></h4>               
+                  </div>
+               </div><!-- level_points_bar_wrap -->
+               </div>
+               
+               <apex:outputPanel rendered="{!!isFree}">
+                  <h3 class="top_detail_row_teams_head">My Teams:</h3>
+                  <div class="top_detail_row_left_text_teams">
+                     <p><!-- user's teams --></p>
+                  </div>
+               </apex:outputPanel>
+            </div>
+         </div><!-- end top detail left -->
+
+         <div class="top_detail_row_right">
+            <div class="top_detail_row_right_body">
+               
+               <apex:outputPanel id="recentTrophiesPanel">
+                     
+                  <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                     <h2>{!NitroConfigData.nitro__Recently_Earned_Trophies_Title__c}</h2>
+                   </apex:outputPanel>
+                   
+                   <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                     <apex:inputText value="{!NitroConfigData.nitro__Recently_Earned_Trophies_Title__c}" styleClass="titleEdit trophyEdit"/>
+                   </apex:outputPanel>
+                   
+                </apex:outputPanel>
+            
+            </div>
+         </div><!-- end top detail right -->
+         
+      </div>
+      
+      
+      <div class="column_535" id="nitro_sf_profile_left">
+         <div class="content_module" id="nitro_sf_profile_contests">
+               
+            <apex:outputPanel id="featuredChalPanel">
+                  
+               <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                     <h2>{!NitroConfigData.nitro__Featured_Challenges_Title__c}</h2>
+               </apex:outputPanel>
+               
+               <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                  <apex:inputText value="{!NitroConfigData.nitro__Featured_Challenges_Title__c}" styleClass="titleEdit"/>
+               </apex:outputPanel>
+                  
+            </apex:outputPanel>
+         
+            <div class="content_module_body" id="nitro_sf_profile_contests_body">
+               <!-- current contests to go with it -->
+            </div>
+         </div><!-- end profile contests -->
+         
+         <div class="content_module trophy_case" id="nitro_sf_profile_trophies">
+            <h2>All Challenges</h2>
+            <div class="header_sort">
+               <p>Sort By:</p>
+               <select id="nitro_sf_trophy_sort">
+                  <option value="alpha">Alphabetical</option>
+                  <option value="earned">Earned Trophies First</option>
+                  <option value="expire">Expiration Date</option>                
+                  <option value="mostrecent">Most Recently Added</option>
+                  <option value="points">Point Reward</option>
+                  <option value="unearned">Unearned Trophies First</option>
+               </select>
+            </div>
+            <div class="content_module_body">
+               <div class="nitro_sf_trophy_case">
+                  <div class="nitro_sf_trophy_case_left">
+                     <!-- trophy items to go here -->
+                  </div>
+                  <div class="nitro_sf_trophy_case_right">
+                     <!-- trophy detail to go here -->
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+      </div><!-- end profile left -->
+
+   <apex:outputPanel id="focusFirstInput">
+      
+      <script>
+      
+         // set focus to the first text box on the admin edit screen      
+         nitro$('.trophyEdit').focus().select();
+      
+      </script>
+
+   </apex:outputPanel>
+
+   </apex:form>   
+
+
+      <div class="column_330" id="nitro_sf_profile_right">
+         <div class="content_module" id="nitro_sf_profile_chatter">
+            <h2>Chatter</h2>
+            <div class="content_module_body">
+               <div id="salesforce_chatter_container">
+                  <chatter:feed entityId="{!UserOwnerID}" />
+               </div>
+            </div>
+         </div><!-- end top scorer -->
+      </div><!-- end column 300 -->
+
+   </div>
+
+</div>
+
+</div>
+
+
+<script>
+    var connectionParams={};
+    connectionParams.userId = '{!JSENCODE(NitroUserId)}';                
+    connectionParams.apiKey = '{!JSENCODE(APIKey)}';
+    connectionParams.debug = true;
+    connectionParams.sessionKey = '{!SessionKey}';
+    connectionParams.server = '{!JSENCODE(Endpoint)}'; 
+    var nitro2 = new Nitro(connectionParams);              
+
+    nitro$(function(){
+        //initialize the sidebar
+        nitro_for_salesforce.profile.init(nitro2, {
+            topEarnerTimePeriod: "{!JSENCODE(TimeFrame)}",
+            startDate: "{!JSENCODE(startDate)}",
+            pointsName: "{!JSENCODE(PointsName)}",
+         userName: "{!JSENCODE(SFUserName)}",
+         fullPhotoUrl: "{!JSENCODE(FullPhotoUrl)}",            
+            showRedemption: "{!ShowRewards}",
+            showQuota: "{!ShowQuota}",
+            roleId:"{!userRole}"//<---PUT ROLEID HERE
+        }); 
+    });
+    
+    // highlight the appropriate tab
+    document.getElementById("{!TabName}").className += " active"; 
+
+</script>
+
+
+</apex:page>

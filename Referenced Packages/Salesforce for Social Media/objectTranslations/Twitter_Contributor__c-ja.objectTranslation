@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Twitter の寄稿者</value>
+    </caseValues>
+    <fields>
+        <label>認証</label>
+        <name>Authentication__c</name>
+    </fields>
+    <fields>
+        <label>メインアカウントでつぶやく</label>
+        <name>Main_Account__c</name>
+    </fields>
+    <fields>
+        <label>OAuth の秘密</label>
+        <name>OAuth_Secret__c</name>
+    </fields>
+    <fields>
+        <label>OAuth トークン</label>
+        <name>OAuth_Token__c</name>
+    </fields>
+    <fields>
+        <label>Twitter アカウント</label>
+        <name>TwitterAccount__c</name>
+        <relationshipLabel>寄稿者</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Twitter ユーザ ID</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>ユーザ</label>
+        <name>User__c</name>
+        <relationshipLabel>Twitter の寄稿者</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ユーザ名</label>
+        <name>Username__c</name>
+    </fields>
+    <fields>
+        <label>検証済み</label>
+        <name>Valid__c</name>
+    </fields>
+    <nameFieldLabel>Twitter の寄稿者名</nameFieldLabel>
+    <validationRules>
+        <errorMessage>値を入力してください</errorMessage>
+        <name>Twitter_Account_Needed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>ユーザ名が無効です</errorMessage>
+        <name>Username_different_to_main_account</name>
+    </validationRules>
+    <webLinks>
+        <label>寄稿者を追加</label>
+        <name>Add_Contributor</name>
+    </webLinks>
+</CustomObjectTranslation>

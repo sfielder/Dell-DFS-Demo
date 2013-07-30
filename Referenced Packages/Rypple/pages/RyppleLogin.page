@@ -1,0 +1,138 @@
+<apex:page controller="rypple_Corp.LoginController" sidebar="false">
+    <apex:form >
+    <style type="text/css">
+        #inner {
+            margin: 50px auto 0 auto;
+            width: 640px;
+            height: 360px;
+        }
+        
+        .left {
+            float: left;
+            width: 384px;
+            margin: 20px 30px 0 0;
+        }
+        
+        .right {
+            float: left;
+            width: 222px;
+        }
+        
+        #header {
+            margin-top: 10px;        
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        #logo {
+            margin-left: -8px;
+            height: 83px;
+            width: 222px;
+        }
+        
+        #email {
+            margin-top: 86px;
+        }
+        
+        #password {
+            margin-top: 12px;
+        }
+        
+        #login {
+            margin-top: 15px;        
+        }       
+        
+        #forgot {
+            margin-top: 25px;        
+        }
+        
+        #help {
+            font-weight: bold;
+        } 
+        
+        .input {
+            margin-top: 2px;
+            width: 205px;
+            height: 25px;
+            font-size: 14px;
+            border: 1px solid #AEAEAE;   
+            padding: 4px 6px 0px 6px;  
+            background-color: rgb(250, 250, 250);   
+        } 
+        
+        .error {
+            margin-top: 5px;
+            display: block;
+            color: #661A1A;
+        }  
+        
+        #inner a, #inner a:hover, #inner a:active, #inner a:visited {
+            color: rgb(0, 68, 175);
+            text-decoration: none;
+        }    
+    </style>
+    <script type="text/javascript">
+        if(typeof String.prototype.trim !== 'function') {
+            String.prototype.trim = function() {
+                return this.replace(/^\s+|\s+$/g, ''); 
+            }
+        }
+        
+        function validate() {
+            var error = false;
+            if (document.getElementById("{!$Component.emailInput}").value.trim() == '') {
+                document.getElementById("{!$Component.error1}").innerHTML = "Please enter your email address.";        
+                error = true;
+            }
+            
+            if (document.getElementById("{!$Component.pwInput}").value.trim() == '') {
+                document.getElementById("{!$Component.error2}").innerHTML = "Please enter your password.";        
+                error = true;
+            } 
+            
+            if (!error) {
+                afterValidation();
+            }
+            
+            return false;
+        }        
+    </script>
+        <div>
+        <div id="inner">
+        <div id="header">Connect Your Rypple Account</div>
+        <div class="left">
+            <img id="logo" src="{!$Resource.rypple_Corp__RYPPLE_logo}"/>
+            <div style="margin-top: 5px">
+            Rypple is a web-based social performance management platform that helps companies improve performance through
+            social goals, continuous feedback and meaningful recognition.
+            </div>
+            <div style="margin-top: 20px">
+            You will need to connect your Rypple account to salesforce in order to give thanks from salesforce.
+            </div>
+            <div style="margin-top: 20px">
+            No Rypple Account? <a href="https://rypple.com/feedback/#register" target="rypple">Sign up here!</a>
+            </div>
+        </div>
+        <div class="right">
+            <div id="email">
+                <div>Rypple Email</div>
+                <apex:inputText id="emailInput" styleClass="input" value="{!user}"/>
+            </div>
+            <apex:outputLabel id="error1" styleClass="error"/>
+            <div id="password">            
+                <div>Rypple Password</div>
+                <apex:inputSecret id="pwInput" styleClass="input" value="{!password}"/>
+            </div>
+            <apex:outputLabel id="error2" styleClass="error" value="{!message}"/>
+            <div id="login">
+                <apex:commandButton value="Connect" onClick="return validate();"/> 
+                <apex:actionFunction name="afterValidation" action="{!login}"/>
+            </div>
+            <div id="forgot">
+                <span id="help">Help: </span><a href="https://rypple.com/feedback/#resetpwd" target="rypple">I forgot my password</a>
+            </div>                       
+        </div>
+        </div>   
+        </div>      
+    </apex:form>
+</apex:page>

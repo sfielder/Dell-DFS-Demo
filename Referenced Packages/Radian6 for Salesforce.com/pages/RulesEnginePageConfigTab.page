@@ -1,0 +1,23 @@
+<apex:page Controller="R6Service.RulesEngineController" sidebar="false" showHeader="false" id="RulesEnginePage">
+<apex:form >
+<apex:actionFunction name="populateVars" status="loadStatus" action="{!initVariables}" rerender="dummy">
+<apex:param name="serverURL" assignTo="{!apiServerURL}" value="{!$Api.Partner_Server_URL_200}" /> 
+</apex:actionFunction>
+
+<apex:outputPanel id="dummy"/>
+<apex:outputPanel id="LoadingImagePanel">
+<apex:actionStatus id="loadStatus">
+<apex:facet name="start">
+<c:LoadingImage BackColor="#f2f2f2" borderColor="#336699" borderSize="2" height="25px" width="200px" ImageUrl="{!URLFOR($Resource.R6Service__sending_status,'sending_status.gif')}" Message="Loading..." messageStyle="color:darkblue;font-size:8pt;font-weight:bold;"/>
+</apex:facet>
+</apex:actionStatus>
+</apex:outputPanel>
+
+<script>
+window.onload = function() 
+{
+    populateVars();
+}
+</script>
+</apex:form>
+</apex:page>

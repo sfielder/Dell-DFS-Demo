@@ -1,0 +1,241 @@
+<apex:page controller="nitro.NitroUserHome" tabStyle="Nitro__tab" title="Nitro Home" action="{!init}">
+<apex:pageMessages />
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro_reset.css" rel="stylesheet" type="text/css"></link>
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+<script src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/jquery.1.6.1.bunchball.min.js"></script>
+<script>
+if(typeof nitro$ !== 'function'){
+   var nitro$ = bunchball_jQuery.noConflict();
+}
+//var libVersion = Math.round(Math.random() * 10000);
+var libVersion = '{!libVersion}';
+</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.libs.bunchball.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.util.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.shared.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.home.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroJSConnector-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroCookies-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<div id="nitro_user_home_page">
+   
+<apex:form >
+   <apex:outputPanel id="credErrMsg" rendered="{!!adminSetup.nitroConfigIsValid}">
+      <div class="credMsgLink">
+         <br/><br/>
+         <apex:commandLink action="{!adminSetup.createNitroAPIKey}" value="Click here"/> 
+         to generate your Nitro credentials.
+      </div>
+   </apex:outputPanel>
+</apex:form>
+
+<apex:form >
+   <apex:outputPanel id="mainPageBody" rendered="{!adminSetup.nitroConfigIsValid}">
+      <div class="nitro nitro_sf">
+          <apex:include pageName="nitro__NitroNavbar"/>  
+         
+         <apex:outputPanel id="adminEditButton">
+            <apex:commandLink value="{!IF(showEditMode = true, 'Save Page Options', 'Edit Page Options')}" 
+                              styleClass="{!IF(showAdminEditOption = true, 'editPgOpt', 'none')}" 
+                              action="{!toggleEditMode}" 
+                              rerender="latestNewsPanel, whatsHappenPanel, topPointPanel, spreadWordPanel, adminEditButton, shareItOptions, pageScriptPanel"
+                              rendered="{!showAdminEditOption}"/>
+         </apex:outputPanel>
+
+          <div class="nitro_sf_home nitro_page_body">
+              
+              <div class="column_535" id="nitro_sf_home_left">
+                  <div class="content_module" id="nitro_sf_home_news">
+                     
+                     <apex:outputPanel id="latestNewsPanel">
+                        
+                        <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                           <h2>{!NitroConfigData.nitro__Latest_News_Title__c}</h2>
+                         </apex:outputPanel>
+                         
+                         <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                           <apex:inputText id="latestNewsInput" value="{!NitroConfigData.nitro__Latest_News_Title__c}" styleClass="titleEdit latestNewsInput"/>
+                         </apex:outputPanel>
+                         
+                      </apex:outputPanel>
+                      
+                      <div class="content_module_body">
+                          <div class="nitro_sf_news_content" id="nitro_sf_news_items"> 
+                           <!-- newsfeed items to be written here -->
+                          </div>
+                      </div>
+                  </div><!-- end current contests -->
+              </div><!-- end column 535 -->
+      
+      
+              <div class="column_300" id="nitro_sf_home_right">
+                  <div class="content_module" id="nitro_sf_home_top_scorer">
+                      
+                      <apex:outputPanel id="topPointPanel">
+                        
+                        <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                           <h2>{!NitroConfigData.nitro__Top_Point_Earner_Title__c} {!JSENCODE(TimeFrame)}</h2>
+                         </apex:outputPanel>
+                         
+                         <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                           <apex:inputText value="{!NitroConfigData.nitro__Top_Point_Earner_Title__c}" styleClass="titleEdit"/>
+                         </apex:outputPanel>
+                         
+                      </apex:outputPanel>
+                      
+                      <div class="content_module_body">
+                          <div class="photo_100 nitro_home_top_scorer_photo">
+                              
+                          </div>          
+                          <div class="col_r">
+                              <h3></h3>
+                              <h4 class="nitro_sf_home_top_scorer_points"></h4>
+                              <p class="nitro_sf_home_top_scorer_groups"></p>
+                              <h4 class="nitro_sf_home_top_scorer_link"><a href="#">View Profile</a></h4>
+                          </div>
+                      </div>
+                  </div><!-- end top scorer -->
+                  
+               <div class="content_module" id="nitro_sf_home_share">
+                  
+                  <apex:outputPanel id="spreadWordPanel">
+                    
+                    <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                       <h2>{!NitroConfigData.nitro__Spread_The_Word_Title__c}</h2>
+                     </apex:outputPanel>
+                     
+                     <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                       <apex:inputText value="{!NitroConfigData.nitro__Spread_The_Word_Title__c}" styleClass="titleEdit"/>
+                     </apex:outputPanel>
+                     
+                  </apex:outputPanel>
+
+                  <!--h2></h2-->
+                  <div class="content_module_body">
+                     <p id="nitro_sf_share_desc"></p>
+                     <h4 id="nitro_sf_home_share_link"><span></span></h4>
+                     <div id="nitro_sf_home_share_options">
+                        
+                        <apex:outputPanel id="shareItOptions">
+
+                           <apex:outputPanel rendered="{!IF(AND(NitroConfigData.nitro__Show_Home_Facebook__c = false, NitroConfigData.nitro__Show_Home_Twitter__c = false, NitroConfigData.nitro__Show_Home_LinkedIn__c = false, showEditMode = false), 'false', 'true')}">
+                              <h5>Email it, blog it, or pick a service below:</h5>
+                           </apex:outputPanel>
+                        
+                           <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                              <ul>
+                                 <li class="nitro_share_facebook {!IF(NitroConfigData.nitro__Show_Home_Facebook__c = false, 'none', '')}"><a href="#facebook" target="_blank">Facebook</a></li>
+                                 <li class="nitro_share_twitter {!IF(NitroConfigData.nitro__Show_Home_Twitter__c = false, 'none', '')}"><a href="#twitter" target="_blank">Twitter</a></li>
+                                 <li class="nitro_share_linkedin {!IF(NitroConfigData.nitro__Show_Home_LinkedIn__c = false, 'none', '')}"><a href="#linkedin" target="_blank">LinkedIn</a></li>
+                              </ul>
+                           </apex:outputPanel>
+                           
+                           <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}">
+                              <ul>
+                                 <li class="iconEditMode {!IF(NitroConfigData.Show_Home_Facebook__c = true, 'nitro_share_facebook_on', 'nitro_share_facebook_off')}" onclick="toggleSharingIcons(this)"><!--span class="{!IF(NitroConfigData.Show_Home_Facebook__c = true, 'deleteIcon', 'addIcon')}"  onclick="toggleSharingIcons(this)">&nbsp;</span--></li>
+                                 <li class="iconEditMode {!IF(NitroConfigData.Show_Home_Twitter__c = true, 'nitro_share_twitter_on', 'nitro_share_twitter_off')}" onclick="toggleSharingIcons(this)"><!-- span class="{!IF(NitroConfigData.Show_Home_Twitter__c = true, 'deleteIcon', 'addIcon')}" onclick="toggleSharingIcons(this)">&nbsp;</span--></li>
+                                 <li class="iconEditMode {!IF(NitroConfigData.Show_Home_LinkedIn__c = true, 'nitro_share_linkedin_on', 'nitro_share_linkedin_off')}" onclick="toggleSharingIcons(this)"><!-- span class="{!IF(NitroConfigData.Show_Home_LinkedIn__c = true, 'deleteIcon', 'addIcon')}" onclick="toggleSharingIcons(this)">&nbsp;</span--></li>
+                              </ul>
+                           </apex:outputPanel>
+                           
+                        </apex:outputPanel>
+                        
+                     </div>
+                  </div>
+               </div><!-- end share widget -->            
+                  
+                  <div class="content_module" id="nitro_sf_home_newsfeed">
+                      
+                      <apex:outputPanel id="whatsHappenPanel">
+                        
+                        <apex:outputPanel rendered="{!IF(showEditMode = true, 'false', 'true')}">
+                           <h2>{!NitroConfigData.nitro__Whats_Happening_Now_Home_Title__c}</h2>
+                         </apex:outputPanel>
+                         
+                         <apex:outputPanel rendered="{!IF(showEditMode = true, 'true', 'false')}" layout="block" >
+                           <apex:inputText value="{!NitroConfigData.nitro__Whats_Happening_Now_Home_Title__c}" styleClass="titleEdit"/>
+                         </apex:outputPanel>
+                         
+                      </apex:outputPanel>
+                      
+                      <div class="content_module_body">
+                          <div class="nitro_sf_newsfeed_items">
+                              <!-- newsfeed items to be written here -->
+                          </div>
+                      </div>
+                  </div><!-- end current contests -->
+                  
+              </div><!-- end column 300 -->
+      
+          </div>  
+      
+      </div>
+   
+   </apex:outputPanel>
+   
+   <apex:actionFunction name="toggleTweetFaceChat" action="{!toggleShareOption}" rerender="shareItOptions" >       
+       <apex:param name="currentIconClass"
+                   value=""
+                   assignTo="{!currentToggleOption}"/> 
+   </apex:actionFunction>
+   
+   <apex:outputPanel id="pageScriptPanel">
+      
+      <script type="text/javascript">
+   
+         var connectionParams={};
+         connectionParams.userId = '{!JSENCODE(NitroUserId)}';                
+         connectionParams.apiKey = '{!JSENCODE(APIKey)}';
+         connectionParams.debug = true;
+         connectionParams.sessionKey = '{!SessionKey}';
+         connectionParams.server = '{!JSENCODE(Endpoint)}'; 
+         var nitro2 = new Nitro(connectionParams);              
+      
+         nitro$(function(){
+            var newsList = document.getElementById("nitro_sf_news_items");
+            newsList.innerHTML = unescape("{!JSENCODE(News)}");    
+            //initialize the home page
+            nitro_for_salesforce.home.init(nitro2, {
+               topEarnerTimePeriod: "{!JSENCODE(TimeFrame)}",
+               startDate: "{!JSENCODE(startDate)}",
+               pointsName: "{!JSENCODE(PointsName)}",
+               showSpreadTheWord: "{!JSENCODE(showSpreadTheWord)}",          
+               shareLinkTag: "{!JSENCODE(ShareLink)}"
+            }); 
+         });
+          
+         // highlight the appropriate tab
+         document.getElementById("{!TabName}").className += " active";
+         
+         // set focus to the first text box on the admin edit screen        
+         nitro$('.latestNewsInput').focus().select();
+              
+         function toggleSharingIcons(item) {
+             
+            var currentClass = nitro$(item).attr('class');
+            toggleTweetFaceChat(currentClass);
+              
+         }
+          
+      </script>
+      
+   </apex:outputPanel>
+   
+</apex:form>
+
+</div>
+
+<style type="text/css">
+   .addIcon, .addBullet, .deleteBullet, .deleteIcon {background-image:url('{!URLFOR($Resource.nitro__buttons, "sprites/bullets_sprite.png")}'); background-repeat:no-repeat;}
+   .nitro_share_facebook_on {cursor:pointer; background:url('{!URLFOR($Resource.nitro__buttons, "buttons/fb_on.png")}') no-repeat }
+   .nitro_share_twitter_on {cursor:pointer; background:url('{!URLFOR($Resource.nitro__buttons, "buttons/tw_on.png")}') no-repeat }
+   .nitro_share_linkedin_on {cursor:pointer; background:url('{!URLFOR($Resource.nitro__buttons, "buttons/li_on.png")}') no-repeat }
+   .nitro_share_facebook_off {cursor:pointer; background:url('{!URLFOR($Resource.nitro__buttons, "buttons/fb_off.png")}') no-repeat }
+   .nitro_share_twitter_off {cursor:pointer; background:url('{!URLFOR($Resource.nitro__buttons, "buttons/tw_off.png")}') no-repeat }
+   .nitro_share_linkedin_off {cursor:pointer; background:url('{!URLFOR($Resource.nitro__buttons, "buttons/li_off.png")}') no-repeat }
+</style>
+
+</apex:page>

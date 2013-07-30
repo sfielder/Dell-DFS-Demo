@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <label>Send Twitter-meddelelse</label>
+        <name>Send_Twitter_Message</name>
+    </webLinks>
+</CustomObjectTranslation>

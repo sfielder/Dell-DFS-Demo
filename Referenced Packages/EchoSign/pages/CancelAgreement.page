@@ -1,0 +1,106 @@
+<apex:page showheader="false" standardController="echosign_dev1__SIGN_Agreement__c" extensions="echosign_dev1.EchoSignAgreementAdvanced" title="Cancel Agreement">
+    <apex:variable var="agreementStatus" 
+                   value="{!echosign_dev1__SIGN_Agreement__c.echosign_dev1__Status__c}"/>
+    <apex:variable var="lastEventId" 
+                   value="{!echosign_dev1__SIGN_Agreement__c.echosign_dev1__LastEventId__c}"/> 
+    <apex:variable var="tabUrl" 
+                   value="{!URLFOR($Action.SIGN_Agreement__c.Tab, $ObjectType.SIGN_Agreement__c)}"/>
+
+    <!-- <center>
+        <apex:image url="{!$Resource.WaitingDots}" alt="Please wait..." title="Please wait..." height="20" width="196" />
+        <h2>Please wait... cancelling agreement</h2>
+    </center>-->
+<link rel="stylesheet" type="text/css" media="screen" href="https://secure.echocdn.com/resource/1926977545/bundles/jquery-ui.css" />
+
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/js/jquery-1.4.4.min.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/development-bundle/ui/jquery.ui.core.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/development-bundle/ui/jquery.ui.widget.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/development-bundle/ui/jquery.ui.progressbar.js')}" />
+	
+    <style type="text/css"> 
+      h1 {
+color: #515151;
+font-family: 'Lucida Grande', Tahoma, Verdana, Arial, Helvetica, sans-serif;
+font-size: 20px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+height: auto;
+line-height: normal;
+margin-bottom: 7px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 7px;        
+      }
+      #progress-bar {
+        overflow: hidden;
+      }
+
+    </style> 
+    
+	<script>
+	var ProgressBar = {
+		progressTimeout:null,
+		selector:null,
+		showProgress:function(){
+			var e = jQuery(ProgressBar.selector);
+			var a = e.width();
+			var d = e.find(".ui-widget-header");
+			var c = d.width();
+			var b;
+			if(c===0){
+				b="20%"
+			}else{
+				b=c+((a-c)*0.1)
+			}
+			try{d.animate({width:b},1000);}catch(err){}
+			ProgressBar.progressTimeout=window.setTimeout("ProgressBar.showProgress()",2500)
+		},
+		finish:function(a){
+			window.clearTimeout(ProgressBar.progressTimeout);
+			jQuery(ProgressBar.selector+" .ui-widget-header").animate({width:"100%"},1000,a)
+		},
+		start:function(a){
+			ProgressBar.selector=a;
+			jQuery(a).progressbar({value:0});
+			ProgressBar.showProgress()
+		}
+	};
+	
+      jQuery(document).ready(function() {
+        ProgressBar.start('#progressbar');
+        window.setTimeout('ProgressBar.showProgress()', 2500);
+      });
+	</script>
+						<apex:outputpanel rendered="true">
+						    <div id="container">
+						      <div id="main">
+						        <div id="global-message-box" class="message-bl" style="width: 881px;display:none;"><div class="message-br"><div class="message-tl"><div class="message-tr">
+						          <div class="icon"></div>
+						          <span id="global-message-text"></span>
+						          <br class="clear"/>
+						        </div></div></div></div>
+						        <div id="global-error-box" class="error-bl" style="width: 881px;display:none;"><div class="error-br"><div class="error-tl"><div class="error-tr">
+						          <div class="icon"></div>
+						          <span id="global-error-text"></span>
+						          <br class="clear"/>
+						        </div></div></div></div>
+						        <h1>Cancelling Agreement...Please wait</h1> 
+						    <div id="progress-bar"></div>
+						      </div>
+						    </div>
+						</apex:outputpanel>   
+						
+    <script language="javascript" type="text/javascript">
+function done(data) {
+ProgressBar.finish();
+if(window.parent)
+	setTimeout('window.parent.location.href = "{!tabUrl}"; window.close();', 2500);
+else
+	setTimeout('window.location.href = "{!tabUrl}"', 2500); 
+}     
+    </script>
+<apex:outputpanel rendered="{!ISNULL(agreement.echosign_dev1__Document_Key__c)}">
+    <script type="text/javascript" src="{!strBaseURL}/salesforce/cancelAgreement?namespace={!strNamespace}&Agreement_ID={!strID}&Version={!strVersion}&server={!$Api.Partner_Server_URL_70}&session={!$Api.Session_ID}&Status={!agreementStatus}&LastEventId={!lastEventId}&callback=done&deleteSFAgreement=false"></script>
+</apex:outputpanel>    
+</apex:page>

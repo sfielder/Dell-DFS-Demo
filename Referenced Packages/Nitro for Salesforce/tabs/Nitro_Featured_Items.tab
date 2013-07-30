@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Select items that are featured in the sidebar and elsewhere.</description>
+    <label>Featured Items</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom42: Treasure chest</motif>
+    <page>NitroFeaturedItems</page>
+</CustomTab>

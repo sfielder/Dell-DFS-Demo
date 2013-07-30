@@ -1,0 +1,449 @@
+<apex:page controller="rypple_Corp.RYPPLE_RecentThanksController" id="page" sidebar="false" showHeader="false" >
+    <head>
+    <apex:stylesheet value="{!$Resource.rypple_Corp__RYPPLE_screen}" />
+    <apex:includeScript value="../../soap/ajax/24.0/connection.js"/>
+    <apex:includeScript value="{!$Resource.rypple_Corp__RYPPLE_jquery_main}" />
+    <apex:includeScript value="{!$Resource.rypple_Corp__RYPPLE_jCarousel}" />
+    <style>
+    body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .overlayDialog .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
+        border-top: 1px solid #EAEAEA;
+        background-color: #ffffff;
+        border-bottom: 1px solid #EAEAEA;
+        border-left: 1px solid #EAEAEA;
+        border-right: 1px solid #EAEAEA;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+    }
+    
+    body .secondaryPalette.bPageBlock {
+        border:0px;
+        background-color: #ffffff;
+        margin:0px;
+    }
+    
+    .pbBody {margin-bottom:0px;}
+    
+        /* TEMP styles while working. Move these to RYPPLE_screen when done. msullivan 9/26 */
+   
+    .heading_h2 {
+        /* color:#4A4A56; -- was this color. Mockup indeterminate, so changed to black - msullivan 9/26 */
+        color: #000000;
+        float: left;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .headLink_Count{float: right;font-weight:normal; font-size:11px;} 
+    .headLink_Number {font-size:16px;font-weight:bold;}
+    .headLink_Count a{color: #1797C0; text-decoration:none; font-weight: bold;} 
+    .headLink_Count a:hover{text-decoration:underline; }
+    
+    .thanksAttributionMain {
+        color: #000000;
+        font-size: 13px;
+        font-weight: normal;
+        text-decoration: none;
+    }
+      
+    .thanksAttributionName {
+        color: #333333;
+        font-weight:bold;
+    }
+    
+    img {margin:0; }
+        
+    a:active{background-color:#000000} 
+    
+    .badgeInfoPlaceholder {
+        background: url({!$Resource.rypple_Corp__EmptyStateThanks}) repeat scroll 0 0 transparent;
+        border-radius: 4px;
+        color: #ADADAD;
+        display: table-cell;
+        height: 275px;
+        text-align: center;
+        vertical-align: middle;
+        width: 295px;
+    }
+    .lightNoteFeedbck {
+        color: #999999;
+        font-size: 12px;
+    }
+    
+    .usrFeedbck.Lead {
+        color:#2D6A91;
+    }
+    .usrFeedbck {
+        font-size:11px;
+        color:#ADADAD;
+        margin-bottom: 10px;
+    }
+    .pbBody {
+        margin-right:0px;
+    }
+    .badgeLoad {
+        position: absolute;
+        float:right;
+        left:80%;
+        vertical-align: top;
+        opacity: .4;
+    }
+    .minwidth {
+        min-width: 578px;
+    }   
+    
+        p.wrap
+    {
+    width:12em; 
+    word-wrap:break-word;
+    }
+    .badgeDescription.wrap {padding-right:12px;}  
+   
+    [id*=frm] a,
+    [id*=frm] a:hover,
+    [id*=frm] a:active,
+    [id*=frm] a:visited {
+        color: #2D6A91;
+        text-decoration: none;  
+        font-weight: bold;
+    }
+    </style>
+    </head>
+    <apex:form id="frm"  >
+    <apex:outputPanel id="formPanel" >
+       
+        <apex:actionFunction name="showBadge" action="{!showBadge}" status="pagingStatus" rerender="formPanel,recentthanks,badgeContent,noBadge" onComplete="getBadgeInfo();">
+            <apex:param name="badgeId" value="" />
+            <apex:param name="thanksId" value="" />
+        </apex:actionFunction>
+
+        <c:RYPPLE_WaitingComponent />
+            <apex:pageMessages id="errors" />
+            <apex:pageBlock id="recentthanks">
+                <div id="main_div" >
+                <table border="0" height="330" width="100%" ><tr><td style="text-align:left;vertical-align:top;" >
+                    <div class="clear" ></div>
+                    <apex:outputpanel id="rec_thanks" rendered="true">
+                    <!-- Post segment -->
+                    <div class="clear"></div>
+                    <div class = "midCol_Name" id = "thanks_div" style="padding-left:0;padding-right:15px;">
+                    </div>
+                    </apex:outputpanel>
+                    <div class="clear"></div>
+                </td>
+                <td valign="top" style="border-left: 2px dotted #EAEAEA;padding-left:15px;width:308px;" >
+       <table width="100%" border="0">
+           <tr><td style="height:25px;vertical-align: bottom;">
+                <apex:outputLabel styleClass="heading_h2" value="Badge Info"/>
+               <div class="badgeLoad"  >
+                <apex:actionStatus id="pagingStatus" >
+                                    <apex:facet name="start">                               
+                                        <img src="{!$Resource.RYPPLE_Loading_icon}" />                        
+                                    </apex:facet>
+                                </apex:actionStatus>
+                </div> 
+           </td></tr>
+       <tr><td valign="top">
+        <div id="badgeContent" >
+            
+        </div>
+                  
+        <apex:outputPanel id="noBadge" rendered="{!ISBLANK(badgeInfoJson)}">
+        
+                                        <table border="0" width="100%">
+                <tr><td ><div class="badgeInfoPlaceholder">Click on a badge to <br/>view badge info here.</div></td></tr>
+                </table>
+        </apex:outputPanel>
+        </td></tr></table>
+                </td></tr>
+                </table>   
+                </div>          
+             </apex:pageBlock>
+    <script type="text/javascript">
+        userName = "{!JSENCODE(user.Name)}";
+        userEmail = "{!JSENCODE(user.Email)}";
+        var bgcolor = "#ffffff";
+        var change_color = "#ededed";
+        var __sfdcSessionId = '{!GETSESSIONID()}';
+        var lastValidation;
+        var validationFreqInMil = 900000;
+
+        function validateSession() {
+            try {
+                
+                var curTime = (new Date()).getTime();
+                if (!lastValidation || (lastValidation + validationFreqInMil) < curTime) {
+                
+                    lastValidation = curTime;
+                    sforce.connection.sessionId = __sfdcSessionId;
+                    sforce.connection.getServerTimestamp();
+                }
+            }
+            catch (err) {
+                
+                parent.location = parent.location;
+                return false;
+            }
+        }
+        
+        function mover(aa) {
+         //aa.style.backgroundColor = change_color;
+         aa.style.background='url({!JSENCODE($Resource.EmptyStateThanks)})'
+        }
+        function mout(aa) {
+         aa.style.backgroundColor = "#ffffff";
+         aa.style.background="";
+        }
+        
+function htmlEncode(str) { 
+ return String(str) 
+ .replace(/\u0026/g, '&amp;')
+ .replace(/\u0022/g, '&quot;') 
+ .replace(/\u0027/g, '&#39;') 
+ .replace(/\u003C/g, '&lt;') 
+ .replace(/\u003E/g, '&gt;'); 
+ }        
+            function createThanksRecord(tObj){
+                 var selectedThanksId = '{!JSENCODE(selectedThanksId)}';
+                 var recepientList = tObj.recipients;
+                     if(selectedThanksId!=null && selectedThanksId==tObj.id){
+                        mainContent += "<tr><td valign='top' style= 'background-color: #ededed; padding: 3px;padding-left:0px;border-radius:4px;background: url({!JSENCODE($Resource.EmptyStateThanks)})' >"; 
+                     }
+                     else{
+                         mainContent += "<tr><td valign='top' onmouseover='mover(this);'  onmouseout='mout(this);'  style='background-color: #ffffff; padding: 3px;padding-left:0px;border-radius:4px;' >";                  
+                     }
+                 mainContent+="<p class='thanksAttributionMain'><span class='thanksAttributionName'>"+htmlEncode(tObj.sender.display_name)+"</span>"+ " thanked ";
+                 if(recepientList.length>0){
+                    var receiver='';
+                    
+                    var emailArr = [];
+                    for (var i=0, len=recepientList.length; i<len; i++) {
+                        emailArr.push(recepientList[i].email);
+                    }
+                    
+                    if($.inArray(userEmail, emailArr) >= 0){
+                        receiver='You';
+                    }
+                    else{
+                        receiver=htmlEncode(recepientList[0].display_name);
+                    }
+                    if(recepientList.length==1){
+                        mainContent+= "<span class='thanksAttributionName'>" + receiver+"</span>&nbsp;";
+                    }
+                    else if(recepientList.length==2){
+                        mainContent+= "<span class='thanksAttributionName'>" + receiver+"</span>&nbsp;and <span class='thanksAttributionName'>1 other</span> ";
+                    }
+                    else{
+                        mainContent+= "<span class='thanksAttributionName'>" + receiver+"</span>&nbsp;and <span class='thanksAttributionName'>"+(recepientList.length-1)+" others </span>";
+                    }
+                 }
+                  
+                 mainContent+="</p>";
+                 mainContent+="<table border='0' width='100%'><tr style='vertical-align:top'>";
+                 if (tObj.badge != null && tObj.badge.id!=null) {
+                     mainContent+="<td width='40'><div class='usrImg' style='margin-top:0px;margin-bottom:0px;vertical-align:top;'> <a href='#' onclick='validateSession();showBadgeInfo(\""+tObj.badge.id+"\",\""+tObj.id+"\");return false;'><img style='margin-top:0px;vertical-align:top;' src='"+tObj.badge.image_url+"' /></a> </div></td><td><div class='thanksAttributionMain'>";
+                     
+                 }
+                 else{
+                     mainContent+="<td width='100%' colspan='2'><div class='thanksAttributionMain'>";
+                 }
+                 var msgText = new String(tObj.text);
+                 if(msgText.length>100){
+                    mainContent+=msgText.substring(0,htmlEncode(msgText.indexOf(" ",80)))+"<div name='dotmore' id='dotmore' style='display:inline;'><a onclick='validateSession();' href='#' onmouseup='validateSession();redirectToRypple();return false;' style='font-size:11px;'>&nbsp;more...</a></div></div></td></tr>";
+                 }
+                 else{
+                    mainContent+=htmlEncode(tObj.text)+"</div></td></tr>";
+                 }
+                 if(tObj.created_time!=null && tObj.created_time!=''){
+                     var createDate = (tObj.created_time).substring(0,10);
+                     
+                     //var createDate = new Date((tObj.created_time).substring(0,10));  //this doesnt work w/ Safari, IE8
+                     createDate = createDate.replace(new RegExp("-", "g"), "/"); //replace to get around Safari, IE8 date quirk
+      
+                     createDate = new Date(createDate);
+                     
+                     mainContent+= "<tr><td colspan='2'><div style='color: #999;font-size:11px;font-weight:normal;margin-top:1px;'>"+(month_names[createDate.getMonth()]+" "+createDate.getDate()+", "+createDate.getFullYear())+"</div></td></tr></table>";
+                     mainContent+="</td></tr>";
+                 }
+                 else{
+                     mainContent+="</table></td></tr>";
+                 }
+                 //mainContent+= "<tr><td><div><br></div></td></tr>";
+                //$('#thanks_div').append(content); 
+                
+            }
+            
+            function redirectToRypple() {
+            
+                loginURL = '{!JSENCODE(loginTokenURL)}';
+            /*
+           // (1) Update the See All Link
+                document.getElementById("rypple_link1").innerHTML="<a href='"+loginURL+"' onmouseup='validateSession();redirectToRypple();return false;' target='_blank'>See All</a>";
+               
+           // (2) update the ...more link if a message is too long
+                var dotmores = document.getElementsByName("dotmore");
+                  for(i=0; i < dotmores.length; i++)
+                  {
+                    dotmores[i].innerHTML="<a href='"+loginURL+"' onmouseup='validateSession();redirectToRypple();return false;' target='_blank'> ...more</a>";
+                  }
+           //(3) update the Show more link at the bottom of the page       
+               document.getElementById("show_more").childNodes[0].href = loginURL;
+              */
+              
+              var jsonText = "";
+ /*               var jsonObj = jQuery.parseJSON( jsonText );
+                var token = jsonObj.token;
+                if(token!=null){
+                    var urlText = '{!JSENCODE(loginTokenURL)}'+token;
+                    window.open(urlText,'__blank');
+                }
+   */             
+   
+                // Add 'more' links from above
+                var dotmores = document.getElementsByName("dotmore");
+                for (i=0; i < dotmores.length; i++) {
+                    dotmores[i].innerHTML="<a href='#' onmouseup='validateSession();redirectToRypple();return false;'> ...more</a>";
+                }
+   
+                window.open(loginURL, '_blank');
+                return false;
+            }            
+            function assignBadge(obj){
+                
+                window.parent.openBadgeInfo($(obj).parent().attr('href'));
+            }
+            function showBadgeInfo(badgeId,thanksId){
+                var badgeContent = document.getElementById('badgeContent');
+                badgeContent.innerHTML= "";                                     
+                showBadge(badgeId,thanksId);
+            }
+            
+            function getBadgeInfo() {
+
+                jsonText = "{!JSENCODE(badgeInfoJson)}";
+                jsonObj = jQuery.parseJSON( jsonText );
+                var objArray = null;
+                var mainContent = "";
+                if(jsonObj != null){
+                    //objArray=jsonObj.recent_thanks;
+                    mainContent+="<table  style='width: 100%'><tr><td ><div class='clear'></div>";
+                    mainContent+="<div id='badgeInfoImg'><img src='"+jsonObj.image_url+"' width='70' height='70' /></div></td>";
+                    mainContent+="<td ><div id='badgeInfoTxt'><span class='heading2'><p class='badgeDescription wrap'>#"+htmlEncode(jsonObj.name)+"</p></span><p class='badgeDescription wrap'>\""+htmlEncode(jsonObj.description)+"\"</p></div>";
+                    mainContent+="<div class='clear'></div><div class='spacer'></div></td></tr></table>";
+                    mainContent+="<table >";
+                    mainContent+="<tr><td colspan='2' style='padding-top:5px;color:grey;'><div class='lightNoteFeedbck'>RECENTLY GIVEN</div></td></tr>";
+                    var counter=0;
+                    var jsonThanksGiven = "{!JSENCODE(badgeThanksGivenJson)}";
+                    var jsonThanksGivenObj = jQuery.parseJSON(jsonThanksGiven);
+                    if(jsonThanksGivenObj!=null){
+                        objArray = jsonThanksGivenObj.objects;
+                    }
+                    
+                    if(objArray!=null){
+                        
+                        for(i=0;i<objArray.length && counter<= 2;i++){
+                        
+                            thanksObj = objArray[i].thanks;
+                            
+                            if (thanksObj != null && thanksObj.badge != null && thanksObj.sender != null && thanksObj.recipients != null) {
+                                
+                                if (thanksObj.badge.id == jsonObj.id) { //show all badge history.  10/11/2011
+                                    
+                                    var recipients = thanksObj.recipients;
+                                    var sender = thanksObj.sender;
+                                    
+                                    var idArr = [];
+                                    var recipientCnt = recipients.length;
+                                    for (var i=0; i<recipientCnt; i++) {
+                                        idArr.push(recipients[i].id);
+                                    }
+                                    var recipientDisplay = $.inArray(userId, idArr) >= 0 ? 'You' : recipients[0].display_name;
+                                    
+                                    if (recipientCnt > 1) recipientDisplay += " + " + (recipientCnt - 1);
+
+                                    var photoUrl = sender.photo_url == null ? "{!JSENCODE($Resource.RYPPLE_NoPhoto)}" : "{!JSENCODE(userPhotoURL)}/" + sender.photo_url;
+                                    
+                                    mainContent += "<tr><td style='width:40px;vertical-align:top'><div id='feedbackBlock'>";
+                                    mainContent += "<div class='usrImg'><img style='width:36px; height:36px;' src='" + photoUrl + "'/></div></div></td>";
+                                    mainContent += "<td ><div class='usrFeedbck'><span class='usrFeedbck Lead'>"
+                                        + htmlEncode(sender.display_name)
+                                        + " to " + htmlEncode(recipientDisplay)
+                                        + "</span><p style='overflow: hidden; text-overflow: ellipsis;'>"
+                                        + htmlEncode(thanksObj.text)
+                                        + "</p></div></td></tr>";
+                                    counter++;
+                                }
+                            }
+                        }
+                    }
+                    
+                    mainContent += "</table></td></tr></table>";
+                    $('#badgeContent').append(mainContent);
+                }
+                else {
+                    mainContent+="<table border='0' width='100%'><tr height='333'><td  valign='middle' align='center' style='color: #adadad; background: url({!JSENCODE($Resource.BadgeInfoDefaultBG)})'><strong><div>Click on a badge to <br/>view badge info here.</div></strong></td></tr></table>";
+                    $('#noBadge').append(mainContent);
+                }            
+            }
+            // This array holds the "friendly" month names
+            var month_names = new Array(12);
+            month_names[0] = "January";
+            month_names[1] = "February";
+            month_names[2] = "March";
+            month_names[3] = "April";
+            month_names[4] = "May";
+            month_names[5] = "June";
+            month_names[6] = "July";
+            month_names[7] = "August";
+            month_names[8] = "September";
+            month_names[9] = "October";
+            month_names[10] = "November";
+            month_names[11] = "December";
+            var userId=null;
+            var jsonText=null;
+            var jsonObj=null;
+            try{
+            userId = '{!JSENCODE(user.rypple_me__c)}';
+            jsonText = "{!JSENCODE(thanksJson)}";
+            jsonObj = jQuery.parseJSON( jsonText );
+            var objArray = jsonObj.objects;
+            var mainContent = "";
+            var recCounter=0;
+            //alert(objArray);
+            //jsonObj.objects=null;
+            if(jsonObj.objects != null){
+                var objArray = jsonObj.objects;
+                var totalThanks=0;
+                for(i=0;i<objArray.length ;i++){
+                    thanksObj = objArray[i].thanks;
+                    if(thanksObj.sender.id!=userId ){
+                        if(recCounter<3){
+                            createThanksRecord(thanksObj);
+                            recCounter++;
+                        }
+                        totalThanks++;
+                    }
+                }
+            }
+            if(recCounter>=1){
+                mainContent="<table border='0' width='100%'><tr><td><div class='heading_h2'>Thanks you have received</div><div class='headLink_Count' ><span class='headLink_Number'>"+totalThanks+"</span><span style='color:#999;'> total</span> <div id='rypple_link1' style='display:inline;'><a href='#' onmouseup='validateSession();redirectToRypple();return falsel'>See All</a></div></div></td></tr>"+mainContent;
+                $('#thanks_div').append(mainContent);
+                $('#thanks_div').append("<tr><td><div class='headLink_Count' id='show_more'><a href='#' onmouseup='validateSession();redirectToRypple();return false'>Show More...</a></div></td></tr>");
+                $('#thanks_div').append("</table>");
+            }
+            else{
+                var mainDiv = document.getElementById('main_div');
+                var contentText = "<table style='width:648px;border:0'><tr><td> <div class='heading_h2'>Thanks you have received</div></td></tr>";
+                contentText+="<tr height='302'><td valign='middle' align='center' style='margin-right:15px;border-radius:4px;color: #adadad; background: url({!JSENCODE($Resource.EmptyStateThanks)})'><strong><div>You haven’t received any Thanks yet. Why not Thank someone yourself?</div></strong></td></tr></table>";
+                mainDiv.innerHTML= contentText;                       
+            }
+        }
+        catch(err){
+            alert(err);
+            var mainDiv = document.getElementById('main_div');
+            var contentText = "<table border='0' width='100%' ><tr><td> <div class='heading_h2'>Sorry, Unable to load the content from server.</div></td></tr>";
+            mainDiv.innerHTML= contentText;                                     
+        }
+    </script>
+    </apex:outputPanel>
+    </apex:form>
+</apex:page>

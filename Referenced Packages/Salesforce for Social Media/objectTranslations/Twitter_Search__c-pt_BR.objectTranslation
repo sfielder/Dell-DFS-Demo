@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pesquisa do Twitter</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pesquisas do Twitter</value>
+    </caseValues>
+    <fields>
+        <label>Ativo</label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label>Campanha</label>
+        <name>Campaign__c</name>
+        <relationshipLabel>Pesquisas do Twitter</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Últimos Ids de Tweet</label>
+        <name>Last_Tweet_Ids__c</name>
+    </fields>
+    <fields>
+        <label>Pesquisa máx. parcial do Twitter</label>
+        <name>Partial_Twitter_Max_Search__c</name>
+    </fields>
+    <fields>
+        <label>Resultados por página</label>
+        <name>Results_Per_Page__c</name>
+    </fields>
+    <fields>
+        <label>Pesquisar deslocamento de Id do Tweet</label>
+        <name>Search_Tweet_Id_Offset__c</name>
+    </fields>
+    <fields>
+        <label>Limite de Id do Tweet</label>
+        <name>Tweet_Id_Threshold__c</name>
+    </fields>
+    <fields>
+        <help><!-- Search information in http://search.twitter.com/operators --></help>
+        <label>Pesquisa de palavra-chave do Twitter</label>
+        <name>Twitter_Keyword_Search__c</name>
+    </fields>
+    <fields>
+        <label>Pesquisa máx. do Twitter</label>
+        <name>Twitter_Max_Search__c</name>
+    </fields>
+    <fields>
+        <label>Nomes de usuário do Twitter desconhec.</label>
+        <name>Unknown_Twitter_Usernames__c</name>
+        <picklistValues>
+            <masterLabel>Create Contact</masterLabel>
+            <translation><!-- Create Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Lead</masterLabel>
+            <translation><!-- Create Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Person Account</masterLabel>
+            <translation><!-- Create Person Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do nothing</masterLabel>
+            <translation><!-- Do nothing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Pedido</label>
+        <name>Weight__c</name>
+    </fields>
+    <fields>
+        <help><!-- When searching for tweets previous results are filtered out from the new results, by turning this option &apos;On&apos; the search will bring all results up to the maximum allowed by twitter. --></help>
+        <label>Obt. máx. de tweets incl. result. anter.</label>
+        <name>ignore_maxid__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Twitter Search Layout</layout>
+        <sections>
+            <label><!-- Search options --></label>
+            <section>Search options</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nome de pesquisa do Twitter</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Você deve selecionar um objeto para adicionar à campanha</errorMessage>
+        <name>Create_contact_or_lead</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>O número de resultados por página deve ser abaixo de 100</errorMessage>
+        <name>Max_results_per_page</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>O pedido deve ser não negativo.</errorMessage>
+        <name>Non_negative_search_orders</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Número inválido</errorMessage>
+        <name>Search_Tweet_Id_Offset_must_be_a_number</name>
+    </validationRules>
+    <webLinks>
+        <label>Programar pesquisas no Twitter</label>
+        <name>Schedule_Twitter_Searches</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,38 @@
+<apex:page sideBar="false" showHeader="false">
+	<head>
+<!--	    <apex:includeScript value="{!$Resource.FancyBox}" />-->
+	<apex:stylesheet value="{!$Resource.rypple_Corp__RYPPLE_screen}" />
+	</head>
+<!--	<script>-->
+<!--		showFancyBox();-->
+<!--	</script>-->
+	<style>
+	 td {
+    font-family: Arial,Helvetica,sans-serif;
+}
+	</style>
+	
+	<apex:outputpanel >
+	<div class="window">
+	<table align='center' width='300' border='0' height='225'>
+		<tr>
+			<td valign='middle' align='center'>
+			<table border='0' align='center'>
+				<tr>
+					<td style='vertical-align: middle'>
+					<div style='color: #333333; font-size: 18px;'><br />
+					<br />
+					Success</div>
+					<br />
+					<div style='font-size: 13px;'>Your thanks has been posted!</div>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+	</div>
+	</apex:outputpanel>
+	
+
+</apex:page>

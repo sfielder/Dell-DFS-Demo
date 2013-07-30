@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>25.0</apiVersion>
+    <description>Render a twitter post in such a way that it complies with the Twitter UI specifications</description>
+    <label>Post Renderer</label>
+</ApexComponent>

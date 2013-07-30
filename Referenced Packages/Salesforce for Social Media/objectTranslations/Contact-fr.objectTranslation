@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Source du contact</label>
+        <name>Contact_Source__c</name>
+    </fields>
+    <fields>
+        <label>URL d&apos;image Facebook</label>
+        <name>Fcbk_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Image Facebook</label>
+        <name>Fcbk_Picture__c</name>
+    </fields>
+    <fields>
+        <label>URL de profil Facebook</label>
+        <name>Fcbk_Profile_Url__c</name>
+    </fields>
+    <fields>
+        <label>ID d&apos;utilisateur Facebook</label>
+        <name>Fcbk_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Nom d&apos;utilisateur Facebook</label>
+        <name>Fcbk_Username__c</name>
+    </fields>
+    <fields>
+        <help><!-- Click on link to change following status --></help>
+        <label>Suivi sur Twitter</label>
+        <name>Follow_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Influencer Type --></label>
+        <name>Influencer_Type__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporter</masterLabel>
+            <translation><!-- Reporter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is this Contact an Influencer (ie Reporter?) --></help>
+        <label><!-- Influencer --></label>
+        <name>Influencer__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Numéro Klout</label>
+        <name>Klout_Number__c</name>
+    </fields>
+    <fields>
+        <label>Score Klout</label>
+        <name>Klout_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Languages --></label>
+        <name>Languages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tertiary</masterLabel>
+            <translation><!-- Tertiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Origine</label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Research This Contact --></label>
+        <name>Research_this_Contact__c</name>
+    </fields>
+    <fields>
+        <label>Bio Twitter</label>
+        <name>Twitter_Bio__c</name>
+    </fields>
+    <fields>
+        <label>Date de création Twitter</label>
+        <name>Twitter_Creation_Date__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de suiveurs Twitter</label>
+        <name>Twitter_Follower_Count__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de suivis Twitter</label>
+        <name>Twitter_Following_count__c</name>
+    </fields>
+    <fields>
+        <label>URL d&apos;image Twitter</label>
+        <name>Twitter_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Dernier tweet Twitter</label>
+        <name>Twitter_Last_Tweet__c</name>
+    </fields>
+    <fields>
+        <label>Localisation Twitter</label>
+        <name>Twitter_Location__c</name>
+    </fields>
+    <fields>
+        <label>Image Twitter</label>
+        <name>Twitter_Picture__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de statuts Twitter</label>
+        <name>Twitter_Status_count__c</name>
+    </fields>
+    <fields>
+        <label>ID d&apos;utilisateur Twitter</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Nom d&apos;utilisateur Twitter</label>
+        <name>Twitter_Username__c</name>
+    </fields>
+    <fields>
+        <label>Suivi</label>
+        <name>followed__c</name>
+    </fields>
+    <layouts>
+        <layout>SfSocial Contact Layout</layout>
+        <sections>
+            <label><!-- Social Information --></label>
+            <section>Social Information</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label>Obtenir des informations sur l&apos;auteur</label>
+        <name>Get_Author_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir des informations sur l&apos;auteur</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir le score Klout</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir le score Klout</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Obtenir le nom d&apos;utilisateur Twitter</label>
+        <name>Get_Twitter_Username</name>
+    </webLinks>
+    <webLinks>
+        <label>Rechercher le nom d&apos;utilisateur Twitter</label>
+        <name>Search_Twitter_Username</name>
+    </webLinks>
+</CustomObjectTranslation>

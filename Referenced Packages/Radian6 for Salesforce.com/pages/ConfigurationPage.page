@@ -1,0 +1,86 @@
+<apex:page controller="R6Service.ConfigurationController" showHeader="true" setup="true">
+    
+    <apex:pageMessage summary="{!$Label.r6service__ConfigurationPageWarning}" severity="warning" strength="2" />
+    
+    <apex:outputPanel id="pageMessages">
+        <apex:pageMessages />
+    </apex:outputPanel>
+    
+    <apex:sectionHeader title="{!$Label.r6service__Configuration}" subtitle="{!$Label.r6service__Radian6IntegrationConfiguration}"/>
+    
+    <apex:form id="ConfigurationFormId">
+
+        <apex:pageBlock title="{!settings.name}">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="{!$Label.r6service__ManageSocialNetworksButtonValue}" onClick="openManageSocialNetworksWindow();return false;" disabled="{!!enableManageSocialAccountButton}" />
+                <apex:commandButton value="{!$Label.r6service__EditButtonLabel}" action="{!editCustomSettings}"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection title="{!$Label.r6service__Radian6Parameters}">
+                <apex:outputField value="{!settings.R6Service__R6Username__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="{!$Label.r6service__ConfigurationParameters}">
+                <apex:outputField value="{!settings.R6Service__CaseStatus__c}"/>
+                <apex:outputField value="{!settings.R6Service__Days__c}"/>
+                <apex:outputField value="{!settings.R6Service__IsCaseActivityRecordedByDefault__c}"/>
+                <apex:outputField value="{!settings.R6Service__IsCaseTaskScheduledByDefault__c}"/>
+                <apex:outputField value="{!settings.R6Service__AllowArticleAttachmentToPost__c}"/>
+                <apex:outputField value="{!settings.R6Service__KnowledgeWebsiteURL__c}"/>
+                <apex:outputField value="{!settings.R6Service__URLShortening__c}"/>
+                <apex:outputField value="{!settings.R6Service__AdministratorEmail__c}"/>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__ContactMatchingMode__c.inlineHelpText}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__ContactMatchingMode__c.label}"/>
+                    <apex:outputPanel >
+                        <apex:outputText value="{!selectedContactMatchingMode}"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.LastModifiedDate.inlineHelpText}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.LastModifiedDate.label}"/>
+                    <apex:outputPanel >
+                        <apex:outputField value="{!settings.LastModifiedById}"/>,&nbsp;
+                        <apex:outputField value="{!settings.LastModifiedDate}"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="{!$Label.r6service__DefaultRecordTypeSection}">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__DefaultCaseRecordType__c.inlineHelpText}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__DefaultCaseRecordType__c.label}"/>
+                    <apex:outputLabel value="{!defaultCaseRecordType}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__DefaultAccountRecordType__c.inlineHelpText}" rendered="{!isPersonAccountCapable}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__DefaultAccountRecordType__c.label}"/>
+                    <apex:outputLabel value="{!defaultAccountRecordType}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock rendered="{!displayRulesEngineSection}">
+            <apex:pageBlockSection title="{!$Label.r6service__RulesEngine}" id="RuleEngineSection" columns="1" >
+                <iframe src="{!HTMLENCODE(settings.RulesEngineUrl__c)}salesforce/rulebuttonbar?authToken={!HTMLENCODE(token)}&sfUrl={!URLENCODE($Api.Partner_Server_URL_200)}&sfSession={!URLENCODE(GETSESSIONID())}&sfUserId={!URLENCODE($User.Id)}" width="100%" height="100" id="RulesEngineIFrame" scrolling="yes" frameborder="0">
+                    <p>{!$Label.NoSupportToIframe}</p>
+                </iframe>
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+
+    </apex:form>
+
+    <script>
+        window.onload = function() {
+            bodyOnLoad();
+            checkBrowser();    
+        }
+        
+        function checkBrowser() {
+            if(navigator.appName!="Microsoft Internet Explorer")
+                document.getElementById("RulesEngineIFrame").scrolling="no";
+        }
+
+        function openManageSocialNetworksWindow() {
+            window.open("{!JSENCODE(settings.R6Service__ManageSocialNetworksUrl__c)}?authToken={!JSENCODE(token)}&sfUrl={!URLENCODE($Api.Partner_Server_URL_200)}&sfSession={!URLENCODE(GETSESSIONID())}&sfUserId={!URLENCODE($User.Id)}", "_blank");
+        }
+    </script>
+
+</apex:page>

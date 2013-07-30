@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <fullName>PersonaListConsoleView</fullName>
+        <availableFields>
+            <field>Bio__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SystemModstamp</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>RealName</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Provider</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>TopicType</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Followers__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Following__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Friends__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Listed__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>MediaIcon__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ProfileType__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>R6SourceId__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Tweets__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>AreWeFollowing</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>CreatedById</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ExternalId</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ExternalPictureURL</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Id</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsBlacklisted</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsDeleted</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsFollowingUs</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Klout</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastModifiedById</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastModifiedDate</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ParentId</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ProfileUrl</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>This is used in the persona list in the console view of cases</description>
+        <displayedFields>
+            <field>Avatar__c</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>MediaType</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>MediaProvider__c</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CreatedDate</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Persona List Console View</label>
+    </fieldSets>
+    <fields>
+        <fullName>AvatarIconResource__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to populate the avatar, should not be made visible.</description>
+        <externalId>false</externalId>
+        <formula>BLANKVALUE(ExternalPictureURL, &quot;/resource/R6Service__MissingAvatar&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Avatar Icon Resource</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Avatar__c</fullName>
+        <deprecated>false</deprecated>
+        <description>User&apos;s profile picture, or a placeholder if no picture is accessible.  This links to the persona&apos;s profile and when clicked will take you to the social media site.  It is similar to the Profile link however only displays the profile picture rather than text.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(ExternalPictureURL), IMAGE(AvatarIconResource__c, Name, 48, 48), HYPERLINK(ProfileUrl, IMAGE(AvatarIconResource__c, Name, 48, 48)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Click here to visit the user&apos;s profile page.</inlineHelpText>
+        <label>Avatar</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bio__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Bio</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Followers__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Followers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Following__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Following</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Friends__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Number Of Friends</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Listed__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Listed Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIconResource__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A formula used by the media icon. Should not be made visible.</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(UPPER(MediaProvider__c),&quot;TWITTER&quot;), &quot;/resource/R6Service__Twitter_Logo&quot;, 
+IF(CONTAINS(UPPER(MediaProvider__c), &quot;FACEBOOK&quot;), &quot;/resource/R6Service__Facebook_Logo&quot;, 
+IF(CONTAINS(UPPER(MediaProvider__c), &quot;YOUTUBE&quot;), &quot;/resource/R6Service__MediaTypeYouTubeIcon&quot;, 
+CASE(UPPER(MediaType), 
+&quot;BLOGS&quot;, &quot;/resource/R6Service__MediaTypeBlogIcon&quot;, 
+&quot;VIDEOS&quot;, &quot;/resource/R6Service__MediaTypeVideoIcon&quot;, 
+&quot;IMAGES&quot;, &quot;/resource/R6Service__MediaTypeImageIcon&quot;, 
+&quot;MAINSTREAM NEWS&quot;, &quot;/resource/R6Service__MediaTypeNewsIcon&quot;, 
+&quot;MICROMEDIA&quot;, &quot;/resource/R6Service__MediaTypeMicromediaIcon&quot;, 
+&quot;FORUM&quot;, &quot;/resource/R6Service__MediaTypeForumIcon&quot;, 
+&quot;COMMENTS&quot;, &quot;/resource/R6Service__MediaTypeCommentIcon&quot;, 
+&quot;/resource/R6Service__DefaultChannelLogo&quot; 
+))))</formula>
+        <label>Media Icon Resource</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIcon__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The icon that represents the post&apos;s medium. This will be the provider&apos;s logo for common providers, or generic media type logos for less popular providers.</description>
+        <externalId>false</externalId>
+        <formula>IMAGE(MediaIconResource__c, MediaType +&quot;/&quot; + MediaProvider__c, 48, 48)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The media provider or media type.</inlineHelpText>
+        <label>Media Icon</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaProvider__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Radian6 Media Provider</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ProfileType__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Profile Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>R6SourceId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Radian6 Source Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tweets__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Number Of Tweets</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

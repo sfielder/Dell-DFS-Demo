@@ -1,0 +1,52 @@
+<apex:page controller="echosign_dev1.EchoSignAdminController" 
+	title="EchoSign API Key Input"
+	sidebar="false" 
+	showHeader="false">
+	
+	<script>
+		function getUrlVars() {
+    		var vars = {};
+    		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        		vars[key] = value;
+    		});
+    		return vars;
+		}
+	</script>
+	
+	<apex:outputpanel id="apiKeyInputPanel" style="background-color:white;">
+        <apex:form >
+        	<apex:actionFunction name="onApiKeyChange" action="{!onApiKeyChange}" rerender="saveApiKeyButton" />
+            <apex:pageBlock id="apiKey">
+            	<apex:outputPanel id="thePanel" layout="block" style="font-size: 1.2em;"><p><h2>EchoSign API Key</h2></p></apex:outputPanel>
+                <apex:pageblockbuttons location="bottom">
+                    <apex:commandbutton id="saveApiKeyButton" value="Save" action="{!saveApiKey}" oncomplete="window.parent.parent.secbox.hide(); if( getUrlVars()['reloadPage'] ) { window.parent.parent.location.reload(); }" disabled="{!isSaveDisabled}" />
+                    <input type="button" name="CancelSecurityPopup" value="Cancel" onclick="window.parent.parent.secbox.hide();" class="btn" />              
+                </apex:pageblockbuttons>
+                <apex:pageblocksection columns="1">
+                    <apex:outputpanel rendered="{! isApiKeyReset }">
+                        <apex:pageblocksectionitem >
+                            <p>You have requested to reset your EchoSign API Key and Security Tokens.</p><br/>
+                            <p><b>Please note:</b> Reseting those values would prevent the status of agreement already sent out for signature from being updated in Salesforce.</p>
+                            <p>To use the existing API Key and Security Token, click [Cancel] below.</p><br/>
+                            <p><b>Please enter your account's new EchoSign API key:</b></p>  
+                            <hr/>                                                   
+                        </apex:pageblocksectionitem>
+                    </apex:outputpanel>
+                    <apex:outputpanel rendered="{! NOT(isApiKeyReset) }">
+                        <apex:pageblocksectionitem >
+                            <p>Your account is not configured with an EchoSign API Key.</p><br/>
+                            <p><b>Please enter your account's EchoSign API key:  </b></p>
+                            <hr/>  
+                        </apex:pageblocksectionitem>
+                    </apex:outputpanel>                 
+                    <apex:pageblocksectionitem >
+                        <apex:inputsecret value="{!privateSettings.echosign_dev1__API_Key__c}" onkeyup="onApiKeyChange()" onchange="onApiKeyChange()" />
+                    </apex:pageblocksectionitem>
+                    <apex:pageblocksectionitem >
+                        <p>You can get your EchoSign API key from your <a style="color: blue;" href="{!baseServerUrl}/salesforce-web/page/account/echosignApi?session={!$Api.Session_ID}&server={!$Api.Partner_Server_URL_70}" target="_blank">EchoSign account management console</a> in the section called ‘EchoSign API’. Please refer to the <a style="color: blue;" href="https://echosign.my.salesforce.com/sfc/p/300000006IaD6GOC16xiwzBTpN0yY4Bbwbei1Qk=" target="pdf">installation and configuration guide</a> or visit the <a href="http://www.echosign.com/public/static/support.jsp" target="_blank">EchoSign Support</a> portal if you have additional questions.</p>
+                    </apex:pageblocksectionitem>                    
+                </apex:pageblocksection>
+            </apex:pageBlock>
+        </apex:form> 
+    </apex:outputpanel>
+</apex:page>

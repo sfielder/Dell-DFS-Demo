@@ -1,0 +1,1111 @@
+<apex:page title="Agreement: {!agreement.Name}" standardController="echosign_dev1__SIGN_Agreement__c" sidebar="{!IF(NOT ISNULL($CurrentPage.parameters.showheadersidebar),$CurrentPage.parameters.showheadersidebar,'true')}" showHeader="{!IF(NOT ISNULL($CurrentPage.parameters.showheadersidebar),$CurrentPage.parameters.showheadersidebar,'true')}" extensions="echosign_dev1.EchoSignAgreementAdvanced" action="{!initAgreement}" cache="false">
+    <apex:includeScript value="{!URLFOR($Resource.echosign_dev1__jquery, '/js/jquery-1.4.4.min.js')}" />
+            <script type="text/javascript">
+                jQuery.noConflict();
+                function getSelectorFromSalesforceId(salesforceId) {
+                    return '#' + salesforceId.replace(/([#;&,.+*~':"!^$\[\]()=>|/])/g, '\\\\$1');
+                }
+                  
+                function salesforceJQuery(salesforceId) {
+                    return jQuery(getSelectorFromSalesforceId(salesforceId));
+                }
+                
+                var popup; 
+                
+                var isAndroid = (navigator.userAgent.match(/Android/i) != null) || isSneakyAndroid();
+
+                function isSneakyAndroid() {
+                    var isMacIntel = false;
+                    var isLinuxArm = false;
+  
+                    if (navigator.userAgent.match(/Intel Mac OS/i) != null) {
+                        isMacIntel = true;
+                    }
+                    
+                    if (navigator.platform.match(/Linux/i) != null) {
+                        isLinuxArm = true;
+                    }
+                    
+                    if (isMacIntel && isLinuxArm) {
+                        return true;
+                    }
+                    
+                    return false;
+                }
+                
+                var isiPad = navigator.userAgent.match(/iPad/i) != null;    
+                var isIE6 = window.isIE6;
+                if(isiPad || isAndroid){
+                    isIE6 = true;
+                }
+            </script> 
+    <style type="text/css">
+        .echo-button {
+            padding-right: 5px;
+        }
+        .apexp .detailList .list td, .apexp .detailList .list th, 
+        .apexp .editPage .bPageBlock .detailList .list tr td, 
+        .apexp .editPage .bPageBlock .detailList .list tr th {
+            border:0 none;
+        }
+    </style>
+
+    <apex:form id="AgreementFormId">
+    
+        <apex:variable var="hasDocumentKey" value="{!NOT ISNULL(agreement.echosign_dev1__Document_Key__c)}"/>
+        <apex:variable var="agreementStatus" value="{!agreement.echosign_dev1__Status__c}"/>
+        <apex:variable var="agreementStatusVisible" value="{!agreement.echosign_dev1__StatusVisible__c}"/>
+        <apex:variable var="lastEventId" value="{!agreement.echosign_dev1__LastEventId__c}"/>               
+        <apex:variable var="inEchosign" value="{!agreementStatus != 'Draft' && agreementStatus != 'Pre-Send'}"/>
+        <apex:variable var="inPresend" value="{!agreementStatus == 'Pre-Send'}"/>
+        <apex:variable var="isSigned" value="{!agreementStatus == 'Signed'}"/>
+        <apex:variable var="isAborted" value="{!agreementStatus == 'Aborted'}"/>
+        <apex:variable var="inProgress" value="{!agreementStatus == 'Out for Signature' || agreementStatus == 'Waiting for Counter-Signature' || agreementStatus == 'WidgetWaitingForVerification'}" />
+        <apex:variable var="hasBeenSent" value="{!agreementStatus != 'Draft' && agreementStatus != 'Pre-Send'}" />
+        <apex:variable var="notYetSent" value="{!NOT(hasBeenSent)}" />
+        <apex:variable var="applicableForCancel" value="{!inProgress}" />
+        <apex:variable var="applicableForUpdate" value="{!OR(inProgress, inPresend)}" />
+        <apex:variable var="displayPasswordInput" value="{!notYetSent && (agreement.echosign_dev1__PasswordProtectSign__c || agreement.echosign_dev1__PasswordProtectPDF__c)}" id="passwordVar"/>
+        <apex:variable var="errorMsg" value="{!agreement.echosign_dev1__ErrorMessage__c}" />
+        
+        <apex:variable var="isWindowActionWindowType" value="{! (!ISNULL(cusSettings) && cusSettings.Action_Window_Type__c == 'Window') }" />
+        <apex:variable var="isFrameActionWindowType" value="{! (!ISNULL(cusSettings) && cusSettings.Action_Window_Type__c == 'Frame') }" />
+        
+        <apex:variable var="isDisableCc" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Cc__c) }" />
+        <apex:variable var="isDisableAddRecipient" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Add_Recipient__c) }" />
+        <apex:variable var="isDisableDeleteRecipient" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Delete_Recipient__c) }" />
+        <apex:variable var="isRenderDeleteRecipient" value="{! AND( notYetSent, NOT(isDisableDeleteRecipient) ) }" />
+        <apex:variable var="isDisableSenderSigns" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Sender_Signs__c) }" />
+        <apex:variable var="isDisableSignatureType" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Signature_Type__c) }" />
+        <apex:variable var="isDisableAccountLookup" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Account_Lookup__c) }" />
+        <apex:variable var="isDisableOpportunityLookup" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Opportunity_Lookup__c) }" />
+        <apex:variable var="isDisableSignPassword" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Sign_Password__c) }" />
+        <apex:variable var="isDisableViewPassword" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_View_Password__c) }" />
+        <apex:variable var="isDisableSignExpiration" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Sign_Expiration__c) }" />
+        <apex:variable var="isDisableSignReminder" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Sign_Reminder__c) }" />
+        <apex:variable var="isDisablePreviewPosition" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Preview_Position__c) }" />
+        
+        <apex:variable var="isDisableEditAttachments" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Edit_Agreement_Attachments__c) }" />
+        <apex:variable var="isDisableDeleteAttachments" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Delete_Agreement_Attachments__c) }" />
+        <apex:variable var="isDisableUploadAttachments" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Upload_Agreement_Attachments__c) }" />
+        <apex:variable var="isDisableAttachAttachments" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Attach_Agreement_Attachments__c) }" />
+        <apex:variable var="isDisableContentAttachments" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_Content_Agreement_Attachments__c) }" />
+        <apex:variable var="isDisableViewAttachments" value="{! (!ISNULL(cusSettings) && cusSettings.Disable_View_Agreement_Attachments__c) }" />
+        
+        <apex:outputPanel rendered="{!AND(echosign_dev1__SIGN_Agreement__c.echosign_dev1__ReturnURL__c!='',echosign_dev1__SIGN_Agreement__c.echosign_dev1__ReturnURL_Text__c!='')}">
+            <!-- a href="{!SIGN_Agreement__c.ReturnURL__c}">Back to {!echosign_dev1__SIGN_Agreement__c.echosign_dev1__ReturnURL_Text__c}</a> -->
+            <apex:commandLink id="ReturnURLLink" action="{!ReturnURLLink}">
+                {!echosign_dev1__SIGN_Agreement__c.echosign_dev1__ReturnURL_Text__c}
+            </apex:commandLink>
+        </apex:outputPanel>
+        
+        <apex:sectionHeader title="Agreement" subtitle="{!agreement.Name}"/>
+        
+        <apex:pageBlock title="EchoSign Actions"  helpTitle="EchoSign Help and Support" helpUrl="{!$Page.echosign_dev1__EchosignHelp}" id="actionPageBlock">
+            <apex:pageBlockSection id="buttonsSection" columns="1">
+            	<apex:pageBlockSectionItem >
+      				<apex:outputPanel id="errorPanel">
+                		<apex:outputPanel style="text-align: left;" styleClass="errorMsg" layout="block" rendered="{!pageHaserror}">
+                    		<strong>Please correct the below mentioned error(s). </strong>
+                    		<script>
+                        		if (popup && !popup.closed) { if( isiPad ) { hideFrame(); popup.focus(); } popup.close();}
+                        		salesforceJQuery('{!$Component.AgreementFormId.actionPageBlock.buttonsSection.buttons.sendAgreementButtonImage}').show();
+                        		salesforceJQuery('{!$Component.AgreementFormId.actionPageBlock.buttonsSection.buttons.sendAgreementButtonDisabled}').hide();                                            
+                    		</script>                                 
+                			<apex:messages styleClass="pbError" style="text-align: left;" />   
+                		</apex:outputPanel>            
+                		<apex:outputPanel rendered="{!!pageHaserror}">
+                    		<apex:pagemessages />
+                		</apex:outputPanel>
+            		</apex:outputPanel>
+            	</apex:pageBlockSectionItem>  
+                <apex:pageBlockSectionItem rendered="{!LEN(errorMsg) > 0}">
+                    <apex:outputText >
+                        <apex:image url="{!$Resource.echosign_dev1__ErrorIcon}"/>
+                        <apex:outputPanel styleClass="errorMsg"><b>{!errorMsg}</b></apex:outputPanel>
+                    </apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="{!hasBeenSent || inPresend}">
+                    <apex:outputText >          
+                        <strong>Status </strong>
+                        <apex:outputText value="{!agreementStatusVisible}"/>
+                    </apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="buttons">
+                    <apex:outputPanel >
+                        <table width="100%">
+                            <tr>
+                                <td align="left">                                                                
+                                    <apex:commandLink id="sendAgreementLink" action="{!sendForSignature}" onclick="pageHasError='false';myShow('{!$Page.echosign_dev1__SendForSignature}'); if( isiPad ) { showMobileProgressFrame(); }" oncomplete="onComplete()" rerender="errorPanel,errorPanelBottom,agreementDetailsOP,AgreementOptionsSection,recipientsSection,myPanel2" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Send_Agreement__c),'true','false')}">                                    
+                                        <apex:image id="sendAgreementButtonImage" url="{!$Resource.echosign_dev1__SendAgreementButton}" styleClass="echo-button"  />
+                                    </apex:commandLink>
+                                    <apex:image id="sendAgreementButtonDisabled" url="{!$Resource.echosign_dev1__SendAgreementButtonDisabled}" styleClass="echo-button" style="display:none;" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Send_Agreement__c),'true','false')}" />
+                                    <apex:commandLink action="{!saveWithoutSending}" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Save_Agreement__c),'true','false')}" rerender="AgreementFormId,attachmentSection">
+                                        <apex:image id="saveAgreementButtonImage" url="{!$Resource.echosign_dev1__SaveAgreementButton}" styleClass="echo-button" />
+                                    </apex:commandLink>
+                                    <apex:actionFunction name="sendHostedReminder" action="{!sendReminder}" oncomplete="onFinish();" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theActionPoller,myPanel2"/>
+                                    <apex:actionFunction name="cancelHosted" action="{!cancelAgreement}" oncomplete="if(pageHasError=='false'){updateStatus(); }else{onFinish();}" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theActionPoller,myPanel2"/>
+                                    <apex:actionFunction name="deleteHosted" action="{!removeAgreement}" oncomplete="if(pageHasError=='false'){updateStatus(); }else{onFinish();}" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theActionPoller,myPanel2"/>
+                                    <apex:actionFunction name="sendHostedSigning" action="{!sendViaAPI}" oncomplete="if(pageHasError=='false'){ }else{onFinish();}" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theActionPoller,myPanel2"/>
+                                    <apex:actionFunction name="updateStatusHosted" action="{!updateStatus}" oncomplete="onFinish();" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theActionPoller,myPanel2"/>
+                                    <apex:actionFunction name="triggerUpdateStatusHosted" action="{!triggerUpdateStatus}" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theActionPoller,myPanel2"/>
+                                    <apex:outputpanel id="theActionPoller">
+                                        <apex:outputpanel rendered="{!startUpdateStatus}">
+                                            <script>
+                                                updateStatusHosted();                                       
+                                            </script>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!startUpdateEmailVerified}">
+                                            <apex:actionFunction name="updateEmailVerified" action="{!updateEmailVerified}" oncomplete="if(pageHasError=='true'){onFinish();}" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theActionPoller,myPanel2"/>
+                                            <script>
+                                                updateEmailVerified();
+                                            </script>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!startActionPoller}">
+                                            <apex:actionPoller action="{!retrieveSigningURL}" oncomplete="if(pageHasError=='false'){sendEnabled = false; myShow('{!hostedSigningURL}'); if( isiPad ) { hideFrame(); popup.focus(); reloadPage(); } }else{onFinish();}" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,floatingDiv,theSigningPanel,theStatusPanel" interval="5" />
+                                        </apex:outputpanel>
+                                    </apex:outputpanel>
+                                    <!-- <apex:actionFunction name="saveWithoutSendingJS1" action="{!saveWithoutSending}" rerender="AgreementFormId"/>
+                                    <script type="text/javascript">
+                                        function saveWithoutSendingJS()
+                                        {
+                                               setTimeout(function() {
+                                                   saveWithoutSendingJS1();
+                                               }, 2000);                            
+                                        }                            
+                                    </script> -->
+                                    <apex:image url="{!$Resource.echosign_dev1__UpdateButton}" styleClass="echo-button" rendered="{!IF(applicableForUpdate && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Update_Status__c),'true','false')}" onclick="updateStatus()" />                
+                                    <apex:image url="{!$Resource.echosign_dev1__SendReminderButton}" styleClass="echo-button" rendered="{!IF(inProgress && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Send_Reminder__c),'true','false')}" onclick="sendReminder()" /> 
+                                    <apex:image url="{!$Resource.echosign_dev1__ViewAgreementButton}" styleClass="echo-button" rendered="{!IF(hasBeenSent && !hasDocumentKey && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__View_Agreement__c),'true','false')}" onclick="viewAgreement()"/>
+                                </td>
+                                <td align="right">
+                                    <apex:image url="{!$Resource.echosign_dev1__DeleteAgreementButton}" styleClass="echo-button" rendered="{!IF(hasBeenSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Delete_Agreement__c),'true','false')}" onclick="if(!confirm('Are you sure?')){return false;} deleteAgreement();" />
+                                    <apex:image url="{!$Resource.echosign_dev1__CancelAgreementButton}" styleClass="echo-button" rendered="{!IF(applicableForCancel && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Cancel_Agreement__c),'true','false')}" onclick="if(!confirm('Are you sure?')){return false;} cancelAgreement();" />
+                                    <apex:commandLink action="{!cancelDraft}" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Cancel_Draft__c),'true','false')}">
+                                        <apex:image url="{!$Resource.echosign_dev1__CancelDraftButton}" styleClass="echo-button" />
+                                    </apex:commandLink>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+         
+        <apex:pageBlock mode="edit" id="detailPageBlock">
+      		<apex:pageBlockSection id="recipientsSection" title="Recipients" columns="1">
+                <apex:outputPanel id="recipientsListSection">
+                    <table width="100%" class="list">
+                        <thead class="dr-table-thead">
+                            <tr class="headerRow">
+                                <th class="headerRow">Action</th>
+                                <th class="headerRow">Type</th>
+                                <th class="headerRow">Recipient</th>
+                                <th class="headerRow">Email / Fax</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!Recipients}" var="rec" id="RecipientTable">
+                                <tr class="dataRow even first last">
+                                    <td class="dataCell" width="7%">
+                                        <apex:actionRegion >
+                                        <apex:commandButton action="{!delRecipient}" title="Delete recipient" image="{!$Resource.echosign_dev1__ActionDelete}" rerender="recipientsListSection" rendered="{!isRenderDeleteRecipient}" status="DeletingStatus" style="background:transparent;border-width:0px;">
+                                            <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}"/>
+                                        </apex:commandButton>
+                                        <apex:actionStatus id="DeletingStatus">
+                                            <apex:facet name="start">
+                                            <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                            <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                                        </apex:actionStatus>
+                                        </apex:actionRegion>
+                                    </td>
+                                    <td class="dataCell" width="23%">
+                                    
+                                        <apex:selectList id="RecipientType" value="{!rec.recipient.echosign_dev1__Recipient_Type__c}" size="1" rendered="{!notYetSent}">
+                                            <apex:selectOptions value="{!recipientTypes}"/>
+                                            <apex:actionSupport status="populatingRecipientTypeStatus" event="onchange" onsubmit="
+                                            if(document.getElementById('{!$Component.contact}')!=null){
+                                                document.getElementById('{!$Component.contact}').value=''; 
+                                            }
+                                            if(document.getElementById('{!$Component.lead}')!=null){
+                                                document.getElementById('{!$Component.lead}').value=''; 
+                                            
+                                            }if(document.getElementById('{!$Component.user}')!=null){
+                                                document.getElementById('{!$Component.user}').value='';
+                                                
+                                            }if(document.getElementById('{!$Component.email}')!=null){
+                                                document.getElementById('{!$Component.email}').value='';
+                                            }" action="{!onRecipientTypeChange}" rerender="detailPageBlock,recipientsListSection">
+                                                <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport>
+                                        </apex:selectList>
+                                        <apex:actionStatus id="populatingRecipientTypeStatus">
+                                            <apex:facet name="start">
+                                            <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>                                            
+                                            </apex:facet>
+                                        </apex:actionStatus>                                        
+                                        <apex:outputField value="{!rec.recipient.echosign_dev1__Recipient_Type__c}" rendered="{!hasBeenSent}"/>
+                                    </td>
+                                    <td class="dataCell" width="35%">
+                                        <apex:inputField id="contact" value="{!rec.recipient.echosign_dev1__Contact__c}"  rendered="{!AND(notYetSent,rec.recipient.echosign_dev1__Recipient_Type__c == 'Contact')}" >
+                                            <apex:actionSupport status="populatingRecipientStatus" event="onblur" action="{!updateEmail_FaxAddress}" rerender="recipientsListSection">
+                                                <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport>
+                                            <!--apex:actionSupport status="populatingRecipientStatus" event="onblur" action="{!updateEmail_FaxAddress}" rerender="recipientsListSection">
+                                                <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport-->                                       
+                                        </apex:inputField>
+                                        <apex:outputField value="{!rec.recipient.echosign_dev1__Contact__c}" rendered="{!AND(hasBeenSent,rec.recipient.echosign_dev1__Recipient_Type__c == 'Contact')}" />
+                                        
+                                        <apex:inputField id="lead" value="{!rec.recipient.echosign_dev1__Lead__c}" rendered="{!AND(notYetSent,rec.recipient.echosign_dev1__Recipient_Type__c == 'Lead')}">
+                                            <apex:actionSupport status="populatingRecipientStatus" event="onblur" action="{!updateEmail_FaxAddress}" rerender="recipientsListSection">
+                                                <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport>
+                                            <!-- apex:actionSupport event="onblur" action="{!updateEmail_FaxAddress}" rerender="recipientsListSection">
+                                                <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport-->                                            
+                                        </apex:inputField>
+                                        <apex:outputField value="{!rec.recipient.echosign_dev1__Lead__c}" rendered="{!AND(hasBeenSent,rec.recipient.echosign_dev1__Recipient_Type__c == 'Lead')}" />
+                                        
+                                        <apex:inputField id="user" value="{!rec.recipient.echosign_dev1__User__c}" rendered="{!AND(notYetSent,rec.recipient.echosign_dev1__Recipient_Type__c == 'User')}">
+                                            <apex:actionSupport status="populatingRecipientStatus" event="onblur" action="{!updateEmail_FaxAddress}" rerender="recipientsListSection">
+                                                <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport>
+                                            <!-- apex:actionSupport event="onblur" action="{!updateEmail_FaxAddress}" rerender="recipientsListSection">
+                                                <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport-->                                          
+                                        </apex:inputField>
+                                        <apex:outputField value="{!rec.recipient.echosign_dev1__User__c}" rendered="{!AND(hasBeenSent,rec.recipient.echosign_dev1__Recipient_Type__c == 'User')}" />
+         
+                                        <apex:inputField id="email" value="{!rec.recipient.echosign_dev1__Email_Address__c}" rendered="{!AND(notYetSent, rec.recipient.echosign_dev1__Recipient_Type__c == 'Email')}">
+                                            <apex:actionSupport status="populatingRecipientStatus" event="onblur" action="{!updateEmail_FaxAddress}" rerender="recipientsListSection">
+                                            	<apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                            </apex:actionSupport>
+                                        </apex:inputField>
+                                        <apex:outputField value="{!rec.recipient.echosign_dev1__Email_Address__c}" rendered="{!AND(hasBeenSent, rec.recipient.echosign_dev1__Recipient_Type__c == 'Email')}" />
+                                        
+                                        <apex:actionStatus id="populatingRecipientStatus">
+                                            <apex:facet name="start">
+                                            <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                                            <img src="{!$Resource.Loading}" style="width:20px;height:20px" /></apex:facet>
+                                        </apex:actionStatus>                                        
+                                    </td>
+                                    <td class="dataCell" width="35%">
+                                        <apex:inputField style="display:none" rendered="{!rec.recipient.echosign_dev1__Recipient_Type__c!='Email'}" value="{!rec.recipient.echosign_dev1__Email_Address__c}" />
+                                        
+                                        <apex:outputText id="emailDisplay" value="{!rec.EmailAddress}" rendered="{!rec.useEmailAddress && rec.recipient.echosign_dev1__Recipient_Type__c!='Email'}" /> &nbsp; &nbsp;
+                                        <apex:commandLink value="Use Fax" action="{!switchToFaxAddress}" rerender="recipientsListSection" rendered="{!AND(notYetSent,rec.showFaxOption)}">
+                                            <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                        </apex:commandLink>
+                                        <apex:outputText value="{!rec.FaxAddress}" rendered="{!rec.useFaxAddress}" /> &nbsp; &nbsp;
+                                        <apex:commandLink value="Use Email" action="{!switchToEmailAddress}" rerender="recipientsListSection" rendered="{!AND(notYetSent,rec.showEmailOption)}">
+                                            <apex:param name="recipientNumber" value="{!rec.recipient.echosign_dev1__Order_Number__c}" />
+                                        </apex:commandLink>
+                                    </td>
+                                    
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <apex:outputPanel id="ButtonSection">
+                    <apex:commandLink immediate="true" action="{!addRecipient}" value="Add Recipient" rerender="recipientsListSection" status="LoadingStatus" rendered="{! notYetSent && NOT(isDisableAddRecipient) }"/> &nbsp; &nbsp; &nbsp;
+                    <apex:actionFunction immediate="true" name="recipientsListSectionJS1" action="{!addRecipient}" rerender="recipientsListSection" status="LoadingStatus"/>
+                    <!-- script type="text/javascript">
+                        function recipientsListSectionJS()
+                        {
+                               setTimeout(function() {
+                                   recipientsListSectionJS1();
+                               }, 2000);                            
+                        }                           
+                    </script>-->
+                    <apex:actionStatus id="LoadingStatus">
+                        <apex:facet name="start">
+                        <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                        <img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                    </apex:actionStatus>
+                </apex:outputPanel>
+                <apex:actionRegion >               
+                    <apex:outputPanel id="recDetailPanel" rendered="{! NOT(isDisableSenderSigns) }">
+                        <apex:inputField value="{!agreement.echosign_dev1__SenderSigns__c}" rendered="{! notYetSent }">
+                            <apex:actionSupport event="onclick" rerender="recDetailPanel" />
+                        </apex:inputField>
+                        <apex:outputField value="{!agreement.echosign_dev1__SenderSigns__c}" rendered="{!hasBeenSent}" />
+                        <apex:outputLabel title="Check this option if you also need to sign this agreement. Then select if you sign first or if your recipients sign first.">I also need to sign this document &nbsp;&nbsp;&nbsp;</apex:outputLabel>
+                        <apex:selectList value="{!agreement.echosign_dev1__SignatureOrder__c}" rendered="{!AND(agreement.echosign_dev1__SenderSigns__c, notYetSent)}" size="1">
+                            <apex:selectOption itemLabel="Recipient signs, then I sign" itemValue="Recipient signs, then I sign" rendered="{!agreement.echosign_dev1__SenderSigns__c}"/>
+                            <apex:selectOption itemLabel="I sign, then the Recipient signs" itemValue="I sign, then the Recipient signs" rendered="{!agreement.echosign_dev1__SenderSigns__c}"/>
+                        </apex:selectList><p></p>
+                        <apex:outputPanel rendered="{!cusSettings.echosign_dev1__Enable_Recipient_Signing_Order_Field__c}">
+                            <apex:outputLabel >{!$ObjectType.SIGN_Agreement__c.fields.Recipient_Signing_Order__c.label}&nbsp;&nbsp;</apex:outputLabel>
+                            <apex:inputField id="RecipientSigningOrder" value="{!agreement.echosign_dev1__Recipient_Signing_Order__c}" />  
+                            <apex:outputPanel rendered="{!hasBeenSent}">
+                                <script>
+                                    if( document.getElementById('{!$Component.RecipientSigningOrder}') ) {
+                                        document.getElementById('{!$Component.RecipientSigningOrder}').disabled = true;
+                                    }
+                                </script>
+                            </apex:outputPanel>                                                     
+                        </apex:outputPanel>                           
+                        <apex:outputField value="{!agreement.echosign_dev1__SignatureOrder__c}" rendered="{!AND(agreement.echosign_dev1__SenderSigns__c, hasBeenSent)}" />
+                    </apex:outputPanel>
+                </apex:actionRegion> 
+                <apex:outputPanel title="Host signing to get in-person signatures from your computer or device." rendered="{! cusSettings.Enable_Hosted_Signing_Field__c }">
+                    <apex:inputField id="EnableHostedSigning" value="{!agreement.echosign_dev1__Enable_Hosted_Signing__c}" rendered="{!notYetSent}"/> 
+                    <apex:outputField value="{!agreement.echosign_dev1__Enable_Hosted_Signing__c}" rendered="{!OR(hasBeenSent,isSigned)}" />
+                    <apex:outputLabel >Host signing for the first signer &nbsp; &nbsp;</apex:outputLabel>
+                            <apex:outputPanel rendered="{!AND(hasBeenSent,!isSigned,!isAborted)}">
+                                    <apex:commandLink id="sendAgreementLink" action="{!retrieveSigningURL}" onclick="myShow('{!$Page.echosign_dev1__SendForSignature}');" oncomplete="if(pageHasError=='false'){sendEnabled = false; myShow('{!hostedSigningURL}'); if( isiPad ) { popup.focus(); reloadPage(); } }else{onFinish();}" rerender="errorPanel,errorPanelBottom,floatingDiv,agreementDetailsOP,AgreementOptionsSection,recipientsSection,theSigningPanel,theStatusPanel" rendered="{!agreement.echosign_dev1__Enable_Hosted_Signing__c}">Host Signing for the current signer</apex:commandLink>                               
+                            </apex:outputPanel>                        
+                </apex:outputPanel>                   
+                
+                <apex:outputPanel rendered="{! NOT(isDisableCc) }">
+                	<apex:outputLabel >Send email copies to: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel>
+                    <apex:inputText value="{!agreement.echosign_dev1__Cc__c}" size="100" rendered="{!notYetSent}"/>
+                    <apex:outputField value="{!agreement.echosign_dev1__Cc__c}" rendered="{!hasBeenSent}" />
+                </apex:outputPanel>     
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Agreement Detail"/>
+            
+            <apex:outputPanel id="agreementDetailsOP">
+            <table width="90%">
+                <tr>
+                    <td style="" align="right" width="25%"><b>Agreement Name</b>&nbsp;</td>
+                    <td colspan="3">
+                        <apex:outputPanel title="Specify the name of the agreement." styleClass="requiredInput" layout="block" rendered="{!notYetSent}">  
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputfield style="width:515px" id="agreementName" value="{!agreement.Name}"/>
+                            <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!errorAgreementName}">
+                                <strong>Error:</strong> Value is required.
+                            </apex:outputPanel>                            
+                        </apex:outputPanel>
+                        <apex:outputText title="Specify the name of the agreement." value="{!agreement.Name}" rendered="{!hasBeenSent}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="25%"><b>Message</b>&nbsp;</td>
+                    <td colspan="3">
+                    	<apex:outputPanel title="Specify a message to the recipients.">
+                        	<apex:inputTextArea value="{!agreement.echosign_dev1__Message__c}" rows="5" cols="100" rendered="{!notYetSent}"/>
+                        	<apex:outputText value="{!agreement.echosign_dev1__Message__c}" rendered="{!hasBeenSent}" />
+                        </apex:outputPanel>
+                    </td>
+                </tr> 
+                <tr>
+                    <td align="right" width="25%"><b>Language</b>&nbsp;</td>
+                    <td width="25%">
+                        <apex:outputPanel title="Select the language of the recipients." styleClass="requiredInput" layout="block" rendered="{!notYetSent}">  
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:selectList value="{!agreement.echosign_dev1__AgreementLocale__c}" size="1" >
+                                <apex:selectOptions value="{!languages}"/>
+                            </apex:selectList>
+                            <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!errorAgreementLocale}">
+                                <strong>Error:</strong> Value is required.
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                        <apex:outputText title="Select the language of the recipients." value="{!agreement.echosign_dev1__AgreementLocale__c}" rendered="{!hasBeenSent}" />
+                    </td>
+                    <td align="right" width="25%"><apex:outputPanel rendered="{! NOT(isDisableOpportunityLookup) }"><b>Opportunity</b>&nbsp;</apex:outputPanel></td>
+                    <td width="25%">
+                        <apex:outputPanel rendered="{! NOT(isDisableOpportunityLookup) }">
+                            <apex:inputField value="{!agreement.echosign_dev1__Opportunity__c}" rendered="{!notYetSent}"/>
+                            <apex:outputField value="{!agreement.echosign_dev1__Opportunity__c}" rendered="{!hasBeenSent}" />
+                        </apex:outputPanel>
+                    </td>
+                                       
+                </tr>
+                <tr>
+                    <td align="right" width="25%"><apex:outputPanel rendered="{! NOT(isDisableSignatureType) }"><b>Signature Type</b>&nbsp;</apex:outputPanel></td>
+                    <td width="25%">
+                        <apex:outputPanel title="Request signers to sign by electronic signature or fax signature." styleClass="requiredInput" layout="block" rendered="{! notYetSent && NOT(isDisableSignatureType) }">  
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:selectList value="{!agreement.echosign_dev1__SignatureType__c}" size="1" >
+                                <apex:selectOption itemValue="e-Signature" itemLabel="e-Signature" />
+                                <apex:selectOption itemValue="Written Signature" itemLabel="Fax Signature" />
+                                <apex:actionSupport event="onchange" action="{!updateEmail_FaxAddressForAll}" rerender="recipientsListSection"/>
+                            </apex:selectList>                           
+                            <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!errorSignatureType}">
+                                <strong>Error:</strong> Value is required.
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                        <apex:outputText title="Request signers to sign by electronic signature or fax signature." value="{!agreement.echosign_dev1__SignatureType__c}" rendered="{!hasBeenSent}" />
+                    </td>
+                    <td align="right" width="25%"><apex:outputPanel rendered="{! NOT(isDisableAccountLookup) }"><b>Account</b>&nbsp;</apex:outputPanel></td>
+                    <td width="25%">
+                        <apex:outputPanel rendered="{! NOT(isDisableAccountLookup) }">
+                            <apex:inputField value="{!agreement.echosign_dev1__Account__c}" rendered="{!notYetSent}"/>
+                            <apex:outputField value="{!agreement.echosign_dev1__Account__c}" rendered="{!hasBeenSent}" />
+                        </apex:outputPanel>
+                    </td> 
+                                       
+                </tr>
+                               
+                <tr>
+                    <!--td align="right" width="25%"><b>ReturnURL URL(For Testing)</b>&nbsp;</td>
+                    <td width="25%">
+                        <apex:inputField value="{!agreement.ReturnURL__c}" rendered="{!notYetSent}"/>
+                        <apex:outputField value="{!agreement.ReturnURL__c}" rendered="{!hasBeenSent}" />
+                    </td>-->                     
+                    <apex:outputPanel rendered="{!AND(isSigned, LEN(agreement.echosign_dev1__SignedPDF__c) > 0)}">   
+                    <td align="right" width="25%"><b>Document</b>&nbsp;</td>
+                    <td width="25%">
+                        <apex:outputlink rendered="{!NOT ISNULL(agreement.echosign_dev1__SignedPDF__c)}" value="{!agreement.echosign_dev1__SignedPDF__c}">
+                            <apex:image value="https://secure.echosignforsalesforce.com/images/salesforce-pdf-icon.gif"/>
+                            {!agreement.Name} - signed.pdf
+                        </apex:outputlink>
+                    </td>                   
+                    </apex:outputPanel> 
+                </tr>
+            </table>                
+            </apex:outputPanel>
+            <apex:pageBlockSection title="Agreement Options" columns="1" id="AgreementOptionsSection">
+                
+                    <apex:outputPanel rendered="{! NOT(isDisableSignPassword) }">
+                        <apex:inputField id="PasswordProtectSign" value="{!agreement.echosign_dev1__PasswordProtectSign__c}" onchange="showPassword();" rendered="{!notYetSent}">
+                            <!-- apex:actionSupport action="{!nullAction}" status="passRequiredStatus" event="onchange" rerender="AgreementFormId" /> -->
+                        </apex:inputField>
+                        <apex:outputField value="{!agreement.echosign_dev1__PasswordProtectSign__c}" rendered="{!hasBeenSent}" />
+                        <apex:outputLabel >Password required to sign</apex:outputLabel>
+                        <!-- apex:actionStatus id="passRequiredStatus">
+                            <apex:facet name="start"><img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                        </apex:actionStatus> -->                    
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{! NOT(isDisableViewPassword) }">
+                        <apex:inputField id="PasswordProtectPDF" value="{!agreement.echosign_dev1__PasswordProtectPDF__c}" onchange="showPassword();" rendered="{!notYetSent}">
+                            <!-- apex:actionSupport action="{!nullAction}" status="passRequiredToViewPDFStatus" event="onchange" rerender="AgreementFormId"/> -->
+                        </apex:inputField>
+                        <apex:outputField value="{!agreement.echosign_dev1__PasswordProtectPDF__c}" rendered="{!hasBeenSent}" />
+                        <apex:outputLabel >Password required to view PDF</apex:outputLabel>
+                        <!-- apex:actionStatus id="passRequiredToViewPDFStatus">
+                            <apex:facet name="start"><img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                        </apex:actionStatus>   -->                     
+                    </apex:outputPanel>
+                    <apex:outputPanel id="passwordPanel">           
+                        <apex:outputPanel id="passwordPanel2" style="display:none;">
+                            <script>  
+                                if({!notYetSent} && ({!agreement.echosign_dev1__PasswordProtectSign__c} || {!agreement.echosign_dev1__PasswordProtectPDF__c})){
+                                    document.getElementById('{!$Component.passwordPanel2}').style.display='';
+                                }else{
+                                    document.getElementById('{!$Component.passwordPanel2}').style.display='none';
+                                }
+                                function showPassword(){
+                                    if({!notYetSent} && 
+                                        ( ( document.getElementById('{!$Component.PasswordProtectSign}') && document.getElementById('{!$Component.PasswordProtectSign}').checked ) || 
+                                            ( document.getElementById('{!$Component.PasswordProtectPDF}') && document.getElementById('{!$Component.PasswordProtectPDF}').checked ) ) ) {
+                                        document.getElementById('{!$Component.passwordPanel2}').style.display='';
+                                    }else{
+                                        document.getElementById('{!$Component.passwordPanel2}').style.display='none';
+                                    }
+                                }                               
+                            </script>                       
+                            <apex:outputPanel id="passwordPanelInner">
+                                <apex:outputLabel >Password &nbsp;&nbsp;&nbsp;</apex:outputLabel>
+                                <apex:outputPanel styleClass="requiredInput">  
+                                    <apex:outputPanel styleClass="requiredBlock"/>                        
+                                    <apex:inputSecret value="{!password}" id="password" redisplay="true"/>
+                                </apex:outputPanel>                             
+                            </apex:outputPanel>
+                            <apex:outputPanel id="confirmPasswordInner">
+                                <apex:outputLabel >Confirm Password &nbsp;&nbsp;&nbsp;</apex:outputLabel>
+                                <apex:outputPanel styleClass="requiredInput">
+                                    <apex:outputPanel styleClass="requiredBlock"/>  
+                                    <apex:inputSecret value="{!confirmPassword}" id="confirmPassword" redisplay="true"/>
+                                </apex:outputPanel>                         
+                            </apex:outputPanel>                 
+                        </apex:outputPanel>
+                    <apex:outputPanel title="Specify the number of days until the agreement expires and can no longer be signed." rendered="{! NOT(isDisableSignExpiration) }">
+                        <table >
+                        <tr>
+                        <td style="width:90px">
+                        Allow signers&nbsp; 
+                        </td>
+                        <td>
+                        <apex:inputField value="{!agreement.echosign_dev1__DaysUntilSigningDeadline__c}" onkeypress="return checkLength(event,this)" style="width:25px" id="daysUntilSigned" rendered="{!notYetSent}"/> 
+                        <script type="text/javascript">
+                            if(document.getElementById('{!$Component.daysUntilSigned}')!=null)
+                                document.getElementById('{!$Component.daysUntilSigned}').size = 3;    
+                             function checkLength(event,val){
+                                if(isNumberKey(event)==true){
+                                    if(val.value.length>2){
+                                        val.value = val.value.substring(0,2);                                           
+                                        return true;
+                                    }else{
+                                        return true;
+                                    }
+                                }else{                          
+                                    return false;
+                                }
+                             }
+                        </script>
+                        <apex:outputField value="{!agreement.echosign_dev1__DaysUntilSigningDeadline__c}" rendered="{!hasBeenSent}" />
+                        </td>
+                        <td >
+                        days to sign this document.
+                        </td>
+                        </tr>
+                        </table>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                <apex:outputPanel title="Send an automatic weekly or daily reminder to recipients." id="remindRecipientPanel" rendered="{! NOT(isDisableSignReminder) }">
+                    <apex:inputField value="{!agreement.echosign_dev1__Enable_Automatic_Reminders__c}" rendered="{!notYetSent}">
+                        <apex:actionSupport event="onclick" rerender="remindRecipientPanel" /> 
+                    </apex:inputField>
+                    <apex:outputField value="{!agreement.echosign_dev1__Enable_Automatic_Reminders__c}" rendered="{!hasBeenSent}" />
+                    <apex:outputLabel >Remind recipient to sign &nbsp; &nbsp;</apex:outputLabel>
+                    <apex:inputField value="{!agreement.echosign_dev1__RemindRecipient__c}" rendered="{!AND(notYetSent, agreement.echosign_dev1__Enable_Automatic_Reminders__c)}"/>
+                    <apex:outputField value="{!agreement.echosign_dev1__RemindRecipient__c}" rendered="{!AND(hasBeenSent, agreement.echosign_dev1__Enable_Automatic_Reminders__c)}" />
+                                       
+                </apex:outputPanel>
+                <apex:outputPanel title="Allow recipients to suggest revisions to the document." rendered="{!cusSettings.echosign_dev1__Enable_Suggest_Revisions_Field__c}">
+                    <apex:inputField id="EnableRevisions" value="{!agreement.echosign_dev1__Enable_Revisions__c}" />
+                    <apex:outputLabel >Allow recipients to suggest revisions &nbsp; &nbsp;</apex:outputLabel>
+                            <apex:outputPanel rendered="{!hasBeenSent}">
+                                <script>
+                                   document.getElementById('{!$Component.EnableRevisions}').disabled = true;
+                                </script>
+                            </apex:outputPanel>                          
+                </apex:outputPanel>    
+                <apex:outputPanel title="Preview the document or drag and drop form fields or signature fields on to the document before it is sent for signature." rendered="{! NOT(isDisablePreviewPosition) }">
+                    <apex:inputField value="{!agreement.echosign_dev1__Authoring__c}" rendered="{!notYetSent}"/>
+                    <apex:outputField value="{!agreement.echosign_dev1__Authoring__c}" rendered="{!hasBeenSent}" />
+                    <apex:outputLabel >Preview document or position signature fields</apex:outputLabel>
+                </apex:outputPanel>
+                        <apex:inputHidden id="pageHasError" value="{!pageHasError}" /> 
+                            
+                        <script> 
+                            var isErrorFromServer = false; 
+                            var sendEnabled = true;                                
+                            var pageHasError = document.getElementById("{!$Component.AgreementFormId.detailPageBlock.AgreementOptionsSection.pageHasError}").value;                         
+                            if('{!showSecPopup}'=='true'){
+                                 buildSecurityPopup();  
+                            }
+
+                    function isNumberKey(evt)
+                    {                    
+                        var charCode = (evt.which) ? evt.which : evt.keyCode;
+                        if (charCode > 31 && (charCode < 47 || charCode > 57 ) )
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    function init() {                
+                        // set focus on your element here 
+                        if(document.getElementById('{!$Component.AgreementFormId.detailPageBlock.agreementName}')!=null)
+                            document.getElementById('{!$Component.AgreementFormId.detailPageBlock.agreementName}').focus();
+                    }
+    
+                    var previousOnload = window.onload;        
+                    window.onload = function() { 
+                        if (previousOnload) { 
+                            previousOnload();
+                        }    
+                        init();
+                        buildPopup();
+                    }   
+
+                    function onComplete(){
+                        if(pageHasError=='false'){  
+                            checkAndCreateAgreement();
+                        }else{
+                            if( isIE6 || {!isWindowActionWindowType} ) {                      
+                                if(popup && !popup.closed){
+                                    if( isiPad ) {
+                                        hideFrame();
+                                        popup.focus();
+                                        setTimeout("popup.close()", 2000);
+                                    } else {
+                                        popup.close();
+                                    }   
+                                }                               
+                            }else{
+                                box.cancel();
+                            }
+                        }
+                    }                                   
+
+                    function onFinish(){
+                        if( isIE6 || {!isWindowActionWindowType} ) {                 
+                            if(popup && !popup.closed){
+                                if( isiPad ) {
+                                    hideFrame();
+                                    popup.focus();
+                                    setTimeout("popup.close()", 2000);
+                                } else {
+                                    popup.close();
+                                }
+                            } else if( isiPad ) {
+                                box.cancel();
+                            }                             
+                        }else{
+                            box.cancel();
+                        }
+                    } 
+                      
+                function buildSecurityPopup() {
+                    var secbox = sfdcPage.getDialogById("EchoSignSecurityPopup");
+                                    
+                    if( secbox == null ) {
+                       secbox = new parent.SimpleDialog("EchoSignSecurityPopup", true); 
+                       secbox.cancel=function() { secbox.hide(); };
+                       parent.secbox = secbox; 
+                       sfdcPage.dialogs[parent.secbox.id] = parent.secbox;
+                       secbox.displayX=false;                   
+                       secbox.createDialog();        
+                       secbox.setWidth("435px");                       
+                    }
+                    
+                    var frameUrl = '{!$Page.echosign_dev1__ApiKeyInput}?reloadPage=true';
+                    var srcFrame = '<iframe height="480px" width="400px" frameborder="no" id="popup" style="border:0;" src="'+frameUrl+'"></iframe>';
+                    secbox.setContentInnerHTML(srcFrame);
+                    secbox.show();
+               }
+          
+            function hidesecWindow(){
+                if(pageHasError=='false'){
+                    secbox.hide();
+                    setTimeout("reloadPage()", 750);                            
+                }else{
+                    secbox.hide();
+                }
+            }                          
+            function buildPopup(){   
+                var box = sfdcPage.getDialogById("EchoSignWindow");                   
+                if(box==null){
+                    box = new parent.SimpleDialog("EchoSignWindow", true); 
+                    box.cancel=function(){hideWindow();};
+                    parent.box = box; 
+                    sfdcPage.dialogs[parent.box.id] = parent.box;
+                    box.displayX=true;                  
+                    box.createDialog(); 
+                    box.setWidth("1050px"); //box.setWidth("75%");
+                }
+            }
+            // Calculate the size of the page so we can set the popup size
+             var viewportwidth;
+             var viewportheight;
+             
+             // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+             
+             if (typeof window.innerWidth != 'undefined')
+             {
+                  viewportwidth = window.innerWidth,
+                  viewportheight = window.innerHeight
+             }
+             
+            // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+            
+             else if (typeof document.documentElement != 'undefined'
+                 && typeof document.documentElement.clientWidth !=
+                 'undefined' && document.documentElement.clientWidth != 0)
+             {
+                   viewportwidth = document.documentElement.clientWidth,
+                   viewportheight = document.documentElement.clientHeight
+             }
+             
+             // older versions of IE
+             
+             else
+             {
+                   viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+                   viewportheight = document.getElementsByTagName('body')[0].clientHeight
+             }
+            var height = viewportheight*.85; 
+            var frameWidth = 980; //viewportwidth*.72;   //"100%";
+            
+                    function hideWindow(){
+                        if(pageHasError=='false'){
+                            box.hide();
+                            setTimeout("reloadPage()", 750);                            
+                        }else{
+                            box.hide();
+                        }
+                    }  
+                    
+                    function hideFrame() {
+                        box.hide();
+                    }
+                    
+                    function showMobileProgressFrame() {
+                        var myUrl = '{!$Page.echosign_dev1__SendForSignatureMobile}';
+                        var mySRC = '<iframe height="'+height+'"px width="'+frameWidth+'"px frameborder="no" id="popup" style="border:0;" src="' + myUrl + '"></iframe>';
+                        box.setContentInnerHTML(mySRC);
+                        box.show(); 
+                    }
+                    
+                    function isFrameUrlMobile(url) {
+                        if( ( url.indexOf('{!$Page.echosign_dev1__RefreshStatus}') != -1 ) ||
+                            ( url.indexOf('{!$Page.echosign_dev1__SendReminder}') != -1 ) ||
+                            ( url.indexOf('{!$Page.echosign_dev1__DeleteAgreement}') != -1 ) ||
+                            ( url.indexOf('{!$Page.echosign_dev1__CancelAgreement}') != -1 ) ) {
+                            return true;
+                        }
+                    
+                        return false;
+                    }
+                    
+                    function myShow(myURL){
+                        if( {!isWindowActionWindowType} ) {
+                            echosignPopup(myURL);
+                        } else if( {!isFrameActionWindowType} ) {
+                            var mySRC;
+                            mySRC = '<iframe height="'+height+'"px width="'+frameWidth+'"px frameborder="no" id="popup" style="border:0;" src="'+myURL+'"></iframe>';
+                            box.setContentInnerHTML(mySRC);
+                            box.show();
+                        } else if( isiPad && isFrameUrlMobile(myURL) ) {
+                            var mySRC = '<iframe height="'+height+'"px width="'+frameWidth+'"px frameborder="no" id="popup" style="border:0;" src="'+myURL+'"></iframe>';
+                            box.setContentInnerHTML(mySRC);
+                            box.show();
+                        } else if(isIE6) { 
+                            echosignPopup(myURL); //'{!IF(ISNULL(hostedSigningURL),$Page.echosign_dev1__SendForSignature,hostedSigningURL)}'
+                        } else { 
+                            var mySRC;
+                            mySRC = '<iframe height="'+height+'"px width="'+frameWidth+'"px frameborder="no" id="popup" style="border:0;" src="'+myURL+'"></iframe>';
+                            box.setContentInnerHTML(mySRC);
+                            //'<iframe height="'+height+'"px width="'+frameWidth+'"px frameborder="no" id="popup" style="border:0;" src="'+myURL+'"></iframe>'+
+                            box.show();
+                        }
+                    }               
+                                                              
+                    function checkAndCreateAgreement() {
+                        if(pageHasError=='true') {
+                            return;
+                        }
+                        if('{!displayPasswordInput}' == 'true')
+                            sendForSignatureWithPassword();
+                        else
+                            createAgreement();
+                    }
+                
+                    function sendForSignatureWithPassword(){
+                        var password = '{!JSENCODE(password)}';
+                        var passwordConfirm = '{!JSENCODE(confirmpassword)}';
+                        if (!password) {
+                            alert("You must enter a password to send a password protected agreement");
+                        } else if (password != passwordConfirm){
+                            alert("The password and password confirmation do not match");
+                        } else {
+                            createAgreement({ password: password});
+                        }
+                    }
+                    function reloadPage() {
+                        if( '{!JSENCODE(agreement.echosign_dev1__ReturnURL__c)}'!='' && !sendEnabled && !isErrorFromServer ) 
+                            window.location.href = '{!JSENCODE(agreement.echosign_dev1__ReturnURL__c)}';
+                        else                            
+                            window.location.reload();
+                    }                                                      
+
+                function echosignParameters(extraOptions) {
+                    return jQuery.extend({ 
+                      Agreement_ID: '{!strID}',
+                      New_Record_ID: '{!strNewID}',
+                      Version: '{!strVersion}',
+                      namespace: '{!strNamespace}',
+                      session: '{!$Api.Session_ID}',
+                      organizationId: '{!$Organization.Id}',
+                      server: '{!$Api.Partner_Server_URL_70}',
+                      Status: '{!agreementStatus}',
+                      LastEventId: '{!lastEventId}',
+                      signerFields: '{!IF(NOT ISNULL(cusSettings.echosign_dev1__Override_Recipient_Field_List__c),cusSettings.echosign_dev1__Override_Recipient_Field_List__c,strNamespace+"__Recipient_Addresses__c")}',
+                      attachmentIds: '{!JSENCODE(agreement.echosign_dev1__Attachment_ID_Order__c)}',
+                      mergeFields: 'echosign_dev1__Merge__c',
+                      AdditionalOptions: '{!JSENCODE(agreement.echosign_dev1__AdditionalOptions__c)}'
+                    }, extraOptions);
+                }
+                
+                var ECHOSIGN_URL_BASE = '{!strBaseURL}';
+                
+                function echosignCall(action, callback, extraOptions) {
+                    jQuery.getJSON(ECHOSIGN_URL_BASE + '/salesforce/' + action + '?callback=?',
+                                   echosignParameters(extraOptions), 
+                                   function(data) { callback(data); });
+                }
+                  
+                function echosignUrl(subpath, extraOptions) {
+                    return ECHOSIGN_URL_BASE + subpath + '?' + jQuery.param(echosignParameters(extraOptions));
+                }
+                
+                function checkAndroidPopup() {
+                    try {
+                        var popupStr = popup + ' ';
+                    } catch(err) {
+                        if(pageHasError=='false') {
+                            reloadPage();
+                        }
+                        return;
+                    }
+                    setTimeout("checkAndroidPopup()",1000);
+                }
+                  
+                function checkPopup() {
+                    if (!popup || popup.closed) {
+                        if(pageHasError=='false')
+                            reloadPage();
+                        return;
+                    }
+                    setTimeout("checkPopup()",1000);
+                }
+                                
+                function echosignPopup(url) {
+                    //12.30.10--use floating div//
+                    if( {!isWindowActionWindowType} ) {
+                        popup = window.open(url, 'EchoSign', 'menubar=0,width=960,height=620,toolbar=0,location=0');
+                        checkPopup();
+                    } else if( {!isFrameActionWindowType} ) {
+                        myShow(url);
+                    } else if(isIE6){
+                        if( isAndroid ) {
+                            popup = window.open(url, 'EchoSign');
+                            checkAndroidPopup();
+                        } else if( isiPad && isFrameUrlMobile(url) ) {
+                            myShow(url);
+                        } else {
+                            popup = window.open(url, 'EchoSign', 'menubar=0,width=960,height=620,toolbar=0,location=0');
+                            
+                            if( isiPad && ( url == '{!$Page.echosign_dev1__SendForSignature}' ) ) {
+                                window.focus();
+                            }
+             
+                            checkPopup();
+                        }
+                    }else{
+                        myShow(url);
+                    }
+                }
+                  
+                function createAgreement(extraOptions) {
+                    if (sendEnabled) {
+                        sendEnabled = false;                  
+
+                        // swap the enabled and disabled versions
+                        salesforceJQuery('{!$Component.AgreementFormId.actionPageBlock.buttonsSection.buttons.sendAgreementButtonImage}').hide();
+                        salesforceJQuery('{!$Component.AgreementFormId.actionPageBlock.buttonsSection.buttons.sendAgreementButtonDisabled}').show();                                                         
+
+                        if(document.getElementById('{!$Component.AgreementFormId.detailPageBlock.recipientsSection.EnableHostedSigning}')!=null && document.getElementById('{!$Component.AgreementFormId.detailPageBlock.recipientsSection.EnableHostedSigning}').checked){
+
+                            sendHostedSigning();
+                        }else{  
+                            if(isIE6){      
+                                echosignPopup('{!$Page.echosign_dev1__SendForSignature}');
+                                checkPopup();  
+                            }                   
+                            echosignCall('createAgreement', agreementCreated, extraOptions);
+                        }
+                    }
+                }
+                
+                function agreementCreated(data) {
+                    // if we got a new location, set the url in the popup
+                    if (data && data['url']) {
+                        isErrorFromServer = false;
+                        if(isIE6){
+                            popup.location.href=data['url'];
+                            if( isiPad ) { hideFrame(); popup.focus(); }
+                        }else{
+                            myShow(data['url']);
+                        }
+                    }
+                    // otherwise, just close the popup and the popup checker will do a refresh
+                    else {
+                         isErrorFromServer = true;
+                         if(isIE6){
+                            if (popup && !popup.closed) { if( isiPad ) { hideFrame(); popup.focus(); } popup.close();}
+                         }else{
+                            box.cancel();
+                         }
+                    }
+                }
+                      
+                function updateStatus() {
+                    echosignPopup('{!$Page.echosign_dev1__RefreshStatus}?id={!strID}');
+                    var docKey = '{!JSENCODE(agreement.echosign_dev1__Document_Key__c)}';                    
+                    if(docKey.length>1){
+                        triggerUpdateStatusHosted();    
+                    }
+                }
+                  
+                function sendReminder() {
+                    echosignPopup('{!$Page.echosign_dev1__SendReminder}?id={!strID}');
+                    var docKey = '{!JSENCODE(agreement.echosign_dev1__Document_Key__c)}';                    
+                    if(docKey.length>1){
+                        sendHostedReminder();   
+                    }                                        
+                }
+                  
+                function viewAgreement() {
+                    echosignPopup(echosignUrl('/salesforce-web/page/public/viewAgreement'));
+                }
+                  
+                function deleteAgreement() {                  
+                    echosignPopup('{!$Page.echosign_dev1__DeleteAgreement}?id={!strID}&deleteButton=true');
+                    var docKey = '{!JSENCODE(agreement.echosign_dev1__Document_Key__c)}';                    
+                    if(docKey.length>1){
+                        deleteHosted(); 
+                    }                        
+                }
+                
+                function cancelAgreement() {                    
+                    echosignPopup('{!$Page.echosign_dev1__CancelAgreement}?id={!strID}');
+                    var docKey = '{!JSENCODE(agreement.echosign_dev1__Document_Key__c)}';          
+                    if(docKey.length>1){
+                        cancelHosted(); 
+                    }                      
+                }
+        
+                function confirmation() 
+                {
+                    return confirm('Are you sure?');
+                }               
+                </script>                
+            </apex:pageBlockSection>
+ 
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="additionalFields" title="Additional Fields" rendered="{!$ObjectType.echosign_dev1__SIGN_Agreement__c.FieldSets.echosign_dev1__AdditionalFieldSet.size != 0}">
+            <apex:pageBlockSection columns="1">
+                <apex:repeat value="{!$ObjectType.echosign_dev1__SIGN_Agreement__c.FieldSets.echosign_dev1__AdditionalFieldSet}" var="field">
+                    <apex:outputField value="{!agreement[field]}" rendered="{!!notYetSent}" />
+                    <apex:inputField value="{!agreement[field]}" rendered="{!notYetSent}" />     
+                </apex:repeat>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Attachments" id="attachmentSection" >
+            <!-- apex:pageBlockSection title="Attachments" id="attachmentSection" columns="1"> -->
+        
+
+            <apex:pageBlockTable id="bFTablea" style="table-layout: fixed;" value="{!agreementAttachments}" var="attc" columns="4" columnsWidth="15%,45%,20%,20%">             
+              <apex:column >
+                <apex:facet name="header">Action</apex:facet>
+                    <apex:commandButton onclick="window.open('/servlet/servlet.FileDownload?file={!attc.Id}','viewattachment'); return false;" title="View" image="{!$Resource.echosign_dev1__ActionAttachmentView}" rendered="{! NOT(isDisableViewAttachments) }" style="background:transparent;border-width:0px;"/>
+                    <apex:commandButton onclick="window.open('/{!attc.Id}/e?retURL=/{!agreement.Id}','editattachment'); return false;" title="Edit" image="{!$Resource.echosign_dev1__ActionAttachmentEdit}" rendered="{! notYetSent && NOT(isDisableEditAttachments) }" style="background:transparent;border-width:0px;margin-bottom:6px;"/>
+                    <apex:commandButton action="{!delAttachment}" title="Delete" image="{!$Resource.echosign_dev1__ActionDelete}" rendered="{! notYetSent && NOT(isDisableDeleteAttachments) }" onclick="if (!confirmation()){ return false; }else{ }" status="DeletingAttachmentStatus" rerender="attachmentSection, errorPanel,errorPanelBottom,floatingDiv" style="background:transparent;border-width:0px;margin-bottom:8px;margin-left:8px;">
+                    	<apex:param name="attachmentId" value="{!attc.Id}"/>
+                    </apex:commandButton> 
+                    <apex:actionStatus id="DeletingAttachmentStatus">
+                        <apex:facet name="start">
+                        <div class="waitingSearchDiv" style="width: 100%; height: 100%; display: ; opacity:.5;"></div>
+                        </apex:facet>
+                    </apex:actionStatus>                                   
+              </apex:column>  
+              <apex:column style="word-wrap: break-word;">        
+                <apex:facet name="header">Title</apex:facet>     
+                    <apex:outputText value="{!attc.Name}" />
+              </apex:column> 
+              <apex:column >        
+                <apex:facet name="header">Last Modified Date</apex:facet>     
+                    <apex:outputText value="{0, date, MM/dd/yyyy}">
+                        <apex:param value="{!attc.LastModifiedDate}" />
+                    </apex:outputText>
+              </apex:column>                                   
+              <apex:column >        
+                <apex:facet name="header">Created By</apex:facet>     
+                    <apex:outputText value="{!attc.CreatedBy.Name}" />
+              </apex:column> 
+          </apex:pageBlockTable> 
+          
+          <apex:pageBlockSection id="attachmentsActionsSection" columns="1">         
+	          <apex:outputpanel rendered="{!!inEchosign}">
+	            <apex:image url="{!$Resource.echosign_dev1__UploadFileButton}" style="vertical-align: bottom;" styleClass="echo-button" rendered="{! !inEchosign && NOT(isDisableUploadAttachments) }">
+	            	<apex:actionSupport event="onclick" action="{!addAttachment}" />
+	            </apex:image>
+	            
+	            <apex:outputpanel rendered="{! NOT(isDisableUploadAttachments) && NOT(isDisableAttachAttachments)  }">&nbsp;<b>OR</b> Select from:</apex:outputpanel>
+	            <apex:commandLink style="padding-left:5px; color: blue;" rendered="{! !inEchosign && NOT(isDisableAttachAttachments) }" value="Salesforce Documents" action="{!addDocument}" />
+	            
+	            <apex:outputpanel rendered="{! NOT(isDisableAttachAttachments) && NOT(isDisableContentAttachments)  }">&nbsp;<b>|</b></apex:outputpanel>
+	            <apex:commandLink style="padding-left:5px; color: blue;" rendered="{! !inEchosign && NOT(isDisableContentAttachments) }" value="Salesforce Content" action="{!addContent}" />
+	          </apex:outputpanel>
+         </apex:pageBlockSection>
+             
+            <!-- /apex:pageBlockSection> -->
+        </apex:pageBlock>
+                
+        <apex:pageBlock title="Agreement Events" rendered="{!inEchosign}">
+            <apex:pageBlockTable value="{!agreementEvents}" var="agreementEvent">
+                <apex:column value="{!agreementEvent.echosign_dev1__Date__c}" />
+                <apex:column value="{!agreementEvent.echosign_dev1__Description__c}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Signed Agreement" rendered="{!hasSignedAgreements}">
+            <apex:pageBlockTable value="{!agreementSigned}" var="signedAgreement">
+                <apex:column >
+                    <img src="{!signedAgreement.echosign_dev1__ImageUrl__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:pageBlock title="EchoSign Actions"  helpTitle="EchoSign Help and Support" helpUrl="{!$Page.echosign_dev1__EchosignHelp}" id="actionPageBlock455">
+            <apex:pageBlockSection id="buttonsSection" columns="1">
+            	<apex:pageBlockSectionItem >
+      				<apex:outputPanel id="errorPanelBottom">
+                		<apex:outputPanel style="text-align: left;" styleClass="errorMsg" layout="block" rendered="{!pageHaserror}">
+                    		<strong>Please correct the below mentioned error(s). </strong>
+                    		<script>
+                        		if (popup && !popup.closed) { if( isiPad ) { hideFrame(); popup.focus(); } popup.close();}
+                        		salesforceJQuery('{!$Component.AgreementFormId.actionPageBlock.buttonsSection.buttons.sendAgreementButtonImage}').show();
+                        		salesforceJQuery('{!$Component.AgreementFormId.actionPageBlock.buttonsSection.buttons.sendAgreementButtonDisabled}').hide();                                            
+                    		</script>                                 
+                			<apex:messages styleClass="pbError" style="text-align: left;" />   
+                		</apex:outputPanel>            
+                		<apex:outputPanel rendered="{!!pageHaserror}">
+                    		<apex:pagemessages />
+                		</apex:outputPanel>
+            		</apex:outputPanel>
+            	</apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="{!NOT(inEchosign) && LEN(errorMsg) > 0}">
+                    <apex:outputText >
+                        <apex:image url="{!$Resource.echosign_dev1__ErrorIcon}"/> {!errorMsg}
+                    </apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="{!hasBeenSent}">
+                    <apex:outputText >          
+                        <strong>Status </strong>
+                        <apex:outputText value="{!agreementStatusVisible}"/>
+                    </apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="buttons">
+                    <apex:outputPanel >
+                        <table width="100%">
+                            <tr>
+                                <td align="left">
+                                    <apex:commandLink id="sendAgreementLink" action="{!sendForSignature}" onclick="pageHasError='false';myShow('{!$Page.echosign_dev1__SendForSignature}'); if( isiPad ) { showMobileProgressFrame(); }" oncomplete="onComplete()" rerender="errorPanel,agreementDetailsOP,AgreementOptionsSection,recipientsSection,myPanel2" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Send_Agreement__c),'true','false')}">                                    
+                                        <apex:image id="sendAgreementButtonImage" url="{!$Resource.echosign_dev1__SendAgreementButton}" styleClass="echo-button"  />
+                                    </apex:commandLink>
+                                    <apex:image id="sendAgreementButtonDisabled" url="{!$Resource.echosign_dev1__SendAgreementButtonDisabled}" styleClass="echo-button" style="display:none;" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Send_Agreement__c),'true','false')}" />
+                                    <apex:commandLink action="{!saveWithoutSending}" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Save_Agreement__c),'true','false')}" rerender="AgreementFormId,attachmentSection">
+                                        <apex:image id="saveAgreementButtonImage" url="{!$Resource.echosign_dev1__SaveAgreementButton}" styleClass="echo-button" />
+                                    </apex:commandLink>
+                                    <!--<apex:actionFunction name="saveWithoutSendingJS1" action="{!saveWithoutSending}" rerender="AgreementFormId"/>
+                                     <script type="text/javascript">
+                                        function saveWithoutSendingJS()
+                                        {
+                                               setTimeout(function() {
+                                                   saveWithoutSendingJS1();
+                                               }, 2000);                            
+                                        }                           
+                                    </script> --> 
+                                    <apex:image url="{!$Resource.echosign_dev1__UpdateButton}" styleClass="echo-button" rendered="{!IF(applicableForUpdate && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Update_Status__c),'true','false')}" onclick="updateStatus()" />                
+                                    <apex:image url="{!$Resource.echosign_dev1__SendReminderButton}" styleClass="echo-button" rendered="{!IF(inProgress && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Send_Reminder__c),'true','false')}" onclick="sendReminder()" /> 
+                                    <apex:image url="{!$Resource.echosign_dev1__ViewAgreementButton}" styleClass="echo-button" rendered="{!IF(hasBeenSent && !hasDocumentKey && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__View_Agreement__c),'true','false')}" onclick="viewAgreement()"/>
+                                </td>
+                                <td align="right">
+                                    <apex:image url="{!$Resource.echosign_dev1__DeleteAgreementButton}" styleClass="echo-button" rendered="{!IF(hasBeenSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Delete_Agreement__c),'true','false')}" onclick="if(!confirm('Are you sure?')){return false;} deleteAgreement();" />
+                                    <apex:image url="{!$Resource.echosign_dev1__CancelAgreementButton}" styleClass="echo-button" rendered="{!IF(applicableForCancel && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Cancel_Agreement__c),'true','false')}" onclick="if(!confirm('Are you sure?')){return false;} cancelAgreement();" />
+                                    <apex:commandLink action="{!cancelDraft}" rendered="{!IF(notYetSent && (ISNULL(cusToolbarSettings) || cusToolbarSettings.echosign_dev1__Cancel_Draft__c),'true','false')}">
+                                        <apex:image url="{!$Resource.echosign_dev1__CancelDraftButton}" styleClass="echo-button" />
+                                    </apex:commandLink>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock> 
+    </apex:form>
+    
+</apex:page>

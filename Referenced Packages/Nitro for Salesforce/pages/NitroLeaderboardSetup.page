@@ -1,0 +1,49 @@
+<apex:page controller="nitro.NitroLeaderboardConfig" tabStyle="Nitro__tab" sidebar="false">
+
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+
+
+   <div class="nitro">
+      <apex:pageMessages />
+   
+      <apex:form >
+         <apex:pageBlock title="Leaderboard Edit" id="thePageBlock">
+         
+            <apex:pageBlockButtons id="pageButtons">
+               <apex:commandButton value="Save" action="{!saveLeaderboard}"/>
+               <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+               
+               <apex:pageBlockSection columns="1" title="Leaderboard Information" collapsible="false">
+                 
+                 <apex:inputField value="{!leaderboard.nitro__isActive__c}" required="true" id="isActive"/>
+               
+                 <apex:inputField value="{!leaderboard.nitro__type__c}" required="true" id="leaderboardType">
+                    <apex:actionSupport event="onchange" rerender="thePageBlock" action="{!showActions}" status="retrvStatus"/>
+                    <apex:actionStatus id="retrvStatus"  startText=" (Retrieving data. This may take a few moments...)"  stopText=""/>
+                 </apex:inputField>
+                 
+                 <apex:selectList id="actions" value="{!displayActions}" multiselect="true" size="5" rendered="{!doShowActions}" label="Actions">
+                    <apex:selectOptions value="{!actions}" />
+                 </apex:selectList>
+                                  
+                 <apex:selectList id="challenges" value="{!displayChallenges}" multiselect="true" size="5" rendered="{!doShowChallenges}" label="Challenges">
+                    <apex:selectOptions value="{!challenges}" />
+                 </apex:selectList>
+               
+                 <apex:inputField value="{!leaderboard.nitro__duration__c}" id="leaderboardDuration"/>
+               
+                 <apex:inputField value="{!leaderboard.nitro__title__c}"/>
+               
+               </apex:pageBlockSection>
+            
+         </apex:pageBlock>
+   
+      </apex:form>
+   </div>
+   
+   <style>
+      .nitro h3 {color:white !important; font-size:1.2em !important;}
+   </style>
+   
+</apex:page>

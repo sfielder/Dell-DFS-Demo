@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Suiveur Twitter</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Suiveurs Twitter</value>
+    </caseValues>
+    <fields>
+        <label>Contact</label>
+        <name>Contact__c</name>
+        <relationshipLabel>Suivi par</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Piste</label>
+        <name>Lead__c</name>
+        <relationshipLabel>Suivie par</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Compte Twitter</label>
+        <name>Twitter_Account__c</name>
+        <relationshipLabel>Suivi</relationshipLabel>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Nombre</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

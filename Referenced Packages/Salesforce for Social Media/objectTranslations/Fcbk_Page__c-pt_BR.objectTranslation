@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Página do Facebook</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Páginas do Facebook</value>
+    </caseValues>
+    <fields>
+        <label>Categoria</label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label>Descrição</label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label>Ativar criação automática de caso</label>
+        <name>Enable_Auto_Case_Creation__c</name>
+    </fields>
+    <fields>
+        <label>Foto</label>
+        <name>Facebook_Image__c</name>
+    </fields>
+    <fields>
+        <label>Id do Facebook</label>
+        <name>Fcbk_Id__c</name>
+    </fields>
+    <fields>
+        <label>Imagem</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>Hora de início da última pesquisa</label>
+        <name>Last_Time_Run__c</name>
+    </fields>
+    <fields>
+        <label>Curtiu</label>
+        <name>Likes__c</name>
+    </fields>
+    <fields>
+        <help><!-- When enabled, any Post by this Facebook page containing #ch will be automatically posted to the Chatter Feed of the Facebook Page creator. Comments on this post in Chatter will not be sent to Facebook. --></help>
+        <label>Adicionar publicações com #ch no Chatter</label>
+        <name>Post_Hashtag_Chatter__c</name>
+    </fields>
+    <fields>
+        <label>Produtos</label>
+        <name>Products__c</name>
+    </fields>
+    <fields>
+        <label>Executar lógica de associação de casos</label>
+        <name>Run_Case_Association_Logic__c</name>
+    </fields>
+    <fields>
+        <label>Obter publicações e comentários desde</label>
+        <name>Search_Lower_Limit_Time__c</name>
+    </fields>
+    <fields>
+        <label>Obter publicações e comentários até</label>
+        <name>Search_Upper_Limit_Time__c</name>
+    </fields>
+    <fields>
+        <label>Usuários desconhecidos</label>
+        <name>Unknown_Users__c</name>
+        <picklistValues>
+            <masterLabel>Create Contact</masterLabel>
+            <translation><!-- Create Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Lead</masterLabel>
+            <translation><!-- Create Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Person Account</masterLabel>
+            <translation><!-- Create Person Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do Nothing</masterLabel>
+            <translation><!-- Do Nothing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Validado</label>
+        <name>Valid__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>FCBK Page Layout</layout>
+        <sections>
+            <label><!-- Search Configuration --></label>
+            <section>Search Configuration</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nome</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Para ativar a criação de caso, também é necessário ativar a associação de caso.</errorMessage>
+        <name>Auto_Case_Association_Logic</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Facebook Id --></errorMessage>
+        <name>Facebook_Id_not_empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>A data para Obter postagens e comentários até deve ser posterior a Obter postagens e comentários desde</errorMessage>
+        <name>until_date_greater_than_since</name>
+    </validationRules>
+    <webLinks>
+        <label>Obter informações da página</label>
+        <name>Get_Page_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Revogar acesso ao Facebook</label>
+        <name>Revoke_Facebook_Access</name>
+    </webLinks>
+    <webLinks>
+        <label>Programar pesquisas em páginas do Facebook</label>
+        <name>Schedule_Facebook_Pages_Searches</name>
+    </webLinks>
+    <webLinks>
+        <label>Validar</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,239 @@
+<apex:page controller="PartnerPortalWelcomeController" sidebar="false" showHeader="false">
+<script type="text/javascript">
+var lead_id = "{!$CurrentPage.parameters.lead_id}";
+if(lead_id != null && lead_id != ""){
+    window.top.top.top.top.top.top.top.top.location.href="/"+lead_id;
+}
+
+var date1 = '{!TODAY() - 7}';
+var date2 = '{!TODAY() + 5}';
+var date3 = '{!TODAY() + 17}';
+</script>
+<!--  start table to show the welcome marketing messages. If you don't want to show this, remove from this tag to where it says "End Table to show Welcome Marketing Messages"  -->
+
+
+<!--<apex:image value="{!URLFOR($Resource.Site_PartnerBanner)}"/>-->
+<!--
+<table> 
+      
+      <tr> 
+         <td class="welcome_marketingheaderimage"><apex:image value="{!$Resource.PartnerPortalWelcome_MarketingHeaderImageLeft}" /></td>
+         <td class="welcome_marketingheaderimage"><apex:image value="{!$Resource.PartnerPortalWelcome_MarketingHeaderImageCenter}" /></td>
+         <td class="welcome_marketingheaderimage"><apex:image value="{!$Resource.PartnerPortalWelcome_MarketingHeaderImageRight}" /></td>
+      </tr>
+      
+      <tr> 
+         <td><h1>Tools You Can Use</h1></td>
+         <td><h1>Partner News & Events</h1></td>
+         <td><h1>Product Spotlight</h1></td>
+      </tr>
+      
+      <tr> 
+         <td><br>
+            Register your deals, access the latest sales and marketing tools to make you more successful, and share your ideas with our partner community.
+         </td>
+         
+         <td>
+            <ul>
+              <li><script>document.writeln(date1.substring(0,10));</script> : Indirect Deal Volume up 50% in Q2</li>
+              <li><script>document.writeln(date2.substring(0,10));</script> : Gold Partner Golf Tournament</li>
+              <li><script>document.writeln(date3.substring(0,10));</script> : Macbook Air Giveaway</li>
+            </ul>
+         </td>
+         
+         <td>
+            <ul>
+               <li>Product X : The latest in our classic line.</li>
+               <li>Product Y : Our premium product.</li>
+               <li>Product Z : An alternative to our classic product.</li>
+            </ul>
+         </td>
+      </tr>   
+   
+   </table>
+ -->
+<iframe src="/apex/CreditCheck" width="804" height="275" frameborder="no" scrolling="no"/>
+
+ <br/>
+<iframe src="/apex/DFS_calculator" width="804" height="450" frameborder="no" scrolling="no"/> 
+ 
+ <!--<c:LeaseCalc ></c:LeaseCalc> -->
+
+<!-- My Recent Deals Component Start -->
+<apex:pageBlock title="My Recent Deals">
+    
+      <apex:pageBlockTable value="{!RecentDeals}" var="deal">
+           <apex:column headerValue="Number">
+               <apex:outputLink value="/{!deal.id}" target="_top">{!deal.Deal_ID__c}</apex:outputLink>
+           </apex:column>
+           <apex:column headerValue="Customer">
+               <apex:outputText value="{!deal.account.name}"></apex:outputText>
+           </apex:column>
+           <apex:column headerValue="Financed Amount">
+               <apex:outputText value="{0,number,£####}">
+                   <apex:param value="{!deal.amount}"/>
+               </apex:outputText>
+           </apex:column>
+           <apex:column headerValue="Credit Expiry Date">
+               <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                       <apex:param value="{!deal.Credit_Expiry_Date__c}"/>
+               </apex:outputText>
+           </apex:column>
+           <apex:column headerValue="Status">
+               <apex:outputField value="{!deal.IndStatus__c}" />
+           </apex:column>
+           <apex:column headerValue="Action(s)">
+              <apex:outputLink value="#" target="_top">
+                   <apex:image value="{!$Resource.GenDocs}" width="30" height="30" title="Generate Documents"/>
+              </apex:outputLink>
+               <apex:image value="{!$Resource.EditContract}"   width="30" height="30" title="Edit Contract"/>
+               <apex:image value="{!$Resource.ResubmitCreditCheck}"  width="30" height="30" title="Resubmit Credit Check"/>
+           </apex:column>
+           
+       </apex:pageBlockTable>
+       
+</apex:pageBlock>
+
+
+<!-- My Recent Deals Component  End-->
+
+<!--
+<apex:form >
+<apex:pageBlock title="Lead Inbox">
+    
+<apex:actionStatus id="status" startText="Loading..."/>
+<apex:pageBlockTable value="{!LeadInbox}" var="lead" id="leadTable">
+           <apex:column >
+            <apex:facet name="header">
+                 <apex:commandLink value="Name" action="{!SortLeads}" rerender="leadTable">
+                     <apex:param name="sortField1" value="Name" assignTo="{!sortField1}"/>
+                 </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!lead.Name}" />
+           </apex:column>
+           <apex:column >
+            <apex:facet name="header">
+                 <apex:commandLink value="Title" action="{!SortLeads}" rerender="leadTable">
+                     <apex:param name="sortField1" value="Title" assignTo="{!sortField1}"/>
+                 </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!lead.Title}" />          
+           </apex:column>
+           <apex:column >
+            <apex:facet name="header">
+                 <apex:commandLink value="Company" action="{!SortLeads}" rerender="leadTable">
+                     <apex:param name="sortField1" value="Company" assignTo="{!sortField1}"/>
+                 </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!lead.Company}" />
+           </apex:column>
+           <apex:column >
+            <apex:facet name="header">
+                 <apex:commandLink value="Lead Source" action="{!SortLeads}" rerender="leadTable">
+                     <apex:param name="sortField1" value="LeadSource" assignTo="{!sortField1}"/>
+                 </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!lead.LeadSource}" />
+           </apex:column>
+           <apex:column >
+              <apex:commandButton immediate="true" value="Accept Lead" action="{!AcceptLead}" reRender="redirect" status="Loading...">
+                <apex:param name="LeadId" value="{!lead.id}" />
+              </apex:commandButton>
+           </apex:column>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+ 
+ 
+<apex:pageBlock title="Approval Requests">
+    
+      <apex:pageBlockTable value="{!ApprovalRequests}" var="req">
+           <apex:column headerValue="Related To">
+               <apex:outputLink value="/{!req.pi.ProcessInstance.TargetObjectId}" target="_top">{!req.TargetObjectType}</apex:outputLink>
+           </apex:column>
+           <apex:column headerValue="Name">
+               <apex:outputLink value="/{!req.pi.ProcessInstance.TargetObjectId}" target="_top">{!req.TargetObjectName}</apex:outputLink>
+           </apex:column>
+           <apex:column value="{!req.SubmittedDate}" headerValue="Submitted Date"/>
+           <apex:column value="{!req.pi.ProcessInstance.Status}" />
+       </apex:pageBlockTable>
+       
+</apex:pageBlock>
+
+-->
+<!-- To show Popular Solutions, uncomment the section below -->
+<!-- 
+<apex:pageBlock title="Popular Solutions">
+
+      <apex:pageBlockTable value="{!TopSolutions}" var="solution">
+           <apex:column headerValue="Solution Name">
+              <apex:outputLink value="/{!solution.Id}" target="_top">{!solution.SolutionName}</apex:outputLink>
+           </apex:column>
+           <apex:column value="{!solution.TimesUsed}" headerValue="Cases Solved"/>
+       </apex:pageBlockTable>
+       
+</apex:pageBlock>
+ -->
+ 
+<style>
+   .welcome_marketingheaderimage {
+        width:30%;
+        padding:10px 0;
+   }
+   body{
+        background-color: transparent;
+        overflow-x:hidden;
+    }
+    #intro {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .text{
+        font-size: 12px;
+        text-align: top left;
+    }
+    
+    .list .headerRow th, .list .headerRow th a {
+        font-size: 12px;
+    }
+    
+    .list tr.even th, .list tr.odd th, .list tr.even td, .list tr.odd td {
+        font-size: 12px;
+    }
+    
+    .bPageBlock .pbTitle {
+        font-size: 12px;
+    }
+    
+    .bPageBlock .pbHeader { /*Header section*/
+        padding: 4px;
+    }
+    
+/** Uncomment below for Rounded Data Tables on Homepage **/
+    
+    .bPageBlock .pbHeader { 
+        padding: 4px;
+        border-top-right-radius:6px;
+        border-top-left-radius:6px;
+        box-shadow: 0px 2px 6px #ccc;
+        border-left:1px solid #C1C1C1;
+        border-right:1px solid #C1C1C1;
+        border-top:1px solid #C1C1C1;
+    }
+    .bPageBlock .pbBody {
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        background:none repeat scroll 0 0 white;
+        border-bottom:1px solid #C1C1C1;
+        border-left:1px solid #C1C1C1;
+        border-right:1px solid #C1C1C1;
+        background-color:#FFFFFF;
+    }
+    .bPageBlock, .individualPalette .bPageBlock {
+        background:none repeat scroll 0 0 transparent;
+        border: none;
+    }
+</style>
+</apex:page>

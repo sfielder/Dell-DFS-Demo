@@ -1,0 +1,2066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label>Salesforce til sociale medier</label>
+        <name>Salesforce_for_Twitter</name>
+    </customApplications>
+    <customLabels>
+        <label>URL for offentligt videnswebsted er ikke angivet. Gå til opsætningssiden, og angiv en URL til et videnswebsted.</label>
+        <name>ARTICLE_URL_SITE_NEEDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne konto er allerede blevet valideret.</label>
+        <name>Account_Already_Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg mindst én kilde, der skal søges på</label>
+        <name>Account_Keyword_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>De valgte konto følger aktuelt Twitter-brugeren.</label>
+        <name>Accounts_following_Twitter_user</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg de konti, du vil følge</label>
+        <name>Accounts_wantto_follow</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktiv(t)</label>
+        <name>Active</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilføj bidragyder</label>
+        <name>Add_Contributor_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Føj medlemmer til kampagne</label>
+        <name>Add_Members_to_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Føj til svar</label>
+        <name>Add_Shortened_Url</name>
+    </customLabels>
+    <customLabels>
+        <label>Føj emner og kontakter til en kampagne</label>
+        <name>Add_to_a_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilføjet</label>
+        <name>Added</name>
+    </customLabels>
+    <customLabels>
+        <label>Føjet til</label>
+        <name>Added_to</name>
+    </customLabels>
+    <customLabels>
+        <label>Administration</label>
+        <name>Administration</name>
+    </customLabels>
+    <customLabels>
+        <label>Analyser</label>
+        <name>Analytics</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Answer_Integration_Title --></label>
+        <name>Answer_Integration_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Udseende</label>
+        <name>Appearance_Section_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Artikeldetaljer</label>
+        <name>Article_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Sagsartikler</label>
+        <name>Article_Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Den Facebook-side, der er tilknyttet denne samtale, er ikke valideret.</label>
+        <name>Associated_Facebook_Page_Not_Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Kan ikke kontakte Bitly.  Kontroller, at dit Bitly-brugernavn og din API-nøgle er korrekt.</label>
+        <name>BITLY_REQUIRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg op til 50 registreringer</label>
+        <name>BROWSER_NOT_SUPPORT_50</name>
+    </customLabels>
+    <customLabels>
+        <label>Brødtekst</label>
+        <name>Body</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke tilbagekalde Facebook-godkendelse for denne side. Den er tilknyttet et svarfællesskab.</label>
+        <name>CANNOT_REVOKE_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter er ikke aktiveret i din organisation.  Kontakt systemadministratoren for at få Chatter aktiveret.</label>
+        <name>CHATTER_NOT_ENABLED</name>
+    </customLabels>
+    <customLabels>
+        <label>Dit forespørgselsforsøg blev ikke udført. Kontroller samtaleoplysninger, og prøv igen.</label>
+        <name>CHATTER_POST_EXCEPTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Vil du også lukke den tilknyttede sag?</label>
+        <name>CLOSE_ASSOCIATED_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} er ikke et gyldigt id</label>
+        <name>CMTY_errorMsg_invalidID</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er opstået et problem</label>
+        <name>CMTY_errorPage_title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CONSOLE_VALIDATION_ERROR --></label>
+        <name>CONSOLE_VALIDATION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev oprettet en &lt;a href=&quot;/{0}&quot; target=&quot;_blank&quot;&gt;kontakt&lt;/a&gt; for bruger-id &quot;{1}&quot;</label>
+        <name>CONTACT_CREATED_FOR_USER_HTML</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtalen er markeret som slettet</label>
+        <name>CONVERSATION_IS_DELETED_GENERIC</name>
+    </customLabels>
+    <customLabels>
+        <label>Alle kommentarer er hentet for denne samtale.</label>
+        <name>CONVERSATION_NOT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret en ny sag for denne samtale</label>
+        <name>CREATE_NEW_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Annuller</label>
+        <name>Cancel</name>
+    </customLabels>
+    <customLabels>
+        <label>Sagsløsninger</label>
+        <name>Case_Solutions</name>
+    </customLabels>
+    <customLabels>
+        <label>Sager oprettet</label>
+        <name>Cases_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Skift følgestatus</label>
+        <name>Change_follow_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ingen ændringer foretaget af interesserede i</label>
+        <name>Changes_made_Followers</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg søgekriterium</label>
+        <name>Choose_search_criteria</name>
+    </customLabels>
+    <customLabels>
+        <label>Svardetaljer</label>
+        <name>Comment_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt systemadministratoren for at få hjælp</label>
+        <name>Contact_System_Administrator</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakter</label>
+        <name>Contacts</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakter oprettet</label>
+        <name>Contacts_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakter/emner findes allerede i kampagnen</label>
+        <name>Contacts_Leads_already_existed</name>
+    </customLabels>
+    <customLabels>
+        <label>Indhold</label>
+        <name>Content</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtaler</label>
+        <name>Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtaler oprettet</label>
+        <name>Conversations_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret sag - Resultater</label>
+        <name>Create_Case_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret sager</label>
+        <name>Create_Cases</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret kontakt - Resultater</label>
+        <name>Create_Contact_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret kontakter</label>
+        <name>Create_Contacts</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret emne - Resultater</label>
+        <name>Create_Lead_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret emner</label>
+        <name>Create_Leads</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret løsninger</label>
+        <name>Create_Solutions</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret løsninger - Resultater</label>
+        <name>Create_Solutions_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Slet ignorerede</label>
+        <name>Delete_Ignored</name>
+    </customLabels>
+    <customLabels>
+        <label>Detalje</label>
+        <name>Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Rediger</label>
+        <name>Edit</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktiver program</label>
+        <name>Enable_Application_Button</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejl: Brugertilladelser</label>
+        <name>Error_User_Permissions</name>
+    </customLabels>
+    <customLabels>
+        <label>Eksisterende medlemmer fra</label>
+        <name>Existing_members_from</name>
+    </customLabels>
+    <customLabels>
+        <label>Der kan ikke oprettes en sag for en slettet samtale.</label>
+        <name>FACEBOOK_CASE_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Svar i Chatter bliver ikke sendt tilbage til Facebook</label>
+        <name>FACEBOOK_CHATTER_POST_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Kan ikke fuldføres. Samtale findes ikke på Facebook</label>
+        <name>FACEBOOK_CONVERATION_IS_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der kan ikke indsendes et svar. Den samtale, du svarer på, er blevet fjernet fra Facebook.</label>
+        <name>FACEBOOK_CONVERSATION_ALREADY_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtalen fjernes fra Facebook og markeres som &quot;Slettet&quot; i Salesforce</label>
+        <name>FACEBOOK_CONVERSATION_WILL_BE_REMOVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-fejlfindingslog</label>
+        <name>FACEBOOK_ERROR_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Siden findes ikke</label>
+        <name>FACEBOOK_ERROR_PAGE_EMPTY</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne side kan ikke valideres, da den ikke er udgivet</label>
+        <name>FACEBOOK_ERROR_PAGE_NOT_PUBLISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ekstern søgning på Facebook-sider er fuldført. Side-id:</label>
+        <name>FACEBOOK_EXTERNAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilføj</label>
+        <name>FACEBOOK_FAN_PAGE_BUTTON</name>
+    </customLabels>
+    <customLabels>
+        <label>Fortsæt</label>
+        <name>FACEBOOK_FAN_PAGE_BUTTON_CONTINUE</name>
+    </customLabels>
+    <customLabels>
+        <label>Administrer Facebook-fansider</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-sider findes allerede</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_EXIST</name>
+    </customLabels>
+    <customLabels>
+        <label>Ny Facebook-side</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_NEW</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne Facebook-bruger er ikke administrator for nogen Facebook-fansider. Før du kan oprette Facebook-vægindlæg, skal du aktivere brugeren som Facebook-fansideadministrator i Facebook og godkende brugeren igen i Salesforce.</label>
+        <name>FACEBOOK_FAN_PAGE_TITLE_NOT_ADMIN</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-id gentaget</label>
+        <name>FACEBOOK_ID_REPEATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ikke oprettet en kontakt for denne Facebook-bruger. Det har et emne tilknyttet.</label>
+        <name>FACEBOOK_LEAD_EXISTED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ikke oprettet et emne for denne Facebook-bruger. Det har allerede en kontakt.</label>
+        <name>FACEBOOK_LEAD_HAS_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Manuel søgning efter Facebook-side er afsluttet. Side-id:</label>
+        <name>FACEBOOK_MANUAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Den konto, du validerede på Facebook, svarer ikke til den konto, du valgte i Salesforce</label>
+        <name>FACEBOOK_OAUTH_DIFF_USERNAMES</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne Facebook-side er allerede blevet valideret.</label>
+        <name>FACEBOOK_PAGE_ALREADY_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne side er ikke korrekt valideret</label>
+        <name>FACEBOOK_PAGE_NOTVALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne side kan ikke valideres, da der ikke er adgang til den</label>
+        <name>FACEBOOK_PAGE_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-sidesøgninger</label>
+        <name>FACEBOOK_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Den ønskede handling er kun tilgængelig for Facebook-samtaler.</label>
+        <name>FACEBOOK_RECORDS_ONLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Planlagt søgning efter Facebook-side er afsluttet. Søge-id:</label>
+        <name>FACEBOOK_SCHEDULED_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>for denne Facebook-bruger</label>
+        <name>FACEBOOK_SCREENNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Emnet for denne Facebook-bruger</label>
+        <name>FACEBOOK_SCREENNAME_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne Facebook-bruger er allerede blevet valideret.</label>
+        <name>FACEBOOK_USER_ALREADY_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne bruger er ikke korrekt valideret</label>
+        <name>FACEBOOK_USER_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Brugeren for den aktuelle Facebook-session er valideret, log af Facebook, og prøv igen.</label>
+        <name>FACEBOOK_USER_VALIDATED_AGAIAN</name>
+    </customLabels>
+    <customLabels>
+        <label>Den bruger, du forsøger at validere, er ikke tilknyttet denne Facebook-konto</label>
+        <name>FACEBOOK_USER_VALIDATED_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>med Facebook-bruger-id</label>
+        <name>FACEBOOK_WITH_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Den overordnede til denne Facebook-kommentar blev slettet.</label>
+        <name>FCBK_POST_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne handling er kun tilgængelig for Twitter-samtaler</label>
+        <name>FUNCTION_ONLY_FOR_TWITTER_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-id</label>
+        <name>Facebook_Id</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-brugere</label>
+        <name>Facebook_Users</name>
+    </customLabels>
+    <customLabels>
+        <label>Følg</label>
+        <name>Follow</name>
+    </customLabels>
+    <customLabels>
+        <label>Følg - Resultater</label>
+        <name>Follow_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Der opstod følgende fejl</label>
+        <name>Following_errors_occurred</name>
+    </customLabels>
+    <customLabels>
+        <label>Der opstod følgende fejl</label>
+        <name>Following_errors_ocurred</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Grant FB access not allowed --></label>
+        <name>GRANT_FB_ACCESS_NOT_ALLOWED_FROM_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Hent Twitter-oplysninger</label>
+        <name>Get_Author_Info</name>
+    </customLabels>
+    <customLabels>
+        <label>Hent samtaler</label>
+        <name>Get_Conversation</name>
+    </customLabels>
+    <customLabels>
+        <label>Hent samtaler</label>
+        <name>Get_more_tweets</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilbage</label>
+        <name>Go_Back</name>
+    </customLabels>
+    <customLabels>
+        <label>Gå til kampagne</label>
+        <name>Go_To_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Indsæt</label>
+        <name>INSERT</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorer samtaler</label>
+        <name>Ignore_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignorer samtaler - Resultater</label>
+        <name>Ignore_Conversations_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er sket en fejl, ugyldig retur-URL:</label>
+        <name>Invalid_return_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Kan ikke kontakte Klout.  Kontroller, at dit Klout-brugernavn og din API-nøgle er korrekt.</label>
+        <name>KLOUT_REQUIRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-søgeordssøgning skal være entydig.</label>
+        <name>Keyword_Search_unique</name>
+    </customLabels>
+    <customLabels>
+        <label>Emnestatus</label>
+        <name>Lead_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Emner</label>
+        <name>Leads</name>
+    </customLabels>
+    <customLabels>
+        <label>Emner oprettet</label>
+        <name>Leads_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Der oprettes emner til disse samtaler</label>
+        <name>Leads_created_for_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>synes om</label>
+        <name>Like</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne handling er kun tilgængelig for Facebook-samtaler</label>
+        <name>Like_Error_Message</name>
+    </customLabels>
+    <customLabels>
+        <label>Grænse overskredet</label>
+        <name>Limit_exceeded</name>
+    </customLabels>
+    <customLabels>
+        <label>Opsætning</label>
+        <name>Link_To_Setup_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>Indlæser...</label>
+        <name>Loading</name>
+    </customLabels>
+    <customLabels>
+        <label>Meddelelsestype</label>
+        <name>Message_Type</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} synes om</label>
+        <name>Multiple_Likes</name>
+    </customLabels>
+    <customLabels>
+        <label>Navn</label>
+        <name>Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-navnesøgning er for øjeblikket ikke tilgængelig. Du kan finde flere oplysninger på &lt;a href=&quot;http://status.twitter.com/&quot; target=&quot;_blank&quot;&gt;http://status.twitter.com/&lt;/a&gt;.</label>
+        <name>Name_Search_Unavailable</name>
+    </customLabels>
+    <customLabels>
+        <label>Navigation</label>
+        <name>Navigation</name>
+    </customLabels>
+    <customLabels>
+        <label>Nye samtaler</label>
+        <name>New_Conversations</name>
+    </customLabels>
+    <customLabels>
+        <label>Næste</label>
+        <name>Next</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ingen tilsvarende Twitter-brugernavne fundet.</label>
+        <name>No_Result_Search_Username</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er ingen aktive kampagner.  Opret og aktiver en på fanen &quot;Kampagne&quot;.</label>
+        <name>No_active_campaigns</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejlfindingslog</label>
+        <name>ORIGIN_TWITTER_TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Ukendt fejlfindingslog</label>
+        <name>ORIGIN_UNKNOWN_TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>1 synes om</label>
+        <name>One_Like</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprindelig samtale</label>
+        <name>Origin_Conversation</name>
+    </customLabels>
+    <customLabels>
+        <label>Version {0}</label>
+        <name>PACKAGE_VERSION</name>
+    </customLabels>
+    <customLabels>
+        <label>Personkonti er ikke aktiveret i din organisation. Kontakt systemadministratoren for at få flere oplysninger.</label>
+        <name>PERSON_ACCOUNTS_NOT_ENABLED</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg mindst én registrering.</label>
+        <name>PLEASE_SELECT_1</name>
+    </customLabels>
+    <customLabels>
+        <label>Send til Chatter</label>
+        <name>POST_TO_CHATTER</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne Twitter-samtale er allerede indsendt som et Chatter-feed. Skal det indsendes igen?</label>
+        <name>POST_TO_CHATTER_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>Tweetet af @{0} den {1} - {2}</label>
+        <name>POST_TO_CHATTER_FORMAT</name>
+    </customLabels>
+    <customLabels>
+        <label>Indsendt til Facebook af {0} den {1} - {2}</label>
+        <name>POST_TO_CHATTER_FORMAT_FCBK</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilføj en meddelelse om denne samtale</label>
+        <name>POST_TO_CHATTER_TEXT1</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne samtale bliver sendt til dit Chatter-feed.</label>
+        <name>POST_TO_CHATTER_TEXT2</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter-svar bliver ikke sendt tilbage til Twitter</label>
+        <name>POST_TO_CHATTER_TEXT3</name>
+    </customLabels>
+    <customLabels>
+        <label>Chatter-svar bliver ikke sendt tilbage til Facebook</label>
+        <name>POST_TO_CHATTER_TEXT3b</name>
+    </customLabels>
+    <customLabels>
+        <label>Send til Chatter</label>
+        <name>POST_TO_CHATTER_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>[Næste]</label>
+        <name>Pagination_More</name>
+    </customLabels>
+    <customLabels>
+        <label>[Forrige]</label>
+        <name>Pagination_Previous</name>
+    </customLabels>
+    <customLabels>
+        <label>Ikke påkrævet (får adgang til Twitter via OAuth)</label>
+        <name>Password_Not_Required</name>
+    </customLabels>
+    <customLabels>
+        <label>Personfirmaer oprettet</label>
+        <name>Person_Accounts_Created</name>
+    </customLabels>
+    <customLabels>
+        <label>Forbereder søgning</label>
+        <name>Preparing_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>Forrige</label>
+        <name>Previous</name>
+    </customLabels>
+    <customLabels>
+        <label>Behandler resultater...</label>
+        <name>Processing_Results</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reply only from Twitter or Facebook case --></label>
+        <name>REPLY_ONLY_FROM_FACEBOOK_TWITTER_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har overskredet det maksimale antal ({10}) planlagte Apex-jobs.</label>
+        <name>REQUEST_EXCEEDED_MAX_APEX_JOBS</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har ikke adgang til en ekstern konto.  Opret en på fanen Twitter-konti eller Facebook-sider.</label>
+        <name>REQUIRED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg mindst én kanal.</label>
+        <name>REQUIRED_CHANNEL_SELECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Den Facebook-side, der er påkrævet for at besvare denne samtale, kan ikke åbnes eller er slettet.</label>
+        <name>REQUIRED_FCBK_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilbagekald Facebook-godkendelse for denne side?</label>
+        <name>REVOKE_FACEBOOK_PAGE_ACCESS_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilbagekald Facebook-godkendelse for denne bruger?</label>
+        <name>REVOKE_FACEBOOK_USER_ACCESS_CONFIRM</name>
+    </customLabels>
+    <customLabels>
+        <label>Adgang kan ikke tilbagekaldes. Denne Facebook-side er ikke blevet valideret</label>
+        <name>REVOKE_PAGE_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Adgang kan ikke tilbagekaldes. Denne Facebook-bruger er ikke blevet valideret</label>
+        <name>REVOKE_USER_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- RSS not available --></label>
+        <name>RSS_NOT_AVAILABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Adgangstoken er påkrævet</label>
+        <name>Required_Access_Token</name>
+    </customLabels>
+    <customLabels>
+        <label>Godkendelseslegitimationsoplysninger er påkrævede</label>
+        <name>Required_Credentials</name>
+    </customLabels>
+    <customLabels>
+        <label>Resultater</label>
+        <name>Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilbagekald Twitter-godkendelse til denne konto?</label>
+        <name>Revoke_Access_Confirm</name>
+    </customLabels>
+    <customLabels>
+        <label>Adgang kan ikke tilbagekaldes, da denne konto ikke er valideret</label>
+        <name>Revoke_not_validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg, hvilken side du vil validere</label>
+        <name>SELECT_A_PAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce for Twitter og Facebook: Svar.</label>
+        <name>SEND_TWEET_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Ekstern websteds-URL for artikler</label>
+        <name>SETUP_ARTICLE_SITE_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Indstillinger for vidensintegration</label>
+        <name>SETUP_ARTICLE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly API-nøgle</label>
+        <name>SETUP_BITLY_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly-indstillinger</label>
+        <name>SETUP_BITLY_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Bit.ly-bruger</label>
+        <name>SETUP_BITLY_USER</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-program</label>
+        <name>SETUP_KLOUT_APP</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-ikon</label>
+        <name>SETUP_KLOUT_ICON</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-nøgle</label>
+        <name>SETUP_KLOUT_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Klout-indstillinger</label>
+        <name>SETUP_KLOUT_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Servernavn</label>
+        <name>SETUP_SERVER_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce til sociale medier: Opsætning</label>
+        <name>SETUP_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>&lt;h1&gt;Er det første gang, du er her?&lt;/h1&gt; &lt;br /&gt;
+Du skal opsætte dine sociale udgiver for at komme i gang. 
+&lt;a href=&quot;{0}&quot;&gt;Gå til Social opsætning nu.&lt;/a&gt;</label>
+        <name>SETUP_WARNING_MESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Om</label>
+        <name>SOCIAL_SETUP_ABOUT</name>
+    </customLabels>
+    <customLabels>
+        <label>Avanceret</label>
+        <name>SOCIAL_SETUP_ADVANCED</name>
+    </customLabels>
+    <customLabels>
+        <label>Beskrivelse:</label>
+        <name>SOCIAL_SETUP_DESCRIPTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejl: Du skal angive en værdi</label>
+        <name>SOCIAL_SETUP_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Facebook-logfiler</label>
+        <name>SOCIAL_SETUP_FACEBOOK_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-feeds fra Facebook</label>
+        <name>SOCIAL_SETUP_FACEBOOK_RSS</name>
+    </customLabels>
+    <customLabels>
+        <label>Link til programmets websted</label>
+        <name>SOCIAL_SETUP_LINK</name>
+    </customLabels>
+    <customLabels>
+        <label>Logningsdag</label>
+        <name>SOCIAL_SETUP_LOG_DAY</name>
+    </customLabels>
+    <customLabels>
+        <label>Logningstidspunkt</label>
+        <name>SOCIAL_SETUP_LOG_TIME</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-dato</label>
+        <name>SOCIAL_SETUP_RSS_DATE</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-navn</label>
+        <name>SOCIAL_SETUP_RSS_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret forbindelse mellem Salesforce CRM og sociale kanaler som Twitter og Facebook. Overvåg dine fodspor online, opret forbindelse med kunder, reklamér for dit brand, og analysér den sociale påvirkning - alt sammen direkte fra Salesforce.com!</label>
+        <name>SOCIAL_SETUP_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce for Twitter og Facebook</label>
+        <name>SOCIAL_SETUP_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-søgeord</label>
+        <name>SOCIAL_SETUP_TWITTER_KEYWORDS</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-logfiler</label>
+        <name>SOCIAL_SETUP_TWITTER_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>RSS-feeds fra Twitter</label>
+        <name>SOCIAL_SETUP_TWITTER_RSS</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SOCIAL_SETUP_VERSION --></label>
+        <name>SOCIAL_SETUP_VERSION</name>
+    </customLabels>
+    <customLabels>
+        <label>Skift status – Resultater</label>
+        <name>STATUS_CHANGED_RESULTS</name>
+    </customLabels>
+    <customLabels>
+        <label>Gem</label>
+        <name>Save</name>
+    </customLabels>
+    <customLabels>
+        <label>Gem ændringer</label>
+        <name>Save_changes</name>
+    </customLabels>
+    <customLabels>
+        <label>Søg igen</label>
+        <name>Search_Again</name>
+    </customLabels>
+    <customLabels>
+        <label>Søg efter søgeord</label>
+        <name>Search_Keywords</name>
+    </customLabels>
+    <customLabels>
+        <label>Søgeresultater</label>
+        <name>Search_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Kør valgt(e) søgning(er)</label>
+        <name>Search_more_tweets</name>
+    </customLabels>
+    <customLabels>
+        <label>Søgeordssøgninger bringer tweets, der matcher kriteriet tilbage (maksimalt antal resultater ±1500)</label>
+        <name>Search_text_1</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-kontosøgninger viser direkte meddelelser, @svar og statusser for den valgte konto</label>
+        <name>Search_text_2</name>
+    </customLabels>
+    <customLabels>
+        <label>Det kan tage et par minutter. Vent, indtil dette er fuldført.</label>
+        <name>Search_text_3</name>
+    </customLabels>
+    <customLabels>
+        <label>Søgninger på Facebook-fansider bringer indlæg og kommentarer tilbage på den godkendte Facebook-fanside</label>
+        <name>Search_text_4</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg en kampagne</label>
+        <name>Select_Campaign</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg først en kampagne</label>
+        <name>Select_Campaign_first</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg de søgninger, du vil udføre.</label>
+        <name>Select_searches</name>
+    </customLabels>
+    <customLabels>
+        <label>Valgt</label>
+        <name>Selected</name>
+    </customLabels>
+    <customLabels>
+        <label>Del</label>
+        <name>Send</name>
+    </customLabels>
+    <customLabels>
+        <label>Send til Facebook som</label>
+        <name>Send_Facebook_As</name>
+    </customLabels>
+    <customLabels>
+        <label>Indsend til Twitter som</label>
+        <name>Send_Tweet_As</name>
+    </customLabels>
+    <customLabels>
+        <label>Svar</label>
+        <name>Send_a_Tweet</name>
+    </customLabels>
+    <customLabels>
+        <label>Send fra brugernavn</label>
+        <name>Send_using_username</name>
+    </customLabels>
+    <customLabels>
+        <label>Løsningsdetalje</label>
+        <name>Solution_Detail</name>
+    </customLabels>
+    <customLabels>
+        <label>Løsning navn</label>
+        <name>Solution_Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Tegn</label>
+        <name>SplashPage_Characters</name>
+    </customLabels>
+    <customLabels>
+        <label>Social udgiver</label>
+        <name>SplashPage_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Start søgning</label>
+        <name>Start_Search</name>
+    </customLabels>
+    <customLabels>
+        <label>Emne</label>
+        <name>Subject</name>
+    </customLabels>
+    <customLabels>
+        <label>Den valgte samtale blev ikke fundet</label>
+        <name>TARGET_CONVERSATION_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejlfindingslog</label>
+        <name>TROUBLESHOOTING_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Sektion, der kan aktiveres/deaktiveres - Vælg søgekriterium</label>
+        <name>TS_Choose_search_criteria</name>
+    </customLabels>
+    <customLabels>
+        <label>Sektion, der kan aktiveres/deaktiveres - Søgekriterier</label>
+        <name>TS_Search_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på konti er påkrævet.</label>
+        <name>TWITTER_ACCOUNT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på konti er påkrævet.</label>
+        <name>TWITTER_ACCOUNT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er allerede registreret en Twitter-konto med dette Twitter-brugernavn</label>
+        <name>TWITTER_ACCOUNT_DUPLICATE_VALUE</name>
+    </customLabels>
+    <customLabels>
+        <label>Social konto</label>
+        <name>TWITTER_ACCOUNT_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne konto er ikke korrekt valideret</label>
+        <name>TWITTER_ACCOUNT_NOT_VALIDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne Twitter-konto er suspenderet</label>
+        <name>TWITTER_ACCOUNT_SUSPENDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på konti er påkrævet.</label>
+        <name>TWITTER_ACCOUNT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har allerede føjet denne bidragyder til {0}</label>
+        <name>TWITTER_ADDCONTRIBUTOR_ADDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ugyldigt brugernavn</label>
+        <name>TWITTER_ADDCONTRIBUTOR_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Tilføjet</label>
+        <name>TWITTER_ADDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne URL er allerede blevet forkortet.</label>
+        <name>TWITTER_ALREADY_BITLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Følges allerede</label>
+        <name>TWITTER_ALREADY_FOLLOWED</name>
+    </customLabels>
+    <customLabels>
+        <label>er allerede på din liste</label>
+        <name>TWITTER_ALREADY_IN_LIST</name>
+    </customLabels>
+    <customLabels>
+        <label>blev tildelt, men findes allerede.</label>
+        <name>TWITTER_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>blev tildelt denne Twitter-samtale.</label>
+        <name>TWITTER_ASSIGNED_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>En/et</label>
+        <name>TWITTER_A_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>Vis flere Tweets-tilknytninger med denne samtale.</label>
+        <name>TWITTER_BRING_MORE</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på kampagnemedlemmer er påkrævet.</label>
+        <name>TWITTER_CAMPAIGNMEMBER_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på kampagnemedlemmer er påkrævet.</label>
+        <name>TWITTER_CAMPAIGNMEMBER_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på kampagnemedlemmer er påkrævet.</label>
+        <name>TWITTER_CAMPAIGNMEMBER_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på kampagner er påkrævet.</label>
+        <name>TWITTER_CAMPAIGN_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på kampagner er påkrævet.</label>
+        <name>TWITTER_CAMPAIGN_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på kampagner er påkrævet.</label>
+        <name>TWITTER_CAMPAIGN_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er allerede knyttet en løsning til denne samtale.</label>
+        <name>TWITTER_CANCREATED_SOLUTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke oprette {0}. Kontakt Salesforce-administratoren for at få hjælp</label>
+        <name>TWITTER_CANT_CREATE_OBJECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er allerede knyttet en sagskommentar til denne samtale.</label>
+        <name>TWITTER_CASECOMMENT_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på sagskommentar er påkrævet.</label>
+        <name>TWITTER_CASECOMMENT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sagskommentar oprettet</label>
+        <name>TWITTER_CASECOMMENT_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på sagskommentar er påkrævet.</label>
+        <name>TWITTER_CASECOMMENT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på sagskommentar er påkrævet.</label>
+        <name>TWITTER_CASECOMMENT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på sagsløsning er påkrævet.</label>
+        <name>TWITTER_CASESOLUTION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på sagsløsning er påkrævet.</label>
+        <name>TWITTER_CASESOLUTION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på sagsløsning er påkrævet.</label>
+        <name>TWITTER_CASESOLUTION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er allerede knyttet en sag til denne samtale.</label>
+        <name>TWITTER_CASE_CANTCREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Lukket</label>
+        <name>TWITTER_CASE_CLOSED</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på sager er påkrævet.</label>
+        <name>TWITTER_CASE_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på sager er påkrævet.</label>
+        <name>TWITTER_CASE_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på sager er påkrævet.</label>
+        <name>TWITTER_CASE_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>oprettede denne samtale</label>
+        <name>TWITTER_CHATTER_POST_HEADER</name>
+    </customLabels>
+    <customLabels>
+        <label>Svar i Chatter bliver ikke sendt tilbage til Twitter</label>
+        <name>TWITTER_CHATTER_POST_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Klik her for at følge brugeren</label>
+        <name>TWITTER_CLICK_FOLLOW</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejl ved oprettelse af forbindelse til Twitter. Dine legitimationsoplysninger kan være forkerte, tjenesten kan være offline, eller du kan have overført for mange anmodninger.</label>
+        <name>TWITTER_CONN_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har ikke tilladelse til at få adgang til denne kontakt.</label>
+        <name>TWITTER_CONTACT_ACCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er allerede knyttet en kontakt til denne samtale.</label>
+        <name>TWITTER_CONTACT_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på kontakter er påkrævet.</label>
+        <name>TWITTER_CONTACT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettet</label>
+        <name>TWITTER_CONTACT_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på kontakter er påkrævet.</label>
+        <name>TWITTER_CONTACT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt eller emne blev ikke fundet</label>
+        <name>TWITTER_CONTACT_LEAD_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på kontakter er påkrævet.</label>
+        <name>TWITTER_CONTACT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Advarsel: Kontakten findes allerede.</label>
+        <name>TWITTER_CONTACT_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtale</label>
+        <name>TWITTER_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på Twitter-samtaler er påkrævet.</label>
+        <name>TWITTER_CONVERSATION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på Twitter-samtaler er påkrævet.</label>
+        <name>TWITTER_CONVERSATION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne samtale findes allerede.</label>
+        <name>TWITTER_CONVERSATION_EXISTS</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne samtale er ikke et svar på et tweet. Der kan ikke søges i svar til brugere.</label>
+        <name>TWITTER_CONVERSATION_NOT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på Twitter-samtaler er påkrævet.</label>
+        <name>TWITTER_CONVERSATION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtalen blev ikke fundet: Id</label>
+        <name>TWITTER_CONV_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtalen blev ikke fundet</label>
+        <name>TWITTER_CONV_NOT_FOUND_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettet</label>
+        <name>TWITTER_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>blev oprettet for denne Twitter-samtale.</label>
+        <name>TWITTER_CREATED_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>blev oprettet for</label>
+        <name>TWITTER_CREATED_FOR</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret kontakt</label>
+        <name>TWITTER_CREATE_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret emne</label>
+        <name>TWITTER_CREATE_LEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>Opret nye søgninger</label>
+        <name>TWITTER_CREATE_SEARCHES</name>
+    </customLabels>
+    <customLabels>
+        <label>Dashboard og analyser</label>
+        <name>TWITTER_DASHBOARD</name>
+    </customLabels>
+    <customLabels>
+        <label>Sletning af ignorerede samtaler</label>
+        <name>TWITTER_DELETED_RECORDS</name>
+    </customLabels>
+    <customLabels>
+        <label>Slet ignorerede samtaler</label>
+        <name>TWITTER_DELETE_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Det lykkedes at slette ignorerede samtaler.</label>
+        <name>TWITTER_DELETE_IGNORED_SUCCESSFULLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Sletning af ignorerede samtaler</label>
+        <name>TWITTER_DELETING_IGNORED_CONVERSATIONS</name>
+    </customLabels>
+    <customLabels>
+        <label>Direkte meddelelse</label>
+        <name>TWITTER_DIRECTMESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejl</label>
+        <name>TWITTER_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Der opstod en fejl under oprettelse af forbindelse til Twitter. Prøv igen.</label>
+        <name>TWITTER_ERROR_CONNECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Kan ikke følge bruger: Du kan ikke følge dig selv...</label>
+        <name>TWITTER_ERROR_FOLLOW_YOURSELF</name>
+    </customLabels>
+    <customLabels>
+        <label>Ugyldigt samtale-id</label>
+        <name>TWITTER_ERROR_INVALID_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-fejlfindingslog</label>
+        <name>TWITTER_ERROR_LOG</name>
+    </customLabels>
+    <customLabels>
+        <label>Der opstod en uventet fejl. Prøv igen.</label>
+        <name>TWITTER_ERROR_OCCURRED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-fejlkode: {1}. Twitter-fejlmeddelelse: {0}.</label>
+        <name>TWITTER_ERROR_OCCURRED_ON_ACTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Sagskommentar uden overordnet</label>
+        <name>TWITTER_EXCEPTION_CASECOMMENT_WO_PARENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev oprettet en sag uden en kontakt for dette brugernavn</label>
+        <name>TWITTER_EXCEPTION_CASE_WO_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Sag har ingen samtaler</label>
+        <name>TWITTER_EXCEPTION_CASE_WO_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtale kan ikke være null</label>
+        <name>TWITTER_EXCEPTION_CONVERSATION_CANNOT_BE_NULL</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtalen har allerede en sag</label>
+        <name>TWITTER_EXCEPTION_CONVERSATION_HAS_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-id ikke angivet</label>
+        <name>TWITTER_EXCEPTION_ID_NOT_SPECIFIED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ekstern søgning efter konto er afsluttet. Konto-id:</label>
+        <name>TWITTER_EXTERNAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ekstern søgning efter søgeord er afsluttet. Søge-id:</label>
+        <name>TWITTER_EXTERNAL_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har ikke adgang til følgende felter: {0} Kontakt Salesforce-administratoren for at få hjælp.</label>
+        <name>TWITTER_FIELD_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke oprette følgende felter: {0} Kontakt Salesforce-administratoren for at få hjælp.</label>
+        <name>TWITTER_FIELD_NOT_CREATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke opdatere følgende felter: {0} Kontakt Salesforce-administratoren for at få hjælp.</label>
+        <name>TWITTER_FIELD_NOT_UPDATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du følger allerede klientkontakten ({0}) på Twitter.</label>
+        <name>TWITTER_FOLLOWS</name>
+    </customLabels>
+    <customLabels>
+        <label>på Twitter. (Følg gendannet).</label>
+        <name>TWITTER_FOLLOW_RESTORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der opstod en fejl under hentning af oplysningerne for følgende Twitter-brugernavn:</label>
+        <name>TWITTER_GET_AUTHOR_INFO_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Hent samtaler</label>
+        <name>TWITTER_GET_TWEETS</name>
+    </customLabels>
+    <customLabels>
+        <label>Link</label>
+        <name>TWITTER_GET_USERNAME_LINK</name>
+    </customLabels>
+    <customLabels>
+        <label>Hent Twitter-brugernavn</label>
+        <name>TWITTER_GET_USERNAME_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er ingen ignorerede samtale at slette.</label>
+        <name>TWITTER_IGNORED_DELETED</name>
+    </customLabels>
+    <customLabels>
+        <label>Indkommende DM:</label>
+        <name>TWITTER_INBOUND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Indkommende tweet</label>
+        <name>TWITTER_INBOUND_TWEET</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejl: Det angivne id er forkert.</label>
+        <name>TWITTER_INCORRECT_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Indsæt meddelelse</label>
+        <name>TWITTER_INSERT_MSG</name>
+    </customLabels>
+    <customLabels>
+        <label>Utilstrækkelige rettigheder</label>
+        <name>TWITTER_INSUFFICIENT_PRIVILEGES</name>
+    </customLabels>
+    <customLabels>
+        <label>Intern fejl. Prøv igen.</label>
+        <name>TWITTER_INTERNAL_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Emne</label>
+        <name>TWITTER_LEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har ikke tilladelse til at få adgang til dette emne.</label>
+        <name>TWITTER_LEAD_ACCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>Et eksisterende emne blev tildelt</label>
+        <name>TWITTER_LEAD_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på emner er påkrævet.</label>
+        <name>TWITTER_LEAD_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Emne oprettet</label>
+        <name>TWITTER_LEAD_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på emner er påkrævet.</label>
+        <name>TWITTER_LEAD_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er allerede knyttet et emne til denne samtale.</label>
+        <name>TWITTER_LEAD_EXIST</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ikke oprettet en kontakt for dette Twitter-brugernavn. Det har et emne tilknyttet.</label>
+        <name>TWITTER_LEAD_EXISTED</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ikke oprettet et emne for dette Twitter-brugernavn. Det har allerede en kontakt.</label>
+        <name>TWITTER_LEAD_HAS_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på emner er påkrævet.</label>
+        <name>TWITTER_LEAD_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Advarsel: Emnet findes allerede.</label>
+        <name>TWITTER_LEAD_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Hvis du vil bruge logføring, skal følgende mappe findes i din organisation: {0}</label>
+        <name>TWITTER_LOGGER_MISSING_FOLDER_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Manuel søgning efter konto er afsluttet. Konto-id:</label>
+        <name>TWITTER_MANUAL_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Manuel søgning efter søgeord er afsluttet. Søge-id:</label>
+        <name>TWITTER_MANUAL_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Marker mindst et afkrydsningsfelt, og klik på knappen Gem ændringer.</label>
+        <name>TWITTER_MARK_AT_LEAST_ONE</name>
+    </customLabels>
+    <customLabels>
+        <label>Angiv maksimalt 140 tegn.</label>
+        <name>TWITTER_MAXIMUM_SIZE</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne meddelelse blev sendt.</label>
+        <name>TWITTER_MESSAGE_SENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Angiv mindst 1 tegn.</label>
+        <name>TWITTER_MINIMUM_SIZE</name>
+    </customLabels>
+    <customLabels>
+        <label>Ny Twitter-konto</label>
+        <name>TWITTER_NEW_TWITTER_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Ny Twitter-søgning</label>
+        <name>TWITTER_NEW_TWITTER_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke sende direkte meddelelser til brugere, der ikke følger dig.</label>
+        <name>TWITTER_NOT_FOLLOWING</name>
+    </customLabels>
+    <customLabels>
+        <label>Ikke fundet.</label>
+        <name>TWITTER_NOT_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ingen kontakt eller emne fundet for dette id: {0}</label>
+        <name>TWITTER_NO_CONTACT_LEAD_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Der blev ingen samtale fundet for dette status-id: {0}</label>
+        <name>TWITTER_NO_CONVERSATION_FOUND</name>
+    </customLabels>
+    <customLabels>
+        <label>Der er ingen udkald tilbage for dette kørselsmiljø.</label>
+        <name>TWITTER_NO_MORE_CALLOUTS_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Advarsel: Søgningen lykkedes, men der er ikke flere udkald til at hente alle siderne.</label>
+        <name>TWITTER_NO_MORE_CALLOUTS_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Den konto, du validerede i Twitter, svarer ikke til den konto, du valgte i Salesforce</label>
+        <name>TWITTER_OAUTH_DIFF_USERNAMES</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har ikke adgang til følgende objekter: {0}. Kontakt Salesforce-administratoren for at få hjælp.</label>
+        <name>TWITTER_OBJECT_NOT_ACCESSIBLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke oprette følgende objekter: {0}. Kontakt Salesforce-administratoren for at få hjælp.</label>
+        <name>TWITTER_OBJECT_NOT_CREATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke slette følgende objekter: {0}. Kontakt Salesforce-administratoren for at få hjælp.</label>
+        <name>TWITTER_OBJECT_NOT_DELETABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke opdatere følgende objekter: {0}. Kontakt Salesforce-administratoren for at få hjælp.</label>
+        <name>TWITTER_OBJECT_NOT_UPDATEABLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Fejl: For mange konti.  Kun 10 konti kan følge en kontakt/et emne.</label>
+        <name>TWITTER_ONLY10_ACCOUNTS</name>
+    </customLabels>
+    <customLabels>
+        <label>på Twitter.</label>
+        <name>TWITTER_ON_TWITTER</name>
+    </customLabels>
+    <customLabels>
+        <label>Udgående direkte meddelelse</label>
+        <name>TWITTER_OUTBOUND_DIRECTMESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Udgående DM:</label>
+        <name>TWITTER_OUTBOUND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Udgående svar</label>
+        <name>TWITTER_OUTBOUND_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Der kan ikke oprettes en personkonto for denne samtale. Der er allerede knyttet en kontakt til den.</label>
+        <name>TWITTER_PACCOUNT_ASSIGNED</name>
+    </customLabels>
+    <customLabels>
+        <label>Underkendt. Se Hjælp-teksten</label>
+        <name>TWITTER_PASSWORDS_DEPRECATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Mit feed</label>
+        <name>TWITTER_POST_TO_MY_FEED</name>
+    </customLabels>
+    <customLabels>
+        <label>Indsend et tweet</label>
+        <name>TWITTER_POST_TWEET</name>
+    </customLabels>
+    <customLabels>
+        <label>Ressourcer</label>
+        <name>TWITTER_QUICK_LINKS</name>
+    </customLabels>
+    <customLabels>
+        <label>Fjernet fra listen over interesserede</label>
+        <name>TWITTER_REMOVED_FOLLOWERS</name>
+    </customLabels>
+    <customLabels>
+        <label>@svar</label>
+        <name>TWITTER_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Anmodningen til Twitter mislykkedes.</label>
+        <name>TWITTER_REQUEST_CONNECTION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Du skal godkende enten en Twitter-konto eller Facebook-fanside, før du sender meddelelser.</label>
+        <name>TWITTER_REQUIRED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Et Twitter-brugernavn er påkrævet for at sende meddelelser.</label>
+        <name>TWITTER_REQUIRED_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Resultat</label>
+        <name>TWITTER_RESULT</name>
+    </customLabels>
+    <customLabels>
+        <label>Retur til forrige side</label>
+        <name>TWITTER_RETURN</name>
+    </customLabels>
+    <customLabels>
+        <label>Planlagt søgning efter konto er afsluttet. Konto-id:</label>
+        <name>TWITTER_SCHEDULED_ACCOUNT_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Planlagt søgning efter søgeord er afsluttet. Søge-id:</label>
+        <name>TWITTER_SCHEDULED_KEYWORD_SEARCH_FINISHED</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktiver</label>
+        <name>TWITTER_SCHEDULER_PAGE_ACTIVATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sidste kørsel</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_LAST_TIME_RUN</name>
+    </customLabels>
+    <customLabels>
+        <label>Navn</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_NAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Anmodninger anvendt</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_REQUESTS_USED</name>
+    </customLabels>
+    <customLabels>
+        <label>Løbende bruger</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_SEARCH_TERM</name>
+    </customLabels>
+    <customLabels>
+        <label>Tidsinterval</label>
+        <name>TWITTER_SCHEDULER_PAGE_COLUMN_TIME_INTERVAL</name>
+    </customLabels>
+    <customLabels>
+        <label>Deaktiver</label>
+        <name>TWITTER_SCHEDULER_PAGE_DEACTIVATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Planlagte søgninger</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-kontosøgninger</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Slet ignorerede samtaler</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_IGNORE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-søgeordssøgninger</label>
+        <name>TWITTER_SCHEDULER_PAGE_TITLE_KEY</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har en begrænset mængde planlagte anmodninger tilgængelige. Salesforce Social bruger aktuelt {0} anmodninger</label>
+        <name>TWITTER_SCHEDULER_USED_TASKS</name>
+    </customLabels>
+    <customLabels>
+        <label>Planlæg søgninger</label>
+        <name>TWITTER_SCHEDULE_SEARCHES</name>
+    </customLabels>
+    <customLabels>
+        <label>for dette Twitter-brugernavn</label>
+        <name>TWITTER_SCREENNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Emnet for dette Twitter-brugernavn</label>
+        <name>TWITTER_SCREENNAME_HREF</name>
+    </customLabels>
+    <customLabels>
+        <label>Der opstod en fejl for denne søgning: {0}</label>
+        <name>TWITTER_SEARCH_CONNECTION_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Søgningen blev IKKE planlagt: Der opstod en fejl:</label>
+        <name>TWITTER_SEARCH_NOT_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Søgningen blev IKKE annulleret:  Der opstod en fejl:</label>
+        <name>TWITTER_SEARCH_NOT_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-søgeoperatorer</label>
+        <name>TWITTER_SEARCH_OPERATORS</name>
+    </customLabels>
+    <customLabels>
+        <label>Søgningen blev planlagt:</label>
+        <name>TWITTER_SEARCH_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Planlægningen for søgningen blev annulleret:</label>
+        <name>TWITTER_SEARCH_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>-- Vælg --</label>
+        <name>TWITTER_SELECT</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg mindst én registrering.</label>
+        <name>TWITTER_SELECT_A_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg ikke flere end {0} registreringer.</label>
+        <name>TWITTER_SELECT_LESS_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>Vælg kun en registrering.</label>
+        <name>TWITTER_SELECT_ONLY_RECORD</name>
+    </customLabels>
+    <customLabels>
+        <label>Sendte direkte meddelelse til</label>
+        <name>TWITTER_SEND_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Administrer Twitter-konti</label>
+        <name>TWITTER_SETUP_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Gennemse opsætningsvejledning</label>
+        <name>TWITTER_SETUP_GUIDE</name>
+    </customLabels>
+    <customLabels>
+        <label>URL, du forsøgte at afkorte, er ugyldig. Prøv igen.</label>
+        <name>TWITTER_SHORTEN_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på løsninger er påkrævet.</label>
+        <name>TWITTER_SOLUTION_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Løsning oprettet</label>
+        <name>TWITTER_SOLUTION_CREATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på løsninger er påkrævet.</label>
+        <name>TWITTER_SOLUTION_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på løsninger er påkrævet.</label>
+        <name>TWITTER_SOLUTION_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Kom godt i gang</label>
+        <name>TWITTER_START_NOW</name>
+    </customLabels>
+    <customLabels>
+        <label>&lt;p&gt;
+					&lt;strong&gt;Millioner af mennesker deler holdninger, stiller spørgsmål og søger hjælp ved brug af Twitter. 
+					Find ud af, hvad andre siger lige nu...&lt;/strong&gt;
+					&lt;/p&gt;
+					&lt;ul&gt;
+						&lt;li&gt;&lt;strong&gt;Hvad siger kunderne om din forretning?&lt;/strong&gt; Er det positivt eller negativt? &lt;/li&gt;
+						&lt;li&gt;&lt;strong&gt;Søger brugere de tjenester, din virksomhed tilbyder?&lt;/strong&gt; Brug Salesforce for Twitter til at skabe kundeemner! &lt;/li&gt;
+						&lt;li&gt;&lt;strong&gt;Har de brug for hjælp?&lt;/strong&gt;Opret en sag fra tweet&apos;et, så dine supportmedarbejdere kan yde bedre service.&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;p&gt;
+					&lt;strong&gt;Har du brug for mere viden om Twitter?&lt;/strong&gt;&lt;br/&gt;
+					Hvorfor ikke læse om &lt;a href=&quot;http://business.twitter.com&quot; target=&quot;_blank&quot;&gt;Twitter for forretning&lt;/a&gt;
+					&lt;/p&gt;</label>
+        <name>TWITTER_START_PAGE_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Salesforce til sociale medier</label>
+        <name>TWITTER_START_PAGE_TITLE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-ydelsesstatus</label>
+        <name>TWITTER_STATUS</name>
+    </customLabels>
+    <customLabels>
+        <label>Du har ikke godkendelse til at se denne forrige status.</label>
+        <name>TWITTER_STATUSES_NOT_AUTHORIZED</name>
+    </customLabels>
+    <customLabels>
+        <label>Behandlet</label>
+        <name>TWITTER_STATUS_ACTIONED</name>
+    </customLabels>
+    <customLabels>
+        <label>Statussen blev ændret</label>
+        <name>TWITTER_STATUS_CHANGED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ændrede denne samtales status til &quot;Ignoreret&quot;</label>
+        <name>TWITTER_STATUS_CHANGED_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ændrede denne samtales status til &quot;Løst af fællesskab&quot;</label>
+        <name>TWITTER_STATUS_CHANGED_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ignoreret</label>
+        <name>TWITTER_STATUS_IGNORED</name>
+    </customLabels>
+    <customLabels>
+        <label>Ny(t)</label>
+        <name>TWITTER_STATUS_NEW</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne samtale er allerede markeret som &quot;Løst af fællesskab&quot;.</label>
+        <name>TWITTER_STATUS_NOT_CHANGED_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Marker som gennemset</label>
+        <name>TWITTER_STATUS_REVIEWED</name>
+    </customLabels>
+    <customLabels>
+        <label>Løst af fællesskab</label>
+        <name>TWITTER_STATUS_SOLVED</name>
+    </customLabels>
+    <customLabels>
+        <label>Det lykkedes at opdatere status</label>
+        <name>TWITTER_STATUS_UPDATED</name>
+    </customLabels>
+    <customLabels>
+        <label>Stop sletning</label>
+        <name>TWITTER_STOP_DELETING</name>
+    </customLabels>
+    <customLabels>
+        <label>Stop søgning</label>
+        <name>TWITTER_STOP_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>Gennemført</label>
+        <name>TWITTER_SUCCESS</name>
+    </customLabels>
+    <customLabels>
+        <label>Målkonto er i øjeblikket suspenderet.</label>
+        <name>TWITTER_TARGETACCOUNT_SUSPENDED</name>
+    </customLabels>
+    <customLabels>
+        <label>Kampagnemedlem</label>
+        <name>TWITTER_TARGET_CAMPAIGNMEMBER</name>
+    </customLabels>
+    <customLabels>
+        <label>Sag</label>
+        <name>TWITTER_TARGET_CASE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sagskommentar</label>
+        <name>TWITTER_TARGET_CASECOMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt</label>
+        <name>TWITTER_TARGET_CONTACT</name>
+    </customLabels>
+    <customLabels>
+        <label>Samtale</label>
+        <name>TWITTER_TARGET_CONVERSATION</name>
+    </customLabels>
+    <customLabels>
+        <label>Løsning</label>
+        <name>TWITTER_TARGET_SOLUTION</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-konto</label>
+        <name>TWITTER_TARGET_TWITTERACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>Udført</label>
+        <name>TWITTER_TASK_COMPLETED</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på opgaver er påkrævet.</label>
+        <name>TWITTER_TASK_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på opgaver er påkrævet.</label>
+        <name>TWITTER_TASK_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Sendte en kommentar til</label>
+        <name>TWITTER_TASK_FCBK_COMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Opgaven blev IKKE planlagt: Der opstod en fejl:</label>
+        <name>TWITTER_TASK_NOT_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Opgaven blev IKKE annulleret: Der opstod en fejl:</label>
+        <name>TWITTER_TASK_NOT_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Opgaven blev planlagt:</label>
+        <name>TWITTER_TASK_SCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Sendte direkte meddelelse til</label>
+        <name>TWITTER_TASK_SUBJECT_DM</name>
+    </customLabels>
+    <customLabels>
+        <label>Sendte @svar-tweet til</label>
+        <name>TWITTER_TASK_SUBJECT_REPLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Opgaven blev annulleret:</label>
+        <name>TWITTER_TASK_UNSCHEDULED</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på opgaver er påkrævet.</label>
+        <name>TWITTER_TASK_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter</label>
+        <name>TWITTER_TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Denne tekst bliver sendt som et offentligt @svar eller en privat direkte meddelelse. Du kan redigere den, før den sendes.</label>
+        <name>TWITTER_TEXT_SENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på Twitter-konti er påkrævet.</label>
+        <name>TWITTER_TWITACCOUNT_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på Twitter-konti er påkrævet.</label>
+        <name>TWITTER_TWITACCOUNT_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på Twitter-konti er påkrævet.</label>
+        <name>TWITTER_TWITACCOUNT_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Oprettelsestilladelse på Twitter-søgninger er påkrævet.</label>
+        <name>TWITTER_TWITSEARCH_CREATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Slettetilladelse på Twitter-søgninger er påkrævet.</label>
+        <name>TWITTER_TWITSEARCH_DELETE</name>
+    </customLabels>
+    <customLabels>
+        <label>Opdateringstilladelse på Twitter-søgninger er påkrævet.</label>
+        <name>TWITTER_TWITSEARCH_UPDATE</name>
+    </customLabels>
+    <customLabels>
+        <label>Direkte meddelelse</label>
+        <name>TWITTER_TYPE_DIRECT_MESSAGE</name>
+    </customLabels>
+    <customLabels>
+        <label>Registreret konto</label>
+        <name>TWITTER_TYPE_REGISTERED_ACCOUNT</name>
+    </customLabels>
+    <customLabels>
+        <label>@svar</label>
+        <name>TWITTER_TYPE_REPLIES</name>
+    </customLabels>
+    <customLabels>
+        <label>Søg</label>
+        <name>TWITTER_TYPE_SEARCH</name>
+    </customLabels>
+    <customLabels>
+        <label>Ukendt</label>
+        <name>TWITTER_UNKNOWN</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-brugernavn</label>
+        <name>TWITTER_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan ikke følge denne bruger, da der ingen kontakt eller emne er tilknyttet.</label>
+        <name>TWITTER_USERNAME_NOT_CONTACTLEAD</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-kontoen skal have et gyldigt Bit.ly-brugernavn og en gyldig Api-nøgle.</label>
+        <name>TWITTER_VALID_BITLY</name>
+    </customLabels>
+    <customLabels>
+        <label>Angiv en gyldig URL-adresse.</label>
+        <name>TWITTER_VALID_URL</name>
+    </customLabels>
+    <customLabels>
+        <label>Advarsel</label>
+        <name>TWITTER_WARNING</name>
+    </customLabels>
+    <customLabels>
+        <label>Hvad sker der?</label>
+        <name>TWITTER_WHAT_IS_HAPPENING</name>
+    </customLabels>
+    <customLabels>
+        <label>med en</label>
+        <name>TWITTER_WITH_A</name>
+    </customLabels>
+    <customLabels>
+        <label>med Twitter-brugernavn</label>
+        <name>TWITTER_WITH_USERNAME</name>
+    </customLabels>
+    <customLabels>
+        <label>Titel</label>
+        <name>Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Navneresultater for:</label>
+        <name>Title_Search_Username</name>
+    </customLabels>
+    <customLabels>
+        <label>Samlede resultater</label>
+        <name>Total_Results</name>
+    </customLabels>
+    <customLabels>
+        <label>20</label>
+        <name>Twitter_Account_PageSize</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-konti</label>
+        <name>Twitter_Accounts</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-konti følger</label>
+        <name>Twitter_Accounts_following</name>
+    </customLabels>
+    <customLabels>
+        <label>Din meddelelse bliver vedhæftet denne sag som en sagskommentar.</label>
+        <name>Twitter_Case_Solution</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Twitter_Error_Returned --></label>
+        <name>Twitter_Error_Returned</name>
+    </customLabels>
+    <customLabels>
+        <label>Twitter-id</label>
+        <name>Twitter_ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Type</label>
+        <name>Type</name>
+    </customLabels>
+    <customLabels>
+        <label>Der kan ikke oprettes forbindelse til Facebook. Der kræves legitimationsoplysninger. Hvis du har ændret din Facebook-bruger eller -fanside, skal den godkendes igen i Salesforce.</label>
+        <name>UNABLE_CONNECT_FACEBOOK</name>
+    </customLabels>
+    <customLabels>
+        <label>Den ønskede logfil kan ikke indlæses</label>
+        <name>UNABLE_TO_LOAD_LOG_FILE</name>
+    </customLabels>
+    <customLabels>
+        <label>Det er ikke muligt at hente alle kommentarer til dette indlæg</label>
+        <name>UNABLE_TO_RETRIEVE_ALL_COMMENTS</name>
+    </customLabels>
+    <customLabels>
+        <label>Der kan ikke sendes en kommentar til dette objekt</label>
+        <name>UNABLE_TO_SEND_COMMENT</name>
+    </customLabels>
+    <customLabels>
+        <label>Personkonti er ikke aktiveret i din organisation</label>
+        <name>UNKNOWN_TWITTER_USERNAMES_ERROR</name>
+    </customLabels>
+    <customLabels>
+        <label>Hvis du vil stoppe med at følge en bruger, skal du fjerne markeringen fra den pågældende konto og klikke på &quot;Gem ændringer&quot;</label>
+        <name>Unfollow_user_deselect</name>
+    </customLabels>
+    <customLabels>
+        <label>synes ikke om</label>
+        <name>Unlike</name>
+    </customLabels>
+    <customLabels>
+        <label>Brugernavn</label>
+        <name>Username</name>
+    </customLabels>
+    <customLabels>
+        <label>Brugernavnet skal være entydigt.</label>
+        <name>Username_unique</name>
+    </customLabels>
+    <customLabels>
+        <label>Valideret</label>
+        <name>Validated</name>
+    </customLabels>
+    <customLabels>
+        <label>Du skal have mindst én valideret Twitter-konto i din Salesforce.com-organisation for at bruge denne funktion.</label>
+        <name>Validated_Twitter_Account</name>
+    </customLabels>
+    <customLabels>
+        <label>Du kan kun sende svar til Twitter-kontakter, -emner eller -personkonti</label>
+        <name>YOU_CAN_ONLY_REPLY_TO_CNCT_LEAD_PA</name>
+    </customLabels>
+    <customLabels>
+        <label>du og 1 anden synes om dette</label>
+        <name>You_And_1_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>du og {0} andre synes om dette</label>
+        <name>You_And_Others_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>du synes om dette</label>
+        <name>You_Like_This</name>
+    </customLabels>
+    <customLabels>
+        <label>timer</label>
+        <name>hours</name>
+    </customLabels>
+    <customLabels>
+        <label>minutter</label>
+        <name>minutes</name>
+    </customLabels>
+    <customLabels>
+        <label>Nye medlemmer.</label>
+        <name>new_Members</name>
+    </customLabels>
+    <customLabels>
+        <label>af</label>
+        <name>of_10</name>
+    </customLabels>
+    <customLabels>
+        <label>på Twitter.</label>
+        <name>on_Twitter</name>
+    </customLabels>
+    <customLabels>
+        <label>tilbageværende</label>
+        <name>remaining</name>
+    </customLabels>
+    <customPageWebLinks>
+        <label>Hent flere tweets</label>
+        <name>Get_More_Tweets</name>
+    </customPageWebLinks>
+    <customTabs>
+        <label>Social udgiver</label>
+        <name>Salesforce_for_Twitter</name>
+    </customTabs>
+    <customTabs>
+        <label>Social agent</label>
+        <name>Social_Agent</name>
+    </customTabs>
+    <customTabs>
+        <label>Social - opsætning</label>
+        <name>Social_Setup</name>
+    </customTabs>
+    <reportTypes>
+        <description>Kontakter med Twitter-brugernavne og Twitter-samtaler</description>
+        <label>Kontakter med Twitter-brugernavn</label>
+        <name>Contacts_with_Twitter_username</name>
+        <sections>
+            <label>Kontakter</label>
+            <name>Contacts</name>
+        </sections>
+        <sections>
+            <label>Twitter-samtaler</label>
+            <name>Twitter Conversations</name>
+        </sections>
+    </reportTypes>
+</Translations>

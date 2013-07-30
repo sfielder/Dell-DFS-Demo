@@ -1,0 +1,326 @@
+<apex:component >
+    <script src="{!$Resource.jQuery_JS}"/>
+    <script src="{!$Resource.jQuery_UI_JS}"/>
+    <link rel="stylesheet" href="{!$Resource.jQuery_CSS}"/>
+    
+    <style>
+        body
+        {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6{
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .myH1
+        {
+            position:relative;
+            float:left;
+            padding: 3px 5px 0px 0px;
+        }
+        .wrapper
+        {
+            position:relative;
+            height: 250px;
+            padding: 10px;
+            background: white;            
+            border: 1px solid #c1c1c1;
+            margin-bottom: 10px;
+            border-bottom-left-radius:6px;
+            border-bottom-right-radius:6px;
+        }
+        .sliderDiv
+        {
+            position:relative;
+            float:left;
+            clear: both;
+        }
+        .myTermLabel
+        {
+            position:relative;
+            float:left;
+            font-weight:bold;
+            font-size:16px;
+            padding: 3px 0 0 0;
+        }
+        .myFreqLabel
+        {
+            position:relative;
+            float:left;
+            font-weight:bold;
+            font-size:16px;
+            padding: 22px 4px 0 0;
+        }
+        
+        .mySlider
+        {
+            position:relative;
+            float:left;
+            
+        }
+        .myInputs
+        {
+            width: 120px;
+        }
+        #termSlider
+        {
+            position:relative;
+            width: 500px;
+            margin: 10px;
+        }
+        #freqSlider
+        {
+            position:relative;
+            width: 500px;
+            margin: 10px;
+        }
+        
+        #labelNumbers
+        {
+            position:relative;
+            float:left;
+            clear:both;
+        }
+        .labelNum
+        {
+            position: relative;
+            float: left;
+            font-weight: bold;
+            left: 7px;
+            padding: 0 52px;
+        }
+        .freqLabel
+        {
+            position: relative;
+            float: left;
+            font-weight: bold;
+            left: -36px;
+            padding: 0 87px;
+        }
+        .freqLabel:last-child
+        {
+            padding-right:0px;
+        }
+        #equipDiv
+        {
+            position:relative;
+            float:left;
+            clear: left;
+            width: 200px;
+        }
+        #title
+        {
+            position:relative;
+            margin: 0 auto;
+            text-align:left;
+            font-weight: bold;
+            font-size: 12px;
+            color: #fff;
+            padding: 5px 10px 5px 10px;
+            background-color: #0085C3;
+            border-top-right-radius:6px;
+            border-top-left-radius:6px;
+        }
+        #leaseTypeDiv
+        {
+            position:relative;
+            float:left;
+            padding-left: 64px;
+        }
+        #commissionDiv
+        {
+            position:relative;
+            float:right;
+            clear: right;
+        }
+        .ui-widget-header{
+            background:#fff;
+            border-radius:4px;
+        }
+        #rentalDiv
+        {
+            position:relative;
+            width:161px;
+            float:right;
+            clear: both;
+            left: 21px;
+            padding: 10px 0 2px 0;
+        }
+        #totalCostDiv
+        {
+            position:relative;
+            width:165px;
+            float:right;
+            clear: both;
+        }
+        #rentalCost
+        {
+            position: relative;
+            float: left;
+            width: 75px;
+            height: 20px;
+            background: #5AB55A;
+            color:#fff;
+            clear: right;
+            padding-top: 4px;
+            border:1px solid #ccc;
+            padding-left: 4px;
+        }
+        #totalCost
+        {
+            position: relative;
+            float: left;
+            width: 75px;
+            height: 20px;
+            background: #5AB55A;
+            border:1px solid #ccc;
+            color:#fff;
+            clear: right;
+            padding-top: 4px;
+            padding-left: 4px;
+        
+        }
+    </style>
+    <script>
+    var equipCost = 0;
+    var commission = 1;
+    var term = 36;
+    var freq = 12;
+    var rental = 0;
+    var total =  0; 
+    $(document).ready(function() {
+        //term slider
+        $( "#termSlider" ).slider({
+            value:36,
+            min: 24,
+            max: 48,
+            step: 6,
+            slide: function( event, ui ) {
+                $( "#term" ).val( "$" + ui.value );
+                term = ui.value;
+                calculate();
+                
+            }
+        });
+        $( "#term" ).val($( "#termSlider" ).slider( "value" ) );
+        term = $( "#term" ).val();
+        
+        //freq slider
+        var select = $( "#freqSelect" );
+        var freqSlider = $("#freqSlider").slider({
+            min: 1,
+            max: 3,
+            range: "min",
+            value: select[ 0 ].selectedIndex + 2,
+            slide: function( event, ui ) {
+                select[ 0 ].selectedIndex = ui.value - 1;
+                freq = $('.myOptions').parent().val();
+                calculate();
+                
+            }
+        });
+        $( "#freqSelect" ).change(function() {
+            slider.slider( "value", this.selectedIndex + 1 );
+        });
+        
+        //onchange calculate
+        $('#equipCost').change(function(){
+            equipCost = $('#equipCost').val();
+            calculate();
+        });
+        
+        $('#commissionInput').change(function(){
+            commission = $('#commissionInput').val();
+            calculate();
+        });
+    });
+        
+    function calculate()
+    {
+        total = (parseFloat(equipCost) * 0.1 * (parseFloat(commission)/100.0)).toFixed(2); //cost * interest * commission
+        rental = (parseFloat(total) / (parseFloat(term) * parseFloat(freq))).toFixed(2);
+        
+        $('#totalCost').html(total);
+        $('#rentalCost').html(rental);
+        console.log('equipCost: '+equipCost);
+        console.log('commission: '+commission);
+        console.log('term: '+term);
+        console.log('freq: '+ freq);
+        console.log('total: '+total);
+        console.log('rental: '+ rental);
+    }
+    </script>
+    <div id="title">
+        <span>Lease Calculator</span>
+    </div>
+    <div class="wrapper">        
+        <apex:form >
+            <div id="equipDiv">
+                <h1>Equip Cost:</h1>
+                <input type="text" id="equipCost" class="myInputs" value=""/>
+            </div>
+            <div id="leaseTypeDiv">
+                <h1>Lease Type:</h1>
+                <select name="freqSelect" id="leaseType">
+                    <option class="myFakeOptions">Monthly</option>
+                    <option class="myFakeOptions">Yearly</option>
+                </select>
+            </div>
+            <div id="commissionDiv">
+                <h1>Commission:</h1>
+                <input type="text" id="commissionInput" class="myInputs" value="1.00"/><span>%</span>
+            </div>
+            
+            
+            <div class="sliderDiv">
+                <div class="myTermLabel">
+                    <span>Term:</span>
+                </div>
+                <div class="mySlider">
+                    <input type="text" id="term" style="display:none;" />
+                    <div id="termSlider"/>
+                </div>
+                <div id="labelNumbers">
+                    <div class="labelNum">24</div>
+                    <div class="labelNum">30</div>
+                    <div class="labelNum">36</div>
+                    <div class="labelNum">42</div>
+                    <div class="labelNum">48</div>
+                </div>
+            </div>
+            
+            
+            <div class="sliderDiv">
+                <div class="myFreqLabel">
+                    <span>Freq:</span>
+                </div>
+                <div class="mySlider">
+                    <input type="text" id="freq" style="border: 0; color: #f6931f; font-weight: bold;" />
+                    <div id="freqSlider"/>
+                </div>
+                <select name="freqSelect" id="freqSelect" style="display:none;">
+                    <option class="myOptions">12</option>
+                    <option class="myOptions">4</option>
+                    <option class="myOptions">2</option>
+                </select>
+                
+                <div id="labelNumbers">
+                    <div class="freqLabel">Monthly</div>
+                    <div class="freqLabel">Quarterly</div>
+                    <div class="freqLabel">Semi-Annually</div>
+                </div>
+            </div>
+            
+            
+            
+            <div id="rentalDiv">
+                <h1 class="myH1">Rental:</h1>
+                <div id="rentalCost"></div>
+            </div>
+            <div id="totalCostDiv">
+                <h1 class="myH1">Total Cost:</h1>
+                <div id="totalCost"></div>
+            </div>
+            
+        </apex:form>
+    </div>
+</apex:component>

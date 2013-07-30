@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Twitter スケジューラ</value>
+    </caseValues>
+    <fields>
+        <label>Facebook ページ</label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel>Twitter スケジューラ</relationshipLabel>
+    </fields>
+    <fields>
+        <label>最終実行時刻</label>
+        <name>Last_Run_Time__c</name>
+    </fields>
+    <fields>
+        <label>期間</label>
+        <name>Period_Time__c</name>
+    </fields>
+    <fields>
+        <label>実行ユーザ</label>
+        <name>Running_User__c</name>
+        <relationshipLabel>Twitter スケジューラ</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Twitter アカウント</label>
+        <name>Twitter_Account__c</name>
+        <relationshipLabel>Twitter スケジューラ</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Twitter 検索</label>
+        <name>Twitter_Search__c</name>
+        <relationshipLabel>Twitter スケジューラ</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ジョブ ID</label>
+        <name>jobId__c</name>
+    </fields>
+    <nameFieldLabel>Twitter スケジューラ名</nameFieldLabel>
+</CustomObjectTranslation>

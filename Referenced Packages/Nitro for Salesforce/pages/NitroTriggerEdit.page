@@ -1,0 +1,454 @@
+<apex:page controller="nitro.NitroTriggerEditController" tabStyle="Action_Triggers__tab" action="{!init}">
+   
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+   
+   <apex:form >
+      
+      <apex:pageMessages id="pageMessages"/>
+      
+      <div class="nitro">
+      
+      <apex:outputPanel id="validationMsgs">
+      
+         <div class="msgBox none" id="vldWarning">
+            <div class="closeX">Close&nbsp;&nbsp;<b>X</b></div>
+            <div class="msgBody"></div>
+         </div>
+   
+         <script>
+         
+            selectedFieldsArray = new Array();
+            
+         </script>
+         
+      </apex:outputPanel>
+      
+      <apex:pageBlock title="Create Nitro Trigger">
+         
+         <apex:pageBlockButtons id="pageButtons" rendered="{!!isFree}">
+            <input id="saveAndSubmitButton" type="button" class="btn" value="Save" onclick="updateSelectedListForSave()" /><input 
+                     type="button" class="btn btnDisabled none" value="Save" disabled="disabled" />
+            <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/><input 
+                     type="button" class="btn btnDisabled none" value="Cancel" disabled="disabled" />
+            <apex:commandButton value="Refresh" action="{!refresh}" immediate="true"/><input 
+                     type="button" class="btn btnDisabled none" value="Refresh" disabled="disabled" />&nbsp;&nbsp;
+            <apex:actionStatus startText="(working...)" id="formSubmitStatus"/>
+         </apex:pageBlockButtons>
+         
+         <apex:pageBlockSection columns="2">
+            
+            <apex:outputLabel styleClass="fieldLabel">Action Name&nbsp;<span class="star">*</span></apex:outputLabel>
+            <apex:inputText required="true" value="{!nitroTrigger.nitroActionName}" styleClass="actionName"/>
+            
+            <apex:outputLabel styleClass="fieldLabel">Active</apex:outputLabel>
+            <apex:inputCheckBox value="{!nitroTrigger.isActive}" />
+            
+            <apex:outputLabel styleClass="fieldLabel">Operation&nbsp;<span class="star">*</span></apex:outputLabel>
+            <apex:actionRegion >
+               <apex:selectList required="true" value="{!nitroTrigger.triggerType}" multiselect="false" size="1" styleClass="operationNameList">
+                  <apex:selectOptions value="{!triggerTypes}" />
+                  <apex:actionSupport event="onchange" action="{!loadObjectList}" reRender="triggerObject,fieldsForObject" status="geObjectListStatus"/>
+               </apex:selectList>
+               <apex:actionStatus startText="(retrieving valid objects...)" id="geObjectListStatus"/>
+            </apex:actionRegion>
+            
+            <apex:outputLabel styleClass="fieldLabel">Object&nbsp;<span class="star">*</span></apex:outputLabel>
+            <apex:outputPanel id="triggerObject">
+               <apex:outputPanel rendered="{!ISBLANK(nitroTrigger.triggerType)}">
+                  Select an Operation above to choose a trigger object.
+               </apex:outputPanel>
+               <apex:outputPanel rendered="{!!ISBLANK(nitroTrigger.triggerType)}">
+                  <apex:actionRegion >
+                     <apex:selectList value="{!nitroTrigger.objectName}" multiselect="false" size="1" styleClass="objectNameList">
+                        <apex:selectOptions value="{!objectList}" />
+                        <apex:actionSupport event="onchange" action="{!generateValuesForObject}" reRender="fieldsForObject, scriptPanel, nitroUserObjectField, pageMessages, validationMsgs, nitroUserType, nitroUserObjFldLabelPanel, nitroUserObjFldPanel" status="genValuesAjaxStatus"/>
+                     </apex:selectList>&nbsp;&nbsp;
+                     <apex:actionStatus startText="(retrieving object fields...)" id="genValuesAjaxStatus"/>
+                  </apex:actionRegion>
+               </apex:outputPanel>
+            </apex:outputPanel>
+         
+            <apex:outputLabel styleClass="fieldLabel">Fields&nbsp;<span class="star">*</span></apex:outputLabel>
+            <apex:pageBlockSectionItem >
+               
+               <apex:outputPanel id="fieldsForObject">
+                  
+                  <apex:outputPanel rendered="{!ISBLANK(nitroTrigger.objectName)}">
+                     Select an Object above to choose trigger fields.
+                  </apex:outputPanel>
+                  
+                  <apex:outputPanel rendered="{!!ISBLANK(nitroTrigger.objectName)}">
+                  
+                  <table>
+                  
+                     <tr>
+                        <td><h2>Available Fields</h2></td>
+                        <td><h2>Selected Fields</h2></td>
+                     </tr>
+                     
+                     <tr>
+                     
+                        <td valign="top">
+                           <div id="availableFieldListDiv" class="outlineBox">
+                              <ul id="availableFieldList">
+                                 <apex:repeat value="{!nitroTrigger.sortedAvailableFields}" var="availableField">
+                                    <li>
+                                       <span class="addBullet" title="Add" onclick="addFieldToSelectedList(jQuery(this).parent())">&nbsp;</span><span class="fieldLabel">{!availableField.label}</span>
+                                       <span class="fieldName" style="display:none;">{!availableField.name}</span>
+                                    </li>
+                                 </apex:repeat>
+                              </ul>
+                           </div>
+                        </td>
+                        
+                        <td valign="top">
+                           <div id="selectedFieldListDiv" class="outlineBox">
+                              <ul id="selectedFieldList">
+                                 <apex:repeat value="{!nitroTrigger.sortedSelectedFields}" var="selectedField">
+                                    <li>
+                                       <span class="deleteBullet" title="Remove" onclick="removeSelectedField(jQuery(this).parent())">&nbsp;</span><span class="fieldLabel">{!selectedField.label}</span>
+                                       <span class="fieldName" style="display:none;">{!selectedField.name}</span>
+                                    </li>
+                                 </apex:repeat>
+                              </ul>
+                           </div>
+                        </td>
+                        
+                     </tr>
+                     
+                  </table>
+                  </apex:outputPanel>
+                  
+               </apex:outputPanel>
+            
+            </apex:pageBlockSectionItem>
+            
+            <apex:outputLabel styleClass="fieldLabel">User Id&nbsp;<span class="star">*</span></apex:outputLabel>
+            <apex:actionRegion id="nitroUserTypeRegion">
+            <apex:selectList id="nitroUserType" value="{!nitroTrigger.nitroUserType}" multiselect="false" size="1" >
+               <apex:selectOptions value="{!nitroUserTypes}" />
+               <apex:actionSupport event="onchange" action="{!generateObjectFields}" reRender="nitroUserTypeRegion, pageMessages, nitroUserObjectField, nitroUserObjFldLabelPanel, nitroUserObjFldPanel" status="genObjFieldsAjaxStatus"/>
+            </apex:selectList>&nbsp;&nbsp;
+            <apex:actionStatus startText="(please wait...)" id="genObjFieldsAjaxStatus"/>
+            </apex:actionRegion>
+            
+            <apex:outputPanel id="nitroUserObjFldLabelPanel"><!-- see http://www.laceysnr.com/2011/10/using-rerender-to-render-one-solution.html for why these outer panels are needed -->
+               <apex:outputPanel rendered="{!nitroTrigger.nitroUserType == nitroUserObjectField}">
+                  <apex:outputLabel id="nitroUserObjectFieldLabel" styleClass="fieldLabel nitroUserObjFld" >Object Field&nbsp;</apex:outputLabel>
+               </apex:outputPanel>
+            </apex:outputPanel>
+            <apex:outputPanel id="nitroUserObjFldPanel">
+               <apex:outputPanel rendered="{!nitroTrigger.nitroUserType == nitroUserObjectField}">
+            <apex:selectList id="nitroUserObjectField" styleClass="nitroUserObjFld" value="{!nitroTrigger.nitroUserObjectField}" multiselect="false" size="1" >
+               <apex:selectOptions value="{!nitroUserObjectFields}" />
+            </apex:selectList>
+               </apex:outputPanel>
+            </apex:outputPanel>
+            
+         </apex:pageBlockSection>
+         
+      </apex:pageBlock>
+
+      <apex:actionFunction name="saveSelected" action="{!save}" rerender="pageMessages, scriptPanel, scriptReRender" status="formSubmitStatus">       
+          <apex:param name="selectedFields"
+                      value=""
+                      assignTo="{!nitroTrigger.selectedFieldsArrayString}"/> 
+      </apex:actionFunction> 
+   
+      <apex:outputPanel id="hiddenPanel" rendered="false" />
+      
+      <c:DisabledFeatureOverlay isFree="{!isFree}" verifyAction="{!verifyEdition}" />
+      
+      </div>
+      
+   </apex:form>
+
+   <script type="text/javascript" src="{!URLFOR($Resource.Multiselect, 'jquery.js')}"></script>
+   <script type="text/javascript">
+      jQuery.noConflict();
+   </script>
+
+   <apex:outputPanel id="scriptReRender">
+      
+      <script type="text/javascript">
+         jQuery('input[type=submit], input[type=button]').removeClass('none');
+         jQuery('input.btnDisabled').addClass('none');
+      </script> 
+      
+   </apex:outputPanel>
+   
+   <apex:outputPanel id="scriptPanel" >
+      <script>
+         
+         // warning message functions
+         // hide message if user clicks 'close'
+         jQuery('.closeX').click(function() {
+            hideWarningMessage();
+         });
+         
+         function isOverMaxSelectedFieldsLimit(num) {
+            if (selectedFieldsArray.length >= num) {
+               return true;
+            } else {
+               return false;
+            }
+         }
+         
+         function isNoFieldsSelected() {
+            if (selectedFieldsArray.length == 0) {
+               return true;
+            } else {
+               return false;
+            }
+         }
+         
+         function isNoObjectSelected() {
+            var objNameList = jQuery('.objectNameList');
+            //console.log("objNameList:" + objNameList.val());
+            if (objNameList.val() == null || objNameList.val() == undefined || objNameList.val() == '') {
+              return true;
+            } else {
+              return false;
+            }
+         }
+         
+         function isNoActionName() {
+            var actionName = jQuery('.actionName');
+            
+            if (actionName.val() == null || actionName.val() == undefined || actionName.val() == '') {
+              return true;
+            } else {
+              return false;
+            }
+         }
+         
+         function isActionNameTooLong (maxLen) {
+            var actionName = jQuery('.actionName').val();
+            
+            if (actionName.length > maxLen) {
+               return true;
+            } else {
+               return false;
+            }
+         }
+         
+         function isNoOperationSelected() {
+            var opNameList = jQuery('.operationNameList');
+            //console.log("opNameList:" + opNameList.val());
+            if (opNameList.val() == null || opNameList.val() == undefined || opNameList.val() == '') {
+              return true;
+            } else {
+              return false;
+            }
+         }
+         
+         function showMaxFieldExceededErr(pElemClicked) {
+            var pMsg = '&nbsp;No more than 9 fields can be selected.';
+            showWarningMessage(pElemClicked, pMsg, null);
+         }
+         
+         function showActionNameTooLongError (pElemClicked, max) {
+            var pMsg = '&nbsp;Action name cannot exceed ' + max + ' characters.';
+            showWarningMessage(pElemClicked, pMsg, null);
+         }
+         
+         function showObjectFieldReqErr(pElemClicked) {
+            var pMsg = '&nbsp;You must select an object.';
+            showWarningMessage(pElemClicked, pMsg, null);
+         }
+         
+         function showOperationReqErr(pElemClicked) {
+            var pMsg = '&nbsp;You must select an operation.';
+            showWarningMessage(pElemClicked, pMsg, null);
+         }
+         
+         function showActionNameReqErr(pElemClicked) {
+            var pMsg = '&nbsp;You must enter an Action Name.';
+            showWarningMessage(pElemClicked, pMsg, null);
+         }
+   
+         function noFieldsSelectedErr(pElemClicked) {
+            var pMsg = '&nbsp;You must select at least one field.';
+            showWarningMessage(pElemClicked, pMsg, null);
+         }
+         
+         function showWarningMessage(pElemClicked, pMsg) {
+            var msgPopup = jQuery("#vldWarning");
+            var currentPos = jQuery(pElemClicked).position();
+            
+            // set the message text
+            msgPopup.find(".msgBody").html(pMsg);
+            
+            // position the popup based on the pElemClicked position
+            msgPopup.css('top', (currentPos.top * 1 + 23));
+            msgPopup.css('left', (currentPos.left * 1 + 10));
+            msgPopup.show();
+            //pEvent.stopPropagation();
+            
+            // make message visible
+            jQuery(window).scrollTop(currentPos.top);
+         }
+         
+         function hideWarningMessage() {
+            if (jQuery("#vldWarning").is(':visible')==true) {
+              jQuery("#vldWarning").hide();
+              jQuery("#vldWarning").find(".msgBody").html("");
+            }
+         }
+         
+         function updateSelectedListForSave() {
+            var saveBtn = jQuery('#saveAndSubmitButton');
+            
+            if (isNoObjectSelected()) {
+               
+               showObjectFieldReqErr(saveBtn);
+               
+            } else if (isNoActionName()) {
+               
+               showActionNameReqErr(saveBtn);
+               
+            } else if (isActionNameTooLong(20)) {
+               
+               showActionNameTooLongError(saveBtn, 20);
+               
+            } else if (isNoOperationSelected()) {
+               
+               showOperationReqErr(saveBtn);
+               
+            } else if (isNoFieldsSelected()) {
+            
+               // show required err message
+               noFieldsSelectedErr(saveBtn);
+            
+            } else if (!isOverMaxSelectedFieldsLimit(10)) {
+            
+               hideWarningMessage();
+               disablePageActions();
+               saveSelected(selectedFieldsArray.join());
+            
+            } else {
+            
+               // Show max field error message
+               showMaxFieldExceededErr(saveBtn);
+            }
+            
+            /*
+            var selectedFieldsUL = jQuery('#selectedFieldList');
+   
+            selectedFieldsUL.find('.fieldName').each(function (i) {
+               var fieldValue = jQuery(this).html();
+               if (jQuery.inArray(fieldValue, selectedFieldsArray) == -1) {
+                  selectedFieldsArray.push(fieldValue);
+               }
+            });
+            
+            */
+         }
+         
+         function addFieldToSelectedList(liField) {
+            
+            var jQueryLiField = jQuery(liField);
+            var fieldName = jQueryLiField.find('.fieldName').html();
+            var fieldLabel = jQueryLiField.find('.fieldLabel').html();
+                        
+            if (jQuery.inArray(fieldName, selectedFieldsArray) == -1) {
+               
+               if (isOverMaxSelectedFieldsLimit(9) == false) {            
+               
+                  // add it to the selected array
+                  selectedFieldsArray.push(fieldName);
+               
+                  // add to the selected list
+                  addLIToSelectedList(fieldName, fieldLabel);
+                  
+                  // remove from the available list
+                  jQueryLiField.remove();
+               
+               } else {
+                  showMaxFieldExceededErr(liField);
+               } 
+            }
+            
+         }
+         
+         function removeSelectedField(liField) {
+            
+            var jQueryLiField = jQuery(liField);
+            var fieldName = jQueryLiField.find('.fieldName').html();
+            var fieldLabel = jQueryLiField.find('.fieldLabel').html();
+            
+            addLIToAvailableList(fieldName, fieldLabel);
+            
+            // remove field from selected array
+            selectedFieldsArray.splice(jQuery.inArray(fieldName, selectedFieldsArray), 1);
+            
+            //Remove the li from the selected fields list in the UI
+            jQuery(jQueryLiField).remove();
+            
+         }
+         
+         function addLIToSelectedList(fieldName, fieldLabel) {
+            
+            jQuery('#selectedFieldList').append('<li>' + 
+                                       '<span class="deleteBullet" title="Remove" onclick="removeSelectedField(jQuery(this).parent())">&nbsp;</span>' + 
+                                       '<span class="fieldLabel">' + fieldLabel + '</span>' +
+                                       '<span class="fieldName" style="display:none;">' + fieldName + '</span>' +
+                                        '</li>');
+         
+         }
+         
+         function addLIToAvailableList(fieldName, fieldLabel){
+         
+            jQuery('#availableFieldList').append('<li>' +
+                                        '<span class="addBullet" title="Add" onclick="addFieldToSelectedList(jQuery(this).parent())">&nbsp;</span>' + 
+                                           '<span class="fieldLabel">' + fieldLabel + '</span>' +
+                                           '<span class="fieldName" style="display:none;">' + fieldName + '</span>' + 
+                                           '</li>');
+            
+         }
+         
+         jQuery('input[type=submit]').click(function() {
+            disablePageActions();
+         });
+         
+         function disablePageActions() {
+               
+            jQuery('input[type=submit], input[type=button]').addClass('none');
+            jQuery('input.btnDisabled').removeClass('none');
+               
+         }
+         
+         function enablePageActions() {
+               
+            jQuery('input[type=submit], input[type=button]').removeClass('none');
+            jQuery('input.btnDisabled').addClass('none');
+               
+         }
+         
+         enablePageActions();
+      
+      </script>
+      
+   </apex:outputPanel>
+   
+   <style type="text/css">
+      .fieldLabel {font-weight: bold }
+      .star {font-weight:bold; color:red; position:relative; left:2px;}
+      .addIcon, .addBullet, .deleteBullet, .deleteIcon {background-image:url('{!URLFOR($Resource.buttons, "sprites/bullets_sprite.png")}'); background-repeat:no-repeat;}
+      .addIcon{ background-position: 0 0; width: 16px; height: 16px; } 
+      .addBullet{ background-position: -30px -2px; width: 16px; height: 16px; } 
+      .deleteBullet{ background-position: -56px -2px; width: 16px; height: 16px; } 
+      .deleteIcon{ background-position: -78px 0; width: 16px; height: 16px; }
+      ul li {list-style-type:none; margin-left:5px !important}
+      li .addBullet, li .deleteBullet {cursor:pointer; padding-right:10px;}
+      .outlineBox {background-color:#E7E7E7; margin-top:5px; padding:10px; -moz-border-radius:3px; -webkit-border-radius:3px; -khtml-border-radius:3px; border-radius:3px; z-index:2000 !important; min-width:150px; min-height:200px;}
+      .msgBody {padding-top:10px; padding-right:10px; cursor:default}
+      .msgBox {margin-top:5px; margin-bottom:5px; padding:10px; background-color:#FFFFCC; border:1px solid #CC0000; -moz-border-radius:3px; -webkit-border-radius:3px; -khtml-border-radius:3px; border-radius:3px; z-index:2000 !important;} /*z-index over 1000 allows the textarea resize handle to not show through the box*/
+      .closeX {cursor:pointer; color:#888; text-align:right; padding-top:5px; padding-right:8px;}
+      .none {display:none;}
+      #availableFieldList, #selectedFieldList {padding-left:2px;}
+      #availableFieldList li, #selectedFieldList li {margin-left:2px;}
+      .nitro {height:550px !important;}
+   </style>
+   
+</apex:page>

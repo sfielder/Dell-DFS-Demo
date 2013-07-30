@@ -1,0 +1,30 @@
+<apex:page standardcontroller="Account" extensions="acctDash.AccountDashboardsController" showheader="false">
+   
+<html>
+  <head>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Product Family');
+        data.addColumn('number', 'Amount Sold');
+        <apex:outputText value="{!salesAmountByProduct}" />
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                chart.draw(data, {width: 400, height: 200, title: 'Sales Amount by Product Family'});
+        }
+ </script>
+  </head>
+
+  <body>
+
+    <div id="chart_div"></div>
+  </body>
+
+
+</html>
+</apex:page>

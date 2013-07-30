@@ -1,0 +1,39 @@
+<apex:component >
+<!-- Attribute Definitions -->
+<apex:attribute name="BorderColor" type="String" required="true" description=""></apex:attribute>
+<apex:attribute name="Width" type="String" required="true" description=""></apex:attribute>
+<apex:attribute name="Height" type="String" required="true" description=""></apex:attribute>
+<apex:attribute name="BackColor" type="String" required="true" description=""></apex:attribute>
+<apex:attribute name="BackColor" type="String" required="true" description=""></apex:attribute>
+<apex:attribute name="BorderSize" type="String" required="true" description=""></apex:attribute>
+<apex:attribute name="ImageUrl" type="String" required="false" description=""></apex:attribute>
+<apex:attribute name="Message" type="String" required="false" description=""></apex:attribute>
+<apex:attribute name="messageStyle" type="String" required="false" description="Message inline style"></apex:attribute>
+<apex:attribute name="BorderStyle" type="String" required="false" description="Message box border style: solid, outset, inset, etc"></apex:attribute>
+
+<div id="salesforceSource_blurybackground" style="overflow:inherit;position:absolute; left:1px; top:1px; width:100%; height:100; text-align:center; vertical-align: middle; background-color: #088FCF; opacity:1.0;filter:alpha(opacity=100)">
+</div>
+<div id="salesforceSource_StatusBox" style="position:absolute; left:40%; top: 35%;width: {!Width}; height:{!Height}; opacity:1;filter:alpha(opacity=100)">
+<table border="{!BorderSize}" cellpadding="0" cellspacing="0" style="border-left-color: {!BorderColor};
+border-bottom-color: {!BorderColor}; width: {!Width}; border-top-color: {!BorderColor}; height:{!Height};
+border-right-color:{!BorderColor}; border-style:{!BorderStyle}; background-color:{!BackColor};">
+<tr>
+<td align="left" valign="top">
+<table border="0" cellpadding="4" cellspacing="0" style="width: 100%; height: 100%">
+<tr>
+<td style="border-bottom-color:{!BorderColor}; border-bottom-width:1px; border-bottom-style:solid;vertical-align:middle;">
+<img src="{!ImageUrl}" width="20" height = "20"/></td>
+<td style="border-bottom-color:{!BorderColor}; border-bottom-width:1px; border-bottom-style:solid;vertical-align:middle;{!messageStyle}">
+&nbsp;{!Message}</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript">
+var theForm = document.getElementById("salesforceSource_blurybackground");
+theForm.style.height = "99.9%";
+theForm.style.width = "99.9%";
+</script>
+</apex:component>

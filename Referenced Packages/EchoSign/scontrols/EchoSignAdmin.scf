@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html> 
+<head> 
+<!-- Replace all instances of MyApp with your app's name --> 
+<title>MyApp Splash Page</title> 
+
+<!-- Do not edit this section below --> 
+<style type="text/css" media="all"> 
+body#splashBody { 
+font-family: arial, helvetica, verdana, sans-serif; 
+font-size: 80%; 
+margin: 0; 
+padding: 0; 
+width: 97%; 
+} 
+img { 
+border: 0; 
+margin: 0; 
+padding: 0; 
+} 
+p { 
+margin: 0; 
+padding: 0; 
+} 
+h1.appName { 
+font-weight: bold; 
+font-size: 100%; 
+color: #FFF; 
+background-color: #6699CC; 
+padding: 10px 0 10px 8px; 
+margin: 0 0 15px 0; 
+} 
+h2 { 
+color: #FFF; 
+padding: 2px 0 2px 8px; 
+margin-top: 0; 
+background-color: #6699CC; 
+font-size: 90%; 
+} 
+h2.exchangeTitle { 
+background-color: #999; 
+} 
+#splash { 
+margin: 0; 
+padding: 0; 
+width: 100%; 
+} 
+#splash td { 
+margin: 0; 
+padding: 0; 
+} 
+#splash #splashLeft { 
+vertical-align: top; 
+background-color: #F3F3EC; 
+border-bottom: 2px solid #6699CC; 
+} 
+#splash #splashCenter { 
+display:block; 
+width: 15px; 
+background-color: #FFF; 
+} 
+#splash #splashRight { 
+vertical-align: top; 
+background-color: #E8E8E8; 
+border-bottom: 2px solid #999; 
+} 
+#splash #splashLeft .about, #splash #splashLeft .exchange { 
+width: 100%; 
+} 
+#splash #splashRight .exchange p { 
+font-size: 90%; 
+color: #333; 
+margin: 0 10px 12px 10px; 
+line-height: 1.4em; 
+} 
+#splash #splashLeft .about p { 
+font-size: 90%; 
+color: #333; 
+margin: 0 10px 12px 15px; 
+line-height: 1.4em; 
+} 
+#splash #splashLeft .about fieldset { 
+color: #333; 
+margin: 0 15px 10px 15px; 
+padding: 2px; 
+} 
+#splash #splashLeft .about fieldset ul { 
+padding: 0; 
+margin: .3em 0 .3em 2em; 
+} 
+#splash #splashLeft .about fieldset li { 
+padding: 0; 
+margin: 0; 
+} 
+#splash #splashLeft .about legend { 
+font-size: 90%; 
+color: #333; 
+font-weight: bold; 
+} 
+.imgDiv { 
+text-align: center; 
+padding: 0 0 10px 0; 
+} 
+
+</style> 
+<!-- Do not edit this section above --> 
+</head> 
+
+<body id="splashBody"> 
+<h1 class="appName">EchoSign for AppExchange</h1> 
+<table id="splash" cellspacing="0"> 
+<tr> 
+<td id="splashLeft" width="75%"> 
+<div class="about"> 
+<h2>Installation Instructions: </h2> 
+<font size="2">
+<h4>Step 1: Install and Customize EchoSign for Salesforce</h4>
+<ul>
+<li>Please view our <a href="http://www.echosign.com/static/EchoSign-for-Salesforce-Installation-Guide-v6.0.pdf" target="pdf">Installation Guide</a> for detailed instructions.</li>
+<li>If you experience difficulties with the installation process, please contact us through our <a href="http://server.iad.liveperson.net/hc/s-41586732/cmd/kbresource/front_page!PAGETYPE" rel="nofollow" onclick="javascript:var pop = window.open('http://server.iad.liveperson.net/hc/s-41586732/cmd/kbresource/front_page!PAGETYPE','knowledgebase','width=775,height=675,scrollbars=yes,resizable=yes');pop.focus();return false;">Live Support</a>.
+</ul>
+<h4>Step 2: Enable Automatic Status Refresh</h4>
+<ul>
+<li>Automatic status refresh allows EchoSign to instantly update the status of your agreements the moment they're viewed or signed.</li>
+<li>This requires that you provide EchoSign with the username and password for an account in your Salesforce organization.  EchoSign will use this information to automatically log in to Salesforce and update your agreements.</li>
+<li><b>Note: You will need to add the EchoSign server IP range (72.3.215.0 – 72.3.215.255) to your Security Controls / Network Access in order to complete this step.</b></li>
+<li>Configure <a href="https://secure.echosignforsalesforce.com/salesforce-web/salesforceCredentials?namespace=echosign_dev1&session={!API.Session_ID}&server={!API.Partner_Server_URL_70}&organizationId={!Organization.Id}&Version=8">automatic status updates</a>.</li>
+</ul>
+<h4>Step 3: You're Done!</h4>
+
+<p>That's it!  You're ready to start sending agreements out for signature.</p>
+<p>EchoSign for Salesforce is free for the first 30 days.  Please visit our <a href="https://secure.echosignforsalesforce.com/salesforce-web/upgrade?namespace=echosign_dev1&session={!API.Session_ID}&server={!API.Partner_Server_URL_70}&organizationId={!Organization.Id}&Version=8" target="upgrade">upgrade page</a> to set up your EchoSign account.</p>
+</font>
+<!-- You must include specific Help and/or Support contact information below --> 
+
+<td><div id="splashCenter">&nbsp;</div></td> 
+
+<td id="splashRight" width="25%"> 
+<div class="exchange"> 
+
+<!-- Replace the information below with your COMPANY logo and a brief description of your company. --> 
+<!-- Do not alter the width & height of the image --> 
+
+<h2 class="exchangeTitle">About EchoSign</h2> 
+<div class="imgDiv"><img src="https://www.echosign.com/images/logo.echosign.sf.gif" alt="About EchoSign" width="222" height="48"></div> 
+<table cellSpacing="1" width="100%" border="0" id="table7"> 
+<tr> 
+<td>&nbsp;</td> 
+<td vAlign="top" rowSpan="2"> 
+<table cellSpacing="0" cellPadding="5" width="100%" border="0" id="table8"> 
+<tr> 
+<td colSpan="2"> 
+<p><span class="contentsubhead"><font size="2">With customers such as Cisco, Brooks-Eckerd, Network General and more, EchoSign is the leader in contract management specifically designed for sales organizations. EchoSign's unique blend of document management, virtual fax and e-signatures provide sales professionals an automated way of tracking, signing and storing of any sales contract. <br> 
+<br> 
+EchoSign is delivering a secure web-based tool for document management. EchoSign is based in Palo Alto, California, and is funded by Storm Ventures and Orrick Herrington.</font></span></td> 
+</tr> 
+</table> 
+</td> 
+</tr> 
+</table> 
+ 
+<p> 
+&nbsp;</p> 
+
+<!-- Please host the following AppExchange gif at your site. The image is available from the same location where you received this template. --> 
+
+<div class="imgDiv"><img src="https://www.echosign.com/images/logo.appexchange.sf.gif" alt="the Appexchange" width="222" height="48"></div> 
+</div> 
+</td> 
+</tr> 
+</table> 
+<img src="https://secure.echosignforsalesforce.com/salesforce/importUser?namespace=echosign_dev1&session={!User.Session_ID}&Version=8&server={!API.Partner_Server_URL_70}">
+</body> 
+</html>

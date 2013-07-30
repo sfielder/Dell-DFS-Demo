@@ -1,0 +1,5 @@
+<apex:page showHeader="false">
+  <script type="text/javascript">
+    window.location.href = "http://www.echosign.com/livehelp";
+  </script>
+</apex:page>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Facebook ユーザ</value>
+    </caseValues>
+    <fields>
+        <label>写真</label>
+        <name>Facebook_Image__c</name>
+    </fields>
+    <fields>
+        <label>Facebook ID</label>
+        <name>Fcbk_Id__c</name>
+    </fields>
+    <fields>
+        <label>画像</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>検証済み</label>
+        <name>Valid__c</name>
+    </fields>
+    <fields>
+        <label>自己紹介</label>
+        <name>about_me__c</name>
+    </fields>
+    <fields>
+        <label>誕生日</label>
+        <name>birthday__c</name>
+    </fields>
+    <fields>
+        <label>市区郡</label>
+        <name>city__c</name>
+    </fields>
+    <fields>
+        <label>国</label>
+        <name>country__c</name>
+    </fields>
+    <fields>
+        <label>メール</label>
+        <name>email__c</name>
+    </fields>
+    <fields>
+        <label>名</label>
+        <name>first_name__c</name>
+    </fields>
+    <fields>
+        <label>姓</label>
+        <name>last_name__c</name>
+    </fields>
+    <fields>
+        <label>政治</label>
+        <name>political__c</name>
+    </fields>
+    <fields>
+        <label>宗教</label>
+        <name>religion__c</name>
+    </fields>
+    <fields>
+        <label>性別</label>
+        <name>sex__c</name>
+    </fields>
+    <fields>
+        <label>都道府県</label>
+        <name>state__c</name>
+    </fields>
+    <nameFieldLabel>名前</nameFieldLabel>
+    <webLinks>
+        <label>Facebook アクセス権を無効化</label>
+        <name>Revoke_Facebook_Access</name>
+    </webLinks>
+    <webLinks>
+        <label>Facebook アクセス権を許可</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

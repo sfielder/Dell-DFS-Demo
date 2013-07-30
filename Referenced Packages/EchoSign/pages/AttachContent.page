@@ -1,0 +1,135 @@
+<apex:page controller="echosign_dev1.AttachContentController">
+	<div class="lookupTab FilePickerResultsFrame"> 
+    	<apex:form >
+        	<apex:sectionHeader title="Content" />
+        	<apex:pageBlock id="errorpb" rendered="{!isError}">
+        		<apex:outputPanel id="recipientTemplateTypeDescription" rendered="{!isError}">
+        			Salesforce CRM Content is not enabled for your organization. <a href="/ui/setup/org/ContentSettingsPage/d?setupid=ContentSettings">Enable Salesforce CRM Content</a> and add content then return to this page.<br/>
+      			</apex:outputPanel>
+        	</apex:pageBlock>
+        	<apex:pageBlock title="Select Content to Attach" id="pb"  rendered="{! NOT(isError) }">
+            	<apex:pageBlockSection id="searchSection" columns="1">
+                	<apex:pageBlockSectionItem id="librarysection" dataStyle="margin-left: 0px; padding-left: 0px;">
+                		<apex:outputPanel id="librarySelector" layout="block">
+                			<b>Search in</b>
+                       		<apex:selectList id="Library" value="{!selectedLibrary}" size="1">
+                           		<apex:selectOptions value="{!libraryOptions}"/>
+                           		<apex:actionSupport event="onchange" action="{!onLibraryChange}" rerender="buttonsSection,theList"/>
+                         		<apex:actionStatus id="statuslibrary">
+                            		<apex:facet name="start"><img src="{!$Resource.loading}" style="width:20px;height:20px" /></apex:facet>
+                               		<apex:facet name="stop"><img src="/s.gif" style="width:20px;height:20px" /></apex:facet>
+                           		</apex:actionStatus>
+                       		</apex:selectList>
+                       		<b>for</b>&nbsp;
+                       		<apex:inputText value="{!searchTerm}">
+               					<apex:actionSupport event="onchange" rerender="theList" action="{!onSearch}"/>
+               					<apex:actionSupport event="onkeyup" rerender="theList" action="{!onSearch}"/>
+           					</apex:inputText>
+                   	 	</apex:outputPanel>
+                   </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection id="tagssection" columns="1">
+                	<apex:pageBlockSectionItem id="tagssectionitem">
+                   	    <apex:outputPanel id="tagsSelector" layout="block">
+       						<h2>Filter By Tags</h2>&nbsp;&nbsp;
+       						<apex:repeat value="{!tagWrappers}" var="tagWrapper" >
+       						    <apex:inputCheckbox value="{!tagWrapper.isSelected}">
+               						<apex:actionSupport event="onchange" rerender="buttonsSection,theList" action="{!onTagChange}"/>
+               						<apex:actionSupport event="onclick" rerender="buttonsSection,theList" action="{!onTagChange}"/>
+           						</apex:inputCheckbox>
+           						<apex:outputText value="{!tagWrapper.Name}   "/>
+       						</apex:repeat>
+   							<br />
+   							<apex:commandLink action="{!onSelectAllTags}" value="Select All Tags" rerender="tagssection,theList" />&nbsp;&nbsp;|&nbsp;&nbsp;
+							<apex:commandLink action="{!onDeselectAllTags}" value="Deselect All Tags" rerender="tagssection,theList" />
+   						</apex:outputPanel>
+                    </apex:pageBlockSectionItem>         
+            	</apex:pageBlockSection>
+                <apex:pageBlockSection id="buttonssection" columns="1">
+                    <apex:pageBlockSectionItem id="buttoncontrolssection">
+                       	<apex:panelGrid columns="2" id="theGrid">
+                    		<apex:commandButton action="{!save}" value="Attach Selected Content" disabled="{!isSaveDisabled}"/>
+							<apex:commandButton action="{!cancel}" value="Cancel"/>
+                 		</apex:panelGrid>
+                	</apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+	            <apex:outputpanel id="theList" rendered="{!NOT ISNULL(contentWrappers)}" layout="block" >        
+	                <apex:pageBlockTable id="BFTable2a" value="{!contentWrappers}" rowClasses="firstHeaderRow" var="contentWrapper" columns="5" width="200%">
+	                	<apex:column width="20px">
+	                        <apex:facet name="header"></apex:facet>
+	                        <apex:inputCheckbox value="{!contentWrapper.isSelected}" id="checkedone">
+	                        	<apex:actionSupport event="onchange" rerender="theGrid" action="{!onContentSelectionChanged}"/>
+	                        	<apex:actionSupport event="onclick" rerender="theGrid" action="{!onContentSelectionChanged}"/>
+	                        </apex:inputCheckbox>
+	                    </apex:column>              
+	                   	<apex:column >
+	                   		<apex:facet name="header">
+	                   			<apex:outputPanel >
+	                   				<apex:commandLink value="Title" action="{!doSort}" rerender="BFTable2a">
+										<apex:param name="sortField" value="Title" assignTo="{!sortField}"/>
+									</apex:commandLink>
+									<apex:image value="{!$Resource.echosign_dev1__SortDescArrow}" title="Sort Descending" rendered="{! previousSortField = sortField && isSortedByTitle }">
+										<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+											<apex:param name="sortField" value="Title" assignTo="{!sortField}"/>
+										</apex:actionSupport>
+									</apex:image>
+									<apex:image value="{!$Resource.echosign_dev1__SortAscArrow}" title="Sort Ascending" rendered="{! previousSortField <> sortField && isSortedByTitle }">
+										<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+											<apex:param name="sortField" value="Title" assignTo="{!sortField}"/>
+										</apex:actionSupport>
+									</apex:image>
+								</apex:outputPanel>
+							</apex:facet>
+	                   		<apex:image value="{!$Resource.echosign_dev1__PdfIcon}" rendered="{!contentWrapper.isPdf}"/>
+	                   		<apex:image value="{!$Resource.echosign_dev1__WordIcon}" rendered="{!contentWrapper.isWord}"/>
+	               			<apex:image value="{!$Resource.echosign_dev1__PowerPointIcon}" rendered="{!contentWrapper.isPowerPoint}"/>
+	               			<apex:image value="{!$Resource.echosign_dev1__ExcelIcon}" rendered="{!contentWrapper.isExcel}"/>
+	               			<apex:image value="{!$Resource.echosign_dev1__JpegIcon}" rendered="{!contentWrapper.isJpeg}"/>
+	                    	&nbsp;<apex:outputtext value="{!contentWrapper.title}"/>             
+	                  	</apex:column>  
+	                   <apex:column >
+	                   		<apex:facet name="header">
+	                   			<apex:outputPanel >
+	                   				<apex:commandLink value="File Type" action="{!doSort}" rerender="BFTable2a">
+										<apex:param name="sortField" value="Type" assignTo="{!sortField}"/>
+									</apex:commandLink>
+									<apex:image value="{!$Resource.echosign_dev1__SortDescArrow}" title="Sort Descending" rendered="{! previousSortField = sortField && isSortedByType }">
+										<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+											<apex:param name="sortField" value="Type" assignTo="{!sortField}"/>
+										</apex:actionSupport>
+									</apex:image>
+									<apex:image value="{!$Resource.echosign_dev1__SortAscArrow}" title="Sort Ascending" rendered="{! previousSortField <> sortField && isSortedByType }">
+										<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+											<apex:param name="sortField" value="Type" assignTo="{!sortField}"/>
+										</apex:actionSupport>
+									</apex:image>
+								</apex:outputPanel>
+							</apex:facet>
+	                    	<apex:outputtext value="{!contentWrapper.fileType}"/>
+	                  </apex:column>
+	                   <apex:column >
+	                  		<apex:facet name="header">
+	                   			<apex:outputPanel >
+	                   				<apex:commandLink value="Version Number" action="{!doSort}" rerender="BFTable2a">
+										<apex:param name="sortField" value="Version" assignTo="{!sortField}"/>
+									</apex:commandLink>
+									<apex:image value="{!$Resource.echosign_dev1__SortDescArrow}" title="Sort Descending" rendered="{! previousSortField = sortField && isSortedByVersion }">
+										<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+											<apex:param name="sortField" value="Version" assignTo="{!sortField}"/>
+										</apex:actionSupport>
+									</apex:image>
+									<apex:image value="{!$Resource.echosign_dev1__SortAscArrow}" title="Sort Ascending" rendered="{! previousSortField <> sortField && isSortedByVersion }">
+										<apex:actionSupport event="onclick" action="{!doSort}" rerender="BFTable2a">
+											<apex:param name="sortField" value="Version" assignTo="{!sortField}"/>
+										</apex:actionSupport>
+									</apex:image>
+								</apex:outputPanel>
+							</apex:facet>
+	                    	<apex:outputtext value="{!contentWrapper.versionNumber}"/>
+	                  </apex:column>      
+	                </apex:pageBlockTable>
+	            </apex:outputpanel>
+			</apex:pageBlock>
+    	</apex:form>
+	</div> 
+</apex:page>

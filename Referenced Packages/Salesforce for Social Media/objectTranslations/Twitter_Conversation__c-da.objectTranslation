@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Samtale</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Samtale</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Samtale</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Samtalerne</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Samtaler</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Samtaler</value>
+    </caseValues>
+    <fields>
+        <label>Konto</label>
+        <name>Account__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Eksternt forfatter-id</label>
+        <name>Author_External_Id__c</name>
+    </fields>
+    <fields>
+        <label>Forfatters brugernavn</label>
+        <name>Author_Name__c</name>
+    </fields>
+    <fields>
+        <label>Forfatters fulde navn</label>
+        <name>Author_Real_Name__c</name>
+    </fields>
+    <fields>
+        <label>Forfatter-URL</label>
+        <name>Author_URL__c</name>
+    </fields>
+    <fields>
+        <label>Sagslinkikon</label>
+        <name>Case_Created__c</name>
+    </fields>
+    <fields>
+        <label>Sag</label>
+        <name>Case__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Chatter-indlæg</label>
+        <name>Chatter_Post_Link__c</name>
+    </fields>
+    <fields>
+        <label>Chatter-indlægs-id</label>
+        <name>Chatter_Post__c</name>
+    </fields>
+    <fields>
+        <label>Kontaktlinkikon</label>
+        <name>Contact_Created__c</name>
+    </fields>
+    <fields>
+        <label>Kontakt</label>
+        <name>Contact__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Indhold</label>
+        <name>Content__c</name>
+    </fields>
+    <fields>
+        <label>Direkte meddelelse</label>
+        <name>Direct_Message__c</name>
+    </fields>
+    <fields>
+        <label>Downloadnavn</label>
+        <name>Download_Name__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Facebook-side</label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Antal interesserede</label>
+        <name>Follower_Count__c</name>
+    </fields>
+    <fields>
+        <label>Antal, der følger</label>
+        <name>Following_Count__c</name>
+    </fields>
+    <fields>
+        <label>Geografiske koordinater</label>
+        <name>Geo_Coordinates__c</name>
+    </fields>
+    <fields>
+        <label>Avatar-ikon</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>Besvaret samtales eksterne id</label>
+        <name>In_Reply_To_Status_Id__c</name>
+    </fields>
+    <fields>
+        <label>Besvaret brugers eksterne id</label>
+        <name>In_Reply_To_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Er direkte meddelelse</label>
+        <name>IsDirectMessage__c</name>
+    </fields>
+    <fields>
+        <label>Er geografisk aktiveret</label>
+        <name>Is_Geo_Enabled__c</name>
+    </fields>
+    <fields>
+        <label>Klout-nummer</label>
+        <name>Klout_Number__c</name>
+    </fields>
+    <fields>
+        <label>Klout-resultat</label>
+        <name>Klout_Score__c</name>
+    </fields>
+    <fields>
+        <label>Emnelinkikon</label>
+        <name>Lead_Created__c</name>
+    </fields>
+    <fields>
+        <label>Emne</label>
+        <name>Lead__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Synes om</label>
+        <name>Likes_Link__c</name>
+    </fields>
+    <fields>
+        <label>Antal, der synes om</label>
+        <name>Likes__c</name>
+    </fields>
+    <fields>
+        <label>Link</label>
+        <name>Link__c</name>
+    </fields>
+    <fields>
+        <label>Meddelelse</label>
+        <name>Message__c</name>
+    </fields>
+    <fields>
+        <label>Negative tweets</label>
+        <name>Negative_Tweets__c</name>
+    </fields>
+    <fields>
+        <label>Neutrale tweets</label>
+        <name>Neutral_Tweets__c</name>
+    </fields>
+    <fields>
+        <help><!-- Creates a new Case for this Conversation regardles of its relationship to other Conversations and Cases --></help>
+        <label>Ny sag</label>
+        <name>New_Case__c</name>
+    </fields>
+    <fields>
+        <label>Oprindelsesdato</label>
+        <name>Origin_Date__c</name>
+    </fields>
+    <fields>
+        <label>Oprindelse</label>
+        <name>Origin_Icon__c</name>
+    </fields>
+    <fields>
+        <label>Oprindelig værdi</label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Overordnet samtale (underkendt)</label>
+        <name>ParentConversation__c</name>
+        <relationshipLabel>Samtaler (underkendt)</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Overordnet</label>
+        <name>Parent__c</name>
+        <relationshipLabel>Underordnede samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Stedkoordinater</label>
+        <name>Place_Coordinates__c</name>
+    </fields>
+    <fields>
+        <label>Sted</label>
+        <name>Place__c</name>
+    </fields>
+    <fields>
+        <label>Positive tweets</label>
+        <name>Positive_Tweets__c</name>
+    </fields>
+    <fields>
+        <label>Udgivelsesdato</label>
+        <name>Published_Date__c</name>
+    </fields>
+    <fields>
+        <label>Svarstatus</label>
+        <name>Replied_Status__c</name>
+    </fields>
+    <fields>
+        <label>Besvaret bruger</label>
+        <name>Replied_User__c</name>
+    </fields>
+    <fields>
+        <label>Løsningslinkikon</label>
+        <name>Solution_Created__c</name>
+    </fields>
+    <fields>
+        <label>Løsning</label>
+        <name>Solution__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Status</label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Actioned</masterLabel>
+            <translation><!-- Actioned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deleted</masterLabel>
+            <translation><!-- Deleted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ignored</masterLabel>
+            <translation><!-- Ignored --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mark as reviewed</masterLabel>
+            <translation><!-- Mark as reviewed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound @reply</masterLabel>
+            <translation><!-- Outbound @reply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Direct Message</masterLabel>
+            <translation><!-- Outbound Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solved by Community</masterLabel>
+            <translation><!-- Solved by Community --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Samtalehumør</label>
+        <name>Tweet_Sentiment__c</name>
+    </fields>
+    <fields>
+        <label>Eksternt id</label>
+        <name>TwitterID__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-konto</label>
+        <name>Twitter_Account__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Twitter-id-nummer</label>
+        <name>Twitter_Id_Number__c</name>
+    </fields>
+    <fields>
+        <label>Profilbillede</label>
+        <name>Twitter_Image__c</name>
+    </fields>
+    <fields>
+        <label>Placering</label>
+        <name>Twitter_Location__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-søgning</label>
+        <name>Twitter_Search__c</name>
+        <relationshipLabel>Samtaler</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Twitter-kilde</label>
+        <name>Twitter_Source__c</name>
+    </fields>
+    <fields>
+        <help><!-- The API source of the record.  This can be @Replies, Messages, or Search --></help>
+        <label>Type</label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>@Replies</masterLabel>
+            <translation><!-- @Replies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comment</masterLabel>
+            <translation><!-- Comment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conversation</masterLabel>
+            <translation><!-- Conversation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Message</masterLabel>
+            <translation><!-- Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Direct Message</masterLabel>
+            <translation><!-- Outbound Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound comment</masterLabel>
+            <translation><!-- Outbound comment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound post</masterLabel>
+            <translation><!-- Outbound post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound reply</masterLabel>
+            <translation><!-- Outbound reply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registered Account</masterLabel>
+            <translation><!-- Registered Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search</masterLabel>
+            <translation><!-- Search --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wall Post</masterLabel>
+            <translation><!-- Wall Post --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Opdateringsdato</label>
+        <name>Updated_Date__c</name>
+    </fields>
+    <fields>
+        <label>Brugerbio</label>
+        <name>User_Bio__c</name>
+    </fields>
+    <fields>
+        <label>Brugeroprettelsesdato</label>
+        <name>User_Creation_Date__c</name>
+    </fields>
+    <fields>
+        <label>Brugers seneste tweet</label>
+        <name>User_Last_tweet__c</name>
+    </fields>
+    <fields>
+        <label>Bruger synes om</label>
+        <name>User_Likes__c</name>
+    </fields>
+    <fields>
+        <label>Brugerstatusoptælling</label>
+        <name>User_Status_count__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>Conversation Layout</layout>
+        <sections>
+            <label><!-- Author Info --></label>
+            <section>Author Info</section>
+        </sections>
+        <sections>
+            <label><!-- Content --></label>
+            <section>Content</section>
+        </sections>
+        <sections>
+            <label><!-- Conversation Origin --></label>
+            <section>Conversation Origin</section>
+        </sections>
+        <sections>
+            <label><!-- Disposition --></label>
+            <section>Disposition</section>
+        </sections>
+        <sections>
+            <label><!-- Reply Details --></label>
+            <section>Reply Details</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Samtalenavn</nameFieldLabel>
+    <webLinks>
+        <label>Føj til kampagne</label>
+        <name>Add_To_Campaign</name>
+    </webLinks>
+    <webLinks>
+        <label>Føj til kampagne</label>
+        <name>Add_to_Campaign_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret sag</label>
+        <name>Create_Case</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret kontakt</label>
+        <name>Create_Contact</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret kontakt</label>
+        <name>Create_Contact_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret løsning</label>
+        <name>Create_Knowledge</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret emne</label>
+        <name>Create_Lead</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret emne</label>
+        <name>Create_Lead_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret personkonto</label>
+        <name>Create_Person_Account</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret personkonti</label>
+        <name>Create_Person_Account_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Slet ignorerede</label>
+        <name>Delete_Ignored</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret sag</label>
+        <name>Escalate_to_Case</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Twitter-oplysninger</label>
+        <name>Get_Author_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Twitter-oplysninger</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent kommentarer</label>
+        <name>Get_Comments</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent kommentarer</label>
+        <name>Get_Comments_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent samtale</label>
+        <name>Get_Conversation</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent samtale</label>
+        <name>Get_Conversation_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Klout-resultat</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Klout-resultat</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent samtaler</label>
+        <name>Get_More_Tweets</name>
+    </webLinks>
+    <webLinks>
+        <label>Ignorer</label>
+        <name>Ignore</name>
+    </webLinks>
+    <webLinks>
+        <label>Ignorer</label>
+        <name>Ignore_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Marker som gennemset</label>
+        <name>Mark_as_reviewed</name>
+    </webLinks>
+    <webLinks>
+        <label>Marker som gennemset</label>
+        <name>Mark_as_reviewed_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Negativ</label>
+        <name>Negative_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Neutral_Sentiment_Detail --></label>
+        <name>Neutral_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Positiv</label>
+        <name>Positive_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Send til Chatter</label>
+        <name>Post_to_Chatter</name>
+    </webLinks>
+    <webLinks>
+        <label>Opret løsning</label>
+        <name>Promote_to_Knowledge</name>
+    </webLinks>
+    <webLinks>
+        <label>Fjern fra Facebook</label>
+        <name>Remove_from_Facebook</name>
+    </webLinks>
+    <webLinks>
+        <label>Svar</label>
+        <name>Reply</name>
+    </webLinks>
+    <webLinks>
+        <label>Svar</label>
+        <name>Send_A_Tweet</name>
+    </webLinks>
+    <webLinks>
+        <label>Svar</label>
+        <name>Send_Twitter_Message</name>
+    </webLinks>
+    <webLinks>
+        <label>Løst af fællesskab</label>
+        <name>Solved_By_Community</name>
+    </webLinks>
+    <webLinks>
+        <label>Løst af fællesskab</label>
+        <name>Solved_By_Community_Massive</name>
+    </webLinks>
+</CustomObjectTranslation>

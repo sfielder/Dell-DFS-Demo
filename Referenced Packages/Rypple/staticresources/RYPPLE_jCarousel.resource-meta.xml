@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Private</cacheControl>
+    <contentType>application/x-javascript</contentType>
+    <description>jCarousel JS file version 2.7 (commented out the following line for IE8):
+
+//if (m === 0) throw Error(&quot;jCarousel: No width/height set for items. This will cause an infinite loop. Aborting...&quot;);</description>
+</StaticResource>

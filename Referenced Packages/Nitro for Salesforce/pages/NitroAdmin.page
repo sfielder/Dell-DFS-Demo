@@ -1,0 +1,4 @@
+<apex:page sidebar="false" controller="nitro.NitroAdminController" action="{!init}">
+<apex:iframe src="{!path}?apiKey={!apiKey}&userName={!userName}&password={!password}&autoLogin=true&mode={!mode}"
+             scrolling="false" id="adminFrame" width="100%" height="650px"></apex:iframe>
+</apex:page>

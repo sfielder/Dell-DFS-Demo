@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Twitter-bidragyder</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Twitter-bidragyder</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Twitter-bidragyder</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Twitter-bidragydere</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Twitter-bidragydere</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Twitter-bidragydere</value>
+    </caseValues>
+    <fields>
+        <label>Godkendelse</label>
+        <name>Authentication__c</name>
+    </fields>
+    <fields>
+        <label>Tweet som hovedkonto</label>
+        <name>Main_Account__c</name>
+    </fields>
+    <fields>
+        <label>OAuth-hemmelighed</label>
+        <name>OAuth_Secret__c</name>
+    </fields>
+    <fields>
+        <label>OAuth-token</label>
+        <name>OAuth_Token__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-konto</label>
+        <name>TwitterAccount__c</name>
+        <relationshipLabel>Bidragydere</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Twitter-bruger-id</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Bruger</label>
+        <name>User__c</name>
+        <relationshipLabel>Twitter-bidragydere</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Brugernavn</label>
+        <name>Username__c</name>
+    </fields>
+    <fields>
+        <label>Valideret</label>
+        <name>Valid__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Navn på Twitter-bidragyder</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Du skal angive en værdi</errorMessage>
+        <name>Twitter_Account_Needed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Ugyldigt brugernavn</errorMessage>
+        <name>Username_different_to_main_account</name>
+    </validationRules>
+    <webLinks>
+        <label>Tilføj bidragyder</label>
+        <name>Add_Contributor</name>
+    </webLinks>
+</CustomObjectTranslation>

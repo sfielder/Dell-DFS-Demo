@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AuthorExternalId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Author External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AuthorSocialHandle__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Author Social Handle</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AuthorType__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Author Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HarvestDate__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Harvest Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>IsOutbound__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Was this post made from Radian6 for the Service Cloud?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked if this post was sent from Salesforce.</inlineHelpText>
+        <label>Is Outbound</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Language__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Language</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIconResource__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A formula used by the media icon. Should not be made visible.</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(UPPER(MediaProvider),&quot;TWITTER&quot;), &quot;/resource/R6Service__tweet_logo&quot;,
+IF(CONTAINS(UPPER(MediaProvider), &quot;FACEBOOK&quot;), &quot;/resource/R6Service__Facebook_Logo&quot;,
+IF(CONTAINS(UPPER(MediaProvider), &quot;YOUTUBE&quot;), &quot;/resource/R6Service__MediaTypeYouTubeIcon&quot;,
+CASE(UPPER(MediaType),
+&quot;BLOGS&quot;, &quot;/resource/R6Service__MediaTypeBlogIcon&quot;,
+&quot;VIDEOS&quot;, &quot;/resource/R6Service__MediaTypeVideoIcon&quot;,
+&quot;IMAGES&quot;, &quot;/resource/R6Service__MediaTypeImageIcon&quot;,
+&quot;MAINSTREAM NEWS&quot;, &quot;/resource/R6Service__MediaTypeNewsIcon&quot;,
+&quot;MICROMEDIA&quot;, &quot;/resource/R6Service__MediaTypeMicromediaIcon&quot;,
+&quot;FORUM&quot;, &quot;/resource/R6Service__MediaTypeForumIcon&quot;,
+&quot;COMMENTS&quot;, &quot;/resource/R6Service__MediaTypeCommentIcon&quot;,
+&quot;/resource/R6Service__DefaultChannelLogo&quot;
+))))</formula>
+        <label>Media Icon Resource</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIcon__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The icon that represents the post&apos;s medium. This will be the provider&apos;s logo for common providers, or generic media type logos for less popular providers.</description>
+        <externalId>false</externalId>
+        <formula>IMAGE(MediaIconResource__c, MediaType + &quot;/&quot; + MediaProvider, 48, 48)</formula>
+        <inlineHelpText>The media provider or media type.</inlineHelpText>
+        <label>Media Icon</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PostLink__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A link to the post.  This displays as the media type icon and when clicked will take you to the external media type site.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( PostUrl), &quot;&quot;,  HYPERLINK(PostUrl,  IMAGE(MediaIconResource__c, PostUrl, 16, 16)))</formula>
+        <inlineHelpText>Click here to visit the post.</inlineHelpText>
+        <label>Post Link</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PostTags__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Post Tags</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>RecipientExternalId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Recipient External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RecipientSocialHandle__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Recipient Social Handle</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SourceTags__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Source Tags</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SpamRating__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Is this spam or not?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this spam or not?</inlineHelpText>
+        <label>Spam Rating</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Spam</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>StatusMessage__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Friendly post status. This will contain an easy-to-read description of the status of the post.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Status__c),
+NULL,
+CASE(UPPER(TRIM(Status__c)),
+&apos;R6_AUTHENTICATION&apos;, $Label.r6service__AuthorizationError,
+&apos;R6_APP&apos;, $Label.r6service__SendMessageError,
+&apos;SOCIAL_ACCOUNT_AUTHENTICATION&apos;, $Label.r6service__OauthError,
+&apos;INVALID_USER_ACCOUNT&apos;, $Label.r6service__InvalidUserAccountError,
+&apos;USER_NOT_VISIBLE&apos;, $Label.r6service__UserNotVisibleStatus,
+&apos;DUPLICATE_MESSAGE_POSTED&apos;, $Label.r6service__DuplicateMessageError,
+&apos;TWITTER_USER_NOT_FOLLOWING_YOU&apos;, $Label.r6service__TwitterUserNotFollowing,
+&apos;USERNAME_HAS_CHANGED&apos;, $Label.r6service__UsernameHasChangedError,
+&apos;SEND_MESSAGE_FAILED&apos;, $Label.r6service__SendMessageError,
+&apos;SENT&apos;, $Label.r6service__SentStatus,
+&apos;PENDING&apos;, $Label.r6service__PendingStatus,
+&apos;REPLIED&apos;, $Label.r6service__RepliedStatus,
+&apos;DELETED&apos;, $Label.r6service__DeletedStatus,
+$Label.r6service__UnknownStatus)
+)</formula>
+        <inlineHelpText>The post status. For example, posts may be sent, pending, deleted, replied, have an error message or be blank (for incoming posts that have not been addressed).</inlineHelpText>
+        <label>Status Message</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The status code of the post. This is the status code sent by Radian6 and is not meant to be human readable. See the StatusMessage field for the friendly status message.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status Code for the post, used to determine the friendly error message in StatusMessage.</inlineHelpText>
+        <label>Status Code</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <recordTypes>
+        <fullName>FacebookPost</fullName>
+        <active>true</active>
+        <label>Facebook</label>
+        <picklistValues>
+            <picklist>SpamRating__c</picklist>
+            <values>
+                <fullName>Not Spam</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>OtherPost</fullName>
+        <active>true</active>
+        <label>Other</label>
+        <picklistValues>
+            <picklist>SpamRating__c</picklist>
+            <values>
+                <fullName>Not Spam</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>TwitterPost</fullName>
+        <active>true</active>
+        <label>Twitter</label>
+        <picklistValues>
+            <picklist>SpamRating__c</picklist>
+            <values>
+                <fullName>Not Spam</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <webLinks>
+        <fullName>DeletePostfromSocialMediaProvider</fullName>
+        <availability>online</availability>
+        <description>Delete the post from the social media provider, but leave the post in Salesforce</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Delete from Source</masterLabel>
+        <openType>sidebar</openType>
+        <page>PostDelete</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

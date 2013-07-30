@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>24.0</apiVersion>
+    <description>Overlay that overlays a page to indicate that functionality is not available.</description>
+    <label>Disabled Feature Overlay</label>
+</ApexComponent>

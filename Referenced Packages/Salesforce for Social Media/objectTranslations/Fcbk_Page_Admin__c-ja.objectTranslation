@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Facebook ページの管理</value>
+    </caseValues>
+    <fields>
+        <label>Facebook ページ</label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel>Facebook ページの管理</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Facebook ユーザ</label>
+        <name>Facebook_User__c</name>
+        <relationshipLabel>Facebook ページの管理</relationshipLabel>
+    </fields>
+    <nameFieldLabel>数</nameFieldLabel>
+</CustomObjectTranslation>

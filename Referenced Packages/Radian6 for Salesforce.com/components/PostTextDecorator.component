@@ -1,0 +1,6 @@
+<apex:component controller="R6Service.PostTextDecoratorController" selfClosing="true">
+  <apex:attribute name="postText" type="String" assignTo="{!messageBody}" description="The text of the post content" required="true" />
+  <apex:attribute name="styleClass" type="String" description="css class to apply to the text block" />
+  
+  <apex:outputText styleClass="{!styleClass}" value="{!decoratedText}" escape="false"/>
+</apex:component>

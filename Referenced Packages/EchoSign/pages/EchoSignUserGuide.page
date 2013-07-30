@@ -1,0 +1,5 @@
+<apex:page showHeader="false">
+  <script type="text/javascript">
+    window.location.href = "https://echosign.my.salesforce.com/sfc/p/300000006IaD6GOC16xiwzBTpN0yY4Bbwbei1Qk=";
+  </script>
+</apex:page>

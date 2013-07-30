@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_Key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>--DEPRECATED - Do Not Use--</description>
+        <externalId>false</externalId>
+        <inlineHelpText>--DEPRECATED - Do Not Use--</inlineHelpText>
+        <label>--DEPRECATED - Do Not Use--</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>API_Server_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This setting is for internal EchoSign testing only.  Do not enter
+any value here.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting is for internal EchoSign testing only.  Do not enter
+any value here.</inlineHelpText>
+        <label>EchoSign API Server URL Override</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Action_Window_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Determine how EchoSign windows open in users&apos; browsers. &apos;Window&apos; - Open in a new windows; &apos;Frame&apos; - Open as a layer on top of the Agreement page; Default/Empty: Auto-detect based on the user&apos;s browser capabilities.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Determine how EchoSign windows open in users&apos; browsers. &apos;Window&apos; - Open in a new windows; &apos;Frame&apos; - Open as a layer on top of the Agreement page; Default/Empty: Auto-detect based on the user&apos;s browser capabilities.</inlineHelpText>
+        <label>Action Window Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Add_Audit_PDF_to_Attachment_List__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether a PDF of the audit trail is attached to the Agreement record after an agreement is signed.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether a PDF of the audit trail is attached to the Agreement record after an agreement is signed.</inlineHelpText>
+        <label>Add Audit PDF to Attachment List</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Add_Signed_PDF_Link_to_Agreement__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether a link to the signed PDF of a hosted agreement is added to the Agreement record after an agreement is signed.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether a link to the signed PDF of a hosted agreement is added to the Agreement record after an agreement is signed.</inlineHelpText>
+        <label>Add Signed PDF Link to Agreement</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Add_Signed_PDF_Separate_Attachments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether the signed agreement is attached to the agreement record as separate PDFs. To stop receiving the signed agreement as a merged PDF, please contact EchoSign Support.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether the signed agreement is attached to the agreement record as separate PDFs. To stop receiving the signed agreement as a merged PDF, please contact EchoSign Support.</inlineHelpText>
+        <label>Add Signed PDF as Separate Attachments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Add_Signed_PDF_to_Attachment_List__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether a PDF of the signed agreement is attached to the Agreement record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether a PDF of the signed agreement is attached to the Agreement record.</inlineHelpText>
+        <label>Add Signed PDF to Attachment List</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Add_Supporting_PDF_to_Attachment_List__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether PDF versions of any supporting documents uploaded by signers are attached to the Agreement record after an agreement is signed.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether PDF versions of any supporting documents uploaded by signers are attached to the Agreement record after an agreement is signed.</inlineHelpText>
+        <label>Add Supporting Files to Attachment List</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow_Delegated_Sending__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to allow sending agreements on behalf of other users.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to allow sending agreements on behalf of other users.</inlineHelpText>
+        <label>Allow Sending On Behalf of Others</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Callback_URL_EchoSign_to_Salesforce_Site__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This setting is the Secure Web Address that is copied from the EchoSign Callback Site which is set up to send hosted agreements.  Follow instructions in the installation and configuration guide.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting is the Secure Web Address that is copied from the EchoSign Callback Site which is set up to send hosted agreements.  Follow instructions in the installation and configuration guide.</inlineHelpText>
+        <label>Callback URL EchoSign to Salesforce Site</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disable_Account_Lookup__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the account lookup option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the account lookup option for draft agreements.</inlineHelpText>
+        <label>Disable Account Lookup</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Add_Recipient__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the add recipient option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the add recipient option for draft agreements.</inlineHelpText>
+        <label>Disable Add Recipient</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Attach_Agreement_Attachments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the attach option for attachments associated with draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the attach option for attachments associated with draft agreements.</inlineHelpText>
+        <label>Disable Attach Agreement Attachments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Cc__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the &apos;Send email copies to:&apos; field for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the &apos;Send email copies to:&apos; field for draft agreements.</inlineHelpText>
+        <label>Disable Send Email Copies</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Contact_Recipient_Type__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether users can use Contact records as Recipients on Agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether users can use Contact records as Recipients on Agreements.</inlineHelpText>
+        <label>Disable Contact Recipient Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Content_Agreement_Attachments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the upload option for content attachments associated with draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the upload option for content attachments associated with draft agreements.</inlineHelpText>
+        <label>Disable Content Agreement Attachments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Delete_Agreement_Attachments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the delete option for attachments associated with draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the delete option for attachments associated with draft agreements.</inlineHelpText>
+        <label>Disable Delete Agreement Attachments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Delete_Recipient__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the delete recipient option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the delete recipient option for draft agreements.</inlineHelpText>
+        <label>Disable Delete Recipient</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Edit_Agreement_Attachments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the edit option for attachments associated with draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the edit option for attachments associated with draft agreements.</inlineHelpText>
+        <label>Disable Edit Agreement Attachments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Email_Recipient_Type__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether users can type in manual Email addresses as Recipients on Agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether users can type in manual Email addresses as Recipients on Agreements.</inlineHelpText>
+        <label>Disable Email Recipient Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Lead_Recipient_Type__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether users can use Lead records as Recipients on Agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether users can use Lead records as Recipients on Agreements.</inlineHelpText>
+        <label>Disable Lead Recipient Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Opportunity_Lookup__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the opportunity lookup option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the opportunity lookup option for draft agreements.</inlineHelpText>
+        <label>Disable Opportunity Lookup</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Preview_Position__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the preview or position option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the preview or position option for draft agreements.</inlineHelpText>
+        <label>Disable Preview or Position</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Sender_Signs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the sender signs option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the sender signs option for draft agreements.</inlineHelpText>
+        <label>Disable Sender Signs</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Sign_Expiration__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the signing deadline option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the signing deadline option for draft agreements.</inlineHelpText>
+        <label>Disable Sign Expiration</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Sign_Password__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the sign password option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the sign password option for draft agreements.</inlineHelpText>
+        <label>Disable Sign Password</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Sign_Reminder__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the sign reminder option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the sign reminder option for draft agreements.</inlineHelpText>
+        <label>Disable Sign Reminder</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Signature_Type__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the signature type option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the signature type option for draft agreements.</inlineHelpText>
+        <label>Disable Signature Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_Upload_Agreement_Attachments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the upload option for attachments associated with draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the upload option for attachments associated with draft agreements.</inlineHelpText>
+        <label>Disable Upload Agreement Attachments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_User_Recipient_Type__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This setting controls whether users can use User records as Recipients on Agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting controls whether users can use User records as Recipients on Agreements.</inlineHelpText>
+        <label>Disable User Recipient Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_View_Agreement_Attachments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the view option for attachments associated with draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the view option for attachments associated with draft agreements.</inlineHelpText>
+        <label>Disable View Agreement Attachments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disable_View_Password__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to hide the view password option for draft agreements.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to hide the view password option for draft agreements.</inlineHelpText>
+        <label>Disable View Password</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enable_Hosted_Signing_Field__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enables the &quot;Host signing for the first signer&quot; field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enables the &quot;Host signing for the first signer&quot; field.</inlineHelpText>
+        <label>Enable Hosted Signing Field</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enable_Recipient_Signing_Order_Field__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This feature is not available so do not check this
+box.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This feature is not available so do not check this
+box.</inlineHelpText>
+        <label>Enable Recipient Signing Order Field</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enable_Send_Written_Signature_To_Fax__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>By default send written signature to fax is disabled. Check this box to enable this feature.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>By default send written signature to fax is disabled. Check this box to enable this feature.</inlineHelpText>
+        <label>Enable Send Written Signature To Fax</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enable_Suggest_Revisions_Field__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enables the &quot;Allow recipients to suggest revisions&quot; field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enables the &quot;Allow recipients to suggest revisions&quot; field.</inlineHelpText>
+        <label>Enable Suggest Revisions Field</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Override_Recipient_Field_List__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This setting will override the fields used for determining the list of recipients. This applies for non-&quot;Hosted Signing&quot;, only.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting will override the fields used for determining the list of recipients. This applies for non-&quot;Hosted Signing&quot;, only.</inlineHelpText>
+        <label>Override Recipient Field List</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reset_API_Security_Key__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Set this value to true to force the API Key and Shared Security Token to be reset during the next &quot;Send&quot; operation. The user will be prompted to enter a new API Key.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Set this value to true to force the API Key and Shared Security Token to be reset during the next &quot;Send&quot; operation. The user will be prompted to enter a new API Key.</inlineHelpText>
+        <label>Reset API / Security Key</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Security_Shared_Token__c</fullName>
+        <deprecated>false</deprecated>
+        <description>--DEPRECATED - Do Not Use--</description>
+        <externalId>false</externalId>
+        <inlineHelpText>--DEPRECATED - Do Not Use--</inlineHelpText>
+        <label>--DEPRECATED - Do Not Use--</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Server_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This setting is for EchoSign internal testing only. Do not enter any value here.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting is for EchoSign internal testing only. Do not enter any value here.</inlineHelpText>
+        <label>EchoSign Server URL Override</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Wipe_Agreement_Password__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable this setting to wipe the encrypted password field on the agreement after it is sent.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable this setting to wipe the encrypted password field on the agreement after it is sent.</inlineHelpText>
+        <label>Wipe Agreement Password</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>EchoSign Settings</label>
+</CustomObject>

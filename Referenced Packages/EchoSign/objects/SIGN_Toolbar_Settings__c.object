@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Cancel_Agreement__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cancel Agreement</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Cancel_Draft__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cancel (Draft)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Delete_Agreement__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Delete Agreement</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Save_Agreement__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Save Agreement</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_Agreement__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Send Agreement</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_Reminder__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Send Reminder</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Update_Status__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Update Status</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>View_Agreement__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>View Agreement</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>EchoSign Toolbar Settings</label>
+</CustomObject>

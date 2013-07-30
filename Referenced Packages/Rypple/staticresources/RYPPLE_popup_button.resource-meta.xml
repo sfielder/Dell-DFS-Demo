@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Private</cacheControl>
+    <contentType>application/x-javascript</contentType>
+    <description>Javascript to hold fancy box thanks popup button - this is a test to move the javascript from the button to a static resource</description>
+</StaticResource>

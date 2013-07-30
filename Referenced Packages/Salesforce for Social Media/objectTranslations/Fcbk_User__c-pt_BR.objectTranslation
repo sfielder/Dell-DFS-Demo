@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Usuário do Facebook</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Usuários do Facebook</value>
+    </caseValues>
+    <fields>
+        <label>Foto</label>
+        <name>Facebook_Image__c</name>
+    </fields>
+    <fields>
+        <label>Id do Facebook</label>
+        <name>Fcbk_Id__c</name>
+    </fields>
+    <fields>
+        <label>Imagem</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>Validado</label>
+        <name>Valid__c</name>
+    </fields>
+    <fields>
+        <label>Sobre mim</label>
+        <name>about_me__c</name>
+    </fields>
+    <fields>
+        <label>Aniversário</label>
+        <name>birthday__c</name>
+    </fields>
+    <fields>
+        <label>Cidade</label>
+        <name>city__c</name>
+    </fields>
+    <fields>
+        <label>País</label>
+        <name>country__c</name>
+    </fields>
+    <fields>
+        <label>E-mail</label>
+        <name>email__c</name>
+    </fields>
+    <fields>
+        <label>Nome</label>
+        <name>first_name__c</name>
+    </fields>
+    <fields>
+        <label>Sobrenome</label>
+        <name>last_name__c</name>
+    </fields>
+    <fields>
+        <label>Preferência política</label>
+        <name>political__c</name>
+    </fields>
+    <fields>
+        <label>Religião</label>
+        <name>religion__c</name>
+    </fields>
+    <fields>
+        <label>Gênero</label>
+        <name>sex__c</name>
+    </fields>
+    <fields>
+        <label>Estado</label>
+        <name>state__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Nome</nameFieldLabel>
+    <webLinks>
+        <label>Revogar acesso ao Facebook</label>
+        <name>Revoke_Facebook_Access</name>
+    </webLinks>
+    <webLinks>
+        <label>Conceder acesso ao Facebook</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

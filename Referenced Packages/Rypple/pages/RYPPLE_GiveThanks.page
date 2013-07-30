@@ -1,0 +1,835 @@
+<apex:page controller="rypple_Corp.RYPPLE_GiveThanksController" id="page" action="{!findUserBadges}" showHeader="false" sidebar="false" >
+    <head>
+    <apex:stylesheet value="{!$Resource.rypple_Corp__RYPPLE_screen}" />
+    <apex:includeScript value="../../soap/ajax/24.0/connection.js"/>
+    <apex:includeScript value="{!$Resource.rypple_Corp__RYPPLE_jquery_main}" />
+    <apex:includeScript value="{!$Resource.rypple_Corp__RYPPLE_jCarousel}" />
+    <script src="{!URLFOR($Resource.RYPPLE_jQueryFiles, 'js/jquery-ui-1.8.16.custom.min.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.rypple_Corp__RYPPLE_jQueryFiles, 'development-bundle/themes/custom-theme/jquery.ui.all.css')}"/>
+    <style>
+    
+    body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .overlayDialog .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
+        border-top: 0px solid #EAEAEA;
+        background-color: #f3f3eb;
+        border-bottom: 0px solid #EAEAEA;
+        border-left: 0px solid #EAEAEA;
+        border-right: 0px solid #EAEAEA;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        margin-bottom: 0px; 
+    }
+    
+    #badgeNameBig {font-weight:bold; font-size:15px;}
+    .badgeDescription {font-weight:normal; font-size:12px;}
+    .btn.post {font-size:12px;font-weight:bold;width:90px;height:27px;}
+   
+    
+     a{
+        text-decoration:none; 
+     }
+    .jcarousel-skin-ie7 .jcarousel-next-horizontal {
+        position: absolute;
+        top: 5px;
+        right: -3px;
+        width: 26px;
+        height: 92px;
+        cursor: pointer;
+        background: transparent url({!$Resource.rypple_Corp__RYPPLE_NextIcon}) no-repeat 0 0;
+        background-size: 140px 92px; 
+    }
+    
+    
+    .jcarousel-skin-ie7 .jcarousel-direction-rtl .jcarousel-next-horizontal
+        {
+        left: 5px;
+        right: auto;
+        background-image: url({!$Resource.rypple_Corp__RYPPLE_PreviousIcon});
+    }
+    
+    .jcarousel-skin-ie7 .jcarousel-prev-horizontal {
+        position: absolute;
+        top: 5px;
+        left: -4px;
+        width: 26px;
+        height: 92px;
+        cursor: pointer;
+        background: transparent url({!$Resource.rypple_Corp__RYPPLE_PreviousIcon}) no-repeat 0 0;
+        background-size: 140px 92px;
+    }
+    
+    .jcarousel-skin-ie7 .jcarousel-direction-rtl .jcarousel-prev-horizontal
+        {
+        left: auto;
+        right: 5px;
+        background-image: url({!$Resource.rypple_Corp__RYPPLE_NextIcon});
+    }
+    .jcarousel-skin-ie7 .jcarousel-clip-horizontal {
+        width: 240px;
+        left: -20px;
+        top: -20px;
+    }
+    .jcarousel-skin-ie7 .jcarousel-container-horizontal {
+        padding-top: 20px;
+        padding-bottom:0px;
+        padding-left: 40px;
+        padding-right:40px;
+        width: 70%;
+        height: 75px;
+    }
+    
+    .jcarousel-skin-ie7 .jcarousel-container-vertical {
+    width: 75px;
+    height: 152px;
+    padding: 40px 20px;
+    }
+    
+    
+    .jcarousel-skin-ie7 .jcarousel-clip-vertical {
+    width:  77px;
+    height: 155px;
+    }
+    
+    
+    body input.btn, body input.btnDisabled, body input.btnCancel {
+        padding: 4px 3px;
+        width: 70px;
+    }
+    p.wrap
+    {
+    width:12em; 
+    word-wrap:break-word;
+    }
+    .apexp .bPageBlock.apexDefaultPageBlock .pbBody { margin: 0px; margin-top:5px;height:333px;}
+    body{
+        background-color:#f3f3eb;
+    }
+    #fullName {
+        -moz-border-radius: 4px 4px 4px 4px;
+        -webkit-border-radius: 4px 4px 4px 4px;
+        border-color: #AAAAAA;
+        border-style: solid;
+        border-width: 1px;
+        margin-top:10px;
+    }
+    
+    .threecol.col2 {
+        width: 305px;
+    }
+    .badgeDescription.wrap {padding-right:12px;}
+    
+    
+    ul.ui-autocomplete{
+    max-height: 270px; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    width: 258px;
+    }
+    a.ui-state-hover{
+        color:#ffffff;
+    }
+    
+    .hlt td {
+          color: black;
+        }   
+  
+    .hltoff td {
+          color: black;
+        }     
+
+    [id*=frm] a,
+    [id*=frm] a:hover,
+    [id*=frm] a:active,
+    [id*=frm] a:visited {
+        color: #2D6A91;
+        text-decoration: none;  
+        font-weight: bold;
+    }      
+    </style>
+    
+    <script type="text/javascript">
+        var mycarousel_itemList = new Array();
+        var usersList = [];
+        var userNameIdMap = {};
+        var userNameEmailMap = {};
+        var index = 0;
+        var selectedBadgeId ='' ;
+        var typing = false;
+        var latestTID;
+        getBadgesList();
+        function getBadgesList(){
+        
+            var output = "";
+           <apex:repeat value="{!badges}" var="badge" id="theRepeat">
+               mycarousel_itemList.push(['{!JSENCODE(badge.ryppleId)}','{!JSENCODE(badge.name)}','{!JSENCODE(badge.description)}','{!JSENCODE(badge.imgUrl)}']);
+           </apex:repeat>
+        };  
+      
+     </script>
+
+    <script type="text/javascript">
+    
+        var __sfdcSessionId = '{!GETSESSIONID()}';
+        var lastValidation;
+        var validationFreqInMil = 900000;
+
+        function validateSession() {
+            try {
+                
+                var curTime = (new Date()).getTime();
+                if (!lastValidation || (lastValidation + validationFreqInMil) < curTime) {
+                
+                    lastValidation = curTime;
+                    sforce.connection.sessionId = __sfdcSessionId;
+                    sforce.connection.getServerTimestamp();
+                }
+            }
+            catch (err) {
+                
+                parent.location = parent.location;
+                return false;
+            }
+        }
+
+// BZ: Added per security review
+  function htmlEscape(text) {
+    var el = document.createElement('div'); el.innerText = el.textContent = text;
+    return el.innerHTML;
+  };
+  
+ 
+  
+        function mycarousel_itemLoadCallback(carousel, state){
+            if(mycarousel_itemList ==null || mycarousel_itemList.length<=0){
+                carousel.add(0, "<div class='usrTxt'><br/>Badges are not available<br/>&nbsp;</div>");
+            }
+            else{
+                for (var i = carousel.first; i <= carousel.last; i++) {
+                    if (carousel.has(i)) {
+                       selectedBadgeId = mycarousel_itemList[i-1][0];
+                        continue;
+                    }
+                    if (i > mycarousel_itemList.length) {
+                        break;
+                    }
+                    selectedBadgeId = mycarousel_itemList[i-1][0];
+                    carousel.add(i, mycarousel_getItemHTML(mycarousel_itemList[i-1],i));
+                }
+            }
+        };
+        /**
+         * Item html creation helper.
+         */
+        function mycarousel_getItemHTML(item,count){
+       /*   if(count==1){
+                $("#prev_button").css("background-position","-96px");
+            }
+            else{
+                $("#prev_button").css("background-position","-32px");
+            }
+            if(count==mycarousel_itemList.length){
+                $("#next_button").css("background-position","-96px");
+            }
+            else{
+                $("#next_button").css("background-position","-32px");
+            }*/
+            //BZ
+            return '<div name="selectedBadge" id="'+ htmlEscape(item[1]) +'" ><table ><tr><td style="width:80px;vertical-align:top;text-align:center;"><table ><tr><td style="vertical-align:top;"><img style="vertical-align:top;margin-top:0px;margin-bottom:0px;" src="' + htmlEscape(item[3]) + '" width="65px" height="65px" alt="' + htmlEscape(item[3]) + '" /></td></tr><tr><td colspan="2" align="center" style="color:grey; font-size:10px;vertical-align:top;" >Badge '+count+'/'+mycarousel_itemList.length+'</td></tr></table></td><td width="140" style="vertical-align:top;"><p class="badgeDescription wrap"><span id="badgeNameBig">#'+ htmlEscape(item[1])+'</span></p><p class="badgeDescription wrap">'+htmlEscape(item[2])+'</p></td></tr></table></div>';
+        };
+        
+        jQuery(document).ready(function() {
+        
+            jQuery('#mycarousel').jcarousel({
+                size: mycarousel_itemList.length,
+                itemLoadCallback: {onBeforeAnimation: mycarousel_itemLoadCallback},
+                scroll:1,
+                start:1
+            });
+            jQuery('.jcarousel-skin-ie7').width(270);
+        });
+       
+       function getLabel(name, email, photo) {
+            if (name == email) {
+                name= " "; 
+            }
+            return "<div width='300px'><table><tr onmouseover=\"this.className = 'hlt';\" onmouseout=\"this.className = 'hltoff' ;\"><td><img style='width:36px; height:36px;' src='"+photo+"'/></td><td>"+fitStringToWidth(name,200,'')+"<br/>"+fitStringToWidth(email,200,'')+"</td></tr></table></div>";
+       }
+       
+        function getUsers(json) {
+        
+            var output = [];
+            
+            $.each(json, function(i, record) {
+                
+                var ryppleId = record.ryppleId + ';' + record.email; // Unique identifier between SFDC and Rypple
+                var includeEmail = (userNameIdMap.hasOwnProperty(record.name) && userNameIdMap[record.name] != ryppleId); // further differentiate with email address if there are duplicate names
+                var photoUrl = record.photoUrl ? record.photoUrl : "{!JSENCODE($Resource.RYPPLE_NoPhoto)}";
+                var displayName = includeEmail ? record.name + " (" + record.email + ")" : record.name;
+                userNameIdMap[displayName] = ryppleId;
+                userNameEmailMap[displayName] = record.email;
+                
+                output.push({"label" : getLabel(record.name, record.email, photoUrl), "value" : displayName});
+            });
+            //alert ('userNameIdMap-------->'+ userNameIdMap);
+            return output;
+        }
+        
+        function openSuccess(isSuccess){
+                //alert(window.name);
+            //lockScreen(false);
+            
+            if(isSuccess == 'true'){
+                var windowName = new String(window.name);
+                var patt = /fancybox-frame/g;
+                if(windowName.match(patt)!=null)
+                {
+                    var mainDivObj = document.getElementById("maindiv");
+                    var msgContent = "<table align='center' width='300' border='0' height='225'><tr><td valign='middle' align='center'>";
+                    msgContent += "<table border='0' align='center'><tr><td style='vertical-align:middle'>";
+                    msgContent += "<div style='color: #333333;font-size: 18px;' ><br/><br/>Success</div><br/>";
+                    msgContent += "<div style='font-size: 13px;'>Your thanks has been posted!</div></td></tr></table></td></tr></table>";
+                    mainDivObj.innerHTML=msgContent;
+                }
+                else{       
+                    window.parent.openGivenThanksSuccess();
+                    window.parent.refreshRecentThanks();
+                }
+            }
+            document.getElementById("postbutton").disabled=false;
+            
+        }
+     </script>
+ 
+    <script type="text/javascript">
+    String.prototype.trim = function() {
+    a = this.replace(/^\s+/, '');
+    return a.replace(/\s+$/, '');
+    };
+    String.prototype.endsWith = function(str) {
+        return (this.match(str+"$")==str);
+    }
+
+    function replaceAll(txt, replace, with_this) {
+        return txt.replace(new RegExp(replace, 'g'),with_this);
+    }
+
+    function getSelectedBadge() {
+    
+        var pbutton = document.getElementById("postbutton");
+        pbutton.disabled = true;
+        
+        var userListValidationErrorMessage = htmlEscape(validateUserList()); //BZ
+        if (userListValidationErrorMessage == "") {
+        
+            $("#errorMessage").html("");
+            var thanksValidationErrorMessage = htmlEscape(validateThanksMessage()); //BZ
+            if (thanksValidationErrorMessage == "") {
+            
+                $("#thanksErrorMessage").html("");
+                var thanksMsgDiv = document.getElementById("page:frm:pb:thanksMessage");
+                var ryppleIds = getUserRyppleIds();
+                giveThanks(selectedBadgeId,ryppleIds);
+                document.getElementById("fullName").value="Who do you want to thank?";
+                thanksMsgDiv.value="Type your message ..";
+            }
+            else {
+                    
+                $("#thanksErrorMessage").html(thanksValidationErrorMessage);
+                pbutton.disabled=false;
+            }
+            userNameIdMap = {};
+            userNameEmailMap = {};
+        }
+        else {
+            
+            $("#errorMessage").html(userListValidationErrorMessage);
+            pbutton.disabled=false;
+        }
+
+        return false;
+    }
+      
+      
+
+      
+      function waitCheck(){
+        var check='test';
+      }
+      
+      function redirectToRypple(){
+        
+        var newWindow = window.open('{!JSENCODE(loginTokenURL)}', '_blank');
+        
+        if (!newWindow || typeof(newWindow) == 'undefined') {
+            alert("Error opening new window. Please disable your pop-up blocker and try again.");
+        }
+        
+        return false;
+      }
+      
+      function initFullName() {
+        var theName = document.getElementById("fullName").value;
+        if (theName == 'Who do you want to thank?') {           //only clear if it contains default text.  9/26/11
+            document.getElementById("fullName").value="";       //clear the "Who do you want to thank?" default text per I-6986.  9/13/11
+        }
+      }
+      function resetFullName() {
+        var theName = document.getElementById("fullName").value;
+        if (theName == '') {           //only clear if it contains default text.  9/26/11
+            document.getElementById("fullName").value="Who do you want to thank?";       //clear the "Who do you want to thank?" default text per I-6986.  9/13/11
+        }
+        
+      }
+      
+      function initMessage() {
+        var theName = document.getElementById("page:frm:pb:thanksMessage").value;
+        if (theName == 'Type your message ..') {                  //only clear if it contains default text.  9/26/11
+            document.getElementById("page:frm:pb:thanksMessage").value="";  //clear the "Type your message.." default text per I-6986.  9/26/11
+        }
+      }
+      function resetMessage() {
+        var theName = document.getElementById("page:frm:pb:thanksMessage").value;
+        if (theName == '') {                  //only clear if it contains default text.  9/26/11
+            document.getElementById("page:frm:pb:thanksMessage").value="Type your message ..";  //clear the "Type your message.." default text per I-6986.  9/26/11
+        }
+      }
+      
+      
+      
+      function doSearch() {
+        searchServer(
+          document.getElementById("fullName").value
+          );
+      }
+      
+      function getUserRyppleIds() {
+      
+        var userNames = document.getElementById("fullName").value;
+        var newUserNames = replaceAll(userNames.trim(),',',';');
+        if(newUserNames.length>2 && newUserNames.substring(newUserNames.length-1)==';'){
+            newUserNames = newUserNames.substring(0,newUserNames.length-1);           
+        }
+        
+        var userIds = "";
+        var userNameList = newUserNames.split( ";" );
+        
+        for ( var i = 0; i < userNameList.length; i++ ) {
+        
+            var userDisplayName = userNameList[i].trim(); 
+            
+            if((userNameIdMap[userDisplayName])!=null && (userNameIdMap[userDisplayName]) != "undefined"){
+                userIds = userIds + (userNameIdMap[userDisplayName]) + ",";
+            }
+            else{
+                userIds = userIds + "undefined;"+userDisplayName+",";               
+            }
+        
+          }
+        return userIds;
+      }
+      
+      
+      
+      function validateThanksMessage(){
+        var thanksMessage = document.getElementById("page:frm:pb:thanksMessage").value;
+      
+        if(thanksMessage=="" || thanksMessage == "Type your message .."){
+            return "Please enter a message.";
+        } else  {
+            //document.getElementById("page:frm:pb:thanksMessage").value =escape(thanksMessage);str.replace("\"","&quot;")
+            document.getElementById("page:frm:pb:thanksMessage").value =thanksMessage.replace(/"/g,"\\\""); 
+            document.getElementById("page:frm:pb:thanksMessage").value =thanksMessage.replace(/\\/g,"\\\\");
+            
+        }
+        return "";
+      }      
+      
+      function validateUserList(){
+          var userNames = document.getElementById("fullName").value;
+          
+          if(userNames=="Who do you want to thank?"|| userNames==""){
+                return "Please enter the people you\'d like to thank.";       
+          }
+          var newUserNames =replaceAll(userNames.trim(),',',';');
+          
+          if(newUserNames.length>2 && newUserNames.substring(newUserNames.length-1)==';'){
+              newUserNames = newUserNames.substring(0,newUserNames.length-1);           
+          }
+          var userNameList = newUserNames.split( ";" );
+          for ( var i = 0; i < userNameList.length; i++ )
+          {
+            //alert(userNameList[i]);
+            var userDisplayName = userNameList[i].trim(); 
+            //alert("11"+userDisplayName+"11");
+            
+            //alert('userNameIdMap[userDisplayName]----->'+ userNameIdMap[userDisplayName]);
+            if((userNameIdMap[userDisplayName])!=null && (userNameIdMap[userDisplayName]) != "undefined"){
+                continue;
+            }
+            else{
+               
+                if (userDisplayName.indexOf('(') != -1) {
+                  userDisplayName = userDisplayName.substring(0,userDisplayName.indexOf('('));
+                }
+                //alert('userNameIdMap[userDisplayName]111111----->'+ userNameIdMap[userDisplayName]);
+                if((userNameIdMap[userDisplayName])!=null && (userNameIdMap[userDisplayName]) != "undefined"){
+                     continue;
+                } else  {
+                    return "Sorry, \""+userDisplayName+"\" isn't a valid user."
+                    //userIds = userIds + "undefined;"+userDisplayName+",";     
+                }          
+            }
+          }
+          return "";
+      }
+      
+      function checkDuplicateUserNames(selectedUserName){
+          var selectUserName = selectedUserName;
+          var userNames = document.getElementById("fullName").value;
+          var newUserNames =replaceAll(userNames.trim(),',',';');
+          
+          if(newUserNames.length>2 && newUserNames.substring(newUserNames.length-1)==';'){
+              newUserNames = newUserNames.substring(0,newUserNames.length-1);           
+          }
+          var userNameList = newUserNames.split( ";" );
+          if (userNameList != null && userNameList.length > 1) {
+              for ( var i = 0; i < userNameList.length; i++ ) {   
+              
+                var userDisplayName = userNameList[i].trim(); 
+                if (userDisplayName.toUpperCase() == selectedUserName.toUpperCase()) {
+                  selectUserName = userDisplayName + '('+userNameEmailMap[selectedUserName] +')';
+                }
+                
+              }
+     
+          }
+          
+          return selectUserName;
+      }
+      
+      
+      </script>
+    <!--  code started for Search user using Auto-complete with multi-selection -->
+    <script>    
+    $(function() {
+        var proto = $.ui.autocomplete.prototype,
+        initSource = proto._initSource;
+        
+        function split( val ) {
+            if(val.indexOf(',') > val.indexOf(';')){
+                return val.split( /,\s*/ );       
+            }
+            else{
+                return val.split( /;\s*/ );                   
+            }          
+        }
+        function extractLast( term ) {
+            return split( term ).pop();
+        }
+
+        $( "#fullName" )
+            // don't navigate away from the field on tab when selecting an item
+            .bind( "keydown", function( event ) {
+                if ( event.keyCode === $.ui.keyCode.TAB &&
+                        $( this ).data( "autocomplete" ).menu.active ) {
+                    event.preventDefault();
+                }
+            })
+            .autocomplete({
+                autoFocus: true,
+                minLength: 2,
+                search: function( evt, ui ) { if (typing) { return false; } },
+                source: function( request, response ) {
+                
+                    validateSession();
+                
+                    // extract the last term entered
+                    var lastVal = extractLast( request.term );
+                    //alert('lastVal------>'+ lastVal);
+                    
+                    if(lastVal.length > 0) {
+                    
+                        // Record time metrics for the action method
+                        var ko1 = new Date();
+                        var ji1 = ko1.getTime();
+                        
+                        rypple_Corp.RYPPLE_GiveThanksController.getUsers(lastVal, function(result, event) {
+                            
+                            if (typing || (latestTID && latestTID >= event.tid)) {
+                                response(usersList);
+                            }
+                            else {
+                                
+                                latestTID = event.tid;
+                            
+                                if(event.type == "exception") {
+                                    //alert(event.message);
+                                }
+                                else if(result == null) {
+                                }
+                                else {
+                                    result = result.replace(/(\")?null(\")?/g, '""');
+                                    var resultObj = JSON.parse(result);
+                                    usersList = getUsers(resultObj);
+                                    response(usersList);
+                                }
+                            }
+                            
+                            var ko2 = new Date();
+                            var ji2 = ko2.getTime();
+                            var timeDiff = ji2 - ji1;
+                            
+                            if (this.console && typeof console.log != "undefined")
+                                console.log('grid update time: ' + timeDiff);
+                        
+                        }, {escape:false});
+                    }
+                    else {
+                    
+                    
+                        $("#fullName").autocomplete("close");
+                    }
+                },
+                focus: function(event, ui) {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function( event, ui ) {
+                    var terms = split( this.value );
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    var selectedUserName = checkDuplicateUserNames(ui.item.value);
+                    terms.push( selectedUserName );
+                    
+                    // add placeholder to get the semicolon-and-space at the end
+                    terms.push( "" );
+                    this.value = terms.join( "; " );   //added a space per issue I-6999.  9/12/11
+                    return false;
+                }
+                ,html: true
+            });
+        /*
+         * jQuery UI Autocomplete HTML Extension
+         *
+         * Copyright 2010, Scott González (http://scottgonzalez.com)
+         * Dual licensed under the MIT or GPL Version 2 licenses.
+         *
+         * http://github.com/scottgonzalez/jquery-ui-extensions
+         */
+        $.extend( proto, {
+        _initSource: function() {
+            if ( this.options.html && $.isArray(this.options.source) ) {
+                this.source = function( request, response ) {
+                    response( filter( this.options.source, request.term ) );
+                };
+            } else {
+                initSource.call( this );
+            }
+        },
+      
+        _renderItem: function( ul, item) {
+            return $( "<li ></li>" )
+                .data( "item.autocomplete", item )
+                .append( $( "<a></a>" )[ this.options.html ? "html" : "text" ]( item.label ) )
+                .appendTo( ul );
+        }
+        });         
+    });
+    //getSelectedBadge();
+    
+function fitStringToWidth(str,width,className) {
+  // str    A string where html-entities are allowed but no tags.
+  // width  The maximum allowed width in pixels
+  // className  A CSS class name with the desired font-name and font-size. (optional)
+  // ----
+  
+  // _escTag is a helper to escape 'less than' and 'greater than'
+  // BZ:OLD function _escTag(s){ return s.replace("<","&lt;").replace(">","&gt;");}
+  function _escTag(s){ 
+    return htmlEscape(s);
+  }
+
+  //Create a span element that will be used to get the width
+  var span = document.createElement("span");
+  //Allow a classname to be set to get the right font-size.
+  if (className) span.className=className;
+  span.style.display='inline';
+  span.style.visibility = 'hidden';
+  span.style.padding = '0px';
+  document.body.appendChild(span);
+
+  var result = _escTag(str); // default to the whole string
+  span.innerHTML = result;
+  // Check if the string will fit in the allowed width. NOTE: if the width
+  // can't be determinated (offsetWidth==0) the whole string will be returned.
+  if (span.offsetWidth > width) {
+    var posStart = 0, posMid, posEnd = str.length, posLength;
+    // Calculate (posEnd - posStart) integer division by 2 and
+    // assign it to posLength. Repeat until posLength is zero.
+    while (posLength = (posEnd - posStart) >> 1) {
+      posMid = posStart + posLength;
+      //Get the string from the begining up to posMid;
+      span.innerHTML = _escTag(str.substring(0,posMid)) + '&hellip;';
+
+      // Check if the current width is too wide (set new end)
+      // or too narrow (set new start)
+      if ( span.offsetWidth > width ) posEnd = posMid; else posStart=posMid;
+    }
+    str = convertQuotes(str);
+    result = '<abbr title="' +
+      str + '">' +
+      _escTag(str.substring(0,posStart)) + 
+      '&hellip;<\/abbr>';
+  }
+  document.body.removeChild(span);
+  return result;
+}
+
+    function convertQuotes(string){
+      return string.replace(/"/g,"&quot;");
+    }
+
+   jQuery('abbr').mouseover(function(event) {
+     event.preventDefault();
+   });
+   
+   jQuery('abbr').click(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').dblclick(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').focusin(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').focusout(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').hover(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').mousedown(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').mouseleave(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').mouseenter(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').mousemove(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').mouseout(function(event) {
+     event.preventDefault();
+   });
+   jQuery('abbr').mouseup(function(event) {
+     event.preventDefault();
+   });
+   
+   jQuery('abbr').toggle(function(event) {
+     event.preventDefault();
+   });
+    <!-- Script courtesy of http://www.web-source.net --> 
+    function stopRKey(evt) {
+       var evt = (evt) ? evt : ((event) ? event : null);
+       var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+       if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+    }
+    
+    function setTypingFlag() {
+        typing = true;
+        setTimeout(function() { typing = false; }, 250);
+    }
+    
+    function keyPressedHandler(evt) {
+    
+        setTypingFlag();
+        stopRKey(evt);
+    }
+    
+    document.onkeypress = keyPressedHandler; 
+    </script>
+    <!--  code completed for Search user using Auto-complete with multi-selection -->
+    </head>
+    
+
+   
+    
+    
+    <apex:form id="frm" >
+        
+        <apex:actionFunction name="giveThanks" action="{!giveThanks}" rerender="recentthanks,debug,errors,userErrorPanel,msgErrorPanel" onComplete="openSuccess('{!isSuccess}');">
+            <apex:param name="badgeId" value="" />
+            <apex:param name="ryppleIds" value="" />
+        </apex:actionFunction>
+        
+        <table border="0" width="100%" style="border-spacing: 0px">
+        <tbody valign="top">
+            <tr><td valign="top">
+        <div id="maindiv" align="center" >
+        <apex:pageBlock id="pb" >
+            <!--  <c:RYPPLE_WaitingComponent />  -->
+                   <!--   <apex:pageBlock mode="edit" id="criteria">-->
+                            <div style="text-align:right;"></div><div class="clear"></div>
+                            <input type="text" name = "fullName" id="fullName" class="midCol_Name" style="width:260px;height:30px;" value="Who do you want to thank?" onClick="initFullName()" onfocus="initFullName()" onblur="resetFullName()" />
+                            <apex:outputPanel id="userErrorPanel"><br/>
+                              <div id="errorMessage" style="width:260px;text-align:left;color:#900;padding-top:3px;">
+                               <!-- <apex:outputLabel value="{!userError}" style="color:#900;padding-top:3px;" rendered="{!NOT(ISNULL(userError))}"/> -->
+                               <apex:outputLabel value="{!userError}" rendered="{!NOT(ISNULL(userError))}"/>
+                              </div>
+                             </apex:outputPanel>
+                            
+                            <apex:outputPanel id="blankspace1" > <div style="padding-top:11px;"> <apex:outputLabel style="padding-top:3px;" rendered="{!(ISNULL(userError))}"></apex:outputLabel> </div> </apex:outputPanel>
+                             <span style="text-align: right;"></span>
+                             <ul id="mycarousel" class="jcarousel-skin-ie7" style="background:#f3f3eb;text-align: left;" >
+                                     <!-- The content will be dynamically loaded in here -->
+                             </ul>
+                            
+                            <apex:outputPanel id="blankspace2" > <div style="padding-top:9px;"> <apex:outputLabel style="padding-top:3px;" rendered="true">&nbsp; </apex:outputLabel> </div> </apex:outputPanel>
+                            <apex:inputTextarea value="{!thanksMessage}" style="width:260px;color:#2D6A91;font-size:14px;font-size:14px;font-weight:bold;padding-left:5px;padding-top:5px;-moz-border-radius: 4px 4px 4px 4px;-webkit-border-radius: 4px 4px 4px 4px;border-color: #AAAAAA;border-style: solid;border-width: 1px;" id="thanksMessage" onClick="initMessage()" onfocus="initMessage()" onblur="resetMessage()"/>
+                            
+                            <apex:outputPanel id="msgErrorPanel" ><br/>
+                              <div id="thanksErrorMessage" style="width:260px;text-align:left;color:#900;padding-top:3px;">
+                                <!-- <apex:outputLabel value="{!messageError}" style="color:#900;padding-top:3px;text-align:right;" rendered="{!NOT(ISNULL(messageError))}"/> -->
+                                <apex:outputLabel value="{!messageError}"  rendered="{!NOT(ISNULL(messageError))}"/>
+                              </div>
+                             </apex:outputPanel>
+                            <apex:outputPanel id="blankspace3" > <div style="padding-top:10px;"> <apex:outputLabel style="padding-top:3px;" rendered="{!(ISNULL(messageError))}"></apex:outputLabel> </div> </apex:outputPanel>
+                            
+                            <!--
+                            <apex:outputPanel id="msgErrorPanel" ><apex:outputLabel value="{!messageError}" style="color:#900;padding-top:3px;padding-bottom:-15px;margin-bottom:-15px;text-align:right;" rendered="{!NOT(ISNULL(messageError))}"/><br/></apex:outputPanel>
+                            <apex:outputPanel id="blankspace3" > <apex:outputLabel style="padding-top:3px;" rendered="{!(ISNULL(messageError))}" ><br/></apex:outputLabel></apex:outputPanel> -->
+                            
+                            
+                            <div id="thanksTxt" class="labelCol"></div>
+                            <div style="width:260px; border-bottom:2px dotted #ccc;padding-bottom:10px;margin-bottom:10px;">
+
+
+                                <div style="text-align:left;height:30px;">
+                                <div style="float:left; color:#666;font-weight:normal;font-size:12px;width:160px;">Thanks badge and message will be posted to Rypple.
+                                </div>
+                                
+                                 <div id="submitPostBtn" style="float:right;"><input id="postbutton" type="button" class="btn post" value="Post" size="" onClick="validateSession();getSelectedBadge()" /></div>
+                                </div>
+                               
+                            </div>
+                            <apex:outputPanel id="goToRypple">
+                             <div style="text-align:center;height:20px;font-size:14px;">Click to 
+                                <a href="#" onmouseup="validateSession();redirectToRypple();return false;" style="font-size:14px;">Go to Rypple</a>
+                             </div>
+                             </apex:outputPanel>
+                    <!--  </apex:pageBlock> -->
+        </apex:pageBlock>
+                </div>
+                </td></tr>
+                </tbody>
+                </table>
+    </apex:form>
+
+        
+        
+        
+        
+        
+</apex:page>

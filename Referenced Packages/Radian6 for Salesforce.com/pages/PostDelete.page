@@ -1,0 +1,32 @@
+<apex:page standardController="SocialPost" extensions="R6Service.PostDeleteExtension">
+    <apex:sectionHeader title="Delete Post From Social Network" subtitle="{!SocialPost.Name}"/>
+    <style>
+        .pageTitle
+        {
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align:center;
+        }
+    </style>
+    
+    <apex:form >
+         <apex:pageMessages />
+         <apex:pageBlock rendered="{!!isAlreadyDeleted}">
+            <apex:outputText styleClass="pageTitle" value="{!$Label.r6service__ConfirmPostDeletion}">
+	            <apex:param value="{!postTerminology}"/>
+	            <apex:param value="{!channel}"/>
+            </apex:outputText>
+            <apex:pageBlockSection columns="1">
+                <apex:outputText value="{!SocialPost.Persona.R6Service__Avatar__c}" escape="false" />
+                <apex:outputField value="{!SocialPost.R6Service__AuthorSocialHandle__c}" />
+                <apex:outputField value="{!SocialPost.MediaProvider}" />
+                <apex:outputField value="{!SocialPost.Content}" />
+	        </apex:pageBlockSection>
+	        
+	        <apex:pageBlockButtons location="bottom">
+		        <apex:commandButton value="Delete" action="{!deletePost}"/>
+		        <apex:commandButton value="Cancel" action="{!cancel}"/>
+	        </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

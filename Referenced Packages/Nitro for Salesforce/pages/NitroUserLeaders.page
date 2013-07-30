@@ -1,0 +1,266 @@
+<apex:page controller="nitro.NitroUserHome" tabStyle="Nitro__tab" title="Nitro Leaders"  action="{!init}">
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro_reset.css" rel="stylesheet" type="text/css"></link>
+<link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+<script src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/jquery.1.6.1.bunchball.min.js"></script>
+<script>
+var nitro$ = bunchball_jQuery.noConflict();
+//var libVersion = Math.round(Math.random() * 10000);
+var libVersion = '{!libVersion}';
+</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.libs.bunchball.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.util.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.shared.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.leaderboards.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitro-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroJSConnector-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/NitroCookies-noload.js?r='+libVersion+'" type="text/javascript"></scr' + 'ipt>');</script>
+
+<apex:pageMessages id="leaderPageErrors"/>
+
+<apex:outputPanel id="allPanels">
+<apex:form >
+   <div class="nitro nitro_sf"> 
+      
+      <div id="nitro_user_leaders_page">
+         
+      <apex:include pageName="nitro__NitroNavbar"/>
+      
+      <apex:outputPanel id="adminEditButton">
+         <apex:commandLink value="{!IF(showEditMode = true, 'Save Page Options', 'Edit Page Options')}" 
+                           styleClass="{!IF(showAdminEditOption = true, 'editPgOpt', 'none')}" 
+                           action="{!toggleLeaderboardEditMode}" 
+                           rendered="{!showAdminEditOption}"/>
+      </apex:outputPanel>
+
+      <div class="nitro_sf_standings nitro_page_body" id="nitro_sf_leaderboards">
+         <apex:outputPanel rendered="{!showEditMode}">
+            <h3>Select Role to Edit: </h3>
+               <apex:selectList value="{!selectedRole}" id="LeaderboardSelectRole" multiselect="false" size="1" style="margin-bottom:10px;" styleClass="roleSelector">
+                  <apex:actionSupport event="onchange" action="{!leadersPageRefresh}"/>
+                  <apex:selectOptions value="{!roles}"/>
+               </apex:selectList>
+         </apex:outputPanel>
+
+         <div class="float_container">
+            
+            <div id="floatContainer1" class="floatLeft n4sf_leaderboard">
+               <!-- <span class="{!IF(showEditMode = true, IF(NitroConfigData.Show_Points_Leaders_Pane__c = true, 'deleteIcon', 'addIcon'), 'none')}"  onclick="toggleShowPane(this)">&nbsp;</span> -->
+               <a class="{!IF(showEditMode = true, 'leaderboardEditLink', 'none')}" title="1" id="{!leaderboardId_1}">Edit Leaderboard</a>
+               <apex:outputPanel rendered="{!IF(leaderboardId_1 !=null, 'true', 'false')}" styleClass="leaderPanel" layout="block">
+                  <div class="column_400 nitro_sf_leaderboard nitro_sf_leaderboard_displayed" id="nitro_sf_board1_leaders">
+                     <h1 class="nitro_sf_leader_head nitro_sf_{!type_1}_leaders_head">{!title_1}&nbsp;<em class="duration">{!duration_1} </em></h1>
+                     <div class="content_module" id="nitro_sf_board1_leaders_body">
+                        <div class="switcher_bar">
+                                <h3 class="{!IF(isNitroLb_1, 'none', 'switcher_bar_switch switcher_me active')}">Me</h3>
+                            <h3 class="switcher_bar_switch switcher_top10 {!IF(isNitroLb_1, 'active', '')}">Top 10</h3>
+                        </div>
+                        <div class="content_module_body">
+                           <div class="nitro_sf_leader_list_compact">
+                              <img src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif" class="nitro_sf_loader" />
+                           </div>
+                        </div>
+                     </div><!-- end points leaders -->
+                  </div><!-- end column 535 -->
+               </apex:outputPanel>
+            </div>
+            
+            <div id="floatContainer2" class="floatLeft n4sf_leaderboard">
+               <!-- <span class="{!IF(showEditMode = true, IF(NitroConfigData.Show_Dollars_Leaders_Pane__c = true, 'deleteIcon', 'addIcon'), 'none')}"  onclick="toggleShowPane(this)">&nbsp;</span> -->
+               <a class="{!IF(showEditMode = true, 'leaderboardEditLink', 'none')}" title="2" id="{!leaderboardId_2}">Edit Leaderboard</a>
+               <apex:outputPanel rendered="{!IF(leaderboardId_2 !=null, 'true', 'false')}" styleClass="leaderPanel" layout="block">
+                  <div class="column_400 nitro_sf_leaderboard nitro_sf_leaderboard_displayed" id="nitro_sf_board2_leaders">
+                     <h1 class="nitro_sf_leader_head nitro_sf_{!type_2}_leaders_head">{!title_2}&nbsp;<em class="duration">{!duration_2} </em></h1>
+                     <div class="content_module" id="nitro_sf_board2_leaders_body">
+                        <div class="switcher_bar">
+                            <h3 class="{!IF(isNitroLb_2, 'none', 'switcher_bar_switch switcher_me active')}">Me</h3>
+                            <h3 class="switcher_bar_switch switcher_top10 {!IF(isNitroLb_2, 'active', '')}">Top 10</h3>
+                        </div>
+                         <div class="content_module_body">
+                             <div class="nitro_sf_leader_list_compact">
+                                 <img src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif" class="nitro_sf_loader" />
+                             </div>
+                         </div>
+                     </div><!-- end  dollar leaders -->
+                  </div><!-- end column 535 -->
+               </apex:outputPanel>
+            </div>
+
+         
+            <div id="floatContainer3" class="floatLeft n4sf_leaderboard">
+               <!-- <span class="{!IF(showEditMode = true, IF(NitroConfigData.Show_Quota_Leaders_Pane__c = true, 'deleteIcon', 'addIcon'), 'none')}"  onclick="toggleShowPane(this)">&nbsp;</span> -->
+               <a class="{!IF(showEditMode = true, 'leaderboardEditLink', 'none')}" title="3" id="{!leaderboardId_3}">Edit Leaderboard</a>
+               <apex:outputPanel rendered="{!IF(OR(leaderboardId_3 !=null, showEditMode), 'true', 'false')}" styleClass="leaderPanel" layout="block">
+                  <div class="column_400 nitro_sf_leaderboard nitro_sf_leaderboard_displayed" id="nitro_sf_board3_leaders">
+                     <h1 class="nitro_sf_leader_head nitro_sf_{!type_3}_leaders_head">{!title_3}&nbsp;<em class="duration">{!duration_3} </em></h1>
+                     <div class="content_module" id="nitro_sf_board3_leaders_body">
+                        <div class="switcher_bar">
+                            <h3 class="{!IF(isNitroLb_3, 'none', 'switcher_bar_switch switcher_me active')}">Me</h3>
+                            <h3 class="switcher_bar_switch switcher_top10 {!IF(isNitroLb_3, 'active', '')}">Top 10</h3>
+                        </div>
+                         <div class="content_module_body">
+                             <div class="nitro_sf_leader_list_compact">
+                                 <img src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif" class="nitro_sf_loader" />
+                             </div>
+                         </div>
+                     </div><!-- end quota leaders -->
+                  </div><!-- end column 535 -->
+               </apex:outputPanel>
+            </div>
+   
+            <div id="floatContainer4" class="floatLeft n4sf_leaderboard">
+               <!-- <span class="{!IF(showEditMode = true, IF(NitroConfigData.Show_Biggest_Deals_Pane__c = true, 'deleteIcon', 'addIcon'), 'none')}"  onclick="toggleShowPane(this)">&nbsp;</span> -->
+               <a class="{!IF(showEditMode = true, 'leaderboardEditLink', 'none')}" title="4" id="{!leaderboardId_4}">Edit Leaderboard</a>
+               <apex:outputPanel rendered="{!IF(OR(leaderboardId_4 !=null, showEditMode), 'true', 'false')}" styleClass="leaderPanel" layout="block">
+                  <div class="column_400 nitro_sf_leaderboard nitro_sf_leaderboard_displayed" id="nitro_sf_board4_leaders">
+                     <h1 class="nitro_sf_leader_head nitro_sf_{!type_4}_leaders_head">{!title_4}&nbsp;<em class="duration">{!duration_4} </em></h1>
+                     <div class="content_module" id="nitro_sf_board4_leaders_body">
+                        <div class="switcher_bar"> 
+                            <h3 class="{!IF(isNitroLb_4, 'none', 'switcher_bar_switch switcher_me active')}">Me</h3>
+                            <h3 class="switcher_bar_switch switcher_top10 {!IF(isNitroLb_4, 'active', '')}">Top 10</h3>
+                        </div>
+                         <div class="content_module_body">
+                             <div class="nitro_sf_leader_list_compact">
+                                 <img src="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/images/ajaxloadsmall.gif" class="nitro_sf_loader" />
+                             </div>
+                         </div>
+                     </div><!-- end quota leaders -->
+                  </div><!-- end column 535 -->
+               </apex:outputPanel>
+            </div>
+         
+         </div><!-- end float_container -->
+      </div>
+   
+   </div>
+   
+   </div>
+   
+   <apex:outputPanel id="hiddenPanel" rendered="false"/>
+   
+   <apex:actionFunction name="toggleShowLeaderPane" action="{!toggleLeaderPane}" rerender="hiddenPanel" >       
+       <apex:param name="currentPane"
+                   value=""
+                   assignTo="{!currentToggleOption}"/> 
+   </apex:actionFunction>
+   
+   <script type="text/javascript">
+         nitro$(".leaderboardEditLink").click(function(){   
+            /*
+            //fades background         
+            nitro$("body").prepend("<div id=\"the_lights\" style=\"z-index:200;\"></div>")
+            document.getElementById("the_lights").style.display="block";
+            nitro$("#the_lights").fadeTo("slow",0.8);
+            
+            //determine which leaderboard, max 4 
+            var leaderboardNumber = nitro$(this).attr("title");
+            var leaderboardId = nitro$(this).attr("id");
+            nitro$("#contentWrapper").prepend("<div id=\"box\" class=\"editLeaderboardPopup\">"
+            + '<iframe id="iframeWindow" src="https://c.na14.visual.force.com/apex/nitroleaderboardconfig?pageName={!pageName}&leaderboardNumber='+leaderboardNumber+'&roleId={!userRole}&leaderboardId='+leaderboardId+'" frameBorder="0" scrolling="no" style="margin-top: 10px; margin-left: 10px; width: 380px; height: 380px;"></iframe>'
+            + "</div>");
+            */
+            
+            var leaderboardId = nitro$(this).attr("id");
+            // get the id of the currently selected role
+            var roleId = nitro$('.roleSelector').val();
+            if (roleId == null) {
+               alert('Please select a role.');
+            }
+            var leaderboardNumber = nitro$(this).attr("title");
+            window.location = 'apex/nitroleaderboardsetup?leaderboardId=' + leaderboardId + '&roleId=' + roleId + '&pagename={!pageName}&leaderboardNumber='+leaderboardNumber;
+            
+         });
+         
+      function closeIframe(){
+         nitro$("#box").remove();
+         nitro$("#the_lights").fadeTo("fast", 0);
+         nitro$("#the_lights").remove();
+         
+      }
+       
+       function toggleShowPane(item) {
+         
+         var icon = nitro$(item);
+         var parentDiv = icon.closest('div');
+         var nextDiv = parentDiv.find('.nitro_sf_leaderboard');
+         var currentToggleOption = nextDiv.attr('id');
+         
+         if (nextDiv.hasClass('nitro_sf_leaderboard_displayed')) {
+            nextDiv.removeClass('nitro_sf_leaderboard_displayed');
+            nextDiv.addClass('nitro_sf_leaderboard_hidden');
+            icon.removeClass('deleteIcon');
+            icon.addClass('addIcon');
+         } else if (nextDiv.hasClass('nitro_sf_leaderboard_hidden')) {
+            nextDiv.removeClass('nitro_sf_leaderboard_hidden');
+            nextDiv.addClass('nitro_sf_leaderboard_displayed');
+            icon.removeClass('addIcon');
+            icon.addClass('deleteIcon');
+         }
+         
+         toggleShowLeaderPane(currentToggleOption);
+       
+       }
+   
+   </script>
+   
+</apex:form>
+
+<script>
+    var connectionParams={};
+    connectionParams.userId = '{!JSENCODE(NitroUserId)}';                
+    connectionParams.apiKey = '{!JSENCODE(APIKey)}';
+    connectionParams.debug = true;
+    connectionParams.sessionKey = '{!SessionKey}';
+    connectionParams.server = '{!JSENCODE(Endpoint)}'; 
+    var nitro2 = new Nitro(connectionParams);              
+
+    nitro$(function(){
+        //initialize the sidebar
+        nitro_for_salesforce.leaderboards.init(nitro2, {
+            leaderBoardDuration: "{!JSENCODE(TimeFrame)}",
+            startDate: "{!JSENCODE(startDate)}",
+            topBoard1: unescape('{!JSENCODE(topBoard1)}'),
+            rankBoard1: unescape('{!JSENCODE(rankBoard1)}'),
+            topBoard2: unescape('{!JSENCODE(topBoard2)}'),
+            rankBoard2: unescape('{!JSENCODE(rankBoard2)}'),
+            topBoard3: unescape('{!JSENCODE(topBoard3)}'),
+            rankBoard3: unescape('{!JSENCODE(rankBoard3)}'),
+            topBoard4: unescape('{!JSENCODE(topBoard4)}'),
+            rankBoard4: unescape('{!JSENCODE(rankBoard4)}'),
+            board1Type: unescape('{!JSENCODE(type_1)}'),
+            board2Type: unescape('{!JSENCODE(type_2)}'),
+            board3Type: unescape('{!JSENCODE(type_3)}'),
+            board4Type: unescape('{!JSENCODE(type_4)}'),
+            pointsName: "{!JSENCODE(PointsName)}"
+        }); 
+    });   
+    
+    // highlight the appropriate tab
+    document.getElementById("{!TabName}").className += " active"; 
+
+</script>
+</apex:outputPanel>
+
+
+<style type="text/css">
+   .addIcon, .addBullet, .deleteBullet, .deleteIcon {background-image:url('{!URLFOR($Resource.nitro__buttons, "sprites/bullets_sprite.png")}'); }
+   .nitro #nitro_user_leaders_page .duration { font-size:18px; }
+   .editLeaderboardPopup {
+      position: absolute; 
+      left: 50%; 
+      margin-left:-230px; 
+      width:460px; 
+      margin-top:110px; 
+      height:400px; 
+      border:3px solid #1797C0; 
+      display:block; 
+      background-color:white; 
+      z-index: 201;
+      border-radius:10px;
+      box-shadow: 3px 3px 5px 6px #ccc;
+   }
+   #nitro_user_leaders_page .n4sf_leaderboard {margin-bottom:10px;}
+</style>
+
+</apex:page>

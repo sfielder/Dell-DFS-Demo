@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Attach_Merged_Document__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>When an EchoSign merge mapping is used for an agreement, attach the merged document to the agreement record after the agreement is sent.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When an EchoSign merge mapping is used for an agreement, attach the merged document to the agreement record after the agreement is sent.</inlineHelpText>
+        <label>Attach Merged Document</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Remove_Original_Attachment__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>When an EchoSign merge mapping is used for an agreement, remove the original template document from the agreement record after the agreement is sent.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When an EchoSign merge mapping is used for an agreement, remove the original template document from the agreement record after the agreement is sent.</inlineHelpText>
+        <label>Remove Original Document</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>EchoSign Merge Mapping Settings</label>
+</CustomObject>

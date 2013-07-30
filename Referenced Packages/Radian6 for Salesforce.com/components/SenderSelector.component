@@ -1,0 +1,33 @@
+<apex:component controller="R6Service.SenderSelectorController">
+    <apex:attribute name="sender" assignTo="{!selectedAccount}" type="SocialMediaAccount" description="This account object will be overwritten with the info of the selected account." required="true"/>
+    <apex:attribute name="channel" assignTo="{!channel}" type="String" description="get accounts for this channel" required="true"/>
+    <apex:attribute name="onChange" type="String" description="Javascript to fire on change of the selected sender" required="false"/>
+    <apex:attribute name="styleClass" type="String" description="the CSS style class" required="false" />
+    
+    <style>
+        #senderSelectorBody { display:inline-block; }
+        #senderSelectorBody > img { vertical-align:middle; height:50px; width:50px; }
+        #senderSelectorBody > .selector { display:inline-block; vertical-align:middle; }
+        #senderSelectorBody > .selector > .selectorButtons { display:block; }
+        #senderSelectorBody > .selector input, #senderSelectorBody > .selector select { margin:5px; }
+    </style>
+
+    <apex:actionFunction name="refreshSenderAvatar" rerender="avatarSection" />
+    <apex:actionFunction name="refreshAction" reRender="accountSelectList" oncomplete="refreshSenderAvatar();"/>
+
+    <span id="senderSelectorBody" class="{!styleClass}">
+        
+        <apex:image id="defaultAvatar" value="{!$Resource.R6Service__MissingAvatar}" rendered="{!!isAvatarValid}"/>
+        <apex:image id="senderAvatar" value="{!selectedSenderAvatarUrl}" rendered="{!isAvatarValid}"/>
+        
+        <span class="selector">
+            <apex:selectList id="accountSelectList"  size="1" multiselect="false" value="{!selectedSmmId}" onchange="refreshSenderAvatar(); {!onchange}" style="vertical-align:middle;">
+                <apex:selectOptions value="{!smmAccounts}" />
+            </apex:selectList>
+            <span class="selectorButtons">
+                <apex:commandButton id="refreshAccountsButton" value="{!$Label.r6service__RefreshButtonLabel}" onClick="refreshAccounts();return false;" />
+                <apex:commandButton id="manageAccounts" value="{!$Label.r6service__AddSocialMediaAccountLabel}" onClick="window.open('{!JSENCODE(manageSocialNetworksUrl)}?authToken={!JSENCODE(token)}&sfUrl={!URLENCODE($Api.Partner_Server_URL_200)}&sfSession={!URLENCODE(GETSESSIONID())}&sfUserId={!URLENCODE($User.Id)}');return false;" disabled="{!!enableSocialMediaAccountManagement}" />
+            </span>
+        </span>
+    </span>
+</apex:component>

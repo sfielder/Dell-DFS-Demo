@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Twitter-konto</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Twitter-konto</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Twitter-konto</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Twitter-konti</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Twitter-konti</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Twitter-konti</value>
+    </caseValues>
+    <fields>
+        <label>Aktiv</label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label>Bit.ly Api-nøgle</label>
+        <name>Bit_ly_Password__c</name>
+    </fields>
+    <fields>
+        <label>Bit.ly-brugernavn</label>
+        <name>Bit_ly_Username__c</name>
+    </fields>
+    <fields>
+        <label>Bidragyderaktiveret</label>
+        <name>Contributor_Enabled__c</name>
+    </fields>
+    <fields>
+        <label>Tærskel for direkte meddelelses-id</label>
+        <name>Direct_Message_Id_Threshold__c</name>
+    </fields>
+    <fields>
+        <label>Aktiver automatisk sagsoprettelse</label>
+        <name>Enable_Auto_Case_Creation__c</name>
+    </fields>
+    <fields>
+        <label>Har adgangskode</label>
+        <name>Has_Password__c</name>
+    </fields>
+    <fields>
+        <label>Klout-nummer</label>
+        <name>Klout_Number__c</name>
+    </fields>
+    <fields>
+        <label>Klout-resultat</label>
+        <name>Klout_Score__c</name>
+    </fields>
+    <fields>
+        <label>Seneste DM-id&apos;er</label>
+        <name>Last_DM_Ids__c</name>
+    </fields>
+    <fields>
+        <label>Seneste tweet-id&apos;er</label>
+        <name>Last_Tweet_Ids__c</name>
+    </fields>
+    <fields>
+        <label>OAuth-hemmelighed</label>
+        <name>OAuth_Secret__c</name>
+    </fields>
+    <fields>
+        <label>OAuth-token</label>
+        <name>OAuth_Token__c</name>
+    </fields>
+    <fields>
+        <label>Delvis Twitter maks. meddelelse</label>
+        <name>Partial_Twitter_Max_Message__c</name>
+    </fields>
+    <fields>
+        <label>Delvis Twitter maks. twitter</label>
+        <name>Partial_Twitter_Max_Twitter__c</name>
+    </fields>
+    <fields>
+        <help><!-- Twitter is deprecating Username/Password in favor of OAuth, a secure access protocol. To use OAuth, enter any text in this field, then click the “Grant Twitter Access” button after saving the Twitter Account. --></help>
+        <label>Adgangskode</label>
+        <name>Password__c</name>
+    </fields>
+    <fields>
+        <help><!-- When this feature is enabled, any Tweets by this Twitter Account containing #ch will be automatically posted to the feed of the Twitter Account Creator. Comments on this post in Chatter will not be sent to Twitter. --></help>
+        <label>Send indlæg med #ch til Chatter</label>
+        <name>Post_Hashtag_Chatter__c</name>
+    </fields>
+    <fields>
+        <label>Resultater pr. side</label>
+        <name>Results_Per_Page__c</name>
+    </fields>
+    <fields>
+        <label>Søg i direkte meddelelses-id-forskydning</label>
+        <name>Search_Direct_Message_Id_Offset__c</name>
+    </fields>
+    <fields>
+        <label>Søg i Twitter-id-forskydning</label>
+        <name>Search_Tweet_Id_Offset__c</name>
+    </fields>
+    <fields>
+        <label>Tærskel for tweet-id</label>
+        <name>Tweet_Id_Threshold__c</name>
+    </fields>
+    <fields>
+        <label>Twitter maks. meddelelse</label>
+        <name>Twitter_Max_Message__c</name>
+    </fields>
+    <fields>
+        <label>Twitter maks. twitter</label>
+        <name>Twitter_Max_Twitter__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-bruger-id</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Ukendte Twitter-brugernavne</label>
+        <name>Unknown_Twitter_Usernames__c</name>
+        <picklistValues>
+            <masterLabel>Create Contact</masterLabel>
+            <translation><!-- Create Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Lead</masterLabel>
+            <translation><!-- Create Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Person Account</masterLabel>
+            <translation><!-- Create Person Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do nothing</masterLabel>
+            <translation><!-- Do nothing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Brugernavn</label>
+        <name>Username__c</name>
+    </fields>
+    <fields>
+        <label>Valideret</label>
+        <name>Valid__c</name>
+    </fields>
+    <fields>
+        <label>Anvend sagstilknytningslogik på tweets</label>
+        <name>associate_DM__c</name>
+    </fields>
+    <fields>
+        <help><!-- This will prevent Tweets from being automatically associated to cases that are not originated by the Tweet&apos;s Author --></help>
+        <label>Tilknyt kun matchende brugernavne</label>
+        <name>associate_cases_same_username__c</name>
+    </fields>
+    <fields>
+        <help><!-- Whenever a Candidate Case is looked for (for Direct Messages or Replies) all Closed cases with a Closed Date less than the set amount of minutes will be available to the Threading Logic. --></help>
+        <label>Tid for tilknytning efter sagslukning</label>
+        <name>closed_case_duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- When searching for tweets previous results are filtered out from the new results, by turning this option &apos;On&apos; the search will bring all results up to the maximum allowed by twitter. --></help>
+        <label>Hent maks. tweets inkl. tidl. result.</label>
+        <name>ignore_maxid__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>Twitter Account Layout</layout>
+        <sections>
+            <label><!-- Case Association Options --></label>
+            <section>Case Association Options</section>
+        </sections>
+        <sections>
+            <label><!-- Search options --></label>
+            <section>Search options</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Twitter-kontonavn</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Dette felt er påkrævet</errorMessage>
+        <name>Save_unknown_twitter_usernames_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Ugyldigt nummer</errorMessage>
+        <name>Search_DM_Id_Offset_must_be_a_number</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Ugyldigt nummer</errorMessage>
+        <name>Search_Tweet_Id_Offset_must_be_a_number</name>
+    </validationRules>
+    <webLinks>
+        <label>Hent Klout-resultat</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Hent Klout-resultat</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Tilbagekald Twitter-adgang</label>
+        <name>Revoke</name>
+    </webLinks>
+    <webLinks>
+        <label>Planlæg kontosøgninger</label>
+        <name>Schedule_Account_Searches</name>
+    </webLinks>
+    <webLinks>
+        <label>Tildel Twitter-adgang</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

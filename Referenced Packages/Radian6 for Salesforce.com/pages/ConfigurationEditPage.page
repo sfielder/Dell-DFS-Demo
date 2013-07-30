@@ -1,0 +1,102 @@
+<apex:page controller="R6Service.ConfigurationEditController" setup="true" standardStylesheets="true" id="thepage" showHeader="true" sidebar="true">
+    
+    <apex:outputPanel id="pageMessages">
+        <apex:pageMessages />
+    </apex:outputPanel>
+    
+    <apex:sectionHeader title="{!$Label.r6service__Configuration}" subtitle="{!$Label.r6service__Radian6IntegrationConfiguration}"/>
+    
+    <apex:form >
+
+        <apex:pageBlock title="{!settings.name}">
+            
+            <apex:pageBlockSection title="{!$Label.r6service__Radian6Parameters}">
+                <apex:inputField value="{!settings.R6Service__R6Username__c}" required="true"/>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__R6Password__c.inlineHelpText}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__R6Password__c.label}"/>
+                    <apex:outputPanel >
+                        <div class="requiredInput">
+                           <div class="requiredBlock"></div>
+                             <apex:inputsecret value="{!settings.R6Service__R6Password__c}" redisplay="false" required="true"/>
+                           </div>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:actionRegion >
+            <apex:outputPanel id="sandboxSectionPanel">
+            <apex:pageBlockSection title="{!$Label.r6service__OrgTypeSelectionSection}" columns="1">
+                <apex:inputField value="{!settings.R6Service__IsSandbox__c}">
+                    <apex:actionSupport event="onchange" rerender="integrationUserPanel,sandboxSectionPanel" />
+                </apex:inputField>
+            </apex:pageBlockSection>
+            </apex:outputPanel>
+            </apex:actionRegion>
+            
+            <apex:outputPanel id="integrationUserPanel">
+            <apex:pageBlockSection title="{!$Label.r6service__IntegrationUserAuthSection}" columns="1" rendered="{!settings.R6Service__IsSandbox__c}">
+                <apex:pageMessage summary="{!$Label.r6service__integrationUserWarning}" severity="warning" strength="2" />
+                <apex:pageMessage summary="{!integrationAuthError}" severity="error" strength="2" rendered="{!errorParameterExists}"/>
+                <apex:commandButton value="{!$Label.r6service__integrationUserAuthButton}" action="{!setupIntegrationUser}" />
+            </apex:pageBlockSection>
+            </apex:outputPanel>
+            
+            <apex:pageBlockSection title="{!$Label.r6service__ConfigurationParameters}" id="configurationSection">
+                <apex:pageBlockSectionItem id="closedCaseReopenSection" helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__CaseStatus__c.inlineHelpText}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__CaseStatus__c.label}"/>
+                    <apex:selectList value="{!settings.R6Service__CaseStatus__c}" size="1" multiselect="false">
+                        <apex:selectOptions value="{!caseStatuses}"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!settings.R6Service__Days__c}" required="true"/>
+                <apex:inputField value="{!settings.R6Service__IsCaseActivityRecordedByDefault__c}"/>
+                <apex:inputField value="{!settings.R6Service__IsCaseTaskScheduledByDefault__c}"/>
+                <apex:inputField value="{!settings.R6Service__AllowArticleAttachmentToPost__c}" id="allowArticleCheckbox"/>
+                <apex:inputField value="{!settings.R6Service__KnowledgeWebsiteURL__c}" id="knowledgeWebsiteUrlField"/>
+                <apex:inputField value="{!settings.R6Service__URLShortening__c}"/>
+                <apex:inputField value="{!settings.R6Service__AdministratorEmail__c}" required="true"/>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__ContactMatchingMode__c.inlineHelpText}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__ContactMatchingMode__c.label}"/>
+                        <apex:selectList multiselect="false" value="{!settings.R6Service__ContactMatchingMode__c}" size="1">
+                            <apex:selectOptions value="{!contactMatchingModes}"/>
+                        </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="{!$Label.r6service__DefaultRecordTypeSection}">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__DefaultCaseRecordType__c.inlineHelpText}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__DefaultCaseRecordType__c.label}"/>
+                    <apex:selectList value="{!settings.R6Service__DefaultCaseRecordType__c}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!caseRecordTypes}"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.R6Service__R6Settings__c.Fields.R6Service__DefaultAccountRecordType__c.inlineHelpText}" rendered="{!isPersonAccountCapable}">
+                    <apex:outputLabel value="{!$ObjectType.R6Service__R6Settings__c.fields.R6Service__DefaultAccountRecordType__c.label}"/>
+                    <apex:selectList value="{!settings.R6Service__DefaultAccountRecordType__c}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!accountRecordTypes}"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="{!$Label.r6service__AdvancedParameters}" id="advancedSettingsSection" columns="1">
+                <apex:inputField value="{!settings.R6Service__R6WSEndpointUrl__c}" required="true" style="width:95%;" />
+                <apex:inputField value="{!settings.R6Service__RulesEngineUrl__c}" required="true" style="width:95%;"/>
+                <apex:inputField value="{!settings.R6Service__WSEndpointUrl__c}" required="true" style="width:95%;"/>
+                <apex:inputField value="{!settings.R6Service__ManageSocialNetworksUrl__c}" required="true" style="width:95%;"/>
+                <apex:inputField value="{!settings.R6Service__SocialCloudUrl__c}" required="true" style="width:95%;"/>
+                <apex:inputField value="{!settings.R6Service__OfflineMode__c}"/>
+                <script>
+                    twistSection(document.getElementById('{!$Component.advancedSettingsSection}').getElementsByTagName('img')[0])
+                </script>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="{!$Label.r6service__SaveButtonValue}" action="{!save}" />
+                <apex:commandButton value="{!$Label.r6service__CancelButtonLabel}" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+            
+       </apex:pageBlock>
+   
+    </apex:form>
+ 
+</apex:page>

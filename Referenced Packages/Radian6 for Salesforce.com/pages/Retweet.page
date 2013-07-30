@@ -1,0 +1,22 @@
+<apex:page standardController="SocialPost" extensions="R6Service.RetweetController">
+    <apex:outputPanel id="messageRenderer">
+        <apex:pageMessages />
+    </apex:outputPanel>
+    
+    <apex:form >
+        <apex:actionFunction name="sendRetweet" action="{!sendRetweet}" rerender="closeScript, messageRenderer" oncomplete="closePage();"/>
+    
+        <c:PostActionDecorator sender="{!sender}" post="{!post}" onOk="sendRetweet();" onCancel="self.close();" okButtonText="Retweet Post" actionVerb="retweet" />
+    </apex:form>
+    
+    <apex:outputpanel id="closeScript">
+        <script>
+            function closePage()
+            {
+                if({!!hasMessages})
+                    self.close();
+            }
+        </script>
+    </apex:outputpanel>
+    
+</apex:page>

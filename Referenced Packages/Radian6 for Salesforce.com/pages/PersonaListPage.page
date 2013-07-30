@@ -1,0 +1,46 @@
+<apex:page standardController="case" extensions="R6Service.PersonaListController"	showHeader="false" sidebar="false">
+
+	<apex:includeScript value="/support/console/22.0/integration.js" />
+
+	<apex:form >
+		<apex:outputText value="{!$Label.r6service__NoPersona}" style="font-weight:bold;margin-left:20px;" styleClass="noRowsHeader"
+			rendered="{!if(personaList.size==0,true,false)}" />
+
+		<apex:pageBlock id="personaBlock" rendered="{!if(personaList.size!=0,true,false)}">
+			<apex:pageBlockTable value="{!personaList}" var="persona" id="personaTable">
+			<apex:column headerValue="{!$ObjectType.SocialPersona.fields.Name.label}">
+					<apex:outputLink onclick="return openPersonaSubTab('{!persona.id}', '{!JSINHTMLENCODE(persona.name)}');">{!persona.name}</apex:outputLink>
+				</apex:column>
+				<apex:repeat value="{!$ObjectType.SocialPersona.FieldSets.R6Service__PersonaListConsoleView}" var="field">
+					<apex:column headerValue="{!field.label}">
+						<apex:outputField value="{!persona[field]}" 
+							rendered="{!NOT(AND($ObjectType.SocialPersona.Fields[field].type=='string', CONTAINS(persona[field], '<img')))}" />
+						<apex:outputPanel rendered="{!AND(field.type=='Text', CONTAINS(persona[field], '<img'))}">
+							<apex:outputText value="{!persona[field]}" escape="false" />
+						</apex:outputPanel>
+					</apex:column>
+				</apex:repeat>
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+		
+	</apex:form>
+	<script type="text/javascript">    
+	var url;
+	var title;
+	
+	var callOpenSubtab = function callOpenSubtab(result) {
+		sforce.console.openSubtab(result.id, url, true, title);
+ 	}
+
+	function openSubtab() {
+		sforce.console.getEnclosingPrimaryTabId(callOpenSubtab);
+	}
+	
+	function openPersonaSubTab(id, name) {		
+		title = name;
+      	url = '/' + id;
+		openSubtab();
+		return false;
+	}
+	</script>
+</apex:page>

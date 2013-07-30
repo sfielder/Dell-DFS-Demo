@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>25.0</apiVersion>
+    <description>Wrap a post action (such as reply or fav) with standard decoration (post being acted upon, account to act with, ok/cancel).</description>
+    <label>Post Action Decorator</label>
+</ApexComponent>

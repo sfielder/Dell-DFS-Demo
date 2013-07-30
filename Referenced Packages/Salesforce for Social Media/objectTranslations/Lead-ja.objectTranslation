@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Facebook 画像 URL</label>
+        <name>Fcbk_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Facebook 写真</label>
+        <name>Fcbk_Picture__c</name>
+    </fields>
+    <fields>
+        <label>Facebook プロフィール URL</label>
+        <name>Fcbk_Profile_Url__c</name>
+    </fields>
+    <fields>
+        <label>Facebook ユーザ ID</label>
+        <name>Fcbk_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Facebook ユーザ名</label>
+        <name>Fcbk_Username__c</name>
+    </fields>
+    <fields>
+        <help><!-- Click on link to change following status --></help>
+        <label>Twitter でフォロー中</label>
+        <name>Follow_Status__c</name>
+    </fields>
+    <fields>
+        <label>Klout 数</label>
+        <name>Klout_Number__c</name>
+    </fields>
+    <fields>
+        <label>Klout スコア</label>
+        <name>Klout_Score__c</name>
+    </fields>
+    <fields>
+        <label>送信元</label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Twitter プロフィール</label>
+        <name>Twitter_Bio__c</name>
+    </fields>
+    <fields>
+        <label>Twitter 作成日</label>
+        <name>Twitter_Creation_Date__c</name>
+    </fields>
+    <fields>
+        <label>Twitter のフォロワー数</label>
+        <name>Twitter_Follower_count__c</name>
+    </fields>
+    <fields>
+        <label>Twitter のフォロー数</label>
+        <name>Twitter_Following_count__c</name>
+    </fields>
+    <fields>
+        <label>Twitter 画像 URL</label>
+        <name>Twitter_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Twitter の最新のつぶやき</label>
+        <name>Twitter_Last_tweet__c</name>
+    </fields>
+    <fields>
+        <label>Twitter の場所</label>
+        <name>Twitter_Location__c</name>
+    </fields>
+    <fields>
+        <label>Twitter 画像</label>
+        <name>Twitter_Picture__c</name>
+    </fields>
+    <fields>
+        <label>Twitter ステータス数</label>
+        <name>Twitter_Status_count__c</name>
+    </fields>
+    <fields>
+        <label>Twitter ユーザ ID</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Twitter ユーザ名</label>
+        <name>Twitter_Username__c</name>
+    </fields>
+    <fields>
+        <label>フォローされている</label>
+        <name>followed__c</name>
+    </fields>
+    <layouts>
+        <layout>SfSocial Lead Layout</layout>
+        <sections>
+            <label><!-- Social Information --></label>
+            <section>Social Information</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label>著者情報を取得</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Klout スコアを取得</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Klout スコアを取得</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Twitter ユーザ名を取得</label>
+        <name>Get_Twitter_Username</name>
+    </webLinks>
+    <webLinks>
+        <label>Twitter ユーザ名を検索</label>
+        <name>Search_Twitter_Username</name>
+    </webLinks>
+    <webLinks>
+        <label>著者情報を取得</label>
+        <name>Update_Twitter_Information</name>
+    </webLinks>
+</CustomObjectTranslation>

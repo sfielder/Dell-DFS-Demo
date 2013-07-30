@@ -1,0 +1,34 @@
+<apex:component >
+    <apex:attribute name="onOk" type="String" description="javascript to perform when the OK button is clicked" required="true" />
+    <apex:attribute name="onCancel" type="String" description="javascript to perform when the Cancel button is clicked" required="true" />
+    <apex:attribute name="sender" type="SocialMediaAccount" description="This account object will be overwritten with the info of the selected account." required="true"/>
+    <apex:attribute name="post" type="SocialPost" description="the social post to decorate" required="true" />
+    <apex:attribute name="okButtonText" type="String" description="The text for the OK button" required="false" default="OK" />
+    <apex:attribute name="actionVerb" type="String" description="The verb phrase that describes this action. for example, 'like' or 'reply to' " required="false" default="perform action on"/>
+    
+    <style>
+        #actionBody { width:75%; margin-left:auto; margin-right:auto; }
+        #actionBody > .postToActOn { margin-bottom:10px; }
+        #actionBody .actionSenderSelector { display:block; margin-top:10px; }
+        #actionBody > .componentBody { margin-top:25px; margin-bottom:25px;}
+        #actionBody > .postActionButtons { margin:15px; text-align:center;}
+    </style>
+    
+
+    <div id="actionBody">
+        <div class="postToActOn">
+            <c:PostDecorator post="{!post}" />
+        </div>
+        <div id="senderSelectorSection">
+            <apex:outputLabel value="Use the following account to {!actionVerb} this post:" />
+            <c:SenderSelector styleClass="actionSenderSelector" channel="TWITTER" sender="{!sender}"/>
+        </div>
+        <div class="componentBody">
+            <apex:componentBody />
+        </div>
+        <div class="postActionButtons">
+            <input type="button" value="{!okButtonText}" onclick="{!onOk}" />
+            <input type="button" value="Cancel" onclick="{!onCancel}" />
+        </div>
+    </div>
+</apex:component>

@@ -1,0 +1,58 @@
+<!-- 
+Componenet 		: RYPPLE_WaitingComponent
+Author	   		: Shailendra Singh (Appirio Off)
+Purpose	   		: Lock the Screen when ajax action Submitted and in process and UnLock when Process done, 
+			 	  So by this when any action processing user cannot click on another action.
+How to Use		: 
+				: >> Use this Component anywhere on Page (Normally after Page Section or Page Block)
+				: >> Call following function onSubmit,onChange,..... any action as per the requirement:-
+					 lockScreen(true);
+				  >> When action completes call the same function with false argument:-	 
+					 lockScreen(false);
+-->
+
+<apex:component >
+<style>
+        .standardHeight{
+            Height:22px;
+        }       
+		.red{
+			background-color:#CC0000;
+			color:#000000;
+		}
+		.POP_LAYER {
+			width: 100%;
+			height: 100%;
+			min-height:100%;
+			position: absolute;
+			z-index: 1;
+			overflow: hidden;
+			left: 0px;
+			top: 0px;
+			opacity: .4;
+			filter: alpha(opacity=40);
+			background-color: #CCCCCC;
+		}
+
+		.POP_LAYER_NONE {
+			display:none;
+		} 
+    </style>
+    <script>
+    	function lockScreen(doLock){
+    		if(doLock)
+    			document.getElementById('hiddenLayer').className='POP_LAYER';
+    		else
+    			document.getElementById('hiddenLayer').className='POP_LAYER_NONE';
+    		return true;
+    	}
+    </script>
+    
+    <div id="hiddenLayer" class="POP_LAYER_NONE" style="height: 800px;">
+		<div style="height: 20%; margin-top: 10%; margin-bottom: 10%;text-align: center; width: auto; vertical-align: bottom;">
+		&nbsp;
+	    	<!--  <apex:image url="{!$Resource.Spinners}"/><span style="color:red;"><b>&nbsp;Loading...</b></span> -->
+	    </div>
+	</div>
+	
+</apex:component>

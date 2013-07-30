@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Nitro configuration data.</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_Key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Your Nitro API Key</description>
+        <externalId>false</externalId>
+        <label>Nitro API Key</label>
+        <length>64</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>API_Secret__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Your Nitro API Secret Key</description>
+        <externalId>false</externalId>
+        <label>Nitro API Secret</label>
+        <length>64</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Nitro Account Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Nitro Account Triggers</inlineHelpText>
+        <label>Account Trigger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Admin_Name__c</fullName>
+        <defaultValue>&quot;admin&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Your Nitro Administrator Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the NItro Admin name provided by your sales representative.</inlineHelpText>
+        <label>Nitro Admin Name</label>
+        <length>64</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Admin_Password__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Your Nitro Admin Password</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Nitro Admin Password that was provided by your sales representative.</inlineHelpText>
+        <label>Nitro Admin Password</label>
+        <length>64</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Administrator_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Nitro Administrator email - enter to get notified via email automatically when (a) someone purchases a reward (b) someone completes a challenge that you&apos;ve set a callback on</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter your email address here to get notified via email automatically when (a) someone purchases a reward (b) someone completes a challenge that you&apos;ve set a callback on.</inlineHelpText>
+        <label>Notification Email</label>
+        <required>true</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Auto_post_to_Chatter__c</fullName>
+        <defaultValue>&quot;Non-Repeatable&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>What gets added to a user&apos;s Chatter feed? (a) NON-REPEATABLE: Only non-repeatable challenges (b) EVERYTHING: Any time the user earns points (c) NOTHING: Nothing gets added to Chatter.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What gets added to a user&apos;s Chatter feed? (a) NON-REPEATABLE: Only non-repeatable challenges (b) EVERYTHING: Any time the user earns points (c) NOTHING: Nothing gets added to Chatter.</inlineHelpText>
+        <label>Auto-post to Chatter</label>
+        <length>32</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Callback_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An email address to receive Challenge callback details from. This should be a Salesforce generated email address that will receive the email and parse the contained XML.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An email address to receive Challenge callback details from. This should be a Salesforce generated email address that will receive the email and parse the contained XML.</inlineHelpText>
+        <label>Salesforce Email Service</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chatter_Section_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Chatter Section Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chatter_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Nitro Chatter Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Nitro Chatter Triggers</inlineHelpText>
+        <label>Chatter Trigger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Current_Leaders_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current Leaders Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Leaders_for_Team_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current Leaders for Team Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Team_Challenges_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current Team Challenges Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_User_Trophies_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current User Trophies Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enable_WYSIWYG_Editor__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Enable WYSIWYG Editor</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Featured_Challenges_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Featured Challenges Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Featured_Reward__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Featured Reward in the sidebar.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Featured Reward in the sidebar.</inlineHelpText>
+        <label>Featured Reward in Sidebar</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fiscal_Year_Start_Month__c</fullName>
+        <defaultValue>&quot;January&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The Month that your Fiscal Year starts.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Month that your Fiscal Year starts.</inlineHelpText>
+        <label>Fiscal Year Start Month</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Home_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Nitro Home tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Nitro Home tab.</inlineHelpText>
+        <label>Home Tab</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Latest_News_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Latest News Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Nitro Lead Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Nitro Lead Triggers</inlineHelpText>
+        <label>Lead Trigger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Leaderboards_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Nitro Leaderboards tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Nitro Leaderboards tab.</inlineHelpText>
+        <label>Leaderboards Tab</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Nitro_User_ID_Field__c</fullName>
+        <defaultValue>&quot;User Name&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The Salesforce field to use as the Nitro User ID. Choices: &quot;User Id&quot; (the internal SFDC user id), &quot;User Name&quot; (the email address used to login with, ie. &quot;riley@me.com&quot;), and &quot;Short User Name&quot; (just the part of the username before the @ sign, ie &quot;riley&quot;). DO NOT CHANGE ONCE SELECTED.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Salesforce field to use as the Nitro User ID. Choices: &quot;User Id&quot; (the internal SFDC user id), &quot;User Name&quot; (the email address used to login with, ie. &quot;riley@me.com&quot;), and &quot;Short User Name&quot; (just the part of the username before the @ sign, ie &quot;riley&quot;).</inlineHelpText>
+        <label>Nitro User ID Field</label>
+        <length>32</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Quota_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Nitro Opportunity Quota Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Nitro Opportunity Quota Triggers</inlineHelpText>
+        <label>Opportunity Quota Trigger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Nitro Opportunity Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Nitro Opportunity Triggers</inlineHelpText>
+        <label>Opportunity Trigger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Points_Name_long__c</fullName>
+        <defaultValue>&quot;Points&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The long name of your Points. For example, Dollars, Credits, Points, Benioffs.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The long name of your Points. For example, Dollars, Credits, Points, Benioffs.</inlineHelpText>
+        <label>Points Name (long)</label>
+        <length>100</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Points_Name_short__c</fullName>
+        <defaultValue>&quot;Pts&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The abbreviated version of your Point Category name. For example: $, Pts, Crs, Bffs</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The abbreviated version of your Point Category name. For example: $, Pts, Crs, Bffs</inlineHelpText>
+        <label>Points Name (short)</label>
+        <length>10</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Profile_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Nitro Profile tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Nitro Profile tab.</inlineHelpText>
+        <label>Profile Tab</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Recently_Earned_Trophies_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Recently Earned Trophies Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reward_Store_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reward Store Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Schedule_Action_API_Calls__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>If checked, will call the API via a scheduled job instead of the Future method</description>
+        <externalId>false</externalId>
+        <label>Schedule Action API Calls</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Biggest_Deals_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Biggest Deals Pane</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Dollars_Leaders_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Dollars Leaders Pane</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Featured_Challenge__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Featured Challenge in Sidebar</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Home_Facebook__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Home Facebook</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Home_LinkedIn__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Home LinkedIn</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Home_Twitter__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Home Twitter</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Points_Leaders_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show Points Leaders Pane</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Quota_Leaders_Pane__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show/Hide the User&apos;s Quota Stats in the Nitro for Salesforce Sidebar.</description>
+        <externalId>false</externalId>
+        <label>Show Quota Leaders Pane</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Quota_Leaders__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Quota in Sidebar</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Redemption__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rewards Tab</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Spread_the_Word__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Spread the Word module on the Nitro Home page.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Spread the Word module on the Nitro Home page.</inlineHelpText>
+        <label>Show Spread the Word</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Teams__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Teams in Sidebar</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Spread_The_Word_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Spread The Word Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subdomain__c</fullName>
+        <defaultValue>&quot;sfdc&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Subdomain</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Task_Trigger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable the Default Nitro Task Triggers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable the Default Nitro Task Triggers</inlineHelpText>
+        <label>Task Trigger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Team_Members_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Team Members Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Standings_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Nitro Team Standings tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Nitro Team Standings tab.</inlineHelpText>
+        <label>Team Standings Tab</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Teams_Tab__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show the Nitro Teams tab.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show the Nitro Teams tab.</inlineHelpText>
+        <label>Teams Tab</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Time__c</fullName>
+        <defaultValue>&quot;Quarter&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Supported values are: Week, Month, Quarter, AllTime</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Supported values are: Week, Month, Quarter, AllTime</inlineHelpText>
+        <label>Time Frame</label>
+        <length>32</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Top_Point_Earner_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Top Point Earner Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Vendor_Endpoint_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Vendor Endpoint URL</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Vendor__c</fullName>
+        <defaultValue>&quot;Manual Fulfillment&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Vendor</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Whats_Happening_Now_Home_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Whats Happening Now Home Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Whats_Happening_Now_Reward_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Whats Happening Now Reward Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Whats_Happening_Now_TS_Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Whats Happening Now TS Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Nitro Configuration</label>
+</CustomObject>

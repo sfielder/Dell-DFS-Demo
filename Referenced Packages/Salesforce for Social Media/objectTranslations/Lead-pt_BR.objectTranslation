@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Url de imagem do Facebook</label>
+        <name>Fcbk_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Foto do Facebook</label>
+        <name>Fcbk_Picture__c</name>
+    </fields>
+    <fields>
+        <label>Url de Perfil do Facebook</label>
+        <name>Fcbk_Profile_Url__c</name>
+    </fields>
+    <fields>
+        <label>Id de usuário do Facebook</label>
+        <name>Fcbk_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Nome de usuário do Facebook</label>
+        <name>Fcbk_Username__c</name>
+    </fields>
+    <fields>
+        <help><!-- Click on link to change following status --></help>
+        <label>Seguindo no Twitter</label>
+        <name>Follow_Status__c</name>
+    </fields>
+    <fields>
+        <label>Número do Klout</label>
+        <name>Klout_Number__c</name>
+    </fields>
+    <fields>
+        <label>Pontuação Klout</label>
+        <name>Klout_Score__c</name>
+    </fields>
+    <fields>
+        <label>Origem</label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Biografia do Twitter</label>
+        <name>Twitter_Bio__c</name>
+    </fields>
+    <fields>
+        <label>Data de criação do Twitter</label>
+        <name>Twitter_Creation_Date__c</name>
+    </fields>
+    <fields>
+        <label>Contagem de seguidores do Twitter</label>
+        <name>Twitter_Follower_count__c</name>
+    </fields>
+    <fields>
+        <label>Contagem de seguidores do Twitter</label>
+        <name>Twitter_Following_count__c</name>
+    </fields>
+    <fields>
+        <label>Url da imagem do Twitter</label>
+        <name>Twitter_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Último tweet do Twitter</label>
+        <name>Twitter_Last_tweet__c</name>
+    </fields>
+    <fields>
+        <label>Local do Twitter</label>
+        <name>Twitter_Location__c</name>
+    </fields>
+    <fields>
+        <label>Foto do Twitter</label>
+        <name>Twitter_Picture__c</name>
+    </fields>
+    <fields>
+        <label>Contagem de status do Twitter</label>
+        <name>Twitter_Status_count__c</name>
+    </fields>
+    <fields>
+        <label>Id de usuário do Twitter</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Nome de usuário do Twitter</label>
+        <name>Twitter_Username__c</name>
+    </fields>
+    <fields>
+        <label>Seguido</label>
+        <name>followed__c</name>
+    </fields>
+    <layouts>
+        <layout>SfSocial Lead Layout</layout>
+        <sections>
+            <label><!-- Social Information --></label>
+            <section>Social Information</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label>Obter informações sobre o autor</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Obter pontuação Klout</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Obter pontuação Klout</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Obter nome de usuário do Twitter</label>
+        <name>Get_Twitter_Username</name>
+    </webLinks>
+    <webLinks>
+        <label>Pesquisar nome de usuário do Twitter</label>
+        <name>Search_Twitter_Username</name>
+    </webLinks>
+    <webLinks>
+        <label>Obter informações sobre o autor</label>
+        <name>Update_Twitter_Information</name>
+    </webLinks>
+</CustomObjectTranslation>

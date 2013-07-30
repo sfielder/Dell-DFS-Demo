@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <icon>Rypple_Icon/rypple_Icon.png</icon>
+    <label>Rypple - Thanks</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom129: TV Widescreen</motif>
+    <page>RYPPLE_RyplePage</page>
+</CustomTab>

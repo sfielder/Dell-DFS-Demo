@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Administrador da página do Facebook</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Administrador da página do Facebook</value>
+    </caseValues>
+    <fields>
+        <label>Página do Facebook</label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel>Administradores da página do Facebook</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Usuário do Facebook</label>
+        <name>Facebook_User__c</name>
+        <relationshipLabel>Administradores da página do Facebook</relationshipLabel>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Número</nameFieldLabel>
+</CustomObjectTranslation>

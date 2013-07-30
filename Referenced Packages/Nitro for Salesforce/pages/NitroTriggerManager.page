@@ -1,0 +1,185 @@
+<apex:page controller="nitro.NitroTriggerManager" tabStyle="Action_Triggers__tab" action="{!init}">
+   
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+   
+   <div class="nitro">
+   <apex:form styleClass="trigManagerForm">
+   
+      <apex:pageMessages id="pageMessages"/>
+      
+      <apex:pageBlock title="Manage Nitro Triggers">
+         
+         <apex:pageBlockButtons id="pageButtons" rendered="{!!isFree}">
+            <apex:commandButton value="New" action="{!createNewNitroTrigger}"/><input 
+                     type="button" class="btn btnDisabled none" value="New" disabled="disabled" />
+            <apex:commandButton id="refreshButton" value="Refresh" action="{!refresh}" immediate="true"/><input 
+                     type="button" class="btn btnDisabled none" value="Refresh" disabled="disabled" />&nbsp;&nbsp;
+            <apex:actionStatus startText="(working...)" id="loaderStatus" />
+         </apex:pageBlockButtons>
+         
+         <apex:outputPanel rendered="{!nitroTriggers.size == 0}">
+            <span>No Nitro triggers found.  Click New to create a new Nitro trigger.</span>
+         </apex:outputPanel>
+         
+         <apex:pageBlockTable id="triggerTable" value="{!nitroTriggers}" var="col" rendered="{!nitroTriggers.size > 0}">
+            
+            <apex:column >
+               <apex:facet name="header">Action</apex:facet>
+               <!-- apex:outputLink value="/apex/NitroTriggerEdit">
+                  Edit
+                    <apex:param name="trigId" value="{!col.apexTriggerId}"/>
+                </apex:outputLink>&nbsp;|&nbsp;>
+               <apex:commandLink value="Del" styleClass="delLink" action="{!delNitroTrigger}" >
+                  <apex:param name="trigId" value="{!col.triggerName}" assignTo="{!currentTriggerId}"/>
+               </apex:commandLink-->
+               <span class="delLink actionLink">Del</span>
+            </apex:column>
+            
+            <apex:column >
+               <apex:facet name="header">Active</apex:facet>
+               <apex:inputCheckBox value="{!col.isActive}" styleClass="activeCheckBox"/>
+            </apex:column>
+            
+            <apex:column >
+               <apex:facet name="header">Object</apex:facet>
+               <apex:outputText value="{!col.objectName}" />
+            </apex:column>
+            
+            <apex:column >
+               <apex:facet name="header">Trigger Name</apex:facet>
+               <apex:outputLink value="/{!col.apexTriggerId}" styleClass="actionLink">{!col.triggerName}</apex:outputLink> 
+               <input type="hidden" id="apexTriggerId" value="{!col.triggerName}"/>
+            </apex:column>
+            
+            <apex:column >
+               <apex:facet name="header">Condition</apex:facet>
+               <apex:outputText value="{!col.triggerType}" />
+            </apex:column>
+            
+            <apex:column >
+               <apex:facet name="header">Fields</apex:facet>
+               <apex:outputText value="{!col.selectedFieldsArrayString}" />
+            </apex:column>
+            
+            <apex:column >
+               <apex:facet name="header">Nitro Action Name</apex:facet>
+               <apex:outputText value="{!col.nitroActionName}" />
+            </apex:column>
+                     
+         </apex:pageBlockTable>
+         
+      </apex:pageBlock>
+      
+      <apex:actionFunction name="activateTrigger" action="{!activateNitroTrigger}" rerender="pageMessages" status="loaderStatus">       
+          <apex:param id="activateTriggerParam1" name="currentTriggerIdParam"
+                      value=""
+                      assignTo="{!currentTriggerId}"/> 
+          <apex:param id="activateTriggerParam2" name="isActivateParam"
+                      value=""
+                      assignTo="{!isActivate}"/> 
+      </apex:actionFunction> 
+
+      <apex:actionFunction name="delTrigger" action="{!delNitroTrigger}" rerender="pageMessages, scriptReRender" status="loaderStatus">       
+          <apex:param name="currentTriggerIdParam"
+                      value=""
+                      assignTo="{!currentTriggerId}"/> 
+      </apex:actionFunction>
+
+      <apex:inputHidden id="currentTriggerId" value="{!currentTriggerId}"/>
+      <script type="text/javascript">
+            var currentTriggerIdHidden = document.getElementById("{!$Component.currentTriggerId}")
+      </script>
+            
+      <script type="text/javascript" src="{!URLFOR($Resource.Multiselect, 'jquery.js')}"></script>    
+      <script type="text/javascript">
+         jQuery.noConflict();
+      </script>
+      
+      <apex:outputPanel id="scriptReRender">
+         
+         <script type="text/javascript">   
+            
+            jQuery('.actionLink').removeClass('disabledLink');
+            jQuery('input[type=submit]').removeClass('none');
+            jQuery('input.btnDisabled').addClass('none');
+         
+         </script> 
+         
+      </apex:outputPanel>
+      
+      <script>
+         function setCurrentId(element) {
+            
+            var parentTr = jQuery(element).closest('tr');
+            var triggerIdValue = parentTr.find('#apexTriggerId').val();
+            return triggerIdValue;
+         
+         }
+         
+         function disablePageActions() {
+            
+            jQuery('.actionLink').addClass('disabledLink');
+            jQuery('input[type=submit]').addClass('none');
+            jQuery('input.btnDisabled').removeClass('none');
+            
+         }
+         
+         jQuery(document).ready(function(){
+            
+            jQuery('.activeCheckBox').click(function() {
+               if (confirm('Change activation status?')) {
+                  
+                  disablePageActions();
+                  var currentId = setCurrentId(this);
+                  var isActive = jQuery(this).attr('checked');
+                  var isActiveString;
+                  
+                  if (isActive) {
+                     isActiveString = 'true';
+                  } else {
+                     isActiveString = 'false';
+                  }
+                  
+                  activateTrigger(currentId, isActiveString);
+   
+               } else {
+                  return false;
+               }
+               
+            });
+            
+            jQuery('.delLink').click(function() {
+               if (confirm('Are you sure you want to delete this trigger?')) {
+                  
+                  disablePageActions();
+                  var currentTrigger = setCurrentId(this);
+                  delTrigger(currentTrigger);
+   
+               } else {
+                  return false;
+               }
+            
+            });
+            
+            jQuery('input[type=submit]').click(function() {
+               disablePageActions();
+            });
+            
+         });
+      
+      </script>
+      
+      <c:DisabledFeatureOverlay isFree="{!isFree}" verifyAction="{!verifyEdition}" />
+
+   </apex:form>
+   
+   <style type="text/css">
+      .delLink {color:#015BA7 !important; text-decoration:underline; cursor:pointer;}
+      .disabledLink {pointer-events: none; cursor: default;}
+      .none {display:none !important;}
+      .nitro {height:550px !important;}
+   </style>
+   
+   </div>
+   
+</apex:page>

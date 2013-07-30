@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;script type=&quot;text/javascript&quot; src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/easyXDM/easyXDM.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+nitroLibsVersion = &quot;current&quot;;
+&lt;/script&gt;
+&lt;link href=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitro_reset.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/link&gt;
+&lt;link href=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitroforsalesforce.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/link&gt;
+&lt;script src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/jquery.1.6.1.bunchball.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+var nitro$ = bunchball_jQuery.noConflict();
+var libVersion = 4;
+&lt;/script&gt;
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitroforsalesforce.libs.bunchball.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitroforsalesforce.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitroforsalesforce.util.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitroforsalesforce.shared.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitroforsalesforce.sidebar.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/nitro-noload.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/NitroJSConnector-noload.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+&lt;script&gt;document.write(&apos;&lt;scr&apos; + &apos;ipt src=&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/NitroCookies-noload.js?r=&apos;+libVersion+&apos;&quot; type=&quot;text/javascript&quot;&gt;&lt;/scr&apos; + &apos;ipt&gt;&apos;);&lt;/script&gt;
+
+&lt;div id=&quot;nitro_sidebar&quot; class=&quot;nitro nitro_sf&quot;&gt;  
+   
+&lt;div class=&apos;sidebar&apos;&gt;
+   &lt;div class=&apos;sidebar_body&apos;&gt;
+
+
+      &lt;div class=&apos;sidebar_module sidebar_name_level&apos;&gt;
+         &lt;div class=&quot;sidebar_module_body&quot;&gt;
+         &lt;h1 id=&quot;nitro_sidebar_user_name&quot;&gt;&lt;a href=&quot;/apex/NitroUserProfile&quot;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+         &lt;div class=&quot;level_points_bar_wrap user_points_level&quot;&gt;
+            &lt;div class=&quot;hbar_outer&quot;&gt;
+               &lt;div class=&quot;hbar_inner&quot;&gt;
+                  &lt;h5&gt;0 Points&lt;/h5&gt; 
+               &lt;/div&gt;
+               &lt;h5&gt;0 Points&lt;/h5&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;level_badge&quot;&gt;
+               &lt;h4&gt;0&lt;/h4&gt;              
+            &lt;/div&gt;
+         &lt;/div&gt;&lt;!-- level_points_bar_wrap --&gt;
+
+
+      &lt;/div&gt;&lt;!-- end sidebar_module_body --&gt;
+      &lt;/div&gt;&lt;!-- end sidebar_name_level --&gt;
+
+
+        &lt;div class=&apos;sidebar_module sidebar_quota&apos;&gt;
+            &lt;div class=&quot;sidebar_module_body&quot;&gt;
+                &lt;h5&gt;&lt;/h5&gt;
+            &lt;h2&gt;Quota&lt;/h2&gt;
+            &lt;div class=&quot;sidebar_quota_meter_wrap&quot;&gt;
+               &lt;div class=&quot;sidebar_quota_meter p0&quot;&gt;&lt;/div&gt;
+                    &lt;p class=&quot;sidebar_quota_meter_bottom_num&quot;&gt;0%&lt;/p&gt;
+                    &lt;p class=&quot;sidebar_quota_meter_top_num&quot;&gt;100%&lt;/p&gt;
+                    &lt;p class=&quot;sidebar_quota_big_num&quot;&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;&lt;!-- end sidebar_module_body --&gt;
+        &lt;/div&gt;&lt;!-- end sidebar_name_level --&gt;
+
+
+   &lt;div class=&quot;sidebar_module sidebar_featured_challenges&quot;&gt;
+
+      &lt;div class=&quot;sidebar_module_body&quot;&gt;
+         &lt;h2&gt;&lt;/h2&gt;
+         &lt;div class=&quot;sidebar_featured_challenge&quot;&gt;
+            &lt;div class=&quot;sidebar_featured_challenge_trophy&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;sidebar_featured_challenge_text&quot;&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+         &lt;/div&gt;
+         
+         &lt;div class=&quot;sidebar_featured_challenge_progress&quot;&gt;
+            &lt;div class=&quot;hbar_skinny_outer&quot;&gt;
+
+               &lt;div class=&quot;hbar_skinny_inner&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;h6&gt;&lt;span&gt;0%&lt;/span&gt; Complete&lt;/h6&gt;
+         &lt;/div&gt;&lt;!-- end featured_challenge_progress--&gt;
+         
+         &lt;div class=&quot;sidebar_featured_challenge_completed_by&quot;&gt;
+            &lt;p&gt;Recently completed by:&lt;/p&gt;
+         &lt;/div&gt;
+
+         
+         &lt;h5&gt;&lt;a href=&quot;/apex/NitroUserProfile&quot;&gt;See All Challenges&lt;/a&gt;&lt;/h5&gt;
+      &lt;/div&gt;      
+   &lt;/div&gt;&lt;!-- end featured_challenge--&gt;
+   
+   
+   &lt;div class=&quot;sidebar_module sidebar_featured_reward&quot;&gt;
+      &lt;div class=&quot;sidebar_module_body&quot;&gt;
+         &lt;h2&gt;Featured Reward&lt;/h2&gt;
+         &lt;div class=&quot;sidebar_featured_reward_image&quot;&gt;&lt;/div&gt;
+         &lt;div class=&quot;sidebar_featured_reward_text&quot;&gt;&lt;/div&gt;
+         &lt;h5&gt;&lt;a href=&quot;/apex/NitroUserRewards&quot;&gt;See All Rewards&lt;/a&gt;&lt;/h5&gt;
+      &lt;/div&gt;      
+   &lt;/div&gt;&lt;!-- end featured_reward--&gt;
+   
+   
+   &lt;div class=&quot;sidebar_module sidebar_top_teams&quot;&gt;
+      &lt;div class=&quot;sidebar_module_body&quot;&gt;
+         &lt;h2&gt;Your Teams&lt;/h2&gt;
+         &lt;select class=&quot;&quot; id=&quot;nitro_sidebar_top_teams_criteria&quot;&gt;
+         &lt;/select&gt;
+
+         
+         &lt;div class=&quot;nitro_sidebar_top_teams_leaders_wrap&quot;&gt;
+            &lt;!-- leaders to be written here --&gt;
+         &lt;/div&gt;         
+         &lt;h6&gt;&lt;a href=&quot;/apex/NitroUserStandings&quot;&gt;See All Team Standings&lt;/a&gt;&lt;/h6&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;&lt;!-- end sidebar top teams --&gt;
+   
+   &lt;/div&gt;&lt;!-- end sidebar body --&gt;
+   
+   &lt;div class=&quot;sidebar_module_loading&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;!-- end sidebar --&gt;
+
+&lt;/div&gt;&lt;!-- end nitro wrapper --&gt;
+
+&lt;script&gt;
+
+   var nitrosb = {}; /*nitro sidebar*/
+      nitrosb.connectionParams = {};
+      nitrosb.nitro = {};
+      nitrosb.nitro_socket;
+      nitrosb.nitro_apiKey;
+      nitrosb.nitro_endPoint; 
+      nitrosb.nitro_sessionKey;
+      nitrosb.nitro_userId;
+      nitrosb.nitro_firstName;
+      nitrosb.nitro_lastName;
+      nitrosb.nitro_showTeams;
+      nitrosb.nitro_showFeatured;
+      nitrosb.nitro_showFeaturedReward;
+      nitrosb.nitro_showQuota;
+      nitrosb.nitro_roleId;
+      nitrosb.nitro_startDate;
+      nitrosb.nitro_miniProfileUrl; 
+      nitrosb.nitro_profileUrl; 
+      nitrosb.nitro_standingsUrl;
+      nitrosb.nitro_rewardsUrl;
+      nitrosb.nitro_cookieData;
+      nitrosb.nitro_timeFrame;
+      nitrosb.nitro_pointsName; 
+      nitrosb.nitro_cookieName = &quot;n4sfsidebar&quot;;
+      nitrosb.nitro_hideSidebarCookieName = &quot;n4sfhidesidebar&quot;;
+      nitrosb.nitro_requestData = true;
+      nitrosb.nitro_pollInterval = 5000;
+
+  nitrosb.nitroGetSFInstance = function(){
+     var url = window.location.toString();
+     var domain = url.match( /:\/\/([^\.]*)\./ )[1];
+     if (domain == &apos;ap&apos;) return &apos;ap0&apos;;
+     if (domain == &apos;emea&apos;) return &apos;eu0&apos;;
+     if (domain == &apos;ssl&apos;) return &apos;na0&apos;;
+     if (domain == &apos;tapp0&apos;) return &apos;cs0&apos;;
+     return domain;
+  };
+
+   nitrosb.nitroUpdateUrl = function(remote, page) {
+      if (remote.indexOf(&quot;visual.force.com&quot;) == -1) {
+         remote = &quot;https://nitro.&quot; + nitrosb.nitroGetSFInstance() +  &quot;.visual.force.com/apex/&quot; + page;  
+      } else {
+         var parts = remote.split(&quot;/&quot;);
+         parts[parts.length - 1] = page;
+         var domainparts = parts[2].split(&quot;.&quot;);
+
+         /*__replace */
+         domainparts[0] =  &quot;nitro&quot;;
+         /* replace__ */
+
+         var newDomain = domainparts.join(&quot;.&quot;);
+         parts[2] = newDomain;
+         remote = parts.join(&quot;/&quot;);
+      }
+      return remote;
+   }
+   
+   nitrosb.getBaseUrl = function(){
+      return &quot;https://nitro.&quot; + nitrosb.nitroGetSFInstance() +  &quot;.visual.force.com/apex/&quot;;
+   };
+
+
+
+   nitrosb.nitroSetup = function() {
+      var remote =  window.location.toString();
+      nitrosb.nitro_profileUrl = nitrosb.nitroUpdateUrl(remote, &quot;NitroUserProfile&quot;); 
+      nitrosb.nitro_standingsUrl = nitrosb.nitroUpdateUrl(remote, &quot;NitroUserStandings&quot;);    
+      nitrosb.nitro_teamsUrl = nitrosb.nitroUpdateUrl(remote, &quot;NitroUserTeams&quot;);      
+      nitrosb.nitro_rewardsUrl = nitrosb.nitroUpdateUrl(remote, &quot;NitroUserReward&quot;);      
+      
+      nitrosb.connectionParams.apiKey = nitrosb.nitro_apiKey;
+      nitrosb.connectionParams.server = nitrosb.nitro_endPoint;
+      nitrosb.connectionParams.sessionKey = nitrosb.nitro_sessionKey;
+      nitrosb.connectionParams.userId = nitrosb.nitro_userId;
+      nitrosb.connectionParams.autoLogin = true;
+      
+      nitro$(function(){
+
+        nitrosb.nitro = new Nitro(nitrosb.connectionParams);
+         nitro_for_salesforce.sidebar.init(nitrosb.nitro, {
+            timeFrame: nitrosb.nitro_timeFrame,
+            startDate: nitrosb.nitro_startDate,
+            pointsName: nitrosb.nitro_pointsName, 
+            showTeams: nitrosb.nitro_showTeams, 
+            showFeatured: nitrosb.nitro_showFeatured, 
+            showFeaturedReward: nitrosb.nitro_showFeaturedReward,
+            showQuota: nitrosb.nitro_showQuota,
+            profileUrl: nitrosb.nitro_profileUrl,
+            standingsUrl: nitrosb.nitro_standingsUrl,          
+            rewardsUrl: nitrosb.nitro_rewardsUrl, 
+            teamsUrl: nitrosb.nitro_teamsUrl,
+            quotaStartDate: nitrosb.nitro_startDate,
+            quotaDuration: nitrosb.nitro_timeFrame,
+            roleId: nitrosb.nitro_roleId
+         });
+       
+       
+      /* load the notifications after the dom is ready, so that IE doesnt blow up, as notifications has many modifications to the dom before the dom is ready */
+      nitro$.getScript(&quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/NitroNotifier-noload.js&quot;, function(){
+           nitrosb.nitro.showPendingNotifications();
+            setTimeout (&quot;nitrosb.nitroCheckForNotifications()&quot;, nitrosb.nitro_pollInterval);
+      });
+
+
+      });
+   }
+
+
+
+   nitrosb.nitroCheckForNotifications = function(){
+     nitrosb.nitro.showPendingNotifications();
+     nitrosb.nitro_pollInterval = nitrosb.nitro_pollInterval * 2;
+     if (nitrosb.nitro_pollInterval &lt; 360000) {
+        setTimeout ( &quot;nitrosb.nitroCheckForNotifications()&quot;, nitrosb.nitro_pollInterval);
+     }
+   }
+   
+   
+
+
+   nitrosb.nitroSplitMessage = function(message) {
+      nitrosb.nitro_apiKey = nitrosb.nitroGetQueryVariable(message, &quot;apiKey&quot;);
+      nitrosb.nitro_endPoint = nitrosb.nitroGetQueryVariable(message, &quot;endPoint&quot;); 
+      nitrosb.nitro_sessionKey = nitrosb.nitroGetQueryVariable(message, &quot;sessionKey&quot;);
+      nitrosb.nitro_userId = nitrosb.nitroGetQueryVariable(message, &quot;userId&quot;);
+      nitrosb.nitro_firstName = nitrosb.nitroGetQueryVariable(message, &quot;firstName&quot;);
+      nitrosb.nitro_lastName = nitrosb.nitroGetQueryVariable(message, &quot;lastName&quot;); 
+      nitrosb.nitro_timeFrame = nitrosb.nitroGetQueryVariable(message, &quot;timeFrame&quot;);
+      nitrosb.nitro_pointsName = nitrosb.nitroGetQueryVariable(message, &quot;pointsName&quot;);
+      nitrosb.nitro_showTeams = nitrosb.nitroGetQueryVariable(message, &quot;showTeams&quot;);
+      nitrosb.nitro_showFeatured = nitrosb.nitroGetQueryVariable(message, &quot;showFeatured&quot;);
+      nitrosb.nitro_showFeaturedReward = nitrosb.nitroGetQueryVariable(message, &quot;showFeaturedReward&quot;);
+      nitrosb.nitro_showQuota = nitrosb.nitroGetQueryVariable(message, &quot;showQuota&quot;);  
+      nitrosb.nitro_roleId = nitrosb.nitroGetQueryVariable(message, &quot;roleId&quot;);
+      nitrosb.nitro_startDate = nitrosb.nitroGetQueryVariable(message, &quot;startDate&quot;);
+   }
+
+
+
+
+   nitrosb.nitroCreateCookie = function(name,value,days) {
+      if (days) {
+         var date = new Date();
+         date.setTime(date.getTime()+(days*24*60*60*1000));
+         var expires = &quot;; expires=&quot;+date.toGMTString();
+      }
+      else var expires = &quot;&quot;;
+      document.cookie = name+&quot;=&quot;+value+expires+&quot;; path=/&quot;;
+   }
+   
+   nitrosb.nitroReadCookie = function(name) {
+      var nameEQ = name + &quot;=&quot;;
+      var ca = document.cookie.split(&apos;;&apos;);
+      for(var i=0;i &lt; ca.length;i++) {
+         var c = ca[i];
+         while (c.charAt(0)==&apos; &apos;) c = c.substring(1,c.length);
+         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+   }
+   
+   nitrosb.nitroEraseCookie = function(name) {
+      nitrosb.nitroCreateCookie(name,&quot;&quot;,-1);
+   }
+   
+   nitrosb.nitroGetQueryVariable = function(query, variable) {
+     var vars = query.split(&quot;&amp;&quot;);
+     for (var i=0;i&lt;vars.length;i++) {
+       var pair = vars[i].split(&quot;=&quot;);
+       if (pair[0] == variable) {
+         return unescape(pair[1]);
+       }
+     }
+     return &quot;&quot;;
+   }
+   
+   nitrosb.nitroToggleSidebar = function(displayState) {
+      if (document.getElementById(&quot;nitro_sidebar&quot;) != null) { 
+         if (document.getElementById(&quot;nitro_sidebar&quot;).parentNode.parentNode.className.indexOf(&quot;htmlAreaComponentModule&quot;) != -1) {
+            document.getElementById(&quot;nitro_sidebar&quot;).parentNode.parentNode.style.display = displayState; 
+         }
+      }
+   }
+
+
+   nitrosb.nitro_showSidebar = nitrosb.nitroReadCookie(nitrosb.nitro_hideSidebarCookieName);
+   if (nitrosb.nitro_showSidebar != null) {
+      nitrosb.nitroToggleSidebar(&apos;none&apos;);
+   }
+
+   nitrosb.nitro_cookieData = nitrosb.nitroReadCookie(nitrosb.nitro_cookieName);
+   if (nitrosb.nitro_cookieData == null) {
+      nitrosb.nitro_requestData = true;
+   }
+   else {
+      nitrosb.nitroSplitMessage(nitrosb.nitro_cookieData);
+      nitrosb.nitroSetup();
+      nitrosb.nitro_requestData = false;
+   }
+
+   /* replaced the window.onload that was clobbering salesforce&apos;s use of the same thing */ 
+   nitro$(function(){
+ 
+      var remote = window.location.toString();
+      nitrosb.nitro_miniProfileUrl = nitrosb.nitroUpdateUrl(remote, &quot;NitroMiniProfile?core.apexpages.devmode.url=1&quot;);
+
+      nitrosb.nitro_socket = new easyXDM.Socket({
+           remote: nitrosb.nitro_miniProfileUrl,
+           onMessage: function(message, origin) {
+              if (typeof message != &apos;undefined&apos;) {
+                 nitrosb.nitroSplitMessage(message);
+                 if (nitrosb.nitro_sessionKey == &quot;&quot;) {
+                     nitrosb.nitroToggleSidebar(&apos;none&apos;);
+                     nitrosb.nitroEraseCookie(nitrosb.nitro_cookieName);
+                     nitrosb.nitroCreateCookie(nitrosb.nitro_hideSidebarCookieName, 1, 9999);
+                     return;
+                 }
+                 
+                 nitrosb.nitroCreateCookie(nitrosb.nitro_cookieName, message, 1); 
+                 nitrosb.nitroEraseCookie(nitrosb.nitro_hideSidebarCookieName);
+                 nitrosb.nitroToggleSidebar(&apos;block&apos;);
+                 if (nitrosb.nitro_requestData) {
+                    nitrosb.nitroSetup();                 
+                 }
+              }
+            },
+           swf: &quot;https://assets2.bunchball.net/widgets/salesforce/sfdc16x/easyXDM/easyxdm.swf&quot;,
+           swfNoThrottle: true
+         });
+   });
+   
+&lt;/script&gt;</body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>narrow</width>
+</HomePageComponent>

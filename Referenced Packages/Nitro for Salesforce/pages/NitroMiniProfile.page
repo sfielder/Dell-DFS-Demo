@@ -1,0 +1,189 @@
+<apex:page controller="nitro.NitroMiniProfile" showHeader="false" sidebar="false"> 
+<apex:pageMessages ></apex:pageMessages>
+<apex:includeScript value="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/easyXDM/easyXDM.min.js"/>
+User ID: {!$User.Id}<br />
+DidLogin: {!DidLogin}<br />
+<!--
+User ID: {!$User.Id}<br />
+User First Name: {!$User.FirstName}<br />
+User Last Name: {!$User.LastName}<br />
+User Name: {!$User.UserName}<br />
+SessionKey: {!SessionKey}<br />
+DidLogin: {!DidLogin}<br />
+-->
+<script>
+var nitro_socket;
+var nitro_windowOnload = window.onload;
+window.onload = function() {
+    if (nitro_windowOnload != null)
+            nitro_windowOnload();
+    nitro_socket = new easyXDM.Socket({
+        onReady:function() {
+            nitro_socket.postMessage("&apiKey={!URLENCODE(APIKey)}&endPoint={!URLENCODE(EndPoint)}&sessionKey={!URLENCODE(SessionKey)}" + 
+                               "&userId={!URLENCODE(NitroUserId)}&firstName={!URLENCODE($User.FirstName)}&lastName={!URLENCODE($User.LastName)}" + 
+                               "&timeFrame={!URLENCODE(timeFrame)}&pointsName=" + encodeURIComponent("{!pointsName}") + "&showTeams={!URLENCODE(showTeams)}" + 
+                               "&showFeatured={!URLENCODE(showFeatured)}&showQuota={!URLENCODE(showQuota)}&roleId={!URLENCODE(roleId)}" + 
+                               "&startDate={!URLENCODE(startDate)}&showFeaturedReward={!URLENCODE(showFeaturedReward)}");
+        },
+        swf: "https://assets2.bunchball.net/widgets/salesforce/sfdc16x/easyXDM/easyxdm.swf",
+        swfNoThrottle: true
+    });
+}
+</script>
+
+<script>
+   nitroLibsVersion = "current";
+</script>
+<script src="https://assets2.bunchball.net/scripts/nitro/{!buildVersion}/nitro.js" type="text/javascript"></script>
+<script type="text/javascript">
+   var connectionParams2={};
+   connectionParams2.apiKey = "{!JSENCODE(APIKey)}";
+   connectionParams2.server = "{!JSENCODE(Endpoint)}";
+   connectionParams2.sessionKey = "{!SessionKey}";
+   
+   if (connectionParams2.sessionKey == "" || connectionParams2.server == "" || connectionParams2.apiKey == "") {
+      // do nothing
+   }
+   else {   
+      var nitro2 = new Nitro(connectionParams2);
+      
+      // See if there are any waiting results. If there are, and they meet the criteria
+      // Send them to Apex to get posted to Chatter.
+      nitro2.callAPI("method=user.getResponses", "processResult");
+      
+      // Handle saving the user's Chatter pictures into Nitro preferences. 
+      // This cookie will get blasted every time the browser closes. So that will be 
+      // what forces a reload - opening and closing the browser.
+      var photoCookieName = "{!JSENCODE(APIKey)}" + "__" + "{!JSENCODE($User.Id)}" + "__n4sfsp"; 
+      var setPhoto = readCookie(photoCookieName);
+      if (setPhoto == null) {
+         // if there's no cookie, then set the Photos and create the cookie. 
+         /* */ nitro.NitroMiniProfile.setPhotos(afterRemoting);
+         createCookie(photoCookieName, new Date().getTime(), 0);
+      }
+   }
+       
+   
+   
+   
+   // Callback to handle any calls to Nitro from here. 
+   function processResult(data) {
+      if (data == null) {
+         //alert ('Error');
+         return;
+      }
+      if (data.Nitro.res == "err") {
+         //alert (data.Nitro.Error.Message);
+         return;
+      }
+      
+      // if the admin doesn't want anything in Chatter, kill this now. 
+      if ("{!JSENCODE(autoPostChatter)}" == "NOTHING") {
+         return;
+      }
+      
+      switch (data.Nitro.method) {
+         case "user.getResponses":
+            var allResponses = data.Nitro.responses;
+            if (allResponses == true) {
+               // no responses
+               return;
+            }
+            
+            // we have some responses, let's parse them. 
+            var responses = allResponses.Nitro;
+            if (typeof responses == "undefined") {
+               // no responses
+                  return;
+            }
+            else if (typeof responses.length == "undefined") {
+               // one response
+               responses = [responses];
+            }
+   
+            var responseString = '';
+            
+            // at this point, we always have an array or responses to parse. 
+            // so run through them. 
+            for (var i=0; i < responses.length; i++) {
+               var challengesAchieved = responses[i].Achievements.challengesAchieved.ChallengeAchieved;
+               
+               // An action was logged but no challenge was achieved.
+               if (challengesAchieved == undefined) {
+                  continue;
+               }
+            
+               if (typeof challengesAchieved.length == "undefined") {
+                  // one challengeAchieved
+                  challengesAchieved = [challengesAchieved];
+               }
+               
+               for (var j=0; j < challengesAchieved.length; j++) {
+                  //console.log (challengesAchieved[j].name); 
+                  // If the admin has selected only non-repeatable Challenges and this is a repeatable challenge
+                     // then return 
+                  if ("{!JSENCODE(autoPostChatter)}" == "NON-REPEATABLE" && 
+                        challengesAchieved[j].repeatable == '1') {
+                        continue;
+                  }
+                  
+                  // If there were negative points, don't add anything to the feed. 
+                  var pointInt = parseInt(challengesAchieved[j].points);
+                  if (pointInt <= 0) {
+                     continue;
+                  }
+                  
+                  // Get the server path - just the part after the https:// and before any page names. 
+                  var path = location.href;
+                  var pathParts = path.split("/");
+                  // pathParts[0] is "https"
+                  // pathParts[2] is the server path
+                  path = pathParts[0] + "//" + pathParts[2];
+         
+                     // Otherwise make a JS Remoting call to do the post. 
+                  /* */ nitro.NitroMiniProfile.addToChatter(challengesAchieved[j].name, 
+                                             challengesAchieved[j].points, 
+                                             challengesAchieved[j].pointCategory,
+                                             challengesAchieved[j].repeatable,
+                                             path,
+                                             afterRemoting);
+               }
+            }
+            
+            
+            break;
+      }
+   }  
+   
+   // don't do anything afterward. 
+   function afterRemoting(result, event) {
+      return;
+   }
+   
+   // COOKIE functions. 
+   function createCookie(name,value,days) {
+      if (days) {
+         var date = new Date();
+         date.setTime(date.getTime()+(days*24*60*60*1000));
+         var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+   }
+   
+   function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+         var c = ca[i];
+         while (c.charAt(0)==' ') c = c.substring(1,c.length);
+         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+   }
+   
+   function eraseCookie(name) {
+      createCookie(name,"",-1);
+   }  
+</script>
+</apex:page>

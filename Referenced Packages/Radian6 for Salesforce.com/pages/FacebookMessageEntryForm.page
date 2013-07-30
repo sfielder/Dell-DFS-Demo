@@ -1,0 +1,643 @@
+<apex:page id="MessageEntryForm" Controller="R6Service.FacebookController" tabStyle="SocialPost" showHeader="true" sidebar="true" action="{!refreshAccounts}">
+
+    <apex:includeScript value="/support/console/24.0/integration.js"/>
+    
+    <script>
+        if(typeof String.prototype.trim !== 'function') {
+            String.prototype.trim = function() {
+                return this.replace(/^\s+|\s+$/g, '');
+            }
+        }
+            
+        if(typeof String.prototype.startsWith !== 'function') {
+            String.prototype.startsWith = function (str) {
+                return 0 == this.indexOf(str); 
+            }
+        }
+    </script>
+
+<style>
+    .bPageBlock .detailList TD{
+        vertical-align:middle;
+    }
+    
+    .UserNameFont{
+       font-size: 91%;
+       font-weight: bold;
+       text-align: right;
+       color: #4A4A56;
+       padding-left: 50%;       
+    }
+    .usernameformat{
+        padding-left: 20px;
+    }
+
+    #popUpBg {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-width: 10px;
+        border-style: solid;
+        background-color: rgba(255,255,255, 1);
+        border-color: rgba(100,100,100,.5);
+        border-radius: 5px;
+        font-family: arial;
+        font-size: 100%;
+        color: black;
+    
+        -moz-border-radius: 5px;
+    }
+    #popUpBody {
+        padding-left: 0px;
+        font-family: arial;
+        font-size: 100%;
+        font-weight: bold;
+        color: black;   
+    }
+    #popUpTitle {
+        background-color: #4595C0;
+        font-family: arial;
+        font-size: 125%;
+        color: white;   
+        padding: 5px;
+    }
+    #popUpContent {
+        font-family: arial;
+        font-size: 100%;
+        font-weight: normal;
+        color: black;   
+        padding: 10px;
+    }
+    .popUpText {
+        padding: 10px;
+        font-family: arial;
+        font-size: 100%;
+        font-weight: normal;
+        color: black;   
+    }
+    #buttonPanel {
+        padding: 0px 10px 10px 10px;
+        text-align: right;
+    }
+    .CharLimitExceeded {
+        color: Red;
+        font-weight: bold;
+    }
+</style>
+
+<apex:outputPanel id="messageRenderer">
+    <apex:pageMessages />
+</apex:outputPanel>
+
+<div id="outerWrapSection" class="outerWrapSectionCls" style="border-style: none;"> 
+  <apex:form id="messageEntryFormId" >    
+  
+  <apex:actionFunction name="checkSelectedMessageType" status="sendStatus" action="{!makeUsersPageSectionVisible}" reRender="CommentDetailSecId,usersPageSectionId" oncomplete="textCounter('');"/>
+  <apex:actionFunction name="sendPostAction" status="sendStatus" action="{!sendMessage}" oncomplete="checkIfDeliveryFailed();" rerender="oAuthErrorChecker,deliveryChecker, messageRenderer,refreshAccountsButton,accountSelectList,messageTypeSelectList,isUserVisiblePanel,senderAvatarSection" />
+  <apex:actionFunction name="savePostAction" status="sendStatus" action="{!saveMessage}" onComplete="checkIfSaveFailed();" reRender="messageRenderer,deliveryChecker" />
+  <apex:actionFunction name="scheduleTaskAction" action="{!redirectToScheduleTask}" />
+  <apex:actionFunction name="refreshAction" action="{!refreshAccounts}" reRender="accountSelectList,messageTypeSelectList,oAuthErrorChecker,messageRenderer,SEND_2" oncomplete="refreshSenderAvatar();"/>
+  <apex:actionFunction name="callShorteningActionFunction"  status="sendStatus" action="{!generateShortenedURL}"  reRender="newUrlRefresher,messageRenderer,attachArticlePanel" oncomplete="insertUrlIntoText();">
+    <apex:param name="OldUrl" value="" assignTo="{!urlToShorten}"/>
+  </apex:actionFunction>
+  <apex:actionFunction name="onAccountChanged"  reRender="CommentDetailSecId,usersPageSectionId,messageTypeSelectList" oncomplete="textCounter('');"/>
+  <apex:actionFunction name="refreshSenderAvatar" rerender="senderSelector, selectedUserIdPanel" />
+  
+  <apex:actionPoller id="statusPoller" action="{!pollStatus}" enabled="{!isTimerActive}" interval="5" oncomplete="checkIfDeliveryFailed()" rerender="spinner,statusPoller,deliveryChecker,messageRenderer,isUserVisiblePanel"/>
+    
+  <table style="width:100%">
+      <tr>
+          <td align="right" width="80px">
+              <apex:image url="{!$Resource.R6Service__Facebook_Logo}" height="75" width="75" alt="{!$Label.r6service__FacebookLogo}"/>
+          </td>
+          
+          <td>      
+              <apex:outputLabel value="{!$Label.r6service__SendAMessage}"  styleClass="messageEntryFormSendaTweetLbl" />
+          </td>     
+          
+          <td align="right">
+              <table>
+                  <tr>
+                      <td>
+                          <b>{!$Label.r6service__PoweredBy}</b>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <apex:image value="{!$Resource.R6Service__Radian6_Logo}" height="50" width="150" alt="{!$Label.r6service__Radian6Logo}"/>
+                      </td>
+                  </tr>
+               </table>   
+          </td>
+      </tr>
+      </table>
+
+            <div id="innerWrapSection" class="innerWrapSectionCls">
+               <apex:pageBlock id="caseDetailPageblock">     
+                   <apex:pageBlockSection columns="1">
+                       <apex:outputLabel value="{!$Label.r6service__MessageDetails}" styleClass="messageEntryFormCaseDetailLbl" ></apex:outputLabel>
+                   </apex:pageBlockSection>
+    
+                   <apex:pageBlockSection columns="1" title="{!$Label.r6service__CaseDetail}" id="caseDetail" >  
+                        <apex:pageBlockSectionItem labelStyle="width:50px;" >
+                            <apex:outputLabel value="{!$Label.r6service__CaseNumberLabel}" />                      
+                            <apex:outputLabel value="{!caseNumber}"/>                           
+                        </apex:pageBlockSectionItem>
+                         
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$Label.r6service__LastPost}"/>
+                            <c:PostDecorator post="{!replyToPost}" />
+                        </apex:pageBlockSectionItem>                                         
+                   </apex:pageBlockSection>
+               </apex:pageBlock>
+    
+               <apex:pageBlock id="CommentDetailId">  
+                   <apex:pageBlockSection id="CommentDetailSecId" columns="1" title="{!$Label.r6service__CommentDetail}" >                   
+                
+                        <apex:pageBlockSectionItem id="SendAsRow">
+                         <apex:outputLabel value="{!$Label.r6service__SocialNetworkAccount}" />
+                         <apex:outputpanel id="senderSelector">
+                             <apex:image id="defaultAvatar" value="{!$Resource.R6Service__MissingAvatar}" height="48px" width="48px" style="vertical-align:middle; margin-right:5px;" rendered="{!!isAvatarValid}"/>
+                             <apex:image id="senderAvatar" value="{!selectedSenderAvatarUrl}" height="48px" width="48px" style="vertical-align:middle; margin-right:5px;" rendered="{!isAvatarValid}"/>
+                             <apex:selectList id="accountSelectList"  size="1" multiselect="false" value="{!smmAccountID}" onchange="refreshSenderAvatar();" style="vertical-align:middle;">
+                                <apex:selectOptions value="{!smmAccounts}" />
+                             </apex:selectList>
+                             <apex:commandButton id="refreshAccountsButton" value="{!$Label.r6service__RefreshButtonLabel}" onClick="refreshAccounts();return false;" />
+                             <apex:commandButton id="manageAccounts" value="{!$Label.r6service__AddSocialMediaAccountLabel}" onClick="openAccountManagement();return false;" disabled="{!!enableSocialMediaAccountManagement}" />
+                         </apex:outputpanel>
+                       </apex:pageBlockSectionItem> 
+
+                       <apex:pageBlockSectionItem id="usersPageSectionId" rendered="{!showPagesOfUsersChoice}" >
+                           
+                           <apex:outputLabel value="{!$Label.r6service__UserPageAccounts}" id="usersPageLabel"/>
+                           <apex:selectList id="UserPageSelectList" size="1" multiselect="false"  value="{!selectedPageOfUserChoice}">
+                               <apex:selectOptions value="{!usersPageAccounts}"/>
+                           </apex:selectList>
+                                                                    
+                       </apex:pageBlockSectionItem>
+                        
+                       <apex:pageBlockSectionItem id="commentTextboxSection" dataTitle="" >
+                            <apex:outputText value="">
+                            <apex:outputLabel id="commentTextboxlenExceeded" styleClass="CharLimitExceeded"></apex:outputLabel><br/> 
+                            <apex:outputLabel id="commentTextboxlen">420</apex:outputLabel>&nbsp;
+                            <apex:outputLabel id="commentTextboxlenLabelCharsRemaining" value="{!$Label.r6service__CharactersRemaining}"></apex:outputLabel>
+                            </apex:outputText>
+                            <apex:inputTextarea id="commentTextboxId" value="{!content}" rows="4" cols="100" onkeyup="textCounter(this);" onkeydown="textCounter(this);"/>
+                       </apex:pageBlockSectionItem>                        
+                        
+                  </apex:pageBlockSection>
+                   <apex:pageBlockSection title="URL Shortener" id="UrlShortenerPageBlockSection" columns="1" rendered="{!urlShortening}"> 
+
+                            <apex:pageBlockSectionItem id="urlShorteningPBSectionItem" dataTitle="">
+                             <apex:outputText value="{!$Label.r6service__EnterUrlLabel}" >
+                             </apex:outputText>
+                             <apex:pageBlockSectionItem id="urlShorteningButtonSection" dataTitle="">
+                             <apex:inputText id="urlTextboxId" value="{!urlToShorten}"/>
+                             <input type="Button" class="btn" value="{!$Label.ShortenUrlButtonLabel}" id="shortencommandButtonId" style="margin-left:10px;" onclick="callShortener(document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.UrlShortenerPageBlockSection.urlShorteningPBSectionItem.urlShorteningButtonSection.urlTextboxId}').value , true);"/>
+                             </apex:pageBlockSectionItem>
+                            </apex:pageBlockSectionItem>
+                  
+                       </apex:pageBlockSection>
+                       
+                       <apex:pageBlockSection id="activitySection" title="Activities">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Record Activity"/>
+                            <apex:inputCheckbox value="{!recordActivity}" id="recordActivityCheckbox" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Schedule Task"/>
+                            <apex:inputCheckbox value="{!scheduleTask}" id="scheduleTaskCheckbox" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                       
+               </apex:pageBlock>  
+               <apex:pageBlock id="articleBlockId">
+                    <apex:pageBlockSection id="articleSectionId"  title="{!$Label.r6service__IncludeArticlesTitle}" rendered="{!showIncludeArticleSection}" >
+                        
+                        <apex:dataTable value="{!articleKeys}" var="key" id="articleTableId">
+                            <apex:column id="articleCheckBoxId">
+                                <apex:inputCheckBox id="attachArticleCheckBox" onclick="attachArticles(this,'{!key['title']}','{!articles[key]}');"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:outPutLink value="{!articles[key]}" target="_blank">{!key['title']}</apex:outPutLink>
+                            </apex:column>
+                        </apex:dataTable>
+                        
+                        
+                    </apex:pageBlockSection>
+                  <apex:pageBlockButtons location="bottom">
+                          <apex:commandButton value="{!$Label.r6service__ShareButtonLabel}" id="SEND_2" onClick="checkMessageForWarnings();" reRender="deliveryChecker" disabled="{!!allowSend}" />                        
+                          <apex:commandButton value="{!$Label.r6service__CancelButtonLabel}" id="CANCEL_2" onClick="closeSendMessage(false);return false" /> 
+                  </apex:pageBlockButtons>                    
+                 
+                 <apex:outputPanel id="popup" rendered="true">
+                     <apex:outputPanel styleClass="customPopup" rendered="true">
+                        <apex:outputPanel id="spinner">
+                            <apex:image rendered="{!isTimerActive}" styleClass="customPopup" value="{!URLFOR($Resource.R6Service__sending_status,'sending_status.gif')}" height="50" width="50" alt="{!$Label.r6service__AltToSendingStatusImage}"/>
+                        </apex:outputpanel>
+                         <apex:actionStatus id="sendStatus" onstart="disableArticlePanel();" onstop="enableArticlePanel();">    
+                             <apex:facet name="start">
+                                 <apex:image styleClass="customPopup" value="{!URLFOR($Resource.R6Service__sending_status,'sending_status.gif')}" height="50" width="50" alt="{!$Label.r6service__AltToSendingStatusImage}"/>
+                              </apex:facet>
+                         </apex:actionStatus><br/><br/>    
+                    </apex:outputPanel>
+                  </apex:outputpanel>
+                  
+                  
+               </apex:pageBlock> 
+          </div>
+      </apex:form>
+      
+</div> 
+<!--Include the stylesheet file from static resource--> 
+<apex:stylesheet value="{!URLFOR($Resource.R6Service__FacebookPageStyle,'FacebookPageStyle.css')}"/>
+
+<apex:outputPanel id="oAuthErrorChecker">
+  <script>
+       var accountManagementUrl = "{!JSENCODE(manageSocialNetworksUrl)}?authToken={!JSENCODE(token)}&sfUrl={!URLENCODE($Api.Partner_Server_URL_200)}&sfSession={!URLENCODE(GETSESSIONID())}&sfUserId={!URLENCODE($User.Id)}"; 
+  </script>   
+</apex:outputPanel>
+
+<apex:outputPanel id="deliveryChecker">
+  <script>
+       pageContainsError= '{!pageContainsError}';    
+       isSendPending = '{!isSendPending}';
+       scheduleTask = '{!scheduleTask}';
+       isTimerActive = {!isTimerActive};
+       saveFailed = {!saveFailed};
+  </script>   
+</apex:outputPanel>
+
+<apex:outputPanel id="newUrlRefresher">
+  <script>
+       newUrl = '{!JSINHTMLENCODE(shortUrl)}';
+  </script>   
+</apex:outputPanel>
+
+<div id="fb-status"></div>
+<div id="popUpBg" style="visibility: hidden;">
+    <div id="popUpBody">
+        <div id="popUpTitle"></div>
+        <div id="popUpContent"><iframe src="" width="98%" height="110" id="FBFrameId" scrolling="no" frameborder="0"></iframe></div>
+        <div id="buttonPanel"><button id="okButton">Ok</button></div>
+    </div>
+</div>
+
+<script>
+var ActionEnum = {
+    LIKE : "LIKE",
+    FRIEND : "FRIEND"
+};
+function requestFriend() {
+    var iframe = document.getElementById("FBFrameId");
+    var friendId = '{!JSINHTMLENCODE(replyToPostID)}';
+    var url = getUrl(ActionEnum.FRIEND);
+    url = url + "?fid=" + encodeURIComponent(friendId) + "&uid=" + encodeURIComponent(selectedUserId) + "&act=friend";
+    iframe.src = url; 
+}
+function likePage() {
+    var iframe = document.getElementById("FBFrameId");
+    var url = getUrl(ActionEnum.LIKE);
+    var pageId = extractPageId('{!JSINHTMLENCODE(replyToPostID)}');
+    url = url + "?page_id=" + encodeURIComponent(pageId) + "&uid=" + encodeURIComponent(selectedUserId) + "&act=like";
+    iframe.src = url; 
+}
+function getUrl(action) {
+    return "{!WSEndpointBaseUrl}/view/facebook";
+}
+function extractPageId(pid) {
+    var pageId;
+    //alert(pid);
+    if(pid != null) {
+        var index = pid.indexOf("_");
+        if(index > 0) {
+            pageId = pid.substr(0,index); 
+        }
+    }
+    //alert(pageId);
+    return pageId;
+}
+function showPopUp(title, action) {
+    if(action == ActionEnum.LIKE) {
+        makePopUp(title, 400, 200);
+    } else if(action == ActionEnum.FRIEND) {
+        makePopUp(title, 640, 400);
+    }
+}
+function makePopUp(title, width, height) {
+    var pu = document.getElementById("popUpBg");
+    var height = height;
+    var width = width;
+    if(pu.style.visibility == "hidden") {
+        pu.style.visibility = "visible";
+        pu.style.width = width + "px";
+        pu.style.height = height + "px";
+        pu.style.left = ((window.innerWidth / 2) - (width / 2)) + "px"; 
+        pu.style.top = ((window.innerHeight / 2) - (height / 2)) + "px";
+    } else {
+        pu.style.visibility = "hidden";
+    }
+    
+    var put = document.getElementById("popUpTitle");
+    put.innerHTML = title;
+    
+    var fbFrame = document.getElementById("FBFrameId");
+    fbFrame.width = width - 20;
+    fbFrame.height = height - 80;
+    
+    var okBtn = document.getElementById("okButton").onclick = function() {
+        var pu = document.getElementById("popUpBg");
+        pu.style.visibility = "hidden";
+    }
+}
+function hidePopUp() {
+    var pu = document.getElementById("popUpBg");
+    if(pu.style.visibility == "visible")
+        pu.style.visibility = "hidden";
+}
+</script>
+<!--@ToDo this script will move to static resource oce page development stabilizes--->
+
+<script>        
+
+        var pageContainsError;
+        var isSendPending;
+        var scheduleTask;
+        var cancelFormSubmit = false;
+        var newUrl;
+        var beforeShorteningUrl;
+        var oldUrl = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.UrlShortenerPageBlockSection.urlShorteningPBSectionItem.urlShorteningButtonSection.urlTextboxId}');
+        var commentTextField = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxId}');
+        var commentTextFieldLen = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlen}');
+        var commentTextboxlenLabelCharsRemaining = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlenLabelCharsRemaining}');
+        var commentTextFieldLenExceeded = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlenExceeded}');    
+        var oldNewURLMap = new Object();
+        var articleTitle;
+        var shortenButtonClicked = false;
+        var numberOfArticles = '{!articleKeys.size}';
+        
+        var previousOnload = window.onload;
+        
+        window.onload = new function() 
+        {         
+            textCounter(commentTextField);
+           
+            if (previousOnload) { 
+                previousOnload();
+            }                
+            setTimeout('setTabTitle(\'Send Message\')', '200');
+        }
+        
+        function checkMessageForWarnings() 
+        {
+          cancelFormSubmit = false;
+          var commentTextField = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxId}');                   
+         
+          // Trim white space and get text length                
+          var commentTextFieldLen = commentTextField.value.trim().length;
+         
+          //check for empty textbox message
+          if(commentTextField.value==''||commentTextFieldLen==0){
+              alert('{!$Label.TypeMessage}');
+              return;
+          }   
+          if(commentTextField.value.length>420)
+          {
+              alert('{!$Label.MessageSizeExceededErrorFacebook1}'+' '+(commentTextField.value.length-420)+' '+'{!$Label.MessageSizeExceededError2}');
+              cancelFormSubmit = true;
+          }                
+         
+         if(!cancelFormSubmit) {
+             savePostAction();
+         }       
+        }
+        
+        function checkIfSaveFailed()
+        {
+            if(!saveFailed)
+                sendPostAction();
+        }
+        
+         function checkIfDeliveryFailed() {
+         
+            //if(isTimerActive) return;
+            
+            if(!isUserVisible)
+            {            
+                if(isSelectedAccountAFanPage) {
+                    showPopUp("Action Required", ActionEnum.LIKE);
+                    likePage();
+                } else {
+                    showPopUp("Action Required", ActionEnum.FRIEND);
+                    requestFriend();                    
+                }        
+                cancelFormSubmit == true;
+            }
+            else if(pageContainsError == "false" && cancelFormSubmit == false) {
+                 redirect();
+            }        
+        } 
+        
+       function redirect() {
+           if(scheduleTask == 'true') {
+               scheduleTaskAction();
+           }
+           else {
+               closeSendMessage(true);
+           }
+       }
+      
+       function callShortener(url , isShortenButtonClicked)
+       {
+            shortenButtonClicked = isShortenButtonClicked;
+            if((url.trim()=='')||(url.trim()==null))
+            {
+                alert('{!$Label.EnterUrl}');
+            }else
+            {
+               callShorteningActionFunction(url);
+            }
+            
+       } 
+       
+       function insertUrlIntoText()
+       {
+          if((newUrl != '') && (newUrl!=null))
+         {
+           if(commentTextField.value.trim()==''||commentTextField.value.trim()==null)
+           {
+                if(shortenButtonClicked == true)
+                    articleTitle = '';
+               commentTextField.value = commentTextField.value.trim()+ articleTitle +newUrl;
+               textCounter(commentTextField);
+           }
+           else
+           {
+                if(shortenButtonClicked == true)
+                    articleTitle = ' ';
+               commentTextField.value = commentTextField.value.trim()+ articleTitle + newUrl;
+               textCounter(commentTextField);
+           }
+           
+           
+        }
+        else
+              window.scrollTo(0,0); 
+        oldUrl.value='';
+       }
+       
+       function attachArticles(checkBoxObject,title,orginalUrl)
+       {
+           commentTextField = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxId}');
+           if(checkBoxObject.checked)
+           {
+                beforeShorteningUrl = orginalUrl;
+                if(commentTextField.value.trim()==''||commentTextField.value.trim()==null)
+                {
+                    articleTitle = title +' : ';
+                }
+                else
+                {
+                    articleTitle = '\n'+title +' : ';
+                } 
+                if('{!urlShortening}'=='true')
+                {   
+                    callShortener(orginalUrl ,false);
+                }
+                else
+                {
+                    oldNewURLMap[orginalUrl] = orginalUrl;
+
+                    newUrl = oldNewURLMap[orginalUrl];
+                    insertUrlIntoText();
+                }       
+           }
+           else
+           {
+               if(commentTextField.value.match('\n'+title)!=null)
+                    commentTextField.value = commentTextField.value.replace('\n'+title+' : '+oldNewURLMap[orginalUrl],'');
+               else 
+               {
+                    if(commentTextField.value.match(title+' : '+oldNewURLMap[orginalUrl]+'\n')!=null)
+                        commentTextField.value = commentTextField.value.replace(title+' : '+oldNewURLMap[orginalUrl]+'\n','');
+                    else if(commentTextField.value.match(title+' : '+oldNewURLMap[orginalUrl]+' ')!=null)
+                        commentTextField.value = commentTextField.value.replace(title+' : '+oldNewURLMap[orginalUrl]+' ','');
+                        else
+                            commentTextField.value = commentTextField.value.replace(title+' : '+oldNewURLMap[orginalUrl],'');
+                }
+               textCounter(commentTextField);
+           }
+       } 
+       
+       function textCounter(field)
+       {
+            var totMaxlimit = 420;
+            maxlimit = totMaxlimit;
+            if(field=='')
+            {
+                field = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxId}');
+                commentTextFieldLen = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlen}');
+                commentTextboxlenLabelCharsRemaining = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlenLabelCharsRemaining}');
+                commentTextFieldLenExceeded = document.getElementById('{!$Component.MessageEntryForm.messageEntryFormId.CommentDetailId.CommentDetailSecId.commentTextboxSection.commentTextboxlenExceeded}'); 
+            }
+           if (field.value.length > maxlimit)
+           { 
+                commentTextFieldLenExceeded.innerHTML='{!$Label.MessageSizeExceededError}'+' '+Math.abs((420-field.value.length))+' '+'{!$Label.CharacterLabelInExceededErrorMessage}';
+                commentTextFieldLen.innerHTML='';
+                commentTextboxlenLabelCharsRemaining.innerHTML ='';
+           }            
+           else
+           { 
+               commentTextFieldLenExceeded.innerHTML='';
+               commentTextboxlenLabelCharsRemaining.innerHTML ='{!$Label.r6service__CharactersRemaining}';
+               commentTextFieldLen.innerHTML = maxlimit - (field.value.length);
+           }
+        }     
+       
+        function refreshAccounts() {
+            refreshAction();
+        }
+       
+        function openAccountManagement() {
+            window.open(accountManagementUrl, "_blank");
+        }
+       
+        function disableArticlePanel() {
+            for(i=0;i<numberOfArticles;i++)
+                document.getElementById('MessageEntryForm:messageEntryFormId:articleBlockId:articleSectionId:articleTableId:'+i+':attachArticleCheckBox').disabled = true;
+        }
+       
+       function enableArticlePanel() {
+            for(i=0;i<numberOfArticles;i++)
+                document.getElementById('MessageEntryForm:messageEntryFormId:articleBlockId:articleSectionId:articleTableId:'+i+':attachArticleCheckBox').disabled = false;
+        }
+       
+       function cancelSendMessage() {
+            window.top.close();
+        }
+       
+        function checkMessageType() {
+            checkSelectedMessageType();
+        }
+       
+        function closeSendMessage(refreshTab) {
+            if(sforce.console.isInConsole()) {
+                closeTab();
+                if(refreshTab) {
+                    refreshPrimaryTab();
+                }
+            } else {
+                openUrl('/{!replyToPost.ParentId}');
+            }
+        }
+        
+        function openUrl(a) {
+            window.location.href = a;
+        }
+
+       
+        <!-- Service Cloud functions -->
+        
+        var callCloseTab = function callCloseTab(result) { 
+            sforce.console.closeTab(result.id);
+        };
+        
+        var refreshPrimaryTabById = function refreshPrimaryTabById(result) {
+            sforce.console.refreshPrimaryTabById(result.id, true);
+        };
+        
+        function setTabTitle(title) {
+            sforce.console.setTabTitle(title);
+        }
+        
+        function closeTab() { 
+            sforce.console.getEnclosingTabId(callCloseTab);
+        }
+        
+        function refreshPrimaryTab() {
+            sforce.console.getEnclosingPrimaryTabId(refreshPrimaryTabById);
+        } 
+       
+    </script>
+    
+    <apex:outputPanel id="attachArticlePanel">
+        <script>
+            if(shortenButtonClicked == false) {
+                oldNewURLMap[beforeShorteningUrl] = newUrl; //Map between orginal and shortened url
+            }       
+        </script>   
+    </apex:outputPanel>
+    
+    <apex:outputPanel id="isUserVisiblePanel">
+        <script>
+            isUserVisible = {!isUserVisible}; 
+            isSelectedAccountAFanPage = {!isSelectedAccountAFanPage};
+        </script>   
+    </apex:outputPanel>
+    
+    <apex:outputpanel id="selectedUserIdPanel">
+        <script>
+            selectedUserId = "{!JSINHTMLENCODE(smmAccountID)}";
+        </script>    
+    </apex:outputpanel>
+</apex:page>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <fullName>Give_Rypple_Thanks</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Give Rypple Thanks</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>// version 16 updated by DA 10.23.2011
+// based on version 15d updated by DA 10.23.2011
+// based on version 14 updated by DA 10.21.2011
+// based on version 13 updated by DA 10.11.2011
+
+{!REQUIRESCRIPT(&quot;../../soap/ajax/24.0/connection.js&quot;)}
+
+(function() {
+
+   try {
+         sforce.connection.getServerTimestamp();
+   }
+   catch (err) {
+      location = location;
+      return false;
+   }
+
+  // Start Properties
+  var showDebugMessage = false;
+  
+  var firstClickDelay = 0; // 5000 = 5 Seconds  - Possibly no longer needed
+
+  var jQueryLoadAttempts = 0;
+  var cssLoadAttempts = 0;
+  var fancyBoxJSLoadAttempts = 0;
+  var restartAttempts = 0;
+
+  var waitProperties = {maxAttempts : 30, maxRestartAttempts: 4, iteration : 100, restartIteration : 1000}
+
+  var linkButtonProperties = {iFrameSrc : &apos;{! URLFOR(&quot;apex/rypple_Corp__RYPPLE_GiveThanks&quot;) }&apos; }
+
+  var staticResources = {jquery : &quot;/resource/rypple_corp__RYPPLE_jquery_main&quot;,
+    fancyBox : {js : &quot;/resource/rypple_corp__RYPPLE_jquery_fancybox/jquery.fancybox-1.3.4-modified/fancybox/jquery.fancybox-1.3.4.pack.js&quot;,
+    css : &quot;/resource/rypple_corp__RYPPLE_jquery_fancybox/jquery.fancybox-1.3.4-modified/fancybox/jquery.fancybox-1.3.4.css&quot;}}
+
+  var previouslyLoaded = false;
+
+
+  // End Properties
+
+function checkLogin() {
+  user = sforce.connection.getUserInfo();
+  currentUser = user.userId;
+  result = sforce.connection.query(&quot;Select rypple_Corp__rypple_access_token__c From User Where ID = &apos;&quot; + currentUser + &quot;&apos; limit 1&quot;);
+  token = result.records.rypple_Corp__rypple_access_token__c;
+  if(token == null)
+    window.location = &quot;../apex/rypple_Corp__RyppleLogin?retUrl=&quot; + window.location;
+   
+} //end checkLogin
+
+checkLogin();
+
+  function debugMessage(message){
+    if (showDebugMessage){
+      if(typeof(console) == &apos;undefined&apos;) { 
+        alert(message);
+      } else {
+        console.log(message);
+      }
+    }
+  } // end function debugMessage
+
+  function getCurrentTimestamp(){
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    if (minutes &lt; 10){
+      minutes = &quot;0&quot; + minutes;
+    }
+    var seconds = currentTime.getSeconds();
+    if (seconds &lt; 10){
+      seconds = &quot;0&quot; + seconds;
+    }
+    return hours + &quot;:&quot; + minutes + &quot; &quot; + seconds + &quot; &quot; + ((hours &gt; 11) ? &quot;PM&quot; : &quot;AM&quot;);
+  } // end function getCurrentTimestamp
+  
+  function createFancyBox(){
+    debugMessage(&quot;Within createFancyBox&quot;);
+    try {
+      var anchor = $(&apos;&lt;a /&gt;&apos;, {
+        id: &apos;temporaryFancyBoxLink&apos;,
+        href: linkButtonProperties.iFrameSrc,
+        text: &quot;temporaryFancyBoxLink&quot;
+      });
+      anchor.css({&apos;position&apos; : &apos;absolute&apos;, &apos;left&apos; : &apos;-1000&apos;, &apos;top&apos; : &apos;-1000&apos;});
+      anchor.addClass(&apos;temporaryFancyBoxLinkClass&apos;);
+      $(&apos;body&apos;).append(anchor);
+      $(&quot;.temporaryFancyBoxLinkClass&quot;)
+      .fancybox({
+      &apos;width&apos; : 315,
+      &apos;autoScale&apos; : false,
+      &apos;transitionIn&apos; : &apos;none&apos;,
+      &apos;transitionOut&apos; : &apos;none&apos;,
+      &apos;showCloseButton&apos;: &apos;true&apos;,
+      &apos;scrolling&apos; : &apos;no&apos;,
+      &apos;enableEscapeButton&apos;: &apos;true&apos;,
+      &apos;type&apos; : &apos;iframe&apos;})
+      .click()
+      .remove();
+    } catch (err) {
+      debugMessage(&quot;Error within createFancyBox: &quot; + err.message);
+      $(&quot;.temporaryFancyBoxLinkClass&quot;).remove();
+      // remove the FancyBox CSS and jQuery Plugin and try again
+      if (restartAttempts &lt; waitProperties.maxRestartAttempts) {
+        debugMessage(&quot;restartAttempts = &quot; + restartAttempts);
+        if (restartAttempts &lt; 2) {
+          // Try waiting with current loaded libraries
+          setTimeout(dynamicallyInjectDependencies, (++restartAttempts * waitProperties.restartIteration));
+        } else {
+          // Try reloading libraries
+          setTimeout(dynamicallyInjectDependencies, (++restartAttempts * waitProperties.restartIteration));
+        }
+      } else {
+        alert(&quot;There was an error loading Rypple.  Please refresh the page and wait for the page to completely load before trying again.&quot;);
+      }
+    }
+    debugMessage(&quot;End createFancyBox&quot;);
+  } // end function createFancyBox  
+    
+  function dynamicallyInjectDependencies(){
+    debugMessage(&quot;Within dynamicallyInjectDependencies&quot;);
+    debugMessage(&quot;Timestamp after calling dynamicallyInjectDependencies: &quot; + getCurrentTimestamp());
+    
+    /*
+    
+    Processing order:
+    load jQuery
+    confirm jQuery is loaded/wait until loaded
+    load FancyBox CSS
+    confirm FancyBox CSS is loaded/wait until loaded
+    load FancyBox JS
+    confirm FancyBox JS is loaded/wait until loaded
+    call createFancyBox which displays the Rypple page in a lightbox
+    
+    ajaxObject &amp; attachScript are helper functions to initially load jQuery
+    
+    */
+
+    // ajaxObject function found at: http://www.hunlock.com/blogs/Howto_Dynamically_Insert_Javascript_And_CSS
+    function ajaxObject(url, callbackFunction) {
+      debugMessage(&quot;Within ajaxObject&quot;);    
+      var that=this;      
+      this.updating = false;
+
+      this.update = function(passData,postMethod) { 
+        if (that.updating==true) { return false; }
+        that.updating=true;                       
+        var AJAX = null;                          
+        if (window.XMLHttpRequest) {              
+          AJAX=new XMLHttpRequest();              
+        } else {                                  
+          AJAX=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+        }                                             
+        if (AJAX==null) {                             
+          return false;                               
+        } else {
+          AJAX.onreadystatechange = function() {  
+            if (AJAX.readyState==4) {             
+              that.updating=false;                
+              that.callback(AJAX.responseText,AJAX.status,AJAX.responseXML);        
+              delete AJAX;                                         
+            }                                                      
+          }                                                        
+          var timestamp = new Date();                              
+          if (postMethod==&apos;POST&apos;) {
+            var uri=urlCall+&apos;?&apos;+timestamp.getTime();
+            AJAX.open(&quot;POST&quot;, uri, true);
+            AJAX.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+            AJAX.send(passData);
+          } else {
+            var uri=urlCall+&apos;?&apos;+passData+&apos;×tamp=&apos;+(timestamp*1); 
+            AJAX.open(&quot;GET&quot;, uri, true);                             
+            AJAX.send(null);                                         
+          }              
+          return true;                                             
+        }                                                                           
+      }
+      var urlCall = url;        
+      this.callback = callbackFunction || function () { };
+    }  
+
+    function attachScript(responseText, responseStatus) {
+      debugMessage(&quot;Within attachScript&quot;);   
+      // This function is called by the ajaxObject when the server has finished
+      // sending us the requested script.
+      if (responseStatus==200) {
+        eval(responseText);
+      }
+    }
+
+    function attachjQueryScript(responseText, responseStatus) {
+      debugMessage(&quot;Within attachjQueryScript&quot;);   
+      // This function is called by the ajaxObject when the server has finished
+      // sending us the requested script.
+      if (responseStatus==200) {
+        eval(responseText);
+        validateJQueryLoaded();
+      }
+    }
+
+    function attachFancyBoxScript(responseText, responseStatus) {
+      debugMessage(&quot;Within attachFancyBoxScript&quot;);   
+      // This function is called by the ajaxObject when the server has finished
+      // sending us the requested script.
+      if (responseStatus==200) {
+        eval(responseText);
+        validateFancyBoxJS();
+      }
+    }
+
+    
+    
+    // ajaxObject is an object constructor, pass it the server url you want it to call
+    // and the function name you want it to call when it gets the data back from the server.
+    // Use the .update() method to actually start the communication with the server.
+    // The first optional argument for update is the data you want to send to the server.
+    // ajaxvar.update(&apos;id=1234&amp;greed=good&amp;finish=true&apos;);
+    // The second optional argument for update is &apos;POST&apos; if you want to send the data
+    // as a POST instead of the default GET (post can handle larger amounts of data and
+    // the data doesn&apos;t show up in your server logs).
+    // ajaxvar.update(&apos;id=1234&amp;greed=good&amp;finish=true&apos;,&apos;POST&apos;);
+
+    /* example uses
+    
+    var getScriptViaAjax=new ajaxObject(&apos;http://mydomain.com/somescript.js&apos;,attachScript);
+        getScriptViaAjax.update();
+    var anotherScript = new ajaxObject(&apos;http://mydomain.com/anotherScript.php&apos;,attachScript);
+        anotherScript.update(&apos;userId=4323&apos;,&apos;POST&apos;);  
+    */ 
+    
+    
+    /***************************************/
+    
+    function validateJQueryLoaded(){
+      debugMessage(&quot;Within validateJQueryLoaded&quot;);   
+      if(typeof(jQuery) == &apos;undefined&apos;) {
+        if (jQueryLoadAttempts &lt; waitProperties.maxAttempts) {
+          debugMessage(&quot;jQueryLoadAttempts = &quot; + jQueryLoadAttempts);
+          setTimeout(validateJQueryLoaded, (jQueryLoadAttempts++ * waitProperties.iteration));
+        } else {
+          alert(&quot;Error loading Rypple.  Please refresh the page or try again&quot;);
+        }      
+      } else {
+        jqueryLoaded();
+      }  
+    } // end function validateJQueryLoaded
+    
+    function jqueryLoaded(){
+      debugMessage(&quot;Within jqueryLoaded&quot;);  
+      
+      debugMessage(&quot;Timestamp before document.ready - &quot; + getCurrentTimestamp());  
+      $(document).ready(function() {
+        // Handler for .ready() called.
+        debugMessage(&quot;Timestamp within document.ready - &quot; + getCurrentTimestamp());  
+        $(&quot;head&quot;).append(&quot;&lt;link&gt;&quot;);
+        css = $(&quot;head&quot;).children(&quot;:last&quot;);
+        css.attr({
+        rel: &quot;stylesheet&quot;,
+        type: &quot;text/css&quot;,
+        href: staticResources.fancyBox.css
+        });
+
+        setTimeout(validateCSS, (cssLoadAttempts++ * waitProperties.iteration));        
+      });
+
+
+    } // end function jqueryLoaded
+
+    function validateCSS(){
+      debugMessage(&quot;Within validateCSS&quot;); 
+      $(&quot;body&quot;).append(&quot;&lt;div id=&apos;validatingCSSLoad&apos; style=&apos;position:absolute;left:-1000;top:-1000;&apos;&gt;&lt;/div&gt;&quot;);
+      var validationDiv = $(&quot;#validatingCSSLoad&quot;);
+      debugMessage(&quot;validationDiv width before applying class = &quot; + validationDiv.css(&apos;width&apos;));
+      validationDiv.addClass(&apos;fancybox-bg&apos;);
+      debugMessage(&quot;validationDiv width after applying class = &quot; + $(&quot;#validatingCSSLoad&quot;).css(&apos;width&apos;));
+      if ($(&quot;#validatingCSSLoad&quot;).css(&apos;width&apos;) == &quot;20px&quot;){
+        // CSS is confirmed loaded
+        validationDiv.remove();
+        var getFancyBoxScriptViaAjax = new ajaxObject(staticResources.fancyBox.js, attachFancyBoxScript);
+        getFancyBoxScriptViaAjax.update();
+      } else {
+        // CSS is not loaded
+        validationDiv.remove();
+        if (cssLoadAttempts &lt; waitProperties.maxAttempts) {
+          setTimeout(validateCSS, (cssLoadAttempts++ * waitProperties.iteration));
+        } else {
+          alert(&quot;Error loading Rypple.  Please refresh the page or try again&quot;);
+        }
+      }    
+    } // end function validateCSS
+
+    function validateFancyBoxJS(){
+      debugMessage(&quot;Within validateFancyBoxJS&quot;); 
+      if(typeof($.fancybox) == &apos;undefined&apos;) {
+        if (jsLoadAttempts &lt; waitProperties.maxAttempts) {
+          setTimeout(validateFancyBox, (jsLoadAttempts++ * waitProperties.iteration));
+        } else {
+          alert(&quot;Error loading Rypple.  Please refresh the page or try again&quot;);
+        }      
+      } else {
+        createFancyBox();
+      }
+    } // end function validateFancyBox()
+    
+    // load jQuery
+    var getjQueryScriptViaAjax = new ajaxObject(staticResources.jquery, attachjQueryScript);
+    getjQueryScriptViaAjax.update();
+    
+  } // end function dynamicallyInjectDependencies  
+  debugMessage(&quot;Starting logic&quot;);
+  
+  try{
+    if ((typeof(jQuery) != &apos;undefined&apos;) &amp;&amp; (typeof($.fancybox) != &apos;undefined&apos;)){
+      // check if CSS is already loaded by creating an element with one of the required CSS classes and checking a property of that class
+      debugMessage(&quot;jQuery and fancyBox are loaded&quot;); 
+      $(&quot;body&quot;).append(&quot;&lt;div id=&apos;validatingCSSLoad&apos; style=&apos;position:absolute;left:-1000;top:-1000;&apos;&gt;&lt;/div&gt;&quot;);
+      var validationDiv = $(&quot;#validatingCSSLoad&quot;);
+      debugMessage(&quot;validationDiv width before applying class = &quot; + validationDiv.css(&apos;width&apos;));
+      validationDiv.addClass(&apos;fancybox-bg&apos;);
+      debugMessage(&quot;validationDiv width after applying class = &quot; + validationDiv.css(&apos;width&apos;));
+      if ($(&quot;#validatingCSSLoad&quot;).css(&apos;width&apos;) == &quot;20px&quot;){
+        // CSS is confirmed loaded
+        previouslyLoaded = true;
+      }
+      validationDiv.remove();
+    }
+  } catch(err) {
+    debugMessage(&quot;previouslyLoaded catch error: &quot; + err.message);
+  }
+  debugMessage(&quot;previouslyLoaded = &quot; + previouslyLoaded);
+  if (previouslyLoaded == true){
+    createFancyBox(); // do not reload jQuery and FancyBox libraries nor the FancyBox CSS
+  } else {
+    // dynamicallyInjectDependencies();
+    debugMessage(&quot;Timestamp before calling dynamicallyInjectDependencies: &quot; + getCurrentTimestamp());
+    setTimeout(dynamicallyInjectDependencies, firstClickDelay);
+  } 
+
+
+})();</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Twitter アカウント</value>
+    </caseValues>
+    <fields>
+        <label>有効</label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label>Bit.ly API キー</label>
+        <name>Bit_ly_Password__c</name>
+    </fields>
+    <fields>
+        <label>Bit.ly ユーザ名</label>
+        <name>Bit_ly_Username__c</name>
+    </fields>
+    <fields>
+        <label>寄稿者の有効化</label>
+        <name>Contributor_Enabled__c</name>
+    </fields>
+    <fields>
+        <label>ダイレクトメッセージ ID しきい値</label>
+        <name>Direct_Message_Id_Threshold__c</name>
+    </fields>
+    <fields>
+        <label>自動ケース作成を有効化</label>
+        <name>Enable_Auto_Case_Creation__c</name>
+    </fields>
+    <fields>
+        <label>パスワードあり</label>
+        <name>Has_Password__c</name>
+    </fields>
+    <fields>
+        <label>Klout 数</label>
+        <name>Klout_Number__c</name>
+    </fields>
+    <fields>
+        <label>Klout スコア</label>
+        <name>Klout_Score__c</name>
+    </fields>
+    <fields>
+        <label>最新 DM ID</label>
+        <name>Last_DM_Ids__c</name>
+    </fields>
+    <fields>
+        <label>最新のつぶやき ID</label>
+        <name>Last_Tweet_Ids__c</name>
+    </fields>
+    <fields>
+        <label>OAuth の秘密</label>
+        <name>OAuth_Secret__c</name>
+    </fields>
+    <fields>
+        <label>OAuth トークン</label>
+        <name>OAuth_Token__c</name>
+    </fields>
+    <fields>
+        <label>部分的 Twitter の最大メッセージ</label>
+        <name>Partial_Twitter_Max_Message__c</name>
+    </fields>
+    <fields>
+        <label>部分的 Twitter Max Twitter</label>
+        <name>Partial_Twitter_Max_Twitter__c</name>
+    </fields>
+    <fields>
+        <help><!-- Twitter is deprecating Username/Password in favor of OAuth, a secure access protocol. To use OAuth, enter any text in this field, then click the “Grant Twitter Access” button after saving the Twitter Account. --></help>
+        <label>パスワード</label>
+        <name>Password__c</name>
+    </fields>
+    <fields>
+        <help><!-- When this feature is enabled, any Tweets by this Twitter Account containing #ch will be automatically posted to the feed of the Twitter Account Creator. Comments on this post in Chatter will not be sent to Twitter. --></help>
+        <label>#ch を含む投稿を Chatter に追加</label>
+        <name>Post_Hashtag_Chatter__c</name>
+    </fields>
+    <fields>
+        <label>1 ページあたりの結果数</label>
+        <name>Results_Per_Page__c</name>
+    </fields>
+    <fields>
+        <label>ダイレクトメッセージ ID オフセットを検索</label>
+        <name>Search_Direct_Message_Id_Offset__c</name>
+    </fields>
+    <fields>
+        <label>つぶやき ID オフセットを検索</label>
+        <name>Search_Tweet_Id_Offset__c</name>
+    </fields>
+    <fields>
+        <label>つぶやき ID しきい値</label>
+        <name>Tweet_Id_Threshold__c</name>
+    </fields>
+    <fields>
+        <label>Twitter の最大メッセージ</label>
+        <name>Twitter_Max_Message__c</name>
+    </fields>
+    <fields>
+        <label>Twitter Max Twitter</label>
+        <name>Twitter_Max_Twitter__c</name>
+    </fields>
+    <fields>
+        <label>Twitter ユーザ ID</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>不明な Twitter ユーザ名</label>
+        <name>Unknown_Twitter_Usernames__c</name>
+        <picklistValues>
+            <masterLabel>Create Contact</masterLabel>
+            <translation><!-- Create Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Lead</masterLabel>
+            <translation><!-- Create Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Person Account</masterLabel>
+            <translation><!-- Create Person Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do nothing</masterLabel>
+            <translation><!-- Do nothing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>ユーザ名</label>
+        <name>Username__c</name>
+    </fields>
+    <fields>
+        <label>検証済み</label>
+        <name>Valid__c</name>
+    </fields>
+    <fields>
+        <label>ケース関連付けロジックをつぶやきに適用</label>
+        <name>associate_DM__c</name>
+    </fields>
+    <fields>
+        <help><!-- This will prevent Tweets from being automatically associated to cases that are not originated by the Tweet&apos;s Author --></help>
+        <label>一致するユーザ名のみを関連付ける</label>
+        <name>associate_cases_same_username__c</name>
+    </fields>
+    <fields>
+        <help><!-- Whenever a Candidate Case is looked for (for Direct Messages or Replies) all Closed cases with a Closed Date less than the set amount of minutes will be available to the Threading Logic. --></help>
+        <label>ケースクローズ後の関連付けの保持期間</label>
+        <name>closed_case_duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- When searching for tweets previous results are filtered out from the new results, by turning this option &apos;On&apos; the search will bring all results up to the maximum allowed by twitter. --></help>
+        <label>最大数までつぶやきの以前の結果を含める</label>
+        <name>ignore_maxid__c</name>
+    </fields>
+    <layouts>
+        <layout>Twitter Account Layout</layout>
+        <sections>
+            <label><!-- Case Association Options --></label>
+            <section>Case Association Options</section>
+        </sections>
+        <sections>
+            <label><!-- Search options --></label>
+            <section>Search options</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Twitter アカウント名</nameFieldLabel>
+    <validationRules>
+        <errorMessage>この項目は必須項目です</errorMessage>
+        <name>Save_unknown_twitter_usernames_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>無効な数値です。</errorMessage>
+        <name>Search_DM_Id_Offset_must_be_a_number</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>無効な数値です。</errorMessage>
+        <name>Search_Tweet_Id_Offset_must_be_a_number</name>
+    </validationRules>
+    <webLinks>
+        <label>Klout スコアを取得</label>
+        <name>Get_Klout_Score</name>
+    </webLinks>
+    <webLinks>
+        <label>Klout スコアを取得</label>
+        <name>Get_Klout_Score_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Twitter アクセス権を無効化</label>
+        <name>Revoke</name>
+    </webLinks>
+    <webLinks>
+        <label>アカウントの検索をスケジュール</label>
+        <name>Schedule_Account_Searches</name>
+    </webLinks>
+    <webLinks>
+        <label>Twitter アクセス権を許可</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

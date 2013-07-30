@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Org Customizer</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <description>This app is intended for demonstrators of salesforce.com. It accelerates the process to change the data in the Org to prepare for a demo to a prospect.</description>
+    <namespacePrefix>EDY_ORGCUSTOM</namespacePrefix>
+    <setupWeblink>OrgCustomizer</setupWeblink>
+    <types>
+        <members>Account.DB__c</members>
+        <members>Account.Old_Name__c</members>
+        <members>Campaign.DB__c</members>
+        <members>Campaign.Old_Name__c</members>
+        <members>Case.DB__c</members>
+        <members>Case.Old_Description__c</members>
+        <members>Case.Old_Subject__c</members>
+        <members>Contact.DB__c</members>
+        <members>Contact.Old_Title__c</members>
+        <members>Product2.DB__c</members>
+        <members>Product2.Old_Name__c</members>
+        <members>Solution.DB__c</members>
+        <members>Solution.Old_SolutionName__c</members>
+        <members>Solution.Old_SolutionNote__c</members>
+        <members>User.DB__c</members>
+        <members>User.Old_First_Name__c</members>
+        <members>User.Old_Last_Name__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>OrgCustomizer</members>
+        <name>CustomPageWebLink</name>
+    </types>
+    <types>
+        <members>Flex_Org_Customizer</members>
+        <name>Scontrol</name>
+    </types>
+    <version>24.0</version>
+</Package>

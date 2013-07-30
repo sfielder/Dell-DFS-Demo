@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Protected</customSettingsVisibility>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>lastVerifiedDatetime__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date and time when customer provisioning type was last verified.</description>
+        <externalId>false</externalId>
+        <label>Last Verified Datetime</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>provisioningType__c</fullName>
+        <defaultValue>&apos;FREE&apos;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>A type of provisioning used by a customer.</description>
+        <externalId>false</externalId>
+        <label>Provisioning Type</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Nitro Provisioning</label>
+</CustomObject>

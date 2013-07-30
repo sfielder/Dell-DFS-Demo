@@ -1,0 +1,27 @@
+<apex:page standardController="Contact">
+<!-- 
+<style>
+    #maskDiv{
+     position:absolute;
+     z-index:100;
+     background-color:black;  
+     top:-200px;
+     left:-200px;
+     height:100%; 
+    }
+    #givenThanksSuccessPopup{
+     position:absolute;
+     z-index:101; 
+     background-color:transparent;   
+    }
+</style>
+<div id="maskDiv" ></div>
+<!--  Begining Modal Dialog for Given Thanks success --
+    <div id="givenThanksSuccessPopup" class="window" style="display:none;height:100px;width:250px">
+         <div id="givenThanksSuccessContainer">
+               <apex:iframe id="leftPanel" src="apex/RYPPLE_GiveThanks" scrolling="false" width="100%"/>
+         </div>
+    </div>    
+<!--  End Modal Dialog for Given Thanks success --
+ -->
+</apex:page>

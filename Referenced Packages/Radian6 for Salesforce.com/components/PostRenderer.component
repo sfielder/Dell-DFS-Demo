@@ -1,0 +1,13 @@
+<apex:component controller="R6Service.PostRendererController" selfClosing="true">
+    <apex:attribute name="post" assignTo="{!renderedPost}" type="SocialPost" description="The tweet to render" required="true"/>
+    
+    <apex:variable var="likePostUrl" value="{!likePost.url}"/>
+    <apex:variable var="retweetUrl" value="{!retweet.url}"/>
+    <apex:variable var="replyUrl" value="{!reply.url}"/>
+    
+    <c:PostDecorator post="{!post}" >
+        <apex:outputLink styleClass="postFavorite postAction" value="{!likePostUrl}" onclick="window.open('{!likePostUrl}'); return false;" rendered="{!CONTAINS(UPPER(post.MediaType),'TWITTER')}"><apex:image styleClass="intentIcon" value="{!$Resource.R6Service__twitter_favorite_icon}" rendered="{!CONTAINS(UPPER(post.MediaType),'TWITTER')}"/>Favorite</apex:outputLink>
+        <apex:outputLink styleClass="postRetweet postAction" value="{!retweetUrl}" onclick="window.open('{!retweetUrl}'); return false;" rendered="{!CONTAINS(UPPER(post.MediaType),'TWITTER')}"><apex:image styleClass="intentIcon" value="{!$Resource.R6Service__twitter_retweet_icon}" rendered="{!CONTAINS(UPPER(post.MediaType),'TWITTER')}"/>Retweet</apex:outputLink>
+        <apex:outputLink styleClass="postReply postAction" value="{!replyUrl}" onclick="window.open('{!replyUrl}'); return false;"><apex:image styleClass="intentIcon" value="{!$Resource.R6Service__twitter_reply_icon}" rendered="{!CONTAINS(UPPER(post.MediaType),'TWITTER')}"/>Reply</apex:outputLink>
+    </c:PostDecorator>
+</apex:component>

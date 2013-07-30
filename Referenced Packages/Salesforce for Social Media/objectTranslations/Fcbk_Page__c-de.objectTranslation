@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Facebook-Seite</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Facebook-Seiten</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Facebook-Seite</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Facebook-Seiten</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Facebook-Seite</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Facebook-Seiten</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Facebook-Seite</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Facebook-Seiten</value>
+    </caseValues>
+    <fields>
+        <label>Kategorie</label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label>Beschreibung</label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label>Autom. Erst. von Kundenvorg. aktivieren</label>
+        <name>Enable_Auto_Case_Creation__c</name>
+    </fields>
+    <fields>
+        <label>Bild</label>
+        <name>Facebook_Image__c</name>
+    </fields>
+    <fields>
+        <label>Facebook-ID</label>
+        <name>Fcbk_Id__c</name>
+    </fields>
+    <fields>
+        <label>Bild</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>Startzeit der letzten Suche</label>
+        <name>Last_Time_Run__c</name>
+    </fields>
+    <fields>
+        <label>Als „Gefällt mir“ markiert</label>
+        <name>Likes__c</name>
+    </fields>
+    <fields>
+        <help><!-- When enabled, any Post by this Facebook page containing #ch will be automatically posted to the Chatter Feed of the Facebook Page creator. Comments on this post in Chatter will not be sent to Facebook. --></help>
+        <label>Beiträge mit #ch in Chatter hinzufügen</label>
+        <name>Post_Hashtag_Chatter__c</name>
+    </fields>
+    <fields>
+        <label>Produkte</label>
+        <name>Products__c</name>
+    </fields>
+    <fields>
+        <label>Kundenvorgangszuordnungslogik ausführen</label>
+        <name>Run_Case_Association_Logic__c</name>
+    </fields>
+    <fields>
+        <label>Erhält Beiträge und Kommentare seit</label>
+        <name>Search_Lower_Limit_Time__c</name>
+    </fields>
+    <fields>
+        <label>Erhält Beiträge und Kommentare bis</label>
+        <name>Search_Upper_Limit_Time__c</name>
+    </fields>
+    <fields>
+        <label>Unbekannte Benutzer</label>
+        <name>Unknown_Users__c</name>
+        <picklistValues>
+            <masterLabel>Create Contact</masterLabel>
+            <translation><!-- Create Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Lead</masterLabel>
+            <translation><!-- Create Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Person Account</masterLabel>
+            <translation><!-- Create Person Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do Nothing</masterLabel>
+            <translation><!-- Do Nothing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Validiert</label>
+        <name>Valid__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>FCBK Page Layout</layout>
+        <sections>
+            <label><!-- Search Configuration --></label>
+            <section>Search Configuration</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Name</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Zum Aktivieren der Erstellung von Kundenvorgängen müssen Sie auch die Kundenvorgangszuordnung aktivieren.</errorMessage>
+        <name>Auto_Case_Association_Logic</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Facebook Id --></errorMessage>
+        <name>Facebook_Id_not_empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>„Erhält Beiträge und Kommentare bis“ muss größer sein als „Erhält Beiträge und Kommentare seit“</errorMessage>
+        <name>until_date_greater_than_since</name>
+    </validationRules>
+    <webLinks>
+        <label>Seiteninfo abrufen</label>
+        <name>Get_Page_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Facebook-Zugriff widerrufen</label>
+        <name>Revoke_Facebook_Access</name>
+    </webLinks>
+    <webLinks>
+        <label>Suchvorgänge nach Facebook-Seiten planen</label>
+        <name>Schedule_Facebook_Pages_Searches</name>
+    </webLinks>
+    <webLinks>
+        <label>Validieren</label>
+        <name>Validate</name>
+    </webLinks>
+</CustomObjectTranslation>

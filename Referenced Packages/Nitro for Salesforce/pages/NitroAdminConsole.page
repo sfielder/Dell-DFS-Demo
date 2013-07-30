@@ -1,0 +1,79 @@
+<apex:page controller="nitro.NitroAdminConsoleController" tabStyle="Nitro_Settings_New__tab" action="{!init}">
+   
+   <apex:pageMessages id="pageMessages" />
+   
+   <link href="https://assets2.bunchball.net/widgets/salesforce/{!buildVersion}/nitroforsalesforce.css" rel="stylesheet" type="text/css"></link>
+   
+   <div class="nitro">
+   <apex:form >
+      <apex:pageBlock title="Nitro Settings">
+         
+         <apex:pageBlockButtons id="pageButtons" rendered="{!!isFree}">
+            <apex:commandButton value="Edit" action="{!edit}"/>
+         </apex:pageBlockButtons>
+         
+         <apex:pageBlockSection columns="1" title="Nitro Account Setup">
+            <apex:outputField value="{!nitroConfigData.name}" label="Name" />
+            <apex:outputField value="{!nitroConfigData.nitro__API_Key__c}" label="API Key" />
+            <apex:outputField value="{!nitroConfigData.nitro__API_Secret__c}" label="Secret Key" />
+            <apex:outputField value="{!nitroConfigData.nitro__Admin_Name__c}" label="Admin Name" />
+            <apex:outputField value="{!nitroConfigData.nitro__Admin_Password__c}" label="Admin Passowrd" />
+         </apex:pageBlockSection>
+         
+         <apex:pageBlockSection columns="1" title="General Configuration">
+            <apex:outputField value="{!nitroConfigData.nitro__Nitro_User_ID_Field__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Points_Name_long__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Points_Name_short__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Time__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Callback_Email__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Administrator_Email__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Auto_post_to_Chatter__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Fiscal_Year_Start_Month__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Show_Spread_the_Word__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Enable_WYSIWYG_Editor__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Schedule_Action_API_Calls__c}" />
+         </apex:pageBlockSection>
+      
+         <apex:pageBlockSection columns="2" title="Reward Store Settings">
+            <apex:outputField value="{!nitroConfigData.nitro__Vendor__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Vendor_Endpoint_URL__c}" />
+         </apex:pageBlockSection>
+
+         <apex:pageBlockSection columns="1" title="Show Nitro Tabs">
+            <apex:outputField value="{!nitroConfigData.nitro__Home_Tab__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Profile_Tab__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Leaderboards_Tab__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Team_Standings_Tab__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Teams_Tab__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Show_Redemption__c}" />
+         </apex:pageBlockSection>
+
+         <apex:pageBlockSection columns="1" title="Show in Nitro Sidebar">
+            <apex:outputField value="{!nitroConfigData.nitro__Show_Quota_Leaders__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Show_Featured_Challenge__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Featured_Reward__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Show_Teams__c}" />
+         </apex:pageBlockSection>      
+      
+         <apex:pageBlockSection columns="1" title="Use Default Nitro Triggers">
+            <apex:outputField value="{!nitroConfigData.nitro__Account_Trigger__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Chatter_Trigger__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Lead_Trigger__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Opportunity_Trigger__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Opportunity_Quota_Trigger__c}" />
+            <apex:outputField value="{!nitroConfigData.nitro__Task_Trigger__c}" />
+         </apex:pageBlockSection>
+      
+      </apex:pageBlock>
+      
+      <c:DisabledFeatureOverlay isFree="{!isFree}" verifyAction="{!verifyEdition}" />
+          
+   </apex:form>
+   
+   </div>
+   
+   <style type="text/css">
+     .apexp .bPageBlock.apexDefaultPageBlock .pbBody .pbSubheader {color: #808080;}
+   </style>
+   
+</apex:page>

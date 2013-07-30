@@ -1,0 +1,6 @@
+<apex:component selfClosing="true"  layout="none" controller="R6Service.DateTimeFormatter">
+  <apex:attribute name="date" assignTo="{!dateToFormat}" type="DateTime" required="true" description="The date to format"/>
+  <apex:attribute name="format" assignTo="{!format}" type="String" required="false" description="The format in which you want the date" default="d MMM yy, h:mm a"/>
+  
+  <apex:outputtext value="{!formattedDate}" />
+</apex:component>

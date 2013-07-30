@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents an account a user has on a Social Media Network</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fieldSets>
+        <fullName>ContactsPersonasFieldSet</fullName>
+        <availableFields>
+            <field>Bio__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SystemModstamp</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Following__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Friends__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsFollowingUs__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Klout__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastUpdated__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Listed__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Followers__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastModifiedDate</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastActivityDate</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsDeleted</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Id</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ProfileIconUrl__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ProfileType__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ProfileUrl__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>R6SourceID__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>RealName__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>TopicType__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Tweets__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>UserID__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>UserName__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>WeFollow__c</field>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>This field set is used to display contact&apos;s  related personas at the bottom in service cloud console case layout</description>
+        <displayedFields>
+            <field>Picture__c</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>MediaType__c</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>MediaProvider__c</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>OrgPosts__c</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CreatedDate</field>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>ContactsPersonasFieldSet</label>
+    </fieldSets>
+    <fields>
+        <fullName>AvatarIconResource__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to populate the avatar, should not be made visible.</description>
+        <externalId>false</externalId>
+        <formula>BLANKVALUE(ProfileIconUrl__c, MediaIconResource__c)</formula>
+        <label>Avatar Icon Resource</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bio__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Persona&apos;s biography.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A short biography about the user.</inlineHelpText>
+        <label>Bio</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Followers__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of Twitter followers.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of Twitter followers.</inlineHelpText>
+        <label>Followers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Following__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of users this persona follows on Twitter.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of users this user follows on Twitter.</inlineHelpText>
+        <label>Following</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Friends__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Number of Facebook friends.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Facebook friends.</inlineHelpText>
+        <label>Number Of Friends</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsFollowingUs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Are they following the company on Twitter?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked if the user is following the company&apos;s Twitter account.</inlineHelpText>
+        <label>Are They Following Us?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Klout__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The persona&apos;s Klout score.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Klout score of the user.</inlineHelpText>
+        <label>Klout</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastUpdated__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The last time that Radian6 updated this persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The last time that the system updated this persona.</inlineHelpText>
+        <label>Last Updated</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Listed__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of lists that follow this Twitter persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of Twitter lists that follow this user.</inlineHelpText>
+        <label>Listed Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIconResource__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A formula used by the media icon. Should not be made visible.</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(UPPER(MediaProvider__c),&apos;TWITTER&apos;), &apos;/resource/R6Service__Twitter_Logo&apos;, 
+IF(CONTAINS(UPPER(MediaProvider__c), &apos;FACEBOOK&apos;), &apos;/resource/R6Service__Facebook_Logo&apos;, 
+IF(CONTAINS(UPPER(MediaProvider__c), &apos;YOUTUBE&apos;), &apos;/resource/R6Service__MediaTypeYouTubeIcon&apos;, 
+CASE(UPPER(MediaType__c), 
+&apos;BLOGS&apos;, &apos;/resource/R6Service__MediaTypeBlogIcon&apos;, 
+&apos;VIDEOS&apos;, &apos;/resource/R6Service__MediaTypeVideoIcon&apos;, 
+&apos;IMAGES&apos;, &apos;/resource/R6Service__MediaTypeImageIcon&apos;, 
+&apos;MAINSTREAM NEWS&apos;, &apos;/resource/R6Service__MediaTypeNewsIcon&apos;, 
+&apos;MICROMEDIA&apos;, &apos;/resource/R6Service__MediaTypeMicromediaIcon&apos;, 
+&apos;FORUM&apos;, &apos;/resource/R6Service__MediaTypeForumIcon&apos;, 
+&apos;COMMENTS&apos;, &apos;/resource/R6Service__MediaTypeCommentIcon&apos;, 
+&apos;/resource/R6Service__DefaultChannelLogo&apos; 
+))))</formula>
+        <label>Media Icon Resource</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaIcon__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The icon that represents the post&apos;s medium. This will be the provider&apos;s logo for common providers, or generic media type logos for less popular providers.</description>
+        <externalId>false</externalId>
+        <formula>IMAGE(MediaIconResource__c, MediaType__c +&quot;/&quot; + MediaProvider__c, 48, 48)</formula>
+        <inlineHelpText>The media provider or media type.</inlineHelpText>
+        <label>Media Icon</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaProvider__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The media provider for this persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The social network that this user belongs to. For example: Facebook, Twitter, Youtube or Myspace.</inlineHelpText>
+        <label>Media Provider</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MediaType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The media type for this persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The media type of the media provider. For example: Youtube is a &quot;video&quot; media type while Twitter is &quot;micromedia&quot;.</inlineHelpText>
+        <label>Media Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrgPosts__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Number of posts by this persona that have matched the Radian6 topic profile and have been saved to the org.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of posts by this user in the system.</inlineHelpText>
+        <label>Number Of Recorded Posts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Picture__c</fullName>
+        <deprecated>false</deprecated>
+        <description>User&apos;s profile picture, or a placeholder if no picture is accessible.  This links to the persona&apos;s profile and when clicked will take you to the social media site.  It is similar to the Profile link however only displays the profile picture rather than text.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(ProfileUrl__c), IMAGE(AvatarIconResource__c, UserName__c, 48, 48), HYPERLINK(ProfileUrl__c ,IMAGE(AvatarIconResource__c, UserName__c, 48, 48)))</formula>
+        <inlineHelpText>Click here to visit the user&apos;s profile page.</inlineHelpText>
+        <label>Avatar</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ProfileIconUrl__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is the URL for the display picture of the profile. This is used by other formula fields, and should not be made visible.</description>
+        <externalId>false</externalId>
+        <label>Profile Icon URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>ProfileType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of profile used by this persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of profile being used by this user. For example, person or Facebook fanpage.</inlineHelpText>
+        <label>Profile Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ProfileUrl__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A link to the profile page.  When clicked the user will be directed to the social media site.  This value displays as a URL.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Click here to visit the user&apos;s profile page.</inlineHelpText>
+        <label>Profile Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>R6SourceID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An ID used by Radian6 to identify a persona. Should not be made visible.</description>
+        <externalId>false</externalId>
+        <label>Radian6 Source ID</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RealName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The real name of the persona, if available from the media provider.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The real name of the user, if available.</inlineHelpText>
+        <label>Real Name</label>
+        <length>160</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SM_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The contact that owns this persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The contact that uses this online persona. The contact represents the actual person while this persona is just his or her online facade.</inlineHelpText>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Social Media Persona</relationshipLabel>
+        <relationshipName>SM_Contact_Personas</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>TopicType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The kind of topic that caused this persona to be created, if it was automatically created. Should not be visible.</description>
+        <externalId>false</externalId>
+        <label>Topic Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tweets__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of tweets made by this persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total number of tweets that this user has made.</inlineHelpText>
+        <label>Number Of Tweets</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UserID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The unique user ID for this persona, as determined by the media provider.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The unique user ID determined by the media provider.</inlineHelpText>
+        <label>User ID</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UserName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The handle for the persona.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The account handle for this user.</inlineHelpText>
+        <label>User Handle</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>WeFollow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is the company&apos;s Twitter account following this account?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked if the company&apos;s Twitter account is following the user.</inlineHelpText>
+        <label>Do We Follow Them?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <label>Social Media Persona</label>
+    <listViews>
+        <fullName>Aggregator_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Aggregator</value>
+        </filters>
+        <label>Aggregator</label>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Blogs_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Blogs</value>
+        </filters>
+        <label>Blogs</label>
+    </listViews>
+    <listViews>
+        <fullName>BuySell_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Buy/Sell</value>
+        </filters>
+        <label>Buy/Sell</label>
+    </listViews>
+    <listViews>
+        <fullName>Comments_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Comments</value>
+        </filters>
+        <label>Comments</label>
+    </listViews>
+    <listViews>
+        <fullName>Facebook_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Facebook</value>
+        </filters>
+        <label>Facebook</label>
+    </listViews>
+    <listViews>
+        <fullName>Forums_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Forums,Forum Replies</value>
+        </filters>
+        <label>Forums</label>
+    </listViews>
+    <listViews>
+        <fullName>GooglePlus_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaProvider__c</field>
+            <operation>contains</operation>
+            <value>Google+</value>
+        </filters>
+        <label>Google+</label>
+    </listViews>
+    <listViews>
+        <fullName>Images_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Images</value>
+        </filters>
+        <label>Images</label>
+    </listViews>
+    <listViews>
+        <fullName>MicroMedia_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>MicroMedia</value>
+        </filters>
+        <label>MicroMedia</label>
+    </listViews>
+    <listViews>
+        <fullName>MySpace_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaProvider__c</field>
+            <operation>contains</operation>
+            <value>MySpace</value>
+        </filters>
+        <label>MySpace</label>
+    </listViews>
+    <listViews>
+        <fullName>News_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Mainstream News</value>
+        </filters>
+        <label>Mainstream News</label>
+    </listViews>
+    <listViews>
+        <fullName>Twitter_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaProvider__c</field>
+            <operation>contains</operation>
+            <value>twitter</value>
+        </filters>
+        <label>Twitter</label>
+    </listViews>
+    <listViews>
+        <fullName>Videos_Persona</fullName>
+        <columns>NAME</columns>
+        <columns>Picture__c</columns>
+        <columns>SM_Contact__c</columns>
+        <columns>MediaType__c</columns>
+        <columns>MediaProvider__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MediaType__c</field>
+            <operation>equals</operation>
+            <value>Videos</value>
+        </filters>
+        <label>Videos</label>
+    </listViews>
+    <nameField>
+        <label>Persona</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Social Media Persona</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>PERSONA_FACEBOOK</fullName>
+        <active>true</active>
+        <description>Personas of this type represent Facebook users.</description>
+        <label>Facebook</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>PERSONA_OTHER_SOCIAL_MEDIA</fullName>
+        <active>true</active>
+        <description>Personas of this type represent users on other social networks.</description>
+        <label>Other</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>PERSONA_TWITTER</fullName>
+        <active>true</active>
+        <description>Personas of this type represent Twitter users.</description>
+        <label>Twitter</label>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>RealName__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SM_Contact__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>RealName__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SM_Contact__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>RealName__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>SM_Contact__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>RealName__c</searchFilterFields>
+        <searchFilterFields>SM_Contact__c</searchFilterFields>
+        <searchResultsAdditionalFields>RealName__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SM_Contact__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>
